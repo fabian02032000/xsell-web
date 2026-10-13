@@ -387,6 +387,27 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
 .prog.o{border-color:color-mix(in srgb,var(--orange) 60%,var(--line));color:var(--orange-2)}
 .leg .btn{align-self:flex-start;margin-top:auto}
 
+
+/* Formulario de postulación */
+.apply{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+@media (max-width:860px){.apply{grid-template-columns:1fr}}
+.apply h2{font-size:clamp(1.9rem,4.2vw,2.8rem);line-height:1.08}
+.apply h2 em{font-style:normal;color:var(--orange)}
+.apply .lead{color:var(--muted);margin-top:14px;max-width:46ch}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:28px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line)}
+@media (max-width:560px){.form{grid-template-columns:1fr;padding:20px}}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--display);font-size:.8rem;font-weight:600;color:var(--muted)}
+.field input,.field select,.field textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 25%,transparent)}
+.check{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--muted)}
+.check input{margin-top:3px;accent-color:var(--orange)}
+.form .btn{grid-column:1/-1;justify-self:start}
+.form-msg{grid-column:1/-1;font-size:.92rem;font-weight:600}
+.form-msg.ok{color:#7BE0A6}.form-msg.err{color:#FF8A8A}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -462,6 +483,30 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
       </ol>
     </div>
   </section>
+  <section class="block" id="postula">
+    <div class="wrap apply">
+      <div>
+        <span class="eyebrow">Postula</span>
+        <h2 style="margin-top:10px">¿Quieres sumarte <em>al viaje</em>?</h2>
+        <p class="lead">Déjanos tus datos y el equipo de Xsell se pondrá en contacto contigo cuando tengamos una posición para ti.</p>
+      </div>
+      <form class="form" id="applyForm" novalidate>
+        <div class="field full"><label for="f_nombre">Nombres y apellidos</label><input id="f_nombre" name="nombre" required autocomplete="name"></div>
+        <div class="field"><label for="f_cel">Celular</label><input id="f_cel" name="celular" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX"></div>
+        <div class="field"><label for="f_mail">Correo</label><input id="f_mail" name="correo" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="f_puesto">¿A qué puesto postulas?</label>
+          <select id="f_puesto" name="puesto" required><option value="">Elige una opción</option><option>Asesor(a) comercial</option><option>Atención al cliente</option><option>Supervisión</option><option>Áreas de soporte (marketing, RR. HH., otras)</option><option>Otro</option></select></div>
+        <div class="field"><label for="f_exp">Experiencia en ventas o atención</label>
+          <select id="f_exp" name="experiencia" required><option value="">Elige una opción</option><option>Sin experiencia</option><option>Menos de 1 año</option><option>De 1 a 3 años</option><option>Más de 3 años</option></select></div>
+        <div class="field"><label for="f_dist">Distrito donde vives</label><input id="f_dist" name="distrito" required></div>
+        <div class="field"><label for="f_cv">Enlace a tu CV o LinkedIn (opcional)</label><input id="f_cv" name="cv" type="url" placeholder="https://"></div>
+        <div class="field full"><label for="f_msg">Cuéntanos por qué quieres sumarte (opcional)</label><textarea id="f_msg" name="mensaje"></textarea></div>
+        <label class="check"><input type="checkbox" id="f_ok" required> Acepto que Xsell use mis datos para procesos de selección, según la Ley N.° 29733 de Protección de Datos Personales.</label>
+        <button class="btn btn-orange" type="submit" id="f_btn">Enviar postulación</button>
+        <p class="form-msg" id="f_status" role="status"></p>
+      </form>
+    </div>
+  </section>
 </main>
 <footer>
   <div class="wrap foot">
@@ -478,6 +523,31 @@ document.getElementById("yr").textContent = new Date().getFullYear();
   const gi = [...document.querySelectorAll(".js-slide")]; let t = false;
   function upd(){ const vh = innerHeight; gi.forEach(el => { const r = el.getBoundingClientRect(); el.style.transform = "translateX(" + ((r.top - vh) / (vh + r.height) * 12) + "%)"; }); t = false; }
   addEventListener("scroll", () => { if (!t){ t = true; requestAnimationFrame(upd); } }, { passive: true }); upd();
+})();
+
+/* Postulaciones: completar destino */
+const POSTULA = { correo: "", whatsapp: "" }; // correo que recibe postulaciones y/o WhatsApp (solo dígitos, ej. 51999999999)
+(function(){
+  const f = document.getElementById("applyForm"), st = document.getElementById("f_status"), btn = document.getElementById("f_btn");
+  f.addEventListener("submit", async e => {
+    e.preventDefault(); st.className = "form-msg"; st.textContent = "";
+    if (!f.checkValidity()){ st.className = "form-msg err"; st.textContent = "Revisa los campos obligatorios y acepta el uso de datos."; f.reportValidity(); return; }
+    const d = Object.fromEntries(new FormData(f).entries());
+    if (POSTULA.correo){
+      btn.disabled = true; btn.textContent = "Enviando…";
+      try {
+        const r = await fetch("https://formsubmit.co/ajax/" + POSTULA.correo, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Nueva postulación web Xsell" }, d)) });
+        if (!r.ok) throw new Error();
+        f.reset(); st.className = "form-msg ok"; st.textContent = "¡Gracias! Recibimos tu postulación. Te contactaremos pronto.";
+      } catch { st.className = "form-msg err"; st.textContent = "No pudimos enviar tu postulación. Inténtalo de nuevo en unos minutos."; }
+      btn.disabled = false; btn.textContent = "Enviar postulación"; return;
+    }
+    if (POSTULA.whatsapp){
+      const txt = "Hola, quiero postular a Xsell.%0A" + Object.entries(d).filter(([k,v]) => v).map(([k,v]) => k + ": " + encodeURIComponent(v)).join("%0A");
+      window.open("https://wa.me/" + POSTULA.whatsapp + "?text=" + txt, "_blank", "noopener"); return;
+    }
+    st.className = "form-msg err"; st.textContent = "El formulario aún no está activo. Pronto podrás postular por aquí.";
+  });
 })();
 </script>
 
