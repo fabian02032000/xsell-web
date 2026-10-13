@@ -434,8 +434,8 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1 aria-label="Tu empresa tiene más oportunidades de las que hoy vende."><span class="typed" id="typed" aria-hidden="true"></span><span class="cursor" aria-hidden="true"></span></h1>
-          <p class="sub">Pregúntanos cómo convertirlas en ventas. Te respondemos aquí mismo.</p>
+          <h1 aria-label="Tu empresa tiene oportunidades. Nosotros las convertimos en resultados."><span class="typed" id="typed" aria-hidden="true"></span><span class="cursor" aria-hidden="true"></span></h1>
+          <p class="sub">Descubre cómo podemos impulsar tus ventas y fortalecer tu gestión comercial.</p>
           <form class="ask" id="askForm" autocomplete="off">
             <label for="q" class="sr" style="position:absolute;left:-9999px">Escribe tu pregunta</label>
             <input id="q" name="q" type="text" maxlength="400" placeholder="¿Qué es la Fotografía Comercial Xsell?">
@@ -444,7 +444,7 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
             </button>
           </form>
           <div class="chips">
-            <button class="chip js-ask" data-q="¿Qué gana mi empresa trabajando con Xsell?">¿Qué gana mi empresa?</button>
+            <button class="chip js-ask" data-q="¿Cómo puede Xsell ayudarme a vender más?">¿Cómo puede Xsell ayudarme a vender más?</button>
             <button class="chip js-ask" data-q="¿Qué es la Fotografía Comercial Xsell?">¿Qué es la Fotografía Comercial?</button>
             <button class="chip js-ask" data-q="¿Cómo es el pago por resultados?">¿Cómo es el pago por resultados?</button>
           </div>
@@ -730,7 +730,7 @@ Reglas:
 - Nunca des precios ni montos de los servicios: invita a agendar la Fotografía Comercial Xsell, que no tiene costo y toma 72 horas, para recibir una propuesta personalizada.
 - Si no sabes algo, sugiere hablar con Ingrid, nuestra Asesora Comercial.
 - Si la pregunta no tiene relación con Xsell o con ventas, redirígela con amabilidad hacia cómo Xsell puede ayudar.
-- Si preguntan por servicios, habla primero de los beneficios para el cliente y luego de cómo lo hacemos.
+- Xsell es un aliado y agente de ventas: enfoca cada respuesta en cómo ayudamos a vender más, aprovechar oportunidades de negocio, fortalecer el proceso comercial y convertir prospectos en clientes. Habla primero del beneficio en ventas y luego de cómo lo hacemos.
 - Si preguntan por trabajar en Xsell, cuéntalo como un viaje y usa "integrantes".
 - Termina siempre invitando al siguiente paso (agendar reunión o escribir por WhatsApp).
 - Responde en texto plano, sin listas, sin markdown, sin títulos.
@@ -751,8 +751,8 @@ const FALLBACK = [
    a:"Nos mantenemos conectados con espacios como La estrategia somos todos, donde construimos juntos, y reconocemos a quienes viven nuestros valores con Estrellas de valor. ¿Te animas a sumarte al viaje? Escríbenos por WhatsApp."},
   {k:["diferente","cultura","valores","propósito","proposito","trabajar en xsell","trabajar con ustedes","postular","ser parte","integrante"],
    a:"Trabajar en Xsell es un viaje, y es diferente porque nuestro propósito es mejores personas, mejores negocios. Creemos en hacer las cosas mejor y distinto, en hacernos cargo, en el profesionalismo y en el respeto por la gente. Nuestra meta es que 95% de integrantes sientan que subieron un escalón en su vida profesional cada año. Si quieres ser parte del viaje, escríbenos por WhatsApp."},
-  {k:["qué gana","que gana","beneficio","ganar","ventaja"],
-   a:"Con Xsell tu empresa gana en cuatro frentes: conoces mejor a tus clientes con encuestas, vendes más con una mejor atención y agendamiento de citas, tienes menos clientes molestos porque atendemos los reclamos a tiempo, y vendes más gracias al perfilamiento de prospectos y las ventas adicionales. Y llegamos a pago por resultado (PxQ). Agenda tu Fotografía Comercial Xsell y vemos cuál te conviene primero."},
+  {k:["qué gana","que gana","beneficio","ganar","ventaja","ayudarme a vender","vender más","vender mas"],
+   a:"Con Xsell, tu empresa gana un aliado comercial enfocado en impulsar tus ventas. Te ayudamos a aprovechar mejor tus oportunidades de negocio, fortalecer tu proceso comercial y convertir más prospectos en clientes, con equipos especializados y resultados medibles. Tú te enfocas en hacer crecer tu negocio; nosotros te ayudamos a vender más. ¿Agendamos tu Fotografía Comercial Xsell?"},
   {k:["encuesta","información de mis clientes","conocer mejor"],
    a:"Con encuestas a tus clientes obtienes más y mejor información para decidir: qué valoran, qué les molesta y qué los haría comprar más. Nosotros nos hacemos cargo de aplicarlas y de entregarte resultados claros. Agenda tu Fotografía Comercial Xsell y armamos el plan."},
   {k:["cita","agend","atención y","mejor atención"],
@@ -862,7 +862,7 @@ function waLink(text){
 
 /* Título que se escribe solo */
 (function(){
-  const full = "Tu empresa tiene más oportunidades de las que hoy vende.", el = $("#typed");
+  const full = "Tu empresa tiene oportunidades. Nosotros las convertimos en resultados.", el = $("#typed");
   if (reduce){ el.textContent = full; return; }
   let i = 0; (function step(){ el.textContent = full.slice(0, ++i); if (i < full.length) setTimeout(step, 55 + Math.random()*45); })();
 })();
@@ -885,7 +885,7 @@ function waLink(text){
 /* Preguntas para seguir el viaje */
 const NEXT = {
   cultura: ["¿Cómo cuidan a sus integrantes? ¿Qué convenios y beneficios tienen?","¿Cómo escuchan a sus integrantes?","¿Cómo se desarrollan los integrantes de Xsell?","¿Cómo se mantienen conectados en Xsell?","¿Por qué trabajar en Xsell es un viaje diferente?"],
-  empresa: ["¿Qué es la Fotografía Comercial Xsell?","¿Qué gana mi empresa trabajando con Xsell?","¿Cómo es el pago por resultados?","¿Qué paquete me conviene?"]
+  empresa: ["¿Qué es la Fotografía Comercial Xsell?","¿Cómo puede Xsell ayudarme a vender más?","¿Cómo es el pago por resultados?","¿Qué paquete me conviene?"]
 };
 function isCulture(q){ return /cultura|cuidan|escuchan|desarrollan|conectados|integrante|trabajar en xsell|ser parte|valores|propósito|proposito|clima|viaje diferente/i.test(q); }
 function followups(q){
