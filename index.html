@@ -92,7 +92,7 @@ main{padding-top:72px}
 /* Portada en dos columnas */
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
 .hero-copy{display:flex;flex-direction:column;gap:18px;align-items:flex-start;text-align:left;min-width:0}
-.hero .hero-copy h1{font-size:clamp(2.2rem,4.8vw,4.2rem);min-height:2.1em;text-align:left}
+.hero .hero-copy h1{font-size:clamp(2.1rem,4.2vw,3.7rem);min-height:3.2em;text-align:left}
 .hero-copy .chips{justify-content:flex-start}
 .stage{position:relative;display:flex;justify-content:center;padding-block:20px;min-width:0}
 .phone{position:relative;z-index:2;width:min(340px,100%);height:600px;border-radius:46px;background:var(--surface);border:10px solid #07040C;box-shadow:0 50px 90px -40px var(--purple-2),0 0 0 1px var(--line);display:flex;flex-direction:column;overflow:hidden}
@@ -434,8 +434,8 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1 aria-label="¿En qué te podemos ayudar hoy?"><span class="typed" id="typed" aria-hidden="true"></span><span class="cursor" aria-hidden="true"></span></h1>
-          <p class="sub">Pregúntanos lo que quieras sobre Xsell. Te respondemos aquí mismo.</p>
+          <h1 aria-label="Tu empresa tiene más oportunidades de las que hoy vende."><span class="typed" id="typed" aria-hidden="true"></span><span class="cursor" aria-hidden="true"></span></h1>
+          <p class="sub">Pregúntanos cómo convertirlas en ventas. Te respondemos aquí mismo.</p>
           <form class="ask" id="askForm" autocomplete="off">
             <label for="q" class="sr" style="position:absolute;left:-9999px">Escribe tu pregunta</label>
             <input id="q" name="q" type="text" maxlength="400" placeholder="¿Qué es la Fotografía Comercial Xsell?">
@@ -455,7 +455,7 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
             <div class="ph-top"><span class="ph-notch"></span></div>
             <div class="ph-head"><img src="isotipo.webp" alt="" width="28" height="24"><div><b>Xsell</b><span>Responde al instante</span></div></div>
             <div class="chat" id="chat" aria-live="polite">
-              <div class="msg bot"><div class="bubble"><div class="name">Xsell</div><div class="txt"><p>Hola. Cuéntanos sobre tu negocio o elige una pregunta. Te respondemos aquí.</p></div></div></div>
+              <div class="msg bot"><div class="bubble"><div class="name">Xsell</div><div class="txt"><p>Hola. Cuéntanos sobre tu negocio y te decimos dónde están tus oportunidades.</p></div></div></div>
             </div>
           </div>
         </div>
@@ -862,7 +862,7 @@ function waLink(text){
 
 /* Título que se escribe solo */
 (function(){
-  const full = "¿En qué te podemos ayudar hoy?", el = $("#typed");
+  const full = "Tu empresa tiene más oportunidades de las que hoy vende.", el = $("#typed");
   if (reduce){ el.textContent = full; return; }
   let i = 0; (function step(){ el.textContent = full.slice(0, ++i); if (i < full.length) setTimeout(step, 55 + Math.random()*45); })();
 })();
