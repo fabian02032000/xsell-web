@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Xsell, agencia de ventas. Multiplicamos tus resultados.">
+<link rel="icon" href="isotipo.webp">
+<title>Xsell | Multiplicamos tus resultados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap">
+<style>
+/* Concepto: sitio oscuro, portada centrada tipo buscador; secciones alineadas a la izquierda con titulares compactos de Sora. */
+:root{
+  --bg:#120A1C;
+  --surface:#1A1128;
+  --surface-2:#231838;
+  --line:#33264A;
+  --text:#F5F3FA;
+  --muted:#A69DBE;
+  --purple:#5D17A0;
+  --purple-2:#7B2BC9;
+  --magenta:#8D229E;
+  --orange:#FF6B13;
+  --orange-2:#FFA366;
+  --on-orange:#1A0A00;
+  --display:"Sora",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --impact:"Anton","Impact","Arial Narrow",sans-serif;
+  --radius:18px;
+  --maxw:1120px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:20px}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+.eyebrow{font-family:var(--display);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-2)}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:600;font-size:.92rem;padding:11px 18px;border-radius:999px;border:1px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s ease,background .15s ease,border-color .15s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-orange{background:linear-gradient(135deg,var(--orange),var(--orange-2));color:var(--on-orange)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--orange)}
+.btn-wa{background:#1E3A2B;color:#CFF5DD;border-color:#2C5A41}
+.btn svg{width:16px;height:16px;flex:none}
+
+/* Menú */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:20px;height:68px}
+.brand img{height:30px;width:auto;display:block}
+.links{display:flex;gap:4px;margin-left:auto;list-style:none;padding:0;margin-block:0}
+.links a{display:block;padding:8px 12px;border-radius:999px;font-weight:600;font-size:.92rem;color:var(--muted);text-decoration:none;transition:color .15s,background .15s}
+.links a:hover{color:var(--text)}
+.links a.active{color:var(--text);background:var(--surface-2)}
+.menu-btn{display:none;margin-left:auto;background:transparent;color:var(--text);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-family:var(--display);font-weight:600;font-size:.88rem;cursor:pointer}
+@media (max-width:880px){
+  .menu-btn{display:inline-flex}
+  .links{display:none;position:absolute;left:0;right:0;top:68px;flex-direction:column;gap:2px;padding:12px 20px 18px;background:var(--bg);border-bottom:1px solid var(--line);margin:0}
+  .links.open{display:flex}
+  .links a{padding:12px 14px}
+  .nav .cta-top{padding:9px 14px;font-size:.84rem}
+}
+@media (max-width:420px){ .nav .cta-top{display:none} }
+
+/* Portada */
+.hero{position:relative;padding-block:72px 56px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background-image:radial-gradient(circle,color-mix(in srgb,var(--muted) 22%,transparent) 1px,transparent 1.2px);background-size:22px 22px;mask-image:radial-gradient(ellipse at 50% 35%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 35%,#000 20%,transparent 75%)}
+.hero::after{content:"";position:absolute;z-index:-1;left:50%;top:40px;width:min(820px,120vw);height:420px;transform:translateX(-50%);background:radial-gradient(ellipse at center,color-mix(in srgb,var(--purple-2) 55%,transparent) 0%,color-mix(in srgb,var(--magenta) 25%,transparent) 40%,transparent 70%);filter:blur(30px);opacity:.75}
+.hero-in{max-width:820px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
+.tagline{font-size:.8rem;color:var(--muted);letter-spacing:.06em;border:1px solid var(--line);border-radius:999px;padding:6px 14px;background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.tagline b{color:var(--orange-2);font-weight:700;padding-inline:6px}
+.hero h1{font-size:clamp(2.1rem,6.2vw,4.3rem);line-height:1.04;font-weight:700;min-height:2.1em}
+.hero h1 .typed{background:linear-gradient(100deg,var(--text) 55%,var(--orange-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.cursor{display:inline-block;width:.07em;height:.9em;margin-left:.05em;background:var(--orange);vertical-align:-.08em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .sub{color:var(--muted);font-size:1.08rem;max-width:560px}
+
+/* Conversación */
+.chat{width:100%;display:flex;flex-direction:column;gap:14px;text-align:left;margin-top:6px}
+.chat:empty{display:none}
+.msg{display:flex;gap:10px;align-items:flex-start;max-width:100%}
+.msg.user{justify-content:flex-end}
+.bubble{padding:12px 16px;border-radius:18px;max-width:min(560px,88%);min-width:0;overflow-wrap:anywhere}
+.msg.user .bubble{background:linear-gradient(135deg,var(--purple),var(--purple-2));border-bottom-right-radius:6px}
+.msg.bot .bubble{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px}
+.avatar{flex:none;width:36px;height:36px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center}
+.avatar img{width:24px;height:auto}
+.bubble .name{font-family:var(--display);font-size:.78rem;font-weight:600;color:var(--orange-2);margin-bottom:4px}
+.bubble p+p{margin-top:8px}
+.bubble .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.bubble .actions .btn{font-size:.82rem;padding:8px 14px}
+.dots{display:inline-flex;gap:4px;padding:4px 0}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:dot 1.2s infinite ease-in-out}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+
+/* Caja de preguntas */
+.ask{width:100%;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 8px 8px 24px;box-shadow:0 18px 50px -20px color-mix(in srgb,var(--purple-2) 70%,transparent),0 0 0 1px color-mix(in srgb,var(--purple-2) 25%,transparent);transition:border-color .2s,box-shadow .2s}
+.ask:focus-within{border-color:var(--orange);box-shadow:0 18px 50px -20px color-mix(in srgb,var(--orange) 60%,transparent),0 0 0 3px color-mix(in srgb,var(--orange) 25%,transparent)}
+.ask input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);font-family:var(--body);font-size:1.12rem;padding:14px 0}
+.ask input::placeholder{color:var(--muted)}
+.send{flex:none;width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:var(--on-orange);display:grid;place-items:center;transition:transform .15s}
+.send:hover{transform:scale(1.05)}
+.send:disabled{opacity:.5;cursor:wait;transform:none}
+.send svg{width:22px;height:22px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.chip{background:color-mix(in srgb,var(--surface) 80%,transparent);color:var(--text);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-family:var(--body);font-weight:600;font-size:.9rem;cursor:pointer;transition:border-color .15s,background .15s}
+.chip:hover{border-color:var(--orange);background:var(--surface-2)}
+.note{font-size:.8rem;color:var(--muted)}
+
+/* Pasos del proceso en portada */
+.flow{margin-top:56px;width:100%;max-width:var(--maxw);list-style:none;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.flow li{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding-inline:6px}
+.flow li::before{content:"";position:absolute;top:13px;left:-50%;width:100%;height:2px;background:linear-gradient(90deg,var(--purple-2),var(--orange));z-index:-1}
+.flow li:first-child::before{display:none}
+.flow .node{width:28px;height:28px;border-radius:50%;background:var(--bg);border:2px solid var(--orange);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:.75rem;color:var(--orange-2)}
+.flow li:last-child .node{background:var(--orange);color:var(--on-orange)}
+.flow li>div{display:flex;flex-direction:column;gap:2px}
+.flow b{font-family:var(--display);font-weight:600;font-size:.92rem}
+.flow span{font-size:.8rem;color:var(--muted);line-height:1.4}
+@media (max-width:760px){
+  .flow{grid-template-columns:1fr;gap:16px;max-width:360px;text-align:left}
+  .flow li{flex-direction:row;align-items:flex-start;text-align:left;gap:14px}
+  .flow li::before{top:-16px;left:13px;width:2px;height:calc(100% + 0px);background:linear-gradient(180deg,var(--purple-2),var(--orange))}
+  .flow li>div{display:flex;flex-direction:column}
+}
+
+/* Secciones */
+section.block{padding-block:96px;border-top:1px solid var(--line)}
+.head{display:flex;flex-direction:column;gap:12px;margin-bottom:44px;max-width:720px}
+.head h2{font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.08;font-weight:700}
+.head h2 em{font-style:normal;color:var(--orange)}
+.head p{color:var(--muted);font-size:1.06rem;max-width:62ch}
+
+/* Nosotros */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.about .story{display:flex;flex-direction:column;gap:16px;color:var(--muted);font-size:1.05rem;max-width:62ch}
+.about .story strong{color:var(--text)}
+.verbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.verbs span{font-family:var(--display);font-weight:600;font-size:.86rem;padding:6px 12px;border-radius:999px;background:var(--surface-2);color:var(--text)}
+.why{background:linear-gradient(160deg,var(--surface-2),var(--surface));border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.why h3{font-size:1.2rem;margin-bottom:16px}
+.why ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;counter-reset:w}
+.why li{display:grid;grid-template-columns:30px 1fr;gap:12px;counter-increment:w}
+.why li::before{content:counter(w);width:30px;height:30px;border-radius:10px;background:var(--orange);color:var(--on-orange);font-family:var(--display);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.why li b{display:block;font-family:var(--display);font-weight:600;font-size:.98rem}
+.why li span{color:var(--muted);font-size:.92rem}
+.stats{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.stat{padding:26px 22px;display:flex;flex-direction:column;gap:6px;background:var(--surface)}
+.stat+.stat{border-left:1px solid var(--line)}
+.stat .num{font-family:var(--impact);font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;color:var(--orange);letter-spacing:.01em}
+.stat .lbl{color:var(--muted);font-size:.9rem;line-height:1.4}
+@media (max-width:880px){
+  .about{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+}
+
+/* Servicios */
+.grid{display:grid;gap:18px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:980px){.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:1fr}}
+@media (max-width:680px){.grid-2,.grid-4{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.svc .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--purple-2))}
+.svc .ic svg{width:24px;height:24px;color:#fff}
+.svc h3{font-size:1.25rem;font-weight:600}
+.svc p.lead{color:var(--muted)}
+.svc ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.svc li{display:grid;grid-template-columns:16px 1fr;gap:10px;font-size:.94rem}
+.svc li::before{content:"";width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--orange);transform:rotate(45deg)}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:14px;border-top:1px dashed var(--line)}
+.meta div{display:flex;flex-direction:column;gap:2px}
+.meta dt,.meta .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-family:var(--display);font-weight:600}
+.meta .v{font-size:.9rem;font-weight:600}
+.card .btn{align-self:flex-start;margin-top:auto}
+
+/* Por dónde empezar */
+.start{cursor:pointer;text-align:left;font:inherit;color:inherit;position:relative;transition:border-color .2s,transform .2s,background .2s}
+.start:hover{border-color:var(--orange);transform:translateY(-3px);background:var(--surface-2)}
+.start q{font-family:var(--display);font-size:1.12rem;font-weight:600;line-height:1.35;quotes:"“" "”"}
+.start q::before,.start q::after{color:var(--orange)}
+.start .go{font-size:.86rem;color:var(--orange-2);font-weight:700;margin-top:auto}
+
+/* Paquetes */
+.pkg{position:relative}
+.pkg .lvl{font-family:var(--display);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pkg h3{font-size:1.5rem}
+.pkg p.for{color:var(--muted);font-size:.95rem}
+.pkg.featured{background:linear-gradient(170deg,color-mix(in srgb,var(--purple) 55%,var(--surface)),var(--surface) 70%);border-color:var(--orange);box-shadow:0 30px 70px -40px var(--orange)}
+.badge{position:absolute;top:-12px;right:22px;background:var(--orange);color:var(--on-orange);font-family:var(--display);font-weight:700;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+.pkg .price{font-size:.88rem;color:var(--orange-2);font-weight:600}
+
+/* Cómo trabajamos */
+.timeline{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;max-width:760px}
+.timeline li{display:grid;grid-template-columns:56px 1fr;gap:20px;position:relative;padding-bottom:30px}
+.timeline li:not(:last-child)::after{content:"";position:absolute;left:27px;top:56px;bottom:0;width:2px;background:linear-gradient(180deg,var(--purple-2),var(--line))}
+.timeline .n{width:56px;height:56px;border-radius:16px;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;font-family:var(--impact);font-size:1.6rem;color:var(--orange)}
+.timeline h3{font-size:1.15rem;font-weight:600;margin-top:4px}
+.timeline p{color:var(--muted);margin-top:4px;max-width:58ch}
+.comms{margin-top:36px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding:26px 30px;border-radius:var(--radius);background:linear-gradient(100deg,var(--purple),var(--magenta) 60%,color-mix(in srgb,var(--orange) 60%,var(--magenta)))}
+.comms .big{font-family:var(--impact);font-size:clamp(1.7rem,3.6vw,2.4rem);line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.comms ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 22px}
+.comms li{font-weight:600;font-size:.95rem}
+.comms li::before{content:"→ ";color:var(--orange-2)}
+@media (max-width:680px){.comms{grid-template-columns:1fr}}
+
+/* Clientes */
+.client{padding:24px;gap:8px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.client:hover{border-color:var(--orange);transform:translateY(-3px)}
+.sic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--magenta) 55%,var(--orange));color:#fff;margin-bottom:6px;box-shadow:0 14px 30px -14px var(--orange)}
+.sic svg{width:30px;height:30px}
+.client b{font-family:var(--display);font-size:1.3rem;font-weight:700;letter-spacing:-.01em}
+.client span{color:var(--muted);font-size:.9rem}
+.clients{grid-template-columns:repeat(3,1fr)}
+@media (max-width:980px){.clients{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.clients{grid-template-columns:1fr}}
+.sectors{margin-top:22px;color:var(--muted);font-size:.95rem}
+.sectors b{color:var(--text)}
+
+/* Contacto */
+.contact{position:relative;overflow:hidden;border-radius:28px;padding:56px 44px;background:var(--surface);border:1px solid var(--line);display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;isolation:isolate}
+.contact::before{content:"";position:absolute;z-index:-1;right:-120px;top:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--orange) 40%,transparent),transparent 65%);filter:blur(20px)}
+.contact h2{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.05}
+.contact h2 em{font-style:normal;color:var(--orange)}
+.contact .intro{color:var(--muted);margin-top:14px;font-size:1.05rem;max-width:48ch}
+.person{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.ph{flex:none;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.8rem;color:#fff;background:linear-gradient(135deg,var(--purple),var(--orange));border:3px solid var(--surface-2);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.person .who b{display:block;font-family:var(--display);font-size:1.3rem}
+.person .who span{color:var(--orange-2);font-weight:600;font-size:.92rem}
+.row{display:flex;flex-direction:column;gap:4px}
+.row .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-family:var(--display);font-weight:600}
+.copyline{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.copyline .val{font-family:var(--display);font-weight:600;font-size:1.08rem;user-select:all;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.copy{background:var(--surface-2);color:var(--text);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-family:var(--display);font-weight:600;font-size:.78rem;cursor:pointer}
+.copy:hover{border-color:var(--orange)}
+.pending{color:var(--orange-2);font-style:italic;font-weight:500}
+@media (max-width:820px){.contact{grid-template-columns:1fr;padding:36px 22px}}
+
+/* Pie */
+footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-size:.9rem}
+.foot img{height:28px;width:auto;display:block}
+.foot .slogan{font-family:var(--display);font-weight:600;color:var(--text)}
+.foot .slogan em{font-style:normal;color:var(--orange)}
+
+
+/* Selector de público en portada */
+.aud{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--surface) 80%,transparent)}
+.aud button{border:0;background:transparent;color:var(--muted);font-family:var(--display);font-weight:600;font-size:.86rem;padding:8px 16px;border-radius:999px;cursor:pointer}
+.aud button[aria-pressed="true"]{background:linear-gradient(135deg,var(--purple),var(--purple-2));color:#fff}
+.followups{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.followups .lbl{width:100%;font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-family:var(--display);font-weight:600}
+.followups .chip{font-size:.82rem;padding:7px 12px}
+
+/* Beneficios */
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+@media (max-width:980px){.benefits{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.benefits{grid-template-columns:1fr}}
+.benefit{padding:22px;border-radius:var(--radius);background:linear-gradient(160deg,color-mix(in srgb,var(--orange) 16%,var(--surface)),var(--surface) 70%);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px;min-width:0}
+.benefit .plus{font-family:var(--impact);font-size:2rem;line-height:1;color:var(--orange)}
+.benefit b{font-family:var(--display);font-size:1.05rem;font-weight:600;line-height:1.3}
+.benefit span{color:var(--muted);font-size:.88rem}
+.sublabel{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--muted);margin:8px 0 16px}
+
+/* Cultura: el viaje Xsell */
+#cultura{position:relative;overflow:hidden;isolation:isolate}
+#cultura::before{content:"";position:absolute;z-index:-1;right:-10%;top:-80px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--magenta) 40%,transparent),transparent 65%);filter:blur(30px);opacity:.7}
+.stop-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-2)}
+.stop-tag i{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--orange);color:var(--on-orange);display:grid;place-items:center;font-size:.85rem;letter-spacing:0}
+.stop1{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:56px}
+@media (max-width:860px){.stop1{grid-template-columns:1fr}}
+.stop1 h3,h3.big{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15;margin-top:12px}
+.stop1 .lead{color:var(--muted);margin-top:12px;max-width:52ch}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.values{grid-template-columns:1fr}}
+.value{padding:18px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.value b{display:block;font-family:var(--display);font-weight:600}
+.value span{color:var(--muted);font-size:.9rem}
+.goal{grid-column:1/-1;padding:20px;border-radius:16px;background:linear-gradient(100deg,var(--purple),var(--magenta));display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.goal .num{font-family:var(--impact);font-size:3rem;line-height:1}
+.goal p{flex:1;min-width:200px;font-weight:600}
+.route{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;position:relative}
+@media (max-width:760px){.route{grid-template-columns:1fr}}
+.leg{position:relative;padding:26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:12px;min-width:0}
+.leg .k{font-family:var(--display);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.leg h4{margin:0;font-family:var(--display);font-size:1.3rem;font-weight:700;letter-spacing:-.01em}
+.leg p{color:var(--muted);font-size:.95rem}
+.progs{display:flex;flex-wrap:wrap;gap:8px}
+.prog{font-family:var(--display);font-weight:600;font-size:.82rem;padding:6px 12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line)}
+.prog.o{border-color:color-mix(in srgb,var(--orange) 60%,var(--line));color:var(--orange-2)}
+.leg .btn{align-self:flex-start;margin-top:auto}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#inicio" aria-label="Xsell, ir al inicio"><img src="logo.webp" alt="Xsell" width="83" height="30"></a>
+    <ul class="links" id="links">
+      <li><a href="#inicio" data-sec="inicio">Inicio</a></li>
+      <li><a href="#nosotros" data-sec="nosotros">Nosotros</a></li>
+      <li><a href="#servicios" data-sec="servicios">Servicios</a></li>
+      <li><a href="#paquetes" data-sec="paquetes">Paquetes</a></li>
+      <li><a href="#cultura" data-sec="cultura">Cultura</a></li>
+      <li><a href="#sectores" data-sec="sectores">Sectores</a></li>
+      <li><a href="#contacto" data-sec="contacto">Contacto</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="links">Menú</button>
+    <a class="btn btn-orange cta-top js-meet" href="#contacto">Agendar reunión</a>
+  </div>
+</header>
+
+<main>
+  <!-- PORTADA -->
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-in">
+        <div class="tagline">Servicios comerciales<b>·</b>Atención presencial<b>·</b>Desarrollo de canales<b>·</b>Pago por resultados</div>
+        <h1 aria-label="¿En qué te podemos ayudar hoy?"><span class="typed" id="typed" aria-hidden="true"></span><span class="cursor" aria-hidden="true"></span></h1>
+        <p class="sub">Pregúntanos lo que quieras sobre Xsell: cómo trabajamos, qué incluye cada servicio o por dónde empezar.</p>
+
+        <div class="chat" id="chat" aria-live="polite"></div>
+
+        <form class="ask" id="askForm" autocomplete="off">
+          <label for="q" class="sr" style="position:absolute;left:-9999px">Escribe tu pregunta</label>
+          <input id="q" name="q" type="text" maxlength="400" placeholder="¿Cómo funciona el pago por resultados?">
+          <button class="send" id="sendBtn" type="submit" aria-label="Enviar pregunta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+
+        <div class="aud" role="group" aria-label="¿Quién pregunta?">
+          <button type="button" id="audEmp" aria-pressed="true">Soy una empresa</button>
+          <button type="button" id="audTalento" aria-pressed="false">Quiero trabajar en Xsell</button>
+        </div>
+        <div class="chips" id="chipsEmp">
+          <button class="chip js-ask" data-q="¿Qué gana mi empresa trabajando con Xsell?">¿Qué gana mi empresa?</button>
+          <button class="chip js-ask" data-q="¿Cómo funciona el pago por resultados?">¿Cómo es el pago por resultados?</button>
+          <button class="chip js-ask" data-q="¿Con qué sectores trabajan?">¿Con qué sectores trabajan?</button>
+          <button class="chip js-ask" data-q="¿Cómo empezamos a trabajar juntos?">¿Cómo empezamos?</button>
+        </div>
+        <div class="chips" id="chipsTalento" hidden>
+          <button class="chip js-ask" data-q="¿Por qué trabajar en Xsell es un viaje diferente?">¿Por qué este viaje es diferente?</button>
+          <button class="chip js-ask" data-q="¿Cómo cuidan a sus integrantes? ¿Qué convenios y beneficios tienen?">¿Cómo nos cuidamos?</button>
+          <button class="chip js-ask" data-q="¿Cómo escuchan a sus integrantes?">¿Cómo te escuchamos?</button>
+          <button class="chip js-ask" data-q="¿Cómo se desarrollan los integrantes de Xsell?">¿Cómo nos desarrollamos?</button>
+          <button class="chip js-ask" data-q="¿Cómo se mantienen conectados en Xsell?">¿Cómo nos mantenemos conectados?</button>
+        </div>
+
+        <ol class="flow" aria-label="Nuestro proceso">
+          <li><span class="node">1</span><div><b>Diagnóstico</b><span>Entendemos tu meta comercial</span></div></li>
+          <li><span class="node">2</span><div><b>Plan</b><span>Canal, metas e hitos</span></div></li>
+          <li><span class="node">3</span><div><b>Piloto</b><span>100% variable, por hitos</span></div></li>
+          <li><span class="node">4</span><div><b>Ejecución</b><span>Nos hacemos cargo</span></div></li>
+          <li><span class="node">5</span><div><b>Resultados</b><span>Crecemos juntos: fijo + variable</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section class="block" id="nosotros">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Nosotros</span>
+        <h2>Somos una agencia de ventas. <em>Multiplicamos tus resultados.</em></h2>
+      </div>
+      <div class="about">
+        <div class="story">
+          <p>Llevamos <strong>14 años</strong> en el mercado peruano haciéndonos cargo de canales de venta y atención. Hoy somos <strong>Xsell</strong>: el socio comercial que pone un equipo a vender para tu empresa y cobra por resultados.</p>
+          <p>Creemos que el trabajo que tiene sentido es el que se hace <strong>mejor y distinto</strong>: mejor en resultados y procesos, distinto porque nos atrevemos a probar fórmulas nuevas. Por eso la X de nuestra marca une ambas ideas en una flecha que sube.</p>
+          <p>Nuestro propósito: <strong>mejores personas, mejores negocios</strong>. Queremos multiplicar las oportunidades de nuestros clientes y convertirlas en crecimiento sostenible.</p>
+          <div class="verbs"><span>Nos hacemos cargo</span><span>Profesionalismo</span><span>Respeto por la gente</span></div>
+        </div>
+        <aside class="why">
+          <h3>Por qué trabajar con nosotros</h3>
+          <ol>
+            <li><div><b>Nos hacemos cargo</b><span>Asumimos tu canal como propio, con sus decisiones y sus consecuencias.</span></div></li>
+            <li><div><b>Pagas por resultados</b><span>Empezamos con un piloto 100% variable, ligado a hitos de éxito.</span></div></li>
+            <li><div><b>14 años de experiencia</b><span>Conocemos la operación comercial, remota y presencial, desde adentro.</span></div></li>
+            <li><div><b>Mejor y distinto</b><span>Mejoramos procesos y probamos lo que otros no se atreven.</span></div></li>
+            <li><div><b>Ágiles y cerca de ti</b><span>Nos adaptamos rápido y nos importa el impacto que generamos en tu negocio.</span></div></li>
+          </ol>
+        </aside>
+      </div>
+      <div class="stats" role="list">
+        <div class="stat" role="listitem"><span class="num">14</span><span class="lbl">años en el mercado</span></div>
+        <div class="stat" role="listitem"><span class="num">100%</span><span class="lbl">variable en el piloto: pagas por hitos logrados</span></div>
+        <div class="stat" role="listitem"><span class="num">6</span><span class="lbl">sectores en los que nos especializamos</span></div>
+        <div class="stat" role="listitem"><span class="num">4</span><span class="lbl">líneas de servicio para tu canal comercial</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="block" id="servicios">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Servicios</span>
+        <h2>Todo lo que tu área comercial necesita para <em>vender más</em>.</h2>
+        <p>Primero, lo que ganas. Después, cómo lo hacemos.</p>
+      </div>
+      <div class="benefits">
+        <div class="benefit"><span class="plus">+</span><b>Conoces mejor a tus clientes</b><span>Más y mejor información con encuestas.</span><button class="btn btn-ghost js-ask" style="margin-top:8px;align-self:flex-start;font-size:.8rem;padding:7px 12px" data-q="¿Cómo me ayudan a conocer mejor a mis clientes con encuestas?">Preguntar</button></div>
+        <div class="benefit"><span class="plus">+</span><b>Más ventas con mejor atención</b><span>Agendamos y confirmamos citas por ti.</span><button class="btn btn-ghost js-ask" style="margin-top:8px;align-self:flex-start;font-size:.8rem;padding:7px 12px" data-q="¿Cómo consigo más ventas con mejor atención y agendamiento de citas?">Preguntar</button></div>
+        <div class="benefit"><span class="plus">−</span><b>Menos clientes molestos</b><span>Atendemos reclamos a tiempo y bien.</span><button class="btn btn-ghost js-ask" style="margin-top:8px;align-self:flex-start;font-size:.8rem;padding:7px 12px" data-q="¿Cómo me ayudan a tener menos clientes molestos con la atención de reclamos?">Preguntar</button></div>
+        <div class="benefit"><span class="plus">+</span><b>Más ventas</b><span>Perfilamos prospectos y ofrecemos ventas adicionales.</span><button class="btn btn-ghost js-ask" style="margin-top:8px;align-self:flex-start;font-size:.8rem;padding:7px 12px" data-q="¿Cómo consigo más ventas con perfilamiento de prospectos y ventas adicionales?">Preguntar</button></div>
+      </div>
+      <p class="sublabel">Nuestras líneas de servicio. Los detalles se definen en la reunión de diagnóstico.</p>
+      <div class="grid grid-2">
+        <article class="card svc">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg></div>
+          <h3>Servicios comerciales</h3>
+          <p class="lead">Nos hacemos cargo por completo de tus canales de venta, remotos o presenciales.</p>
+          <ul><li>Equipo comercial que vende con tu marca</li><li>Más conversión, mejor valor y calidad en cada venta</li><li>Ideal si ya tienes o tendrás prospectos que atender</li></ul>
+          <dl class="meta"><div><dt>Tiempos</dt><dd class="v" style="margin:0">Se definen en el diagnóstico</dd></div><div><dt>Forma de pago</dt><dd class="v" style="margin:0">Por hitos de éxito</dd></div></dl>
+          <button class="btn btn-ghost js-ask" data-q="Quiero saber más sobre los servicios comerciales">Preguntar por este servicio</button>
+        </article>
+        <article class="card svc">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v7h14v-7M10 20v-4h4v4"/></svg></div>
+          <h3>Atención presencial</h3>
+          <p class="lead">Operamos tus puntos de atención presencial con enfoque en la venta.</p>
+          <ul><li>Personal dedicado a atender y vender</li><li>Convertimos centros de costo en centros que generan ingresos</li><li>Mejor satisfacción del cliente y mejor resultado económico</li></ul>
+          <dl class="meta"><div><dt>Tiempos</dt><dd class="v" style="margin:0">Se definen en el diagnóstico</dd></div><div><dt>Forma de pago</dt><dd class="v" style="margin:0">Por hitos de éxito</dd></div></dl>
+          <button class="btn btn-ghost js-ask" data-q="Quiero saber más sobre la atención presencial">Preguntar por este servicio</button>
+        </article>
+        <article class="card svc">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <h3>Desarrollo de canales</h3>
+          <p class="lead">Te ayudamos a crear o mejorar a fondo un canal de atención o de ventas, operado por tu equipo.</p>
+          <ul><li>Planificación y control del canal</li><li>Selección y capacitación del personal</li><li>Supervisión y mejora de procesos</li></ul>
+          <dl class="meta"><div><dt>Tiempos</dt><dd class="v" style="margin:0">Se definen en el diagnóstico</dd></div><div><dt>Forma de pago</dt><dd class="v" style="margin:0">Se define en la propuesta</dd></div></dl>
+          <button class="btn btn-ghost js-ask" data-q="Quiero saber más sobre el desarrollo de canales">Preguntar por este servicio</button>
+        </article>
+        <article class="card svc">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path d="M19 9h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2v3l-3-3h-4"/></svg></div>
+          <h3>Desarrollo de canales + operación parcial</h3>
+          <p class="lead">Desarrollamos tu canal y, además, operamos una parte del proceso por ti.</p>
+          <ul><li>Todo lo del desarrollo de canales</li><li>Nos hacemos cargo de la primera línea de contacto</li><li>Tu equipo se enfoca en lo que más valor genera</li></ul>
+          <dl class="meta"><div><dt>Tiempos</dt><dd class="v" style="margin:0">Se definen en el diagnóstico</dd></div><div><dt>Forma de pago</dt><dd class="v" style="margin:0">Se define en la propuesta</dd></div></dl>
+          <button class="btn btn-ghost js-ask" data-q="Quiero saber más sobre el desarrollo de canales con operación parcial">Preguntar por este servicio</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR DÓNDE EMPEZAR -->
+  <section class="block" id="empezar">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">¿Por dónde empezar?</span>
+        <h2>Cuéntanos tu situación. <em>Te decimos el camino.</em></h2>
+        <p>Elige la frase que más se parece a lo que vives hoy.</p>
+      </div>
+      <div class="grid grid-4">
+        <button class="card start js-ask" data-q="Tengo un canal de ventas pero no sé cómo mejorarlo. ¿Por dónde empiezo?"><q>Tengo un canal de ventas, pero no sé cómo mejorarlo.</q><span class="go">Ver mi camino →</span></button>
+        <button class="card start js-ask" data-q="Me llegan interesados pero se enfrían y los pierdo. ¿Qué me recomiendan?"><q>Me llegan interesados, pero se enfrían y los pierdo.</q><span class="go">Ver mi camino →</span></button>
+        <button class="card start js-ask" data-q="Mis tiendas o puntos de atención atienden, pero no venden. ¿Qué me recomiendan?"><q>Mis puntos de atención atienden, pero no venden.</q><span class="go">Ver mi camino →</span></button>
+        <button class="card start js-ask" data-q="Quiero vender más sin aumentar mi planilla fija. ¿Qué opción tengo?"><q>Quiero vender más sin aumentar mi planilla fija.</q><span class="go">Ver mi camino →</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAQUETES -->
+  <section class="block" id="paquetes">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Paquetes</span>
+        <h2>Tres formas de crecer. <em>Una misma meta.</em></h2>
+        <p>Sin montos fijos en la web: cada propuesta se arma a tu medida después de la reunión de diagnóstico.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card pkg">
+          <span class="lvl">Básico</span>
+          <h3>Desarrollo</h3>
+          <p class="for">Para quien quiere mejorar su canal con su propio equipo.</p>
+          <div class="svc"><ul><li>Planificación y control del canal</li><li>Selección y capacitación del personal</li><li>Supervisión y mejora de procesos</li></ul></div>
+          <span class="price">Propuesta a tu medida</span>
+          <button class="btn btn-ghost js-ask" data-q="Quiero saber más del paquete Desarrollo">Preguntar por Desarrollo</button>
+        </article>
+        <article class="card pkg">
+          <span class="lvl">Intermedio</span>
+          <h3>Desarrollo + Operación</h3>
+          <p class="for">Para quien quiere apoyo en el día a día sin soltar todo el canal.</p>
+          <div class="svc"><ul><li>Todo lo del paquete Desarrollo</li><li>Operamos la primera línea de contacto</li><li>Seguimiento de indicadores en conjunto</li></ul></div>
+          <span class="price">Propuesta a tu medida</span>
+          <button class="btn btn-ghost js-ask" data-q="Quiero saber más del paquete Desarrollo + Operación">Preguntar por este paquete</button>
+        </article>
+        <article class="card pkg featured">
+          <span class="badge">El más completo</span>
+          <span class="lvl">Completo</span>
+          <h3>Nos hacemos cargo</h3>
+          <p class="for">Para quien quiere un canal de ventas completo, enfocado en resultados.</p>
+          <div class="svc"><ul><li>Operamos todo tu canal, remoto o presencial</li><li>Equipo comercial dedicado a tu marca</li><li>Piloto 100% variable y luego fijo + variable</li><li>Informe mensual de resultados</li></ul></div>
+          <span class="price">Propuesta a tu medida</span>
+          <button class="btn btn-orange js-ask" data-q="Quiero saber más del paquete Nos hacemos cargo">Preguntar por este paquete</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJAMOS -->
+  <section class="block" id="proceso">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2>Del primer contacto <em>al resultado</em>.</h2>
+      </div>
+      <ol class="timeline">
+        <li><span class="n">1</span><div><h3>Reunión de diagnóstico</h3><p>Conocemos tu negocio, tu cliente ideal y tu meta de ventas.</p></div></li>
+        <li><span class="n">2</span><div><h3>Plan comercial</h3><p>Definimos el canal, el equipo, las metas y los hitos de éxito.</p></div></li>
+        <li><span class="n">3</span><div><h3>Piloto 100% variable</h3><p>Arrancamos con un piloto donde solo pagas por los hitos logrados.</p></div></li>
+        <li><span class="n">4</span><div><h3>Ejecución y seguimiento</h3><p>Nos hacemos cargo de la operación y damos seguimiento a cada oportunidad.</p></div></li>
+        <li><span class="n">5</span><div><h3>Escalamos juntos</h3><p>Al cumplir los indicadores, pasamos a un esquema fijo + variable para crecer más.</p></div></li>
+      </ol>
+      <div class="comms">
+        <span class="big">Siempre sabes<br>cómo vamos</span>
+        <ul><li>Un asesor comercial como contacto directo</li><li>Métricas claras de cada etapa</li><li>Informe mensual de resultados</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CULTURA -->
+  <section class="block" id="cultura">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Cultura</span>
+        <h2>Trabajar aquí es <em>un viaje</em>. Mejor y distinto.</h2>
+        <p>Así diseñamos la experiencia de quienes integran Xsell.</p>
+      </div>
+
+      <div class="stop1">
+        <div>
+          <span class="stop-tag"><i>1</i> Primera parada</span>
+          <h3>¿Por qué este viaje es diferente?</h3>
+          <p class="lead">Nuestro propósito es <strong style="color:var(--text)">mejores personas, mejores negocios</strong>. Creemos que el trabajo con sentido es el que se hace mejor y distinto, y que nada funciona sin respeto por la gente.</p>
+          <button class="btn btn-ghost js-ask" style="margin-top:18px" data-q="¿Por qué trabajar en Xsell es un viaje diferente?">Preguntar por esta parada</button>
+        </div>
+        <div class="values">
+          <div class="value"><b>Mejor y distinto</b><span>Mejoramos procesos y nos atrevemos a probar lo nuevo.</span></div>
+          <div class="value"><b>Nos hacemos cargo</b><span>Con clientes, con personas y con la sociedad.</span></div>
+          <div class="value"><b>Profesionalismo</b><span>En cada decisión, grande o pequeña.</span></div>
+          <div class="value"><b>Respeto por la gente</b><span>La base de todo lo que hacemos.</span></div>
+          <div class="goal"><span class="num">95%</span><p>Nuestra meta: que 95% de integrantes sientan que subieron un escalón en su vida profesional en el último año.</p></div>
+        </div>
+      </div>
+
+      <span class="stop-tag"><i>2</i> Segunda parada</span>
+      <h3 class="big" style="font-family:var(--display);font-weight:700;letter-spacing:-.02em">¿Qué experiencias distintas vivirás en este viaje?</h3>
+      <ol class="route">
+        <li class="leg">
+          <span class="k">Cuidado</span>
+          <h4>¿Cómo nos cuidamos?</h4>
+          <p>Convenios y beneficios pensados para integrantes y sus familias.</p>
+          <div class="progs"><span class="prog o">Convenios y beneficios</span></div>
+          <button class="btn btn-ghost js-ask" data-q="¿Cómo cuidan a sus integrantes? ¿Qué convenios y beneficios tienen?">Preguntar</button>
+        </li>
+        <li class="leg">
+          <span class="k">Escucha</span>
+          <h4>¿Cómo te escuchamos?</h4>
+          <p>Encuestas de clima para que tu voz llegue y se tome en cuenta.</p>
+          <div class="progs"><span class="prog o">Potenciando mi viaje</span></div>
+          <button class="btn btn-ghost js-ask" data-q="¿Cómo escuchan a sus integrantes?">Preguntar</button>
+        </li>
+        <li class="leg">
+          <span class="k">Desarrollo</span>
+          <h4>¿Cómo nos desarrollamos?</h4>
+          <p>Aprendizaje continuo, línea de crecimiento y apoyo para emprender.</p>
+          <div class="progs"><span class="prog o">Academia Xsell</span><span class="prog">Aprende+</span><span class="prog">Emprende Xsell</span></div>
+          <button class="btn btn-ghost js-ask" data-q="¿Cómo se desarrollan los integrantes de Xsell?">Preguntar</button>
+        </li>
+        <li class="leg">
+          <span class="k">Conexión</span>
+          <h4>¿Cómo nos mantenemos conectados?</h4>
+          <p>Espacios para encontrarnos, construir juntos y reconocer a quienes viven nuestros valores.</p>
+          <div class="progs"><span class="prog o">La estrategia somos todos</span><span class="prog">Estrellas de valor</span></div>
+          <button class="btn btn-ghost js-ask" data-q="¿Cómo se mantienen conectados en Xsell?">Preguntar</button>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- SECTORES -->
+  <section class="block" id="sectores">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Sectores</span>
+        <h2>Sectores donde <em>vendemos</em> mejor.</h2>
+        <p>Trabajamos con empresas de distintos rubros. Estos son los sectores en los que hoy nos especializamos.</p>
+      </div>
+      <div class="grid clients">
+        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 11l1.6-4.2A2 2 0 0 1 8.5 5.5h7a2 2 0 0 1 1.9 1.3L19 11h.5A1.5 1.5 0 0 1 21 12.5V16a1 1 0 0 1-1 1h-1v1.5a1.5 1.5 0 0 1-3 0V17H8v1.5a1.5 1.5 0 0 1-3 0V17H4a1 1 0 0 1-1-1v-3.5A1.5 1.5 0 0 1 4.5 11zm2.2 0h9.6l-1.1-3a.8.8 0 0 0-.7-.5H9a.8.8 0 0 0-.7.5zM7 14.8a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6zm10 0a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6z"/></svg></span><b>Automotriz</b><span>Concesionarias, posventa y repuestos</span></div>
+        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16l1 4.5a3 3 0 0 1-5 2.2 3 3 0 0 1-4 0 3 3 0 0 1-4 0 3 3 0 0 1-5-2.2zM5 12.6a5 5 0 0 0 3 .2V19h3v-4h2v4h3v-6.2a5 5 0 0 0 3-.2V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/></svg></span><b>Retail</b><span>Tiendas y cadenas comerciales</span></div>
+        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 .8L6.4 6H21a1 1 0 0 1 1 1.2l-1.5 7a1 1 0 0 1-1 .8H8.2l.3 1.5H19a1 1 0 1 1 0 2H7.7a1 1 0 0 1-1-.8L4.2 5H3a1 1 0 0 1-1-1zm7 17a1.6 1.6 0 1 0 0-3.2A1.6 1.6 0 0 0 9 21zm9 0a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2z"/></svg></span><b>Comercio electrónico</b><span>Ventas en línea</span></div>
+        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.5 2.2a1 1 0 0 1 1 0l8.5 4.6A1 1 0 0 1 20.5 9h-17A1 1 0 0 1 3 6.8zM5 10.5h3v7H5zm5.5 0h3v7h-3zm5.5 0h3v7h-3zM3 19h18a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"/></svg></span><b>Intermediación financiera</b><span>Bancos, financieras y seguros</span></div>
+        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9 22l10-12h-6.5z"/></svg></span><b>Energía</b><span>Empresas del sector energético</span></div>
+        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11zm-2.5 11.5a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 0 1 0 2 4 4 0 0 1-4-4 1 1 0 0 1 1-1z"/></svg></span><b>Hidrocarburos y metalmecánica</b><span>Industria y combustibles</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="block" id="contacto">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <span class="eyebrow">Contacto</span>
+          <h2 style="margin-top:10px">¿Listo para <em>multiplicar</em> tus resultados?</h2>
+          <p class="intro">Agenda una reunión de diagnóstico y recibe una propuesta hecha para tu meta comercial.</p>
+        </div>
+        <div class="person">
+          <div class="who" style="display:flex;align-items:center;gap:14px"><div class="ph" id="cPhoto" aria-hidden="true">I</div><div><b id="cName">Ingrid</b><span id="cRole">Asesora Comercial</span></div></div>
+          <div class="row"><span class="k">Teléfono</span><div class="copyline"><span class="val" id="cPhone"></span><button class="copy" id="copyBtn" type="button">Copiar</button></div></div>
+          <div class="row"><span class="k">Correo</span><div class="copyline"><span class="val" id="cMail" style="font-size:.98rem"></span></div></div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
+            <a class="btn btn-wa js-wa" href="#contacto" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>Escribir por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <img src="logo.webp" alt="Xsell" width="77" height="28">
+    <span class="slogan">Multiplicamos <em>tus resultados</em></span>
+    <span>© <span id="yr">2026</span> Xsell. Lima, Perú.</span>
+  </div>
+</footer>
+
+<script>
+/* ====== DATOS QUE PUEDES EDITAR ====== */
+const CONFIG = {
+  contacto: { nombre: "Ingrid", cargo: "Asesora Comercial", telefono: "", correo: "", foto: "" }, // completar teléfono y correo
+  whatsapp: "" // número con código de país, solo dígitos. Ej: 51999999999
+};
+
+const KB = `EMPRESA: Xsell. Agencia de ventas en Perú con 14 años en el mercado. Socio comercial que se hace cargo de canales de venta y atención. Lema: "Multiplicamos tus resultados". Propósito: "Mejores personas, mejores negocios"; multiplicar oportunidades y convertirlas en crecimiento sostenible para los clientes. Valores: hacer el trabajo mejor y distinto (mejor en resultados y procesos, distinto porque probamos fórmulas nuevas), nos hacemos cargo, profesionalismo, respeto por la gente. Fortalezas: adaptabilidad, valentía para probar cosas nuevas, enfoque en el cliente, agilidad. Xsell es una agencia de ventas, NO una empresa de tecnología: habla de resultados y ventas, no de tecnología. No menciones nombres anteriores de la empresa.
+MODELO DE PAGO: por hitos de éxito. Se empieza con un piloto 100% variable; al cumplir los indicadores se pasa a un esquema fijo + variable.
+LÍNEAS DE SERVICIO: 1) Servicios comerciales: nos hacemos cargo por completo de canales de venta remotos o presenciales que ya tienen o tendrán prospectos, para mejorar la conversión, el valor y la calidad de las ventas. 2) Atención presencial: operamos canales presenciales dedicados a la venta, o que quieren pasar de ser centros de costo a centros que generan ingresos, mejorando satisfacción y resultado económico. 3) Desarrollo de canales: ayudamos a implementar o mejorar a fondo un canal de atención o ventas que opera el cliente; aportamos planificación, control, selección, capacitación y supervisión. 4) Desarrollo de canales + operación parcial: además operamos una parte del proceso, como la primera línea. Los tiempos se definen en la reunión de diagnóstico.
+PAQUETES (sin montos): Básico "Desarrollo" (planificación, control, selección, capacitación, supervisión). Intermedio "Desarrollo + Operación" (lo anterior más operación de la primera línea). Completo "Nos hacemos cargo" (operamos todo el canal remoto o presencial, equipo dedicado, piloto 100% variable y luego fijo + variable, informe mensual).
+PROCESO: 1 Reunión de diagnóstico, 2 Plan (canal, equipo, metas, hitos), 3 Piloto 100% variable, 4 Ejecución y seguimiento, 5 Escalar con fijo + variable. Comunicación: un asesor comercial como contacto directo, métricas claras, informe mensual.
+SECTORES: automotriz (concesionarias, posventa, repuestos), retail, comercio electrónico, intermediación financiera, energía, hidrocarburos y metalmecánica.
+CLIENTES: no se mencionan nombres de clientes. Si preguntan, di que por confidencialidad no compartimos nombres y menciona los sectores.
+BENEFICIOS PARA EL CLIENTE (hablar primero de esto, luego de cómo se logra): más y mejor información de tus clientes (encuestas); más ventas con mejor atención (agendamiento y confirmación de citas); menos clientes molestos (atención de reclamos); más ventas (perfilamiento de prospectos y ventas adicionales a clientes actuales).
+CULTURA DE XSELL: la experiencia de trabajar en Xsell se cuenta como un viaje. Siempre di "integrantes", nunca "empleados" ni "trabajadores". No uses la palabra "popular". Nunca uses los nombres "3bu", "tribu" ni "3eriza": son de la marca anterior.
+Primera parada, ¿por qué este viaje es diferente?: propósito "mejores personas, mejores negocios"; valores: mejor y distinto, nos hacemos cargo, profesionalismo, respeto por la gente. Meta: que 95% de integrantes sientan que subieron un escalón en su vida profesional en el último año.
+Segunda parada, ¿qué experiencias distintas vivirás?: ¿Cómo nos cuidamos? convenios y beneficios (sin detalle publicado: sugiere escribir al equipo). ¿Cómo te escuchamos? encuesta de clima "Potenciando mi viaje". ¿Cómo nos desarrollamos? "Academia Xsell", "Aprende+" y "Emprende Xsell". ¿Cómo nos mantenemos conectados? "La estrategia somos todos" y el reconocimiento "Estrellas de valor". No inventes detalles de estos programas más allá de su nombre y el grupo al que pertenecen.
+Si la persona quiere trabajar en Xsell, invítala a escribir por WhatsApp o a la sección Contacto.
+CONTACTO: Ingrid, Asesora Comercial (por WhatsApp o agendando una reunión en la sección Contacto).`;
+
+const SYSTEM = `Eres el asistente de la web de Xsell. Respondes en español, con tono cercano y experto, en 3 a 5 frases cortas y en palabras simples (sin anglicismos ni jerga).
+Reglas:
+- Usa SOLO la información de abajo. No inventes datos, cifras, clientes, plazos ni casos.
+- Nunca des precios ni montos: invita a una reunión de diagnóstico para recibir una propuesta personalizada. No digas que la reunión es gratuita.
+- Si no sabes algo, sugiere hablar con Ingrid, nuestra Asesora Comercial.
+- Si la pregunta no tiene relación con Xsell o con ventas, redirígela con amabilidad hacia cómo Xsell puede ayudar.
+- Si preguntan por servicios, habla primero de los beneficios para el cliente y luego de cómo lo hacemos.
+- Si preguntan por trabajar en Xsell, cuéntalo como un viaje y usa "integrantes".
+- Termina siempre invitando al siguiente paso (agendar reunión o escribir por WhatsApp).
+- Responde en texto plano, sin listas, sin markdown, sin títulos.
+INFORMACIÓN:
+${KB}`;
+
+/* Respuestas predefinidas por palabras clave (si el asistente no está disponible) */
+const FALLBACK = [
+  {k:["cuidan","cuidamos","convenio","beneficios para","bienestar"],
+   a:"En Xsell cuidamos a nuestros integrantes con convenios y beneficios pensados para ellos y sus familias. Para conocer el detalle actualizado, lo mejor es conversarlo directamente con nuestro equipo. Escríbenos por WhatsApp y te contamos."},
+  {k:["escuchan","escuchamos","clima","voz","opinión","opinion"],
+   a:"Te escuchamos de verdad: con nuestra encuesta de clima Potenciando mi viaje cada integrante puede decir lo que piensa, y eso nos ayuda a mejorar el viaje. ¿Quieres saber más? Escríbenos por WhatsApp."},
+  {k:["desarrollan","desarrollamos","academia","aprende","crecer profesional","capacitación","capacitacion","emprende"],
+   a:"Nos desarrollamos con Academia Xsell y Aprende+, que impulsan el aprendizaje continuo, y con Emprende Xsell apoyamos a quienes tienen espíritu emprendedor. Si quieres crecer con nosotros, escríbenos por WhatsApp."},
+  {k:["conectados","conectamos","estrategia somos todos","estrellas de valor","reconoc"],
+   a:"Nos mantenemos conectados con espacios como La estrategia somos todos, donde construimos juntos, y reconocemos a quienes viven nuestros valores con Estrellas de valor. ¿Te animas a sumarte al viaje? Escríbenos por WhatsApp."},
+  {k:["diferente","cultura","valores","propósito","proposito","trabajar en xsell","trabajar con ustedes","postular","ser parte","integrante"],
+   a:"Trabajar en Xsell es un viaje, y es diferente porque nuestro propósito es mejores personas, mejores negocios. Creemos en hacer las cosas mejor y distinto, en hacernos cargo, en el profesionalismo y en el respeto por la gente. Nuestra meta es que 95% de integrantes sientan que subieron un escalón en su vida profesional cada año. Si quieres ser parte del viaje, escríbenos por WhatsApp."},
+  {k:["qué gana","que gana","beneficio","ganar","ventaja"],
+   a:"Con Xsell tu empresa gana en cuatro frentes: conoces mejor a tus clientes con encuestas, vendes más con una mejor atención y agendamiento de citas, tienes menos clientes molestos porque atendemos los reclamos a tiempo, y vendes más gracias al perfilamiento de prospectos y las ventas adicionales. Todo con pago por hitos de éxito. Agenda una reunión de diagnóstico y vemos cuál te conviene primero."},
+  {k:["encuesta","información de mis clientes","conocer mejor"],
+   a:"Con encuestas a tus clientes obtienes más y mejor información para decidir: qué valoran, qué les molesta y qué los haría comprar más. Nosotros nos hacemos cargo de aplicarlas y de entregarte resultados claros. Agenda una reunión de diagnóstico y armamos el plan."},
+  {k:["cita","agend","atención y","mejor atención"],
+   a:"Una mejor atención se convierte en más ventas: agendamos y confirmamos citas para que tus clientes lleguen y compren. Nos hacemos cargo de ese contacto con tu marca y medimos los resultados. Agenda una reunión de diagnóstico y lo vemos para tu negocio."},
+  {k:["reclamo","molestos","quejas","postventa","posventa"],
+   a:"Atendemos los reclamos a tiempo y bien, para que tengas menos clientes molestos y más clientes que vuelven. Nos hacemos cargo de ese canal con tu marca y te mostramos los resultados. Agenda una reunión de diagnóstico y revisamos tu caso."},
+  {k:["perfil","venta adicional","ventas adicionales","venta cruzada","upsell"],
+   a:"Para vender más, perfilamos a tus prospectos y priorizamos a quienes tienen más probabilidad de comprar. Además ofrecemos ventas adicionales a tus clientes actuales. Trabajamos por hitos de éxito, así que ganamos cuando tú ganas. Agenda una reunión de diagnóstico."},
+  {k:["precio","cuesta","costo","cuánto","cuanto","tarifa","monto","presupuesto","cobran"],
+   a:"Cada propuesta se arma según tu meta comercial, por eso no publicamos montos. Lo que sí te podemos adelantar es que trabajamos por hitos de éxito y podemos empezar con un piloto 100% variable. Agenda una reunión de diagnóstico y te preparamos una propuesta a tu medida."},
+  {k:["pago","hito","variable","resultado","fijo","kpi","indicador"],
+   a:"Trabajamos por hitos de éxito. Empezamos con un piloto 100% variable, así pagas por lo que logramos juntos. Cuando cumplimos los indicadores acordados, pasamos a un esquema fijo + variable para seguir creciendo. ¿Te parece si lo vemos en una reunión de diagnóstico?"},
+  {k:["cliente","marcas","empresas con las","referencia","casos","han trabajado","trabajado con"],
+   a:"Por confidencialidad no compartimos los nombres de nuestros clientes. Sí te podemos contar que nos especializamos en automotriz, retail, comercio electrónico, intermediación financiera, energía, hidrocarburos y metalmecánica. En una reunión de diagnóstico te contamos cómo trabajaríamos con tu empresa."},
+  {k:["sector","rubro","industria","automotriz","retail","banca","financ","energ","hidrocarb","metal","comercio electr"],
+   a:"Nos especializamos en automotriz, retail y comercio electrónico, y también trabajamos con intermediación financiera, energía, hidrocarburos y metalmecánica. Si tu empresa está en otro rubro, igual podemos conversar. Agenda una reunión y vemos cómo ayudarte."},
+  {k:["presencial","tienda","punto de venta","puntos de atención","puntos de atencion","atienden","no venden","centro de costo"],
+   a:"Para eso está nuestra línea de atención presencial: operamos tus puntos de atención con enfoque en la venta. La idea es que dejen de ser solo un costo y empiecen a generar ingresos, con clientes más satisfechos. Agenda una reunión de diagnóstico y revisamos tu caso."},
+  {k:["mejorar","no sé cómo","no se como","desarroll","capacita","selección","seleccion","supervis","mi equipo","propio equipo"],
+   a:"Con nuestro desarrollo de canales te ayudamos a mejorar tu canal de ventas o atención mientras lo opera tu equipo: planificación, control, selección, capacitación y supervisión. Si necesitas más apoyo, también podemos operar la primera línea por ti. El siguiente paso es una reunión de diagnóstico."},
+  {k:["servicios comerciales","enfrí","enfri","pierdo","perdemos","seguimiento","prospecto","interesados","conversión","conversion"],
+   a:"Eso pasa cuando nadie se hace cargo a tiempo de cada interesado. Con nuestros servicios comerciales operamos tu canal de ventas, remoto o presencial, para mejorar la conversión y no dejar oportunidades en el camino. Agenda una reunión y revisamos dónde se te están yendo las ventas."},
+  {k:["planilla","sin contratar","sin aumentar","costos fijos","no tengo equipo","sin equipo","tercerizar","tercerizad"],
+   a:"Con Xsell vendes más sin sumar personal a tu planilla: nos hacemos cargo de tu canal de ventas con un equipo que trabaja con tu marca. Podemos empezar con un piloto 100% variable y, si funciona, escalar con un esquema fijo + variable. Agenda una reunión y vemos qué paquete te conviene."},
+  {k:["paquete","plan","básico","basico","intermedio","completo","operación","operacion","nos hacemos cargo"],
+   a:"Tenemos tres niveles: Desarrollo, para mejorar tu canal con tu propio equipo; Desarrollo + Operación, donde además operamos la primera línea; y Nos hacemos cargo, donde operamos todo tu canal. Ninguno tiene un monto fijo, porque lo armamos a tu medida. Agenda una reunión de diagnóstico y te recomendamos el ideal."},
+  {k:["medi","métrica","metrica","reporte","informe","indicadores","cómo vamos"],
+   a:"Siempre sabes cómo vamos: tienes un asesor comercial como contacto directo, métricas claras y un informe mensual de resultados. Con esos datos ajustamos el trabajo. Agenda una reunión y te mostramos cómo sería el seguimiento para tu empresa."},
+  {k:["empez","empiez","comenzar","inicio","proceso","cómo trabajan","como trabajan","pasos"],
+   a:"Empezamos con una reunión de diagnóstico para entender tu meta. Luego armamos el plan y arrancamos un piloto 100% variable. Con los resultados en la mano, escalamos juntos. El primer paso es agendar esa reunión."},
+  {k:["qué hace","que hace","quiénes","quienes","xsell","agencia","nosotros","servicio"],
+   a:"Xsell es una agencia de ventas con 14 años en el mercado. Nos hacemos cargo de canales de venta y atención, remotos o presenciales, y también ayudamos a desarrollar los canales que opera tu equipo. Cobramos por hitos de éxito, porque nuestra meta es multiplicar tus resultados. ¿Agendamos una reunión para conocer tu caso?"},
+  {k:["contacto","hablar","llamar","teléfono","telefono","correo","ingrid","asesor"],
+   a:"Puedes hablar directamente con Ingrid, nuestra Asesora Comercial. Escríbele por WhatsApp o agenda una reunión desde la sección Contacto. Ella te orienta y prepara una propuesta a tu medida."}
+];
+const FALLBACK_DEFAULT = "Buena pregunta. Para darte una respuesta precisa, lo mejor es que lo converses con Ingrid, nuestra Asesora Comercial. En Xsell ayudamos a empresas a vender más con un equipo comercial que trabaja por resultados. ¿Agendamos una reunión de diagnóstico?";
+const OFFTOPIC = ["clima","fútbol","futbol","receta","chiste","película","pelicula","música","musica","horóscopo","horoscopo","tarea","poema"];
+
+function fallbackAnswer(q){
+  const t = q.toLowerCase();
+  if (OFFTOPIC.some(w => t.includes(w))) return "Eso se escapa un poco de lo nuestro. Nosotros somos expertos en ayudar a empresas a vender más con un equipo comercial que trabaja por resultados. Si quieres, te contamos cómo podríamos ayudar a la tuya: agenda una reunión de diagnóstico.";
+  let best = null, score = 0;
+  for (const e of FALLBACK){ const s = e.k.reduce((n,w)=> n + (t.includes(w)?1:0), 0); if (s > score){ score = s; best = e; } }
+  return best ? best.a : FALLBACK_DEFAULT;
+}
+
+/* ====== Utilidades ====== */
+const $ = s => document.querySelector(s);
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const LOGO_ISO = "isotipo.webp";
+function waLink(text){
+  return CONFIG.whatsapp ? "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text || "Hola, quisiera información sobre Xsell.") : "#contacto";
+}
+
+/* Contacto */
+(function(){
+  $("#cName").textContent = CONFIG.contacto.nombre;
+  if (CONFIG.contacto.foto){ const im = new Image(); im.alt = CONFIG.contacto.nombre; im.src = CONFIG.contacto.foto; const ph = $("#cPhoto"); ph.textContent = ""; ph.appendChild(im); }
+  $("#cRole").textContent = CONFIG.contacto.cargo;
+  const ph = $("#cPhone"), ml = $("#cMail");
+  if (CONFIG.contacto.telefono) ph.textContent = CONFIG.contacto.telefono; else { ph.textContent = "Teléfono por completar"; ph.classList.add("pending"); $("#copyBtn").hidden = true; }
+  if (CONFIG.contacto.correo) ml.textContent = CONFIG.contacto.correo; else { ml.textContent = "Correo por completar"; ml.classList.add("pending"); }
+  document.querySelectorAll(".js-wa").forEach(a => { a.href = waLink(); if (!CONFIG.whatsapp) a.removeAttribute("target"); });
+  $("#yr").textContent = new Date().getFullYear();
+  $("#copyBtn").addEventListener("click", async e => {
+    const b = e.currentTarget, txt = ph.textContent;
+    try { await navigator.clipboard.writeText(txt); b.textContent = "Copiado"; }
+    catch { const r = document.createRange(); r.selectNodeContents(ph); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selecciónalo y copia"; }
+    setTimeout(() => b.textContent = "Copiar", 1800);
+  });
+})();
+
+/* Menú móvil y enlace activo */
+(function(){
+  const btn = $("#menuBtn"), links = $("#links");
+  btn.addEventListener("click", () => { const o = links.classList.toggle("open"); btn.setAttribute("aria-expanded", o); btn.textContent = o ? "Cerrar" : "Menú"; });
+  links.addEventListener("click", e => { if (e.target.tagName === "A"){ links.classList.remove("open"); btn.setAttribute("aria-expanded", false); btn.textContent = "Menú"; } });
+  const map = { inicio:"inicio", nosotros:"nosotros", servicios:"servicios", empezar:"servicios", paquetes:"paquetes", proceso:"paquetes", cultura:"cultura", sectores:"sectores", contacto:"contacto" };
+  const anchors = [...links.querySelectorAll("a")];
+  const setActive = id => anchors.forEach(a => a.classList.toggle("active", a.dataset.sec === map[id]));
+  setActive("inicio");
+  const io = new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) setActive(en.target.id); }); }, { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll("main section[id]").forEach(s => io.observe(s));
+})();
+
+/* Título que se escribe solo */
+(function(){
+  const full = "¿En qué te podemos ayudar hoy?", el = $("#typed");
+  if (reduce){ el.textContent = full; return; }
+  let i = 0; (function step(){ el.textContent = full.slice(0, ++i); if (i < full.length) setTimeout(step, 55 + Math.random()*45); })();
+})();
+
+/* Texto de ejemplo que escribe y borra preguntas */
+(function(){
+  const input = $("#q");
+  const samples = ["¿Cómo funciona el pago por resultados?","¿Con qué sectores trabajan?","¿Qué incluye el paquete completo?","¿Pueden operar mis puntos de atención?","¿Cuánto tarda en verse un resultado?"];
+  if (reduce) return;
+  let si = 0, ci = 0, del = false;
+  (function tick(){
+    if (document.activeElement === input || input.value){ setTimeout(tick, 600); return; }
+    const s = samples[si];
+    if (!del){ ci++; input.placeholder = s.slice(0, ci); if (ci >= s.length){ del = true; return setTimeout(tick, 1800); } }
+    else { ci--; input.placeholder = s.slice(0, ci) || " "; if (ci <= 0){ del = false; si = (si + 1) % samples.length; } }
+    setTimeout(tick, del ? 28 : 60);
+  })();
+})();
+
+/* Selector de público */
+(function(){
+  const a = $("#audEmp"), b = $("#audTalento"), ca = $("#chipsEmp"), cb = $("#chipsTalento");
+  function set(isTal){ a.setAttribute("aria-pressed", !isTal); b.setAttribute("aria-pressed", isTal); ca.hidden = isTal; cb.hidden = !isTal; }
+  a.addEventListener("click", () => set(false)); b.addEventListener("click", () => set(true));
+})();
+
+/* Preguntas para seguir el viaje */
+const NEXT = {
+  cultura: ["¿Cómo cuidan a sus integrantes? ¿Qué convenios y beneficios tienen?","¿Cómo escuchan a sus integrantes?","¿Cómo se desarrollan los integrantes de Xsell?","¿Cómo se mantienen conectados en Xsell?","¿Por qué trabajar en Xsell es un viaje diferente?"],
+  empresa: ["¿Qué gana mi empresa trabajando con Xsell?","¿Cómo funciona el pago por resultados?","¿Qué paquete me conviene?","¿Cómo empezamos a trabajar juntos?","¿Con qué sectores trabajan?"]
+};
+function isCulture(q){ return /cultura|cuidan|escuchan|desarrollan|conectados|integrante|trabajar en xsell|ser parte|valores|propósito|proposito|clima|viaje diferente/i.test(q); }
+function followups(q){
+  const list = NEXT[isCulture(q) ? "cultura" : "empresa"];
+  const asked = new Set(history.filter(h => h.role === "user").map(h => h.content));
+  return list.filter(x => x !== q && !asked.has(x)).slice(0, 3);
+}
+
+/* ====== Chat ====== */
+const chat = $("#chat"), form = $("#askForm"), input = $("#q"), sendBtn = $("#sendBtn");
+const history = [];
+let busy = false, samplerP = null;
+function getSampler(){ if (!samplerP) samplerP = (window.claude && window.claude.use) ? window.claude.use("sample").catch(() => null) : Promise.resolve(null); return samplerP; }
+
+function addUser(text){
+  const m = document.createElement("div"); m.className = "msg user";
+  const b = document.createElement("div"); b.className = "bubble"; b.textContent = text; m.appendChild(b); chat.appendChild(m);
+}
+function addBot(){
+  const m = document.createElement("div"); m.className = "msg bot";
+  m.innerHTML = '<div class="avatar"><img alt="" src="' + LOGO_ISO + '"></div><div class="bubble"><div class="name">Xsell</div><div class="txt"><span class="dots"><i></i><i></i><i></i></span></div></div>';
+  chat.appendChild(m); return m;
+}
+function finishBot(m, text, q){
+  const t = m.querySelector(".txt"); t.textContent = "";
+  text.split(/\n\s*\n/).filter(Boolean).forEach(p => { const el = document.createElement("p"); el.textContent = p.trim(); t.appendChild(el); });
+  const act = document.createElement("div"); act.className = "actions";
+  const wa = document.createElement("a"); wa.className = "btn btn-wa"; wa.textContent = "Escribir por WhatsApp"; wa.href = waLink("Hola, vengo de la web de Xsell. Mi consulta: " + q); if (CONFIG.whatsapp){ wa.target = "_blank"; wa.rel = "noopener"; }
+  const mt = document.createElement("a"); mt.className = "btn btn-orange"; mt.textContent = "Agendar reunión"; mt.href = "#contacto";
+  if (isCulture(q)){ mt.textContent = "Quiero ser parte"; mt.href = waLink("Hola, quiero trabajar en Xsell."); if (CONFIG.whatsapp){ mt.target = "_blank"; mt.rel = "noopener"; } else { mt.href = "#contacto"; } }
+  act.append(wa, mt); m.querySelector(".bubble").appendChild(act);
+  const nx = followups(q);
+  if (nx.length){
+    const f = document.createElement("div"); f.className = "followups";
+    const l = document.createElement("span"); l.className = "lbl"; l.textContent = isCulture(q) ? "Sigue el viaje" : "También te puede interesar"; f.appendChild(l);
+    nx.forEach(t => { const c = document.createElement("button"); c.type = "button"; c.className = "chip"; c.textContent = t; c.addEventListener("click", () => ask(t)); f.appendChild(c); });
+    m.querySelector(".bubble").appendChild(f);
+  }
+}
+
+async function ask(q){
+  q = (q || "").trim(); if (!q || busy) return;
+  busy = true; sendBtn.disabled = true; input.value = "";
+  addUser(q); const m = addBot();
+  document.getElementById("inicio").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  let answer = null;
+  try {
+    const sample = await Promise.race([getSampler(), new Promise(r => setTimeout(() => r(null), 2500))]);
+    if (sample){
+      const turns = [{ role:"user", content: SYSTEM + "\n\nResponde a las preguntas del visitante siguiendo estas reglas." }, { role:"assistant", content:"Entendido. Responderé como el asistente de Xsell." }, ...history.slice(-6), { role:"user", content: q }];
+      const t = m.querySelector(".txt");
+      const r = await sample(turns, { modelTier:"quick", cache:false, onText: ({ text }) => { t.textContent = text; } });
+      if (r && r.text && r.text.trim()) answer = r.text.trim();
+    }
+  } catch (e) { answer = null; }
+  if (!answer){ await new Promise(r => setTimeout(r, reduce ? 0 : 650)); answer = fallbackAnswer(q); }
+  history.push({ role:"user", content:q }, { role:"assistant", content:answer });
+  finishBot(m, answer, q);
+  busy = false; sendBtn.disabled = false;
+}
+
+form.addEventListener("submit", e => { e.preventDefault(); ask(input.value); });
+document.querySelectorAll(".js-ask").forEach(b => b.addEventListener("click", () => ask(b.dataset.q)));
+</script>
+
+</body>
+</html>
