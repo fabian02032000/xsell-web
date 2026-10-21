@@ -468,6 +468,45 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
 .mini span{color:var(--muted);font-size:.92rem}
 
 
+
+.nav-l{display:flex;align-items:center;gap:10px}
+.theme-btn{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:var(--glass);color:var(--text);cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .3s,background .2s}
+.theme-btn:hover{transform:rotate(25deg);background:var(--surface-2)}
+.theme-btn svg{width:22px;height:22px}
+
+/* ===== Diagnóstico gratuito ===== */
+.diag-cta{margin-top:6px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 18px;text-align:left;padding:14px 16px 14px 22px;border-radius:20px;border:0;cursor:pointer;background:linear-gradient(120deg,var(--purple),var(--magenta) 60%,var(--orange));color:#fff;box-shadow:0 20px 50px -20px var(--magenta);font:inherit;transition:transform .2s}
+.diag-cta .dc-k{font-family:var(--display);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.diag-cta .dc-t{font-family:var(--display);font-weight:700;font-size:1.15rem;grid-column:1}
+.diag-cta .dc-a{grid-row:1/3;grid-column:2;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--purple);font-size:1.3rem;font-weight:700;transition:transform .3s}
+.diag-cta:hover .dc-a{transform:translateX(4px) rotate(-12deg)}
+.diag{width:min(640px,calc(100vw - 24px));max-height:calc(100vh - 32px);padding:0;border:1px solid var(--line);border-radius:26px;background:var(--surface);color:var(--text);box-shadow:0 40px 100px -30px rgba(0,0,0,.7)}
+.diag::backdrop{background:rgba(10,5,18,.6);backdrop-filter:blur(6px)}
+.diag[open]{animation:dgIn .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes dgIn{from{opacity:0;transform:translateY(20px) scale(.98)}}
+.diag form{position:relative;padding:30px;display:flex;flex-direction:column;gap:12px}
+.diag h2{font-size:clamp(1.5rem,3vw,2rem)}
+.diag .eyebrow{padding-right:48px}
+.dg-x{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);color:var(--text);cursor:pointer;font-size:1rem}
+.dg-steps{display:flex;gap:6px}
+.dg-steps i{height:4px;flex:1;border-radius:4px;background:var(--line)}
+.dg-steps i.on{background:linear-gradient(90deg,var(--orange),var(--orange-2))}
+.dg-step{border:0;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dg-step[hidden]{display:none}
+.dg-step legend{font-family:var(--display);font-weight:700;font-size:1rem;margin-bottom:10px;color:var(--muted)}
+@media (max-width:560px){.dg-step{grid-template-columns:1fr}.diag form{padding:22px}}
+.dg-next{grid-column:1/-1;justify-self:end}
+.dg-actions{grid-column:1/-1;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--display);font-size:.8rem;font-weight:600;color:var(--muted)}
+.field input,.field select,.field textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+.field textarea{min-height:80px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 25%,transparent)}
+.check{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:var(--muted)}
+.check input{margin-top:3px;accent-color:var(--orange)}
+.form-msg{font-size:.92rem;font-weight:600;margin:0}
+.form-msg.ok{color:var(--ok)}.form-msg.err{color:#E5484D}
 /* ===== Barra flotante tipo app ===== */
 .tabbar{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:62;display:flex;align-items:center;gap:6px;padding:8px;border-radius:999px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);box-shadow:0 24px 60px -20px rgba(0,0,0,.55)}
 .tb{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:var(--text);background:transparent;border:0;text-decoration:none;transition:background .2s,transform .2s,color .2s}
@@ -478,6 +517,7 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
 .tb-ai:hover{background:linear-gradient(135deg,var(--orange-2),var(--orange))}
 .tb[aria-expanded="true"]{background:var(--text);color:var(--bg)}
 .tb-theme .i-moon{display:none}
+.theme-btn.tb-theme .i-moon{display:none}
 :root[data-theme="light"] .tb-theme .i-sun{display:none} :root[data-theme="light"] .tb-theme .i-moon{display:block}
 @media (prefers-color-scheme: light){ :root:not([data-theme="dark"]) .tb-theme .i-sun{display:none} :root:not([data-theme="dark"]) .tb-theme .i-moon{display:block} }
 .sheet{position:fixed;left:50%;bottom:calc(104px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:61;width:min(420px,calc(100vw - 24px));max-height:70vh;overflow-y:auto;padding:10px;border-radius:26px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);box-shadow:0 30px 70px -20px rgba(0,0,0,.6);animation:sheetIn .28s cubic-bezier(.2,.8,.2,1)}
@@ -504,13 +544,13 @@ footer{padding-bottom:110px}
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#inicio" aria-label="Xsell, ir al inicio"><img src="logo.webp" alt="Xsell" width="70" height="26"></a>
+    <div class="nav-l"><a class="brand" href="#inicio" aria-label="Xsell, ir al inicio"><img src="logo.webp" alt="Xsell" width="70" height="26"></a><button class="theme-btn tb-theme" type="button" id="themeBtn" aria-label="Cambiar a modo claro u oscuro"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button></div>
 
   </div>
 </header>
 
-<a class="badge-cta mag" href="#contacto" data-cur="Agendar" aria-label="Agenda tu Fotografía Comercial Xsell, sin costo">
-  <svg viewBox="0 0 200 200" class="ring-txt" aria-hidden="true"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#circ" startOffset="0" textLength="486" lengthAdjust="spacingAndGlyphs">AGENDA TU FOTOGRAFÍA COMERCIAL · SIN COSTO · 72 H · </textPath></text></svg>
+<a class="badge-cta mag js-diag" href="#contacto" data-cur="Agendar" aria-label="Agenda tu Fotografía Comercial Xsell, sin costo">
+  <svg viewBox="0 0 200 200" class="ring-txt" aria-hidden="true"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#circ" startOffset="0" textLength="486" lengthAdjust="spacingAndGlyphs">DIAGNÓSTICO GRATUITO · FOTOGRAFÍA COMERCIAL · 72 H · </textPath></text></svg>
   <span class="bc-core" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
 </a>
 
@@ -519,10 +559,8 @@ footer{padding-bottom:110px}
   <a class="tb" href="#inicio" data-cur="Inicio" aria-label="Inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></a>
   <a class="tb tb-ai" href="#chat" id="aiBtn" data-cur="Chatear" aria-label="Chatea con nuestra IA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></a>
   <button class="tb" type="button" id="sheetBtn" aria-expanded="false" aria-controls="sheet" data-cur="Menú" aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
-  <button class="tb tb-theme" type="button" id="themeBtn" data-cur="Tema" aria-label="Cambiar a modo claro u oscuro"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
 </nav>
 
-<div class="cur" aria-hidden="true"><div class="cur-dot"></div><div class="cur-ring"><span class="cur-lbl"></span></div></div>
 
 
 
@@ -550,6 +588,7 @@ footer{padding-bottom:110px}
             <button class="chip js-ask mag" data-cur="Preguntar" data-q="¿Qué es la Fotografía Comercial Xsell?">¿Qué es la Fotografía Comercial?</button>
             <button class="chip js-ask mag" data-cur="Preguntar" data-q="¿Cómo es el pago por resultados?">¿Cómo es el pago por resultados?</button>
           </div>
+          <button class="diag-cta mag js-diag" type="button"><span class="dc-k">Fotografía Comercial Xsell · 72 h</span><span class="dc-t">Realiza tu diagnóstico gratuito</span><span class="dc-a" aria-hidden="true">→</span></button>
         </div>
 
         <div class="stage">
@@ -750,6 +789,7 @@ footer{padding-bottom:110px}
           <span class="eyebrow">Contacto</span>
           <h2 style="margin-top:10px">¿Listo para <em>multiplicar</em> tus resultados?</h2>
           <p class="intro">Agenda tu Fotografía Comercial Xsell, sin costo: en 72 horas vemos cómo está hoy tu negocio y te proponemos cómo crecer.</p>
+          <button class="btn btn-orange js-diag" type="button" style="margin-top:22px">Realiza tu diagnóstico gratuito</button>
         </div>
         <div class="person">
           <div class="who" style="display:flex;align-items:center;gap:14px"><div class="ph" id="cPhoto" aria-hidden="true">I</div><div><b id="cName">Ingrid</b><span id="cRole">Asesora Comercial</span></div></div>
@@ -764,6 +804,36 @@ footer{padding-bottom:110px}
   </section>
 </main>
 
+
+<dialog class="diag" id="diag" aria-labelledby="dgTitle">
+  <form id="diagForm" novalidate>
+    <button class="dg-x" type="button" id="dgClose" aria-label="Cerrar">✕</button>
+    <span class="eyebrow">Fotografía Comercial Xsell · sin costo · 72 h</span>
+    <h2 id="dgTitle">Realiza tu diagnóstico gratuito</h2>
+    <div class="dg-steps" aria-hidden="true"><i class="on"></i><i></i></div>
+    <fieldset class="dg-step" data-step="1">
+      <legend>Tu empresa</legend>
+      <div class="field full"><label for="d_emp">Nombre de la empresa</label><input id="d_emp" name="empresa" required autocomplete="organization"></div>
+      <div class="field"><label for="d_sector">Sector</label><select id="d_sector" name="sector" required><option value="">Elige una opción</option><option>Automotriz</option><option>Retail</option><option>Comercio electrónico</option><option>Intermediación financiera</option><option>Energía</option><option>Hidrocarburos y metalmecánica</option><option>Otro</option></select></div>
+      <div class="field"><label for="d_size">Tamaño de la empresa</label><select id="d_size" name="tamano" required><option value="">Elige una opción</option><option>1 a 10 colaboradores</option><option>11 a 50 colaboradores</option><option>51 a 200 colaboradores</option><option>201 a 500 colaboradores</option><option>Más de 500 colaboradores</option></select></div>
+      <div class="field"><label for="d_team">¿Tienes equipo de ventas?</label><select id="d_team" name="equipo_ventas" required><option value="">Elige una opción</option><option>No</option><option>Sí, propio</option><option>Sí, tercerizado</option><option>Mixto</option></select></div>
+      <div class="field"><label for="d_canal">Canal principal de ventas</label><select id="d_canal" name="canal" required><option value="">Elige una opción</option><option>Tienda o punto presencial</option><option>Teléfono</option><option>WhatsApp y redes sociales</option><option>Web o tienda en línea</option><option>Visitas de campo</option><option>Varios canales</option></select></div>
+      <div class="field full"><label for="d_reto">¿Cuál es tu principal reto comercial?</label><select id="d_reto" name="reto" required><option value="">Elige una opción</option><option>Conseguir más prospectos</option><option>Convertir prospectos en ventas</option><option>Dar seguimiento a los clientes</option><option>Atención y reclamos</option><option>Vender más a mis clientes actuales</option><option>Otro</option></select></div>
+      <button class="btn btn-orange dg-next" type="button" id="dgNext">Continuar →</button>
+    </fieldset>
+    <fieldset class="dg-step" data-step="2" hidden>
+      <legend>Tus datos de contacto</legend>
+      <div class="field"><label for="d_nom">Nombre y apellido</label><input id="d_nom" name="nombre" required autocomplete="name"></div>
+      <div class="field"><label for="d_cargo">Cargo</label><input id="d_cargo" name="cargo" required autocomplete="organization-title"></div>
+      <div class="field"><label for="d_mail">Correo corporativo</label><input id="d_mail" name="correo" type="email" required autocomplete="email"></div>
+      <div class="field"><label for="d_cel">Celular</label><input id="d_cel" name="celular" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX"></div>
+      <div class="field full"><label for="d_msg">¿Algo más que debamos saber? (opcional)</label><textarea id="d_msg" name="comentario"></textarea></div>
+      <label class="check"><input type="checkbox" id="d_ok" required> Acepto que Xsell use mis datos para contactarme, según la Ley N.° 29733 de Protección de Datos Personales.</label>
+      <div class="dg-actions"><button class="btn btn-ghost" type="button" id="dgBack">← Atrás</button><button class="btn btn-orange" type="submit" id="dgSend">Enviar y agendar</button></div>
+    </fieldset>
+    <p class="form-msg" id="dgStatus" role="status"></p>
+  </form>
+</dialog>
 <footer>
   <div class="wrap foot">
     <img src="logo.webp" alt="Xsell" width="77" height="28">
@@ -777,7 +847,8 @@ footer{padding-bottom:110px}
 /* ====== DATOS QUE PUEDES EDITAR ====== */
 const CONFIG = {
   contacto: { nombre: "Ingrid", cargo: "Asesora Comercial", telefono: "", correo: "", foto: "" }, // completar teléfono y correo
-  whatsapp: "" // número con código de país, solo dígitos. Ej: 51999999999
+  whatsapp: "", // número con código de país, solo dígitos. Ej: 51999999999
+  diagnostico: { correo: "" } // correo que recibe las solicitudes de diagnóstico
 };
 
 const KB = `EMPRESA: Xsell. Agencia de ventas en Perú con 14 años en el mercado. Socio comercial que se hace cargo de canales de venta y atención. Lema: "Multiplicamos tus resultados". Propósito: "Mejores personas, mejores negocios"; multiplicar oportunidades y convertirlas en crecimiento sostenible para los clientes. Valores: hacer el trabajo mejor y distinto (mejor en resultados y procesos, distinto porque probamos fórmulas nuevas), nos hacemos cargo, profesionalismo, respeto por la gente. Fortalezas: adaptabilidad, valentía para probar cosas nuevas, enfoque en el cliente, agilidad. Xsell es una agencia de ventas, NO una empresa de tecnología: habla de resultados y ventas, no de tecnología. No menciones nombres anteriores de la empresa.
@@ -940,13 +1011,6 @@ function waLink(text){
   document.querySelectorAll(".hl").forEach(el => io.observe(el));
   const fine = window.matchMedia("(pointer: fine)").matches;
   if (!fine || reduce) { document.querySelectorAll(".hl").forEach(el => el.classList.add("on")); return; }
-  const root = document.documentElement; root.classList.add("has-cur");
-  const cur = document.querySelector(".cur"), dot = cur.querySelector(".cur-dot"), ring = cur.querySelector(".cur-ring"), lbl = cur.querySelector(".cur-lbl");
-  let mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my;
-  addEventListener("mousemove", e => { mx = e.clientX; my = e.clientY; dot.style.transform = "translate(" + mx + "px," + my + "px)"; }, { passive: true });
-  (function loop(){ rx += (mx - rx) * .18; ry += (my - ry) * .18; ring.style.transform = "translate(" + rx + "px," + ry + "px)"; requestAnimationFrame(loop); })();
-  document.addEventListener("mouseover", e => { const t = e.target.closest("[data-cur], a, button, .reason, input"); cur.classList.remove("big","hov"); if (t && t.dataset.cur){ lbl.textContent = t.dataset.cur; cur.classList.add("big"); } else if (t){ cur.classList.add("hov"); } });
-  document.addEventListener("mouseleave", () => { cur.style.opacity = 0; }); document.addEventListener("mouseenter", () => { cur.style.opacity = 1; });
   // Luz y celular en la portada
   const hero = document.getElementById("inicio"), spot = document.getElementById("spot"), phone = document.querySelector(".phone");
   hero.addEventListener("mousemove", e => {
@@ -970,6 +1034,33 @@ function waLink(text){
   const btn = document.getElementById("themeBtn"); if (!btn) return;
   const cur = () => document.documentElement.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
   btn.addEventListener("click", () => { const n = cur() === "dark" ? "light" : "dark"; document.documentElement.setAttribute("data-theme", n); try { localStorage.setItem("xsell-theme", n); } catch(e){} });
+})();
+
+/* Diagnóstico gratuito: ventana con formulario en 2 pasos */
+(function(){
+  const dlg = $("#diag"), f = $("#diagForm"), st = $("#dgStatus"), steps = [...f.querySelectorAll(".dg-step")], bars = [...f.querySelectorAll(".dg-steps i")];
+  const go = n => { steps.forEach((s,i) => s.hidden = i !== n); bars.forEach((b,i) => b.classList.toggle("on", i <= n)); st.textContent = ""; const first = steps[n].querySelector("input,select"); if (first) first.focus(); };
+  const open = e => { if (e) e.preventDefault(); go(0); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); };
+  document.querySelectorAll(".js-diag").forEach(b => b.addEventListener("click", open));
+  $("#dgClose").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  const valid = n => { const els = [...steps[n].querySelectorAll("[required]")]; const bad = els.find(el => !el.checkValidity()); if (bad){ st.className = "form-msg err"; st.textContent = "Completa los campos marcados para continuar."; bad.reportValidity(); return false; } return true; };
+  $("#dgNext").addEventListener("click", () => { if (valid(0)) go(1); });
+  $("#dgBack").addEventListener("click", () => go(0));
+  f.addEventListener("submit", async e => {
+    e.preventDefault(); if (!valid(1)) return;
+    const d = Object.fromEntries(new FormData(f).entries()), btn = $("#dgSend");
+    const dest = CONFIG.diagnostico.correo;
+    if (dest){
+      btn.disabled = true; btn.textContent = "Enviando…";
+      try { const r = await fetch("https://formsubmit.co/ajax/" + dest, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Nuevo diagnóstico gratuito: " + d.empresa }, d)) }); if (!r.ok) throw 0;
+        f.reset(); st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tu solicitud. Te contactaremos para coordinar tu Fotografía Comercial Xsell.";
+      } catch { st.className = "form-msg err"; st.textContent = "No pudimos enviar tu solicitud. Inténtalo de nuevo en unos minutos."; }
+      btn.disabled = false; btn.textContent = "Enviar y agendar"; return;
+    }
+    if (CONFIG.whatsapp){ const txt = "Hola, quiero mi diagnóstico gratuito (Fotografía Comercial Xsell).%0A" + Object.entries(d).filter(([k,v]) => v).map(([k,v]) => k + ": " + encodeURIComponent(v)).join("%0A"); window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + txt, "_blank", "noopener"); return; }
+    st.className = "form-msg err"; st.textContent = "Este formulario aún no está activo. Muy pronto podrás enviarlo.";
+  });
 })();
 
 /* Título que se escribe solo */
