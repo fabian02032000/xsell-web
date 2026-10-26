@@ -507,6 +507,103 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
 .check input{margin-top:3px;accent-color:var(--orange)}
 .form-msg{font-size:.92rem;font-weight:600;margin:0}
 .form-msg.ok{color:var(--ok)}.form-msg.err{color:#E5484D}
+/* ===== Multiplicadores: ecosistema 360° ===== */
+.eco{display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:stretch}
+@media (max-width:900px){.eco{grid-template-columns:1fr}}
+.eco-tabs{display:flex;flex-direction:column;gap:12px}
+@media (max-width:900px){.eco-tabs{flex-direction:row;overflow-x:auto}}
+.eco-tab{display:grid;grid-template-columns:52px 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;text-align:left;padding:18px 20px;border-radius:20px;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font:inherit;cursor:pointer;transition:border-color .2s,background .2s,transform .2s;min-width:0}
+@media (max-width:900px){.eco-tab{flex:1 0 220px}}
+.eco-tab .et-ic{grid-row:1/3;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--surface-2);color:var(--orange)}
+.eco-tab .et-ic svg{width:26px;height:26px}
+.eco-tab .et-n{font-family:var(--impact);font-size:1rem;color:var(--muted);line-height:1}
+.eco-tab .et-t{font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:-.01em}
+.eco-tab[aria-selected="true"]{border-color:transparent;background:linear-gradient(135deg,var(--purple),var(--magenta));color:#fff;transform:translateX(6px)}
+.eco-tab[aria-selected="true"] .et-ic{background:var(--orange);color:var(--on-orange)}
+.eco-tab[aria-selected="true"] .et-n{color:#fff}
+.eco-panel{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:34px;border-radius:24px;background:var(--surface);border:1.5px solid var(--line);animation:panelIn .35s cubic-bezier(.2,.8,.2,1)}
+.eco-panel[hidden]{display:none}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}}
+@media (max-width:700px){.eco-panel{grid-template-columns:1fr;padding:24px}}
+.eco-panel h3{font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.15}
+.eco-list{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.eco-list li{display:flex;gap:12px;align-items:center;font-weight:600}
+.eco-list li::before{content:"";flex:none;width:10px;height:10px;border-radius:3px;background:var(--orange);transform:rotate(45deg)}
+.hit{margin-top:20px;padding:14px 16px;border-left:4px solid var(--orange);border-radius:10px;background:var(--surface-2);font-size:.95rem;color:var(--muted)}
+.hit b{display:block;font-family:var(--display);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-2);margin-bottom:2px}
+.eco-viz{display:flex;flex-direction:column;align-items:center;gap:10px}
+.eco-viz span{display:block;text-align:center;padding:12px 10px;border-radius:999px;font-family:var(--impact);text-transform:uppercase;letter-spacing:.02em;font-size:1.05rem;background:color-mix(in srgb,var(--purple-2) 35%,var(--surface-2));color:var(--text)}
+.eco-viz span.o{background:linear-gradient(90deg,var(--orange),var(--orange-2));color:var(--on-orange)}
+.eco-viz.big,.eco-viz.ring{justify-content:center;min-height:220px;border-radius:22px;background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--orange) 25%,transparent),transparent 65%)}
+.eco-viz.big b,.eco-viz.ring b{font-family:var(--impact);font-size:3.4rem;line-height:1;color:var(--orange);text-transform:uppercase}
+.eco-viz small{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.eco-viz.ring{background:none}
+.eco-viz.ring b{width:180px;height:180px;border-radius:50%;display:grid;place-items:center;border:12px solid var(--magenta);color:var(--text)}
+.channels{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:28px}
+.ch-l{font-family:var(--display);font-weight:700;margin-right:6px}
+.ch{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:.9rem}
+.good{margin-top:40px;padding:26px;border-radius:24px;background:linear-gradient(120deg,color-mix(in srgb,var(--orange) 14%,var(--surface)),var(--surface) 60%);border:1.5px solid var(--line)}
+.good-h{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+.good-h b{font-family:var(--display);font-size:1.4rem}
+.good-h span{color:var(--muted)}
+.good-steps{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:760px){.good-steps{grid-template-columns:1fr 1fr}}
+.good-steps li{display:flex;gap:10px;align-items:center;font-family:var(--display);font-weight:600;font-size:.98rem}
+.good-steps i{font-style:normal;flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--orange);color:var(--on-orange);font-family:var(--impact)}
+
+/* ===== Caso de éxito ===== */
+.case{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}
+@media (max-width:860px){.case{grid-template-columns:1fr}}
+.case-kpis{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-content:center;padding:28px;border-radius:24px;background:var(--surface);border:1.5px solid var(--line)}
+.kpi{display:flex;flex-direction:column;gap:6px}
+.kn{font-family:var(--impact);font-size:clamp(3.6rem,7vw,5.4rem);line-height:.9;color:var(--orange)}
+.kpi:nth-child(2) .kn{color:var(--purple-2)}
+.kl{font-family:var(--display);font-weight:700}
+.case-note{grid-column:1/-1;color:var(--muted);font-size:.85rem;font-style:italic}
+.case-chart{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:end;height:300px;padding:28px 28px 20px;border-radius:24px;background:var(--surface);border:1.5px solid var(--line)}
+.bar-c{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:8px;min-width:0}
+.bv{font-family:var(--impact);font-size:clamp(.95rem,1.8vw,1.35rem);color:var(--text);white-space:nowrap}
+.bb{width:100%;height:var(--h);border-radius:12px 12px 4px 4px;background:linear-gradient(180deg,var(--purple-2),var(--magenta));transform-origin:bottom;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.bb.o{background:linear-gradient(180deg,var(--orange-2),var(--orange))}
+.js .case:not(.on) .bb{transform:scaleY(.05)}
+.by{font-family:var(--display);font-weight:700;color:var(--muted)}
+.case-foot{margin-top:18px;font-size:1.05rem;color:var(--muted)}
+.case-foot b{color:var(--text)}
+
+/* ===== Modelos de cierre ===== */
+.model{gap:12px;text-align:left}
+.model .mk{font-family:var(--display);font-weight:700;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.model .mt{font-family:var(--impact);font-weight:400;text-transform:uppercase;font-size:2.4rem;line-height:1;letter-spacing:.01em}
+.model .mt.o{color:var(--orange)} .model .mt.p{color:var(--purple-2)}
+.model dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.model dl div{padding:12px;border-radius:12px;background:var(--surface-2)}
+.model dt{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--display);font-weight:600}
+.model dd{margin:2px 0 0;font-family:var(--display);font-weight:700}
+.model .mp{color:var(--muted);font-size:.94rem}
+.featured-m{border-color:var(--orange);box-shadow:0 30px 70px -40px var(--orange)}
+.models .card{transition:transform .25s}
+.models .card:hover{transform:translateY(-6px)}
+.more-sec{margin-top:22px;font-family:var(--display);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.pre-h{display:block;margin-top:14px;font-family:var(--display);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-size:.85rem}
+
+/* ===== Pie de página ===== */
+footer{border-top:1px solid var(--line);margin-top:96px;padding-block:56px 120px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--purple) 12%,transparent))}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+@media (max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.fgrid{grid-template-columns:1fr}}
+.fcol{display:flex;flex-direction:column;gap:10px;min-width:0}
+.fcol h4{margin:0 0 4px;font-family:var(--display);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-2)}
+.fcol a,.fcol span{color:var(--muted);text-decoration:none;font-size:.95rem}
+.fcol a:hover{color:var(--text)}
+.fcol a.btn{color:var(--on-orange);font-size:inherit}
+.fbrand img{height:34px;width:auto;align-self:flex-start}
+.fbrand .slogan{font-family:var(--display);font-weight:600;color:var(--text);margin:0}
+.fbrand .slogan em{font-style:normal;color:var(--orange)}
+.fsm{color:var(--muted);font-size:.9rem;margin:0;max-width:32ch}
+.fbrand .btn{align-self:flex-start;margin-top:4px}
+.soon{font-style:normal;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--orange) 20%,transparent);color:var(--orange-2);margin-left:4px}
+.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+
 /* ===== Barra flotante tipo app ===== */
 .tabbar{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:62;display:flex;align-items:center;gap:6px;padding:8px;border-radius:999px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);box-shadow:0 24px 60px -20px rgba(0,0,0,.55)}
 .tb{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:var(--text);background:transparent;border:0;text-decoration:none;transition:background .2s,transform .2s,color .2s}
@@ -554,7 +651,7 @@ footer{padding-bottom:110px}
   <span class="bc-core" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
 </a>
 
-<div class="sheet" id="sheet" hidden><nav aria-label="Secciones"><ol class="sheet-list" id="links"><li><a href="#servicios" data-sec="servicios"><span>Servicios</span><i aria-hidden="true">→</i></a></li><li><a href="#paquetes" data-sec="paquetes"><span>Paquetes</span><i aria-hidden="true">→</i></a></li><li><a href="#proceso" data-sec="proceso"><span>Cómo trabajamos</span><i aria-hidden="true">→</i></a></li><li><a href="#sectores" data-sec="sectores"><span>Sectores</span><i aria-hidden="true">→</i></a></li><li><a href="#contacto" data-sec="contacto"><span>Contacto</span><i aria-hidden="true">→</i></a></li><li class="sub"><a href="nosotros.html"><span>Nosotros</span><i aria-hidden="true">↗</i></a></li><li class="sub"><a href="cultura.html"><span>Cultura · Trabaja con nosotros</span><i aria-hidden="true">↗</i></a></li></ol></nav></div>
+<div class="sheet" id="sheet" hidden><nav aria-label="Secciones"><ol class="sheet-list" id="links"><li><a href="#multiplicadores" data-sec="multiplicadores"><span>Multiplicadores</span><i aria-hidden="true">→</i></a></li><li><a href="#caso" data-sec="caso"><span>Caso de éxito</span><i aria-hidden="true">→</i></a></li><li><a href="#modelos" data-sec="modelos"><span>Modelos de cierre</span><i aria-hidden="true">→</i></a></li><li><a href="#proceso" data-sec="proceso"><span>Cómo trabajamos</span><i aria-hidden="true">→</i></a></li><li><a href="#sectores" data-sec="sectores"><span>Sectores</span><i aria-hidden="true">→</i></a></li><li><a href="#contacto" data-sec="contacto"><span>Contacto</span><i aria-hidden="true">→</i></a></li><li class="sub"><a href="nosotros.html"><span>Nosotros</span><i aria-hidden="true">↗</i></a></li><li class="sub"><a href="cultura.html"><span>Cultura · Trabaja con nosotros</span><i aria-hidden="true">↗</i></a></li></ol></nav></div>
 <nav class="tabbar" aria-label="Navegación principal">
   <a class="tb" href="#inicio" data-cur="Inicio" aria-label="Inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></a>
   <a class="tb tb-ai" href="#chat" id="aiBtn" data-cur="Chatear" aria-label="Chatea con nuestra IA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></a>
@@ -616,56 +713,73 @@ footer{padding-bottom:110px}
   <!-- NOSOTROS -->
 
 
-  <!-- SERVICIOS -->
-  <section class="block" id="servicios">
+  <!-- MULTIPLICADORES -->
+  <section class="block" id="multiplicadores">
     <div class="wrap">
-      <div class="giant js-slide" aria-hidden="true">Servicios</div>
+      <div class="giant js-slide" aria-hidden="true">Multiplicadores</div>
       <div class="head">
-        <span class="eyebrow">Servicios</span>
-        <h2>Todo lo que tu área comercial necesita para <em>vender más</em>.</h2>
-        <p>Primero, lo que ganas. Después, cómo lo hacemos.</p>
+        <span class="eyebrow">Multiplicadores</span>
+        <h2>Un ecosistema 360° <em>para vender más</em></h2>
+        <p>Te acompañamos desde la captación hasta la fidelización.</p>
       </div>
-      <div class="benefits">
-        <div class="benefit"><span class="plus">+</span><b>Conoces mejor a tus clientes</b><span>Más y mejor información con encuestas.</span><button class="btn btn-ghost js-ask" style="margin-top:8px;align-self:flex-start;font-size:.8rem;padding:7px 12px" data-q="¿Cómo me ayudan a conocer mejor a mis clientes con encuestas?">Preguntar</button></div>
-        <div class="benefit"><span class="plus">+</span><b>Más ventas con mejor atención</b><span>Agendamos y confirmamos citas por ti.</span><button class="btn btn-ghost js-ask" style="margin-top:8px;align-self:flex-start;font-size:.8rem;padding:7px 12px" data-q="¿Cómo consigo más ventas con mejor atención y agendamiento de citas?">Preguntar</button></div>
-        <div class="benefit"><span class="plus">−</span><b>Menos clientes molestos</b><span>Atendemos reclamos a tiempo y bien.</span><button class="btn btn-ghost js-ask" style="margin-top:8px;align-self:flex-start;font-size:.8rem;padding:7px 12px" data-q="¿Cómo me ayudan a tener menos clientes molestos con la atención de reclamos?">Preguntar</button></div>
-        <div class="benefit"><span class="plus">+</span><b>Más ventas</b><span>Perfilamos prospectos y ofrecemos ventas adicionales.</span><button class="btn btn-ghost js-ask" style="margin-top:8px;align-self:flex-start;font-size:.8rem;padding:7px 12px" data-q="¿Cómo consigo más ventas con perfilamiento de prospectos y ventas adicionales?">Preguntar</button></div>
+      <div class="eco" id="eco">
+        <div class="eco-tabs" role="tablist" aria-label="Ecosistema 360°">
+          <button class="eco-tab" role="tab" aria-selected="true" aria-controls="eco1" id="t-eco1"><span class="et-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></span><span class="et-n">01</span><span class="et-t">Perfilar</span></button>
+          <button class="eco-tab" role="tab" aria-selected="false" aria-controls="eco2" id="t-eco2"><span class="et-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="et-n">02</span><span class="et-t">Convertir</span></button>
+          <button class="eco-tab" role="tab" aria-selected="false" aria-controls="eco3" id="t-eco3"><span class="et-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="7" rx="1.5"/><rect x="17.5" y="13" width="4" height="7" rx="1.5"/><path d="M20 20c0 1.5-2 2-5 2"/></svg></span><span class="et-n">03</span><span class="et-t">Incrementar valor</span></button>
+        </div>
+        <div class="eco-panel" role="tabpanel" id="eco1" aria-labelledby="t-eco1">
+          <div><h3>Solo prospectos con intención real</h3>
+          <ul class="eco-list"><li>Depuramos tu base de datos</li><li>Calificamos por intención de compra</li><li>Nos adaptamos a tu volumen</li></ul>
+          <div class="hit"><b>Para tu negocio</b>Prospectos calificados y listos para comprar.</div></div>
+          <div class="eco-viz" aria-hidden="true"><span style="width:100%">Base de prospectos</span><span style="width:80%">Filtro</span><span style="width:60%">Calificación</span><span class="o" style="width:42%">Listos</span></div>
+        </div>
+        <div class="eco-panel" role="tabpanel" id="eco2" aria-labelledby="t-eco2" hidden>
+          <div><h3>Cierres directos que suben tu facturación</h3>
+          <ul class="eco-list"><li>Venta entrante y saliente</li><li>Manejo de objeciones</li><li>Detectamos la necesidad real</li></ul>
+          <div class="hit"><b>Para tu negocio</b>Prospectos que se convierten en ventas efectivas.</div></div>
+          <div class="eco-viz big" aria-hidden="true"><b>Estrategia</b><small>alineada a resultados</small></div>
+        </div>
+        <div class="eco-panel" role="tabpanel" id="eco3" aria-labelledby="t-eco3" hidden>
+          <div><h3>Satisfacción que se vuelve recompra</h3>
+          <ul class="eco-list"><li>Ventas cruzadas y adicionales</li><li>Campañas a clientes fidelizados</li><li>Atención multicanal</li></ul>
+          <div class="hit"><b>Para tu negocio</b>Clientes que vuelven y un ticket más alto.</div></div>
+          <div class="eco-viz ring" aria-hidden="true"><b>360°</b><small>clientes fidelizados</small></div>
+        </div>
       </div>
-      <p class="sublabel">Nuestras líneas de servicio. Los detalles se definen en la Fotografía Comercial Xsell.</p>
-      <div class="grid grid-2">
-        <article class="card svc">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg></div>
-          <h3>Servicios comerciales</h3>
-          <p class="lead">Nos hacemos cargo por completo de tus canales de venta, remotos o presenciales.</p>
-          <ul><li>Equipo comercial que vende con tu marca</li><li>Más conversión, mejor valor y calidad en cada venta</li><li>Ideal si ya tienes o tendrás prospectos que atender</li></ul>
-          <dl class="meta"><div><dt>Tiempos</dt><dd class="v" style="margin:0">Se definen en la Fotografía Comercial</dd></div><div><dt>Forma de pago</dt><dd class="v" style="margin:0">Fijo + variable, luego PxQ</dd></div></dl>
-          <button class="btn btn-ghost js-ask" data-q="Quiero saber más sobre los servicios comerciales">Preguntar por este servicio</button>
-        </article>
-        <article class="card svc">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v7h14v-7M10 20v-4h4v4"/></svg></div>
-          <h3>Atención presencial</h3>
-          <p class="lead">Operamos tus puntos de atención presencial con enfoque en la venta.</p>
-          <ul><li>Personal dedicado a atender y vender</li><li>Convertimos centros de costo en centros que generan ingresos</li><li>Mejor satisfacción del cliente y mejor resultado económico</li></ul>
-          <dl class="meta"><div><dt>Tiempos</dt><dd class="v" style="margin:0">Se definen en la Fotografía Comercial</dd></div><div><dt>Forma de pago</dt><dd class="v" style="margin:0">Fijo + variable, luego PxQ</dd></div></dl>
-          <button class="btn btn-ghost js-ask" data-q="Quiero saber más sobre la atención presencial">Preguntar por este servicio</button>
-        </article>
-        <article class="card svc">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
-          <h3>Desarrollo de canales</h3>
-          <p class="lead">Te ayudamos a crear o mejorar a fondo un canal de atención o de ventas, operado por tu equipo.</p>
-          <ul><li>Planificación y control del canal</li><li>Selección y capacitación del personal</li><li>Supervisión y mejora de procesos</li></ul>
-          <dl class="meta"><div><dt>Tiempos</dt><dd class="v" style="margin:0">Se definen en la Fotografía Comercial</dd></div><div><dt>Forma de pago</dt><dd class="v" style="margin:0">Se define en la propuesta</dd></div></dl>
-          <button class="btn btn-ghost js-ask" data-q="Quiero saber más sobre el desarrollo de canales">Preguntar por este servicio</button>
-        </article>
-        <article class="card svc">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path d="M19 9h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2v3l-3-3h-4"/></svg></div>
-          <h3>Desarrollo de canales + operación parcial</h3>
-          <p class="lead">Desarrollamos tu canal y, además, operamos una parte del proceso por ti.</p>
-          <ul><li>Todo lo del desarrollo de canales</li><li>Nos hacemos cargo de la primera línea de contacto</li><li>Tu equipo se enfoca en lo que más valor genera</li></ul>
-          <dl class="meta"><div><dt>Tiempos</dt><dd class="v" style="margin:0">Se definen en la Fotografía Comercial</dd></div><div><dt>Forma de pago</dt><dd class="v" style="margin:0">Se define en la propuesta</dd></div></dl>
-          <button class="btn btn-ghost js-ask" data-q="Quiero saber más sobre el desarrollo de canales con operación parcial">Preguntar por este servicio</button>
-        </article>
+      <div class="channels" aria-label="Canales">
+        <span class="ch-l">Vendemos donde está tu cliente</span>
+        <span class="ch">WhatsApp</span><span class="ch">Redes sociales</span><span class="ch">Llamada</span><span class="ch">Web</span><span class="ch">Presencial</span>
       </div>
+      <div class="good">
+        <div class="good-h"><b>Hacemos buenas ventas</b><span>Ventas que se sostienen, no se caen ni se arrepienten.</span></div>
+        <ol class="good-steps"><li><i>1</i>Entender la necesidad real</li><li><i>2</i>Recomendar lo correcto</li><li><i>3</i>Cerrar con transparencia</li><li><i>4</i>Validar la satisfacción</li></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASO DE ÉXITO -->
+  <section class="block" id="caso">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Caso de éxito · Retail / Telco</span>
+        <h2>De una base sin orden a un <em>motor de ventas</em></h2>
+        <p>Mismo equipo de asesores. Un proceso profesional.</p>
+      </div>
+      <div class="case">
+        <div class="case-kpis">
+          <div class="kpi"><span class="kn"><b class="js-count" data-to="55">55</b>%</span><span class="kl">Tasa de contacto</span></div>
+          <div class="kpi"><span class="kn"><b class="js-count" data-to="70">70</b>%</span><span class="kl">Conversión de prospectos</span></div>
+          <p class="case-note">Base promedio: 600 prospectos al mes.</p>
+        </div>
+        <div class="case-chart" aria-label="Ventas mensuales: 2021 S/ 167K, 2022 S/ 270K, 2023 S/ 361K, 2024 S/ 385K">
+          <div class="bar-c"><span class="bv">S/ 167K</span><span class="bb" style="--h:43%"></span><span class="by">2021</span></div>
+          <div class="bar-c"><span class="bv">S/ 270K</span><span class="bb" style="--h:70%"></span><span class="by">2022</span></div>
+          <div class="bar-c"><span class="bv">S/ 361K</span><span class="bb" style="--h:94%"></span><span class="by">2023</span></div>
+          <div class="bar-c"><span class="bv">S/ 385K</span><span class="bb o" style="--h:100%"></span><span class="by">2024</span></div>
+        </div>
+      </div>
+      <p class="case-foot">Ventas mensuales que <b>más que se duplicaron</b>.</p>
     </div>
   </section>
 
@@ -687,41 +801,18 @@ footer{padding-bottom:110px}
     </div>
   </section>
 
-  <!-- PAQUETES -->
-  <section class="block" id="paquetes">
+  <!-- MODELOS DE CIERRE -->
+  <section class="block" id="modelos">
     <div class="wrap">
-      <div class="giant js-slide" aria-hidden="true">Paquetes</div>
+      <div class="giant js-slide" aria-hidden="true">Cierres</div>
       <div class="head">
-        <span class="eyebrow">Paquetes</span>
-        <h2>Tres formas de crecer. <em>Una misma meta.</em></h2>
-        <p>Sin montos fijos en la web: cada propuesta se arma a tu medida después de la Fotografía Comercial Xsell.</p>
+        <span class="eyebrow">Modelos de cierre</span>
+        <h2>Una forma de vender <em>para cada negocio</em></h2>
       </div>
-      <div class="grid grid-3">
-        <article class="card pkg">
-          <span class="lvl">Básico</span>
-          <h3>Desarrollo</h3>
-          <p class="for">Para quien quiere mejorar su canal con su propio equipo.</p>
-          <div class="svc"><ul><li>Planificación y control del canal</li><li>Selección y capacitación del personal</li><li>Supervisión y mejora de procesos</li></ul></div>
-          <span class="price">Propuesta a tu medida</span>
-          <button class="btn btn-ghost js-ask" data-q="Quiero saber más del paquete Desarrollo">Preguntar por Desarrollo</button>
-        </article>
-        <article class="card pkg">
-          <span class="lvl">Intermedio</span>
-          <h3>Desarrollo + Operación</h3>
-          <p class="for">Para quien quiere apoyo en el día a día sin soltar todo el canal.</p>
-          <div class="svc"><ul><li>Todo lo del paquete Desarrollo</li><li>Operamos la primera línea de contacto</li><li>Seguimiento de indicadores en conjunto</li></ul></div>
-          <span class="price">Propuesta a tu medida</span>
-          <button class="btn btn-ghost js-ask" data-q="Quiero saber más del paquete Desarrollo + Operación">Preguntar por este paquete</button>
-        </article>
-        <article class="card pkg featured">
-          <span class="badge">El más completo</span>
-          <span class="lvl">Completo</span>
-          <h3>Nos hacemos cargo</h3>
-          <p class="for">Para quien quiere un canal de ventas completo, enfocado en resultados.</p>
-          <div class="svc"><ul><li>Operamos todo tu canal, remoto o presencial</li><li>Equipo comercial dedicado a tu marca</li><li>Fijo + variable, y luego pago por resultado (PxQ)</li><li>Informe mensual de resultados</li></ul></div>
-          <span class="price">Propuesta a tu medida</span>
-          <button class="btn btn-orange js-ask" data-q="Quiero saber más del paquete Nos hacemos cargo">Preguntar por este paquete</button>
-        </article>
+      <div class="grid grid-3 models">
+        <article class="card model"><span class="mk">Campaña producto B2C</span><h3 class="mt o">Cierre ágil</h3><dl><div><dt>Ticket</dt><dd>Medio</dd></div><div><dt>Cierre</dt><dd>En la primera llamada</dd></div></dl><p class="mp">Urgencia y beneficios inmediatos.</p><button class="btn btn-ghost js-ask" data-q="¿Cómo funciona el modelo de cierre ágil?">Preguntar</button></article>
+        <article class="card model featured-m"><span class="mk">Venta consultiva B2C</span><h3 class="mt">Asesoría experta</h3><dl><div><dt>Ticket</dt><dd>Alto</dd></div><div><dt>Cierre</dt><dd>Ciclo corto</dd></div></dl><p class="mp">Seguimiento consultivo y agendamiento de pruebas.</p><button class="btn btn-orange js-ask" data-q="¿Cómo funciona el modelo de asesoría experta?">Preguntar</button></article>
+        <article class="card model"><span class="mk">Gestión B2B / Empresas</span><h3 class="mt p">Flujo cíclico</h3><dl><div><dt>Volumen</dt><dd>Alto</dd></div><div><dt>Cierre</dt><dd>Ciclo gestionado</dd></div></dl><p class="mp">Propuesta de valor B2B y aprobación multinivel.</p><button class="btn btn-ghost js-ask" data-q="¿Cómo funciona el modelo de flujo cíclico B2B?">Preguntar</button></article>
       </div>
     </div>
   </section>
@@ -765,17 +856,12 @@ footer{padding-bottom:110px}
       <div class="giant js-slide" aria-hidden="true">Sectores</div>
       <div class="head">
         <span class="eyebrow">Sectores</span>
-        <h2>Sectores donde <em>vendemos</em> mejor.</h2>
-        <p>Trabajamos con empresas de distintos rubros. Estos son los sectores en los que hoy nos especializamos.</p>
+        <h2>Sectores <em>especialistas</em></h2>
       </div>
       <div class="grid clients">
-        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 11l1.6-4.2A2 2 0 0 1 8.5 5.5h7a2 2 0 0 1 1.9 1.3L19 11h.5A1.5 1.5 0 0 1 21 12.5V16a1 1 0 0 1-1 1h-1v1.5a1.5 1.5 0 0 1-3 0V17H8v1.5a1.5 1.5 0 0 1-3 0V17H4a1 1 0 0 1-1-1v-3.5A1.5 1.5 0 0 1 4.5 11zm2.2 0h9.6l-1.1-3a.8.8 0 0 0-.7-.5H9a.8.8 0 0 0-.7.5zM7 14.8a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6zm10 0a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6z"/></svg></span><b>Automotriz</b><span>Concesionarias, posventa y repuestos</span></div>
-        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16l1 4.5a3 3 0 0 1-5 2.2 3 3 0 0 1-4 0 3 3 0 0 1-4 0 3 3 0 0 1-5-2.2zM5 12.6a5 5 0 0 0 3 .2V19h3v-4h2v4h3v-6.2a5 5 0 0 0 3-.2V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/></svg></span><b>Retail</b><span>Tiendas y cadenas comerciales</span></div>
-        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 .8L6.4 6H21a1 1 0 0 1 1 1.2l-1.5 7a1 1 0 0 1-1 .8H8.2l.3 1.5H19a1 1 0 1 1 0 2H7.7a1 1 0 0 1-1-.8L4.2 5H3a1 1 0 0 1-1-1zm7 17a1.6 1.6 0 1 0 0-3.2A1.6 1.6 0 0 0 9 21zm9 0a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2z"/></svg></span><b>Comercio electrónico</b><span>Ventas en línea</span></div>
-        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.5 2.2a1 1 0 0 1 1 0l8.5 4.6A1 1 0 0 1 20.5 9h-17A1 1 0 0 1 3 6.8zM5 10.5h3v7H5zm5.5 0h3v7h-3zm5.5 0h3v7h-3zM3 19h18a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"/></svg></span><b>Intermediación financiera</b><span>Bancos, financieras y seguros</span></div>
-        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9 22l10-12h-6.5z"/></svg></span><b>Energía</b><span>Empresas del sector energético</span></div>
-        <div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2s-6 6.6-6 11a6 6 0 0 0 12 0c0-4.4-6-11-6-11zm-2.5 11.5a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 0 1 0 2 4 4 0 0 1-4-4 1 1 0 0 1 1-1z"/></svg></span><b>Hidrocarburos y metalmecánica</b><span>Industria y combustibles</span></div>
+<div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19a9 9 0 0 1 0-12.7M8 16a5 5 0 0 1 0-7M19 19a9 9 0 0 0 0-12.7M16 16a5 5 0 0 0 0-7"/><circle cx="12" cy="12.5" r="1.8"/></svg></span><b>Telecomunicaciones</b></div><div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v7h14v-7"/></svg></span><b>Retail</b></div><div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6"/><path d="M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18"/></svg></span><b>Banca y seguros</b></div><div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l1.5-5a2 2 0 0 1 2-1.5h7a2 2 0 0 1 2 1.5L19 13"/><rect x="3" y="13" width="18" height="5" rx="2"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg></span><b>Automotriz</b></div><div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/><path d="M7 12h3l1.5-2.5L13 14l1.5-2H17"/></svg></span><b>Salud</b></div><div class="card client"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9-4 9 4-9 4z"/><path d="M3 8v8l9 4 9-4V8M12 12v8"/></svg></span><b>Consumo masivo</b></div>
       </div>
+      <p class="more-sec">…y muchos sectores más</p>
     </div>
   </section>
 
@@ -787,7 +873,7 @@ footer{padding-bottom:110px}
       <div class="contact">
         <div>
           <span class="eyebrow">Contacto</span>
-          <h2 style="margin-top:10px">¿Listo para <em>multiplicar</em> tus resultados?</h2>
+          <span class="pre-h">No somos proveedores</span><h2 style="margin-top:6px">Somos socios <em>estratégicos</em></h2>
           <p class="intro">Agenda tu Fotografía Comercial Xsell, sin costo: en 72 horas vemos cómo está hoy tu negocio y te proponemos cómo crecer.</p>
           <button class="btn btn-orange js-diag" type="button" style="margin-top:22px">Realiza tu diagnóstico gratuito</button>
         </div>
@@ -835,12 +921,13 @@ footer{padding-bottom:110px}
   </form>
 </dialog>
 <footer>
-  <div class="wrap foot">
-    <img src="logo.webp" alt="Xsell" width="77" height="28">
-    <span class="slogan">Multiplicamos <em>tus resultados</em></span>
-    <a class="foot-link" href="cultura.html">Trabaja con nosotros</a>
-    <span>© <span id="yr">2026</span> Xsell. Lima, Perú.</span>
+  <div class="wrap fgrid">
+    <div class="fcol fbrand"><img src="logo.webp" alt="Xsell" width="96" height="35"><p class="slogan">Multiplicamos <em>tus resultados</em></p><p class="fsm">Agencia de ventas. 14 años convirtiendo oportunidades en ventas.</p><button class="btn btn-orange js-diag" type="button">Diagnóstico gratuito</button></div>
+    <div class="fcol"><h4>Explora</h4><a href="#multiplicadores">Multiplicadores</a><a href="#caso">Caso de éxito</a><a href="#modelos">Modelos de cierre</a><a href="#proceso">Cómo trabajamos</a><a href="#sectores">Sectores</a></div>
+    <div class="fcol"><h4>Xsell</h4><a href="nosotros.html">Nosotros</a><a href="cultura.html">Trabaja con nosotros</a><a href="#contacto">Contacto</a><a href="#chat" class="js-ai">Pregúntanos en el chat</a></div>
+    <div class="fcol"><h4>Presencia</h4><span>Perú</span><span>Argentina</span><span>Chile <em class="soon">Próximamente</em></span></div>
   </div>
+  <div class="wrap fbot"><span>© <span id="yr">2026</span> Xsell. Todos los derechos reservados.</span><span>Lima, Perú</span></div>
 </footer>
 
 <script>
@@ -851,18 +938,16 @@ const CONFIG = {
   diagnostico: { correo: "" } // correo que recibe las solicitudes de diagnóstico
 };
 
-const KB = `EMPRESA: Xsell. Agencia de ventas en Perú con 14 años en el mercado. Socio comercial que se hace cargo de canales de venta y atención. Lema: "Multiplicamos tus resultados". Propósito: "Mejores personas, mejores negocios"; multiplicar oportunidades y convertirlas en crecimiento sostenible para los clientes. Valores: hacer el trabajo mejor y distinto (mejor en resultados y procesos, distinto porque probamos fórmulas nuevas), nos hacemos cargo, profesionalismo, respeto por la gente. Fortalezas: adaptabilidad, valentía para probar cosas nuevas, enfoque en el cliente, agilidad. Xsell es una agencia de ventas, NO una empresa de tecnología: habla de resultados y ventas, no de tecnología. No menciones nombres anteriores de la empresa.
+const KB = `EMPRESA: Xsell. Agencia de ventas en Perú con 14 años en el mercado. Somos socios estratégicos, no proveedores: nos hacemos cargo de la venta para empresas que venden buenos productos y servicios. Lema: "Multiplicamos tus resultados". Presencia: Perú y Argentina; Chile próximamente. Xsell es una agencia de ventas: habla de ventas y resultados, no de tecnología.
+QUÉ HACEMOS (sección "Multiplicadores", un ecosistema 360° desde la captación hasta la fidelización): 1) Perfilar: depuramos la base de datos del cliente, calificamos a los prospectos por intención real de compra y nos adaptamos a su volumen; resultado: prospectos calificados y listos para comprar. 2) Convertir: cierres directos en venta entrante y saliente, manejo de objeciones, detección de la necesidad real y generación de urgencia; resultado: más ventas efectivas y facturación. 3) Incrementar valor: ventas cruzadas y adicionales después de la compra, campañas a clientes fidelizados, promociones de reactivación y atención multicanal hasta la resolución; resultado: recompra y ticket más alto. Canales: WhatsApp, redes sociales, llamada, web y presencial, con el historial del cliente unificado. Entregamos informes mensuales, trimestrales y semestrales con indicadores, causas y acciones sugeridas.
+HACEMOS BUENAS VENTAS: entender la necesidad real, recomendar lo correcto, cerrar con transparencia y validar la satisfacción. Ventas que no se caen ni generan reclamos.
+MODELOS DE CIERRE: Cierre ágil (campaña de producto B2C, ticket medio, cierre en la primera llamada, palancas: urgencia y beneficios inmediatos). Asesoría experta (venta consultiva B2C, ticket alto, ciclo corto, palancas: seguimiento consultivo, agendamiento de pruebas, asesoría técnica). Flujo cíclico (gestión B2B / empresas, volumen alto, ciclo gestionado, palancas: propuesta de valor B2B, negociación de volumen, aprobación multinivel).
+CASO DE ÉXITO (retail / telco, sin nombre de cliente): partía de un centro de contacto interno sin coordinación; logramos 55% de tasa de contacto y 70% de conversión de prospectos (base promedio de 600 al mes); las ventas mensuales pasaron de S/ 167K en 2021 a S/ 385K en 2024, con la misma cantidad de asesores.
 MODELO DE TRABAJO Y PAGO: 1) Fotografía Comercial Xsell: no tiene costo; en 72 horas levantamos la información, vemos cómo se encuentra hoy el negocio del cliente y entendemos su flujo comercial. 2) Evaluamos la viabilidad del modelo para ambos negocios. 3) Arrancamos con un fijo (fee) más un variable por resultados. 4) Finalmente, pago por resultado (PxQ: precio por cantidad de resultados logrados). Usa siempre el nombre exacto "Fotografía Comercial Xsell".
-LÍNEAS DE SERVICIO: 1) Servicios comerciales: nos hacemos cargo por completo de canales de venta remotos o presenciales que ya tienen o tendrán prospectos, para mejorar la conversión, el valor y la calidad de las ventas. 2) Atención presencial: operamos canales presenciales dedicados a la venta, o que quieren pasar de ser centros de costo a centros que generan ingresos, mejorando satisfacción y resultado económico. 3) Desarrollo de canales: ayudamos a implementar o mejorar a fondo un canal de atención o ventas que opera el cliente; aportamos planificación, control, selección, capacitación y supervisión. 4) Desarrollo de canales + operación parcial: además operamos una parte del proceso, como la primera línea. Los tiempos se definen en la Fotografía Comercial Xsell.
-PAQUETES (sin montos): Básico "Desarrollo" (planificación, control, selección, capacitación, supervisión). Intermedio "Desarrollo + Operación" (lo anterior más operación de la primera línea). Completo "Nos hacemos cargo" (operamos todo el canal remoto o presencial, equipo dedicado, fijo + variable y luego pago por resultado PxQ, informe mensual).
-PROCESO: 1 Fotografía Comercial Xsell, 2 Evaluación de viabilidad para ambos negocios, 3 Fijo (fee) + variable, 4 Pago por resultado (PxQ). Comunicación: un asesor comercial como contacto directo, métricas claras, informe mensual.
-SECTORES: automotriz (concesionarias, posventa, repuestos), retail, comercio electrónico, intermediación financiera, energía, hidrocarburos y metalmecánica.
-CLIENTES: no se mencionan nombres de clientes. Si preguntan, di que por confidencialidad no compartimos nombres y menciona los sectores.
-BENEFICIOS PARA EL CLIENTE (hablar primero de esto, luego de cómo se logra): más y mejor información de tus clientes (encuestas); más ventas con mejor atención (agendamiento y confirmación de citas); menos clientes molestos (atención de reclamos); más ventas (perfilamiento de prospectos y ventas adicionales a clientes actuales).
-CULTURA DE XSELL: la experiencia de trabajar en Xsell se cuenta como un viaje. Siempre di "integrantes", nunca "empleados" ni "trabajadores". No uses la palabra "popular". Nunca uses los nombres "3bu", "tribu" ni "3eriza": son de la marca anterior.
-Primera parada, ¿por qué este viaje es diferente?: propósito "mejores personas, mejores negocios"; valores: mejor y distinto, nos hacemos cargo, profesionalismo, respeto por la gente. Meta: que 95% de integrantes sientan que subieron un escalón en su vida profesional en el último año.
-Segunda parada, ¿qué experiencias distintas vivirás?: ¿Cómo nos cuidamos? convenios y beneficios (sin detalle publicado: sugiere escribir al equipo). ¿Cómo te escuchamos? encuesta de clima "Potenciando mi viaje". ¿Cómo nos desarrollamos? "Academia Xsell", "Aprende+" y "Emprende Xsell". ¿Cómo nos mantenemos conectados? "La estrategia somos todos" y el reconocimiento "Estrellas de valor". No inventes detalles de estos programas más allá de su nombre y el grupo al que pertenecen.
-Si la persona quiere trabajar en Xsell, invítala a escribir por WhatsApp o a la sección Contacto.
+SECTORES: telecomunicaciones, retail, banca y seguros, automotriz, salud, consumo masivo, y muchos más.
+CLIENTES: no se mencionan nombres de clientes. Si preguntan, di que por confidencialidad no compartimos nombres y menciona los sectores y el caso de éxito.
+NO OFRECEMOS: encuestas a clientes, paquetes cerrados ni desarrollo de canales para que los opere el cliente. No los menciones.
+CULTURA DE XSELL: la experiencia de trabajar en Xsell se cuenta como un viaje. Siempre di "integrantes", nunca "empleados" ni "trabajadores". No uses la palabra "popular". Nunca uses los nombres "3bu", "tribu" ni "3eriza": son de la marca anterior. Propósito "mejores personas, mejores negocios"; valores: mejor y distinto, nos hacemos cargo, profesionalismo, respeto por la gente. Programas: encuesta de clima "Potenciando mi viaje", "Academia Xsell", "Aprende+", "Emprende Xsell", "La estrategia somos todos" y "Estrellas de valor". Si la persona quiere trabajar en Xsell, invítala a la página Cultura o a escribir por WhatsApp.
 CONTACTO: Ingrid, Asesora Comercial (por WhatsApp o agendando una reunión en la sección Contacto).`;
 
 const SYSTEM = `Eres el asistente de la web de Xsell. Respondes en español, con tono cercano y experto, en 3 a 5 frases cortas y en palabras simples (sin anglicismos ni jerga).
@@ -881,7 +966,7 @@ ${KB}`;
 /* Respuestas predefinidas por palabras clave (si el asistente no está disponible) */
 const FALLBACK = [
   {k:["fotografía","fotografia","foto comercial","diagnóstico","diagnostico"],
-   a:"La Fotografía Comercial Xsell es nuestro primer paso y no tiene costo: en 72 horas levantamos la información, miramos cómo se encuentra hoy tu negocio y entendemos tu flujo comercial de punta a punta. Con esa foto evaluamos si el modelo es viable para ambos y te proponemos cómo trabajar. Agenda tu Fotografía Comercial Xsell y empezamos."},
+   a:"La Fotografía Comercial Xsell es nuestro primer paso y no tiene costo: en 72 horas levantamos la información, miramos cómo se encuentra hoy tu negocio y entendemos tu flujo comercial de punta a punta. Con esa foto evaluamos si el modelo es viable para ambos y te proponemos cómo trabajar. Pide tu diagnóstico gratuito y empezamos."},
   {k:["cuidan","cuidamos","convenio","beneficios para","bienestar"],
    a:"En Xsell cuidamos a nuestros integrantes con convenios y beneficios pensados para ellos y sus familias. Para conocer el detalle actualizado, lo mejor es conversarlo directamente con nuestro equipo. Escríbenos por WhatsApp y te contamos."},
   {k:["escuchan","escuchamos","clima","voz","opinión","opinion"],
@@ -893,41 +978,41 @@ const FALLBACK = [
   {k:["diferente","cultura","valores","propósito","proposito","trabajar en xsell","trabajar con ustedes","postular","ser parte","integrante"],
    a:"Trabajar en Xsell es un viaje, y es diferente porque nuestro propósito es mejores personas, mejores negocios. Creemos en hacer las cosas mejor y distinto, en hacernos cargo, en el profesionalismo y en el respeto por la gente. Nuestra meta es que 95% de integrantes sientan que subieron un escalón en su vida profesional cada año. Si quieres ser parte del viaje, escríbenos por WhatsApp."},
   {k:["qué gana","que gana","beneficio","ganar","ventaja","ayudarme a vender","vender más","vender mas"],
-   a:"Con Xsell, tu empresa gana un aliado comercial enfocado en impulsar tus ventas. Te ayudamos a aprovechar mejor tus oportunidades de negocio, fortalecer tu proceso comercial y convertir más prospectos en clientes, con equipos especializados y resultados medibles. Tú te enfocas en hacer crecer tu negocio; nosotros te ayudamos a vender más. ¿Agendamos tu Fotografía Comercial Xsell?"},
-  {k:["encuesta","información de mis clientes","conocer mejor"],
-   a:"Con encuestas a tus clientes obtienes más y mejor información para decidir: qué valoran, qué les molesta y qué los haría comprar más. Nosotros nos hacemos cargo de aplicarlas y de entregarte resultados claros. Agenda tu Fotografía Comercial Xsell y armamos el plan."},
-  {k:["cita","agend","atención y","mejor atención"],
-   a:"Una mejor atención se convierte en más ventas: agendamos y confirmamos citas para que tus clientes lleguen y compren. Nos hacemos cargo de ese contacto con tu marca y medimos los resultados. Agenda tu Fotografía Comercial Xsell y lo vemos para tu negocio."},
-  {k:["reclamo","molestos","quejas","postventa","posventa"],
-   a:"Atendemos los reclamos a tiempo y bien, para que tengas menos clientes molestos y más clientes que vuelven. Nos hacemos cargo de ese canal con tu marca y te mostramos los resultados. Agenda tu Fotografía Comercial Xsell y revisamos tu caso."},
-  {k:["perfil","venta adicional","ventas adicionales","venta cruzada","upsell"],
-   a:"Para vender más, perfilamos a tus prospectos y priorizamos a quienes tienen más probabilidad de comprar. Además ofrecemos ventas adicionales a tus clientes actuales. Llegamos a pago por resultado, así que ganamos cuando tú ganas. Agenda tu Fotografía Comercial Xsell."},
+   a:"Con Xsell, tu empresa gana un aliado comercial enfocado en impulsar tus ventas. Perfilamos tus prospectos, los convertimos en ventas y después hacemos que tus clientes vuelvan a comprar, con un equipo especializado y resultados medibles. Tú te enfocas en hacer crecer tu negocio; nosotros te ayudamos a vender más. ¿Pides tu diagnóstico gratuito?"},
+  {k:["perfil","base de datos","base","calific","intención","intencion","prospectos fríos","prospectos frios"],
+   a:"En la etapa Perfilar depuramos tu base de datos y calificamos a cada prospecto por su intención real de compra. Así tu equipo solo invierte tiempo en quienes están listos para comprar. Pide tu Fotografía Comercial Xsell sin costo y revisamos tu base."},
+  {k:["convert","cierre","cerrar","objecion","objeción","saliente","entrante","facturación","facturacion"],
+   a:"En la etapa Convertir hacemos cierres directos en venta entrante y saliente: detectamos la necesidad real, manejamos objeciones y generamos sentido de oportunidad. El resultado son prospectos que se convierten en ventas efectivas. ¿Agendamos tu diagnóstico gratuito?"},
+  {k:["recompra","fideliz","ticket","venta cruzada","ventas adicionales","venta adicional","reactiv","incrementar valor"],
+   a:"En la etapa Incrementar valor hacemos que tus clientes vuelvan: ventas cruzadas y adicionales, campañas a clientes fidelizados y atención multicanal hasta resolver cada caso. Así sube la recompra y el ticket promedio. Pide tu Fotografía Comercial Xsell y vemos tu oportunidad."},
+  {k:["buenas ventas","calidad","transparen","satisfac","reclamo","se caen","arrepient"],
+   a:"Hacemos buenas ventas: entendemos la necesidad real, recomendamos lo correcto, cerramos con transparencia y validamos la satisfacción. Son ventas que se sostienen y no generan reclamos, y cuidan tu marca. ¿Conversamos en tu diagnóstico gratuito?"},
+  {k:["modelo","cierre ágil","cierre agil","asesoría experta","asesoria experta","flujo cíclico","flujo ciclico","b2c","b2b"],
+   a:"Trabajamos con tres modelos de cierre: Cierre ágil, para campañas de producto con cierre en la primera llamada; Asesoría experta, para ventas consultivas de ticket alto; y Flujo cíclico, para ventas a empresas con aprobación en varios niveles. En la Fotografía Comercial Xsell definimos cuál encaja con tu negocio."},
+  {k:["caso","éxito","exito","resultados reales","ejemplo","han logrado"],
+   a:"Un caso en retail y telecomunicaciones: partimos de un centro de contacto sin orden y logramos 55% de tasa de contacto y 70% de conversión de prospectos. Las ventas mensuales pasaron de S/ 167K en 2021 a S/ 385K en 2024, con el mismo número de asesores. ¿Vemos qué podemos lograr con tu empresa?"},
+  {k:["canal","whatsapp","redes","llamada","omnicanal","presencial","tienda"],
+   a:"Vendemos donde está tu cliente: WhatsApp, redes sociales, llamadas, web y atención presencial, con su historial unificado para que pueda empezar en un canal y cerrar en otro. Pide tu diagnóstico gratuito y vemos qué canales te conviene activar."},
   {k:["precio","cuesta","costo","cuánto","cuanto","tarifa","monto","presupuesto","cobran"],
-   a:"Cada propuesta se arma según tu negocio, por eso no publicamos montos. Lo que sí te adelantamos: arrancamos con un fijo (fee) más un variable, y con la operación madura pasamos a pago por resultado (PxQ). Agenda tu Fotografía Comercial Xsell y te preparamos una propuesta a tu medida."},
-  {k:["pago","hito","variable","resultado","fijo","kpi","indicador"],
-   a:"Primero hacemos la Fotografía Comercial Xsell para entender tu negocio y evaluamos que el modelo sea viable para ambos. Luego arrancamos con un fijo (fee) más un variable por resultados. Con la operación madura, pasamos a pago por resultado (PxQ): pagas un precio por cada resultado logrado. ¿Agendamos tu Fotografía Comercial?"},
-  {k:["cliente","marcas","empresas con las","referencia","casos","han trabajado","trabajado con"],
-   a:"Por confidencialidad no compartimos los nombres de nuestros clientes. Sí te podemos contar que nos especializamos en automotriz, retail, comercio electrónico, intermediación financiera, energía, hidrocarburos y metalmecánica. En tu Fotografía Comercial Xsell te contamos cómo trabajaríamos con tu empresa."},
-  {k:["sector","rubro","industria","automotriz","retail","banca","financ","energ","hidrocarb","metal","comercio electr"],
-   a:"Nos especializamos en automotriz, retail y comercio electrónico, y también trabajamos con intermediación financiera, energía, hidrocarburos y metalmecánica. Si tu empresa está en otro rubro, igual podemos conversar. Agenda una reunión y vemos cómo ayudarte."},
-  {k:["presencial","tienda","punto de venta","puntos de atención","puntos de atencion","atienden","no venden","centro de costo"],
-   a:"Para eso está nuestra línea de atención presencial: operamos tus puntos de atención con enfoque en la venta. La idea es que dejen de ser solo un costo y empiecen a generar ingresos, con clientes más satisfechos. Agenda tu Fotografía Comercial Xsell y revisamos tu caso."},
-  {k:["mejorar","no sé cómo","no se como","desarroll","capacita","selección","seleccion","supervis","mi equipo","propio equipo"],
-   a:"Con nuestro desarrollo de canales te ayudamos a mejorar tu canal de ventas o atención mientras lo opera tu equipo: planificación, control, selección, capacitación y supervisión. Si necesitas más apoyo, también podemos operar la primera línea por ti. El siguiente paso es tu Fotografía Comercial Xsell."},
-  {k:["servicios comerciales","enfrí","enfri","pierdo","perdemos","seguimiento","prospecto","interesados","conversión","conversion"],
-   a:"Eso pasa cuando nadie se hace cargo a tiempo de cada interesado. Con nuestros servicios comerciales operamos tu canal de ventas, remoto o presencial, para mejorar la conversión y no dejar oportunidades en el camino. Agenda una reunión y revisamos dónde se te están yendo las ventas."},
-  {k:["planilla","sin contratar","sin aumentar","costos fijos","no tengo equipo","sin equipo","tercerizar","tercerizad"],
-   a:"Con Xsell vendes más sin sumar personal a tu planilla: nos hacemos cargo de tu canal de ventas con un equipo que trabaja con tu marca. Arrancamos con un fijo más un variable y, con la operación madura, pasamos a pago por resultado (PxQ). Agenda tu Fotografía Comercial Xsell y vemos qué paquete te conviene."},
-  {k:["paquete","plan","básico","basico","intermedio","completo","operación","operacion","nos hacemos cargo"],
-   a:"Tenemos tres niveles: Desarrollo, para mejorar tu canal con tu propio equipo; Desarrollo + Operación, donde además operamos la primera línea; y Nos hacemos cargo, donde operamos todo tu canal. Ninguno tiene un monto fijo, porque lo armamos a tu medida. Agenda tu Fotografía Comercial Xsell y te recomendamos el ideal."},
+   a:"Cada propuesta se arma según tu negocio, por eso no publicamos montos. Lo que sí te adelantamos: arrancamos con un fijo (fee) más un variable, y con la operación madura pasamos a pago por resultado (PxQ). Pide tu Fotografía Comercial Xsell, que no tiene costo, y te preparamos una propuesta a tu medida."},
+  {k:["pago","hito","variable","resultado","fijo","pxq"],
+   a:"Primero hacemos la Fotografía Comercial Xsell para entender tu negocio y evaluamos que el modelo sea viable para ambos. Luego arrancamos con un fijo (fee) más un variable por resultados. Con la operación madura, pasamos a pago por resultado (PxQ): pagas un precio por cada resultado logrado. ¿Pides tu diagnóstico gratuito?"},
+  {k:["cliente","marcas","empresas con las","referencia","han trabajado","trabajado con"],
+   a:"Por confidencialidad no compartimos los nombres de nuestros clientes. Trabajamos con empresas de telecomunicaciones, retail, banca y seguros, automotriz, salud y consumo masivo, entre otras. Si quieres, te contamos un caso de éxito en tu Fotografía Comercial Xsell."},
+  {k:["sector","rubro","industria","automotriz","retail","banca","seguros","telecom","salud","consumo"],
+   a:"Somos especialistas en telecomunicaciones, retail, banca y seguros, automotriz, salud y consumo masivo, y trabajamos con muchos sectores más. Si tu empresa está en otro rubro, igual conversamos. Pide tu diagnóstico gratuito."},
+  {k:["país","pais","perú","peru","argentina","chile","latam","dónde están","donde estan"],
+   a:"Operamos en Perú y Argentina, y muy pronto en Chile. Así acompañamos a empresas que venden en mercados competitivos de la región. ¿Agendamos tu Fotografía Comercial Xsell?"},
+  {k:["planilla","sin contratar","sin aumentar","costos fijos","no tengo equipo","sin equipo","tercerizar","tercerizad","fuerza de ventas"],
+   a:"Con Xsell vendes más sin sumar personal a tu planilla: nos hacemos cargo de tu venta con un equipo que trabaja con tu marca. Arrancamos con un fijo más un variable y, con la operación madura, pasamos a pago por resultado (PxQ). Pide tu diagnóstico gratuito."},
   {k:["medi","métrica","metrica","reporte","informe","indicadores","cómo vamos"],
-   a:"Siempre sabes cómo vamos: tienes un asesor comercial como contacto directo, métricas claras y un informe mensual de resultados. Con esos datos ajustamos el trabajo. Agenda una reunión y te mostramos cómo sería el seguimiento para tu empresa."},
+   a:"Siempre sabes cómo vamos: te enviamos informes mensuales con indicadores, causas de las variaciones y acciones sugeridas, además de reportes trimestrales y semestrales. Pide tu Fotografía Comercial Xsell y te mostramos cómo sería para tu empresa."},
   {k:["empez","empiez","comenzar","inicio","proceso","cómo trabajan","como trabajan","pasos"],
-   a:"Empezamos con la Fotografía Comercial Xsell: vemos cómo está hoy tu negocio y entendemos tu flujo comercial. Luego evaluamos que el modelo sea viable para ambos, arrancamos con un fijo más un variable y llegamos a pago por resultado (PxQ). El primer paso es agendar tu Fotografía Comercial."},
-  {k:["qué hace","que hace","quiénes","quienes","xsell","agencia","nosotros","servicio"],
-   a:"Xsell es una agencia de ventas con 14 años en el mercado. Nos hacemos cargo de canales de venta y atención, remotos o presenciales, y también ayudamos a desarrollar los canales que opera tu equipo. Llegamos a pago por resultado, porque nuestra meta es multiplicar tus resultados. ¿Agendamos tu Fotografía Comercial Xsell?"},
+   a:"Empezamos con la Fotografía Comercial Xsell: sin costo, en 72 horas vemos cómo está tu negocio y entendemos tu flujo comercial. Luego evaluamos que el modelo sea viable para ambos, arrancamos con un fijo más un variable y llegamos a pago por resultado (PxQ). El primer paso es pedir tu diagnóstico gratuito."},
+  {k:["qué hace","que hace","quiénes","quienes","xsell","agencia","nosotros","servicio","multiplicador"],
+   a:"Xsell es una agencia de ventas con 14 años en el mercado. Somos socios estratégicos: perfilamos a tus prospectos, los convertimos en ventas y hacemos que tus clientes vuelvan a comprar, por todos los canales. Nuestra meta es una sola: multiplicar tus resultados. ¿Pides tu diagnóstico gratuito?"},
   {k:["contacto","hablar","llamar","teléfono","telefono","correo","ingrid","asesor"],
-   a:"Puedes hablar directamente con Ingrid, nuestra Asesora Comercial. Escríbele por WhatsApp o agenda una reunión desde la sección Contacto. Ella te orienta y prepara una propuesta a tu medida."}
+   a:"Puedes hablar directamente con Ingrid, nuestra Asesora Comercial. Escríbele por WhatsApp o pide tu diagnóstico gratuito desde la web. Ella te orienta y prepara una propuesta a tu medida."}
 ];
 const FALLBACK_DEFAULT = "Buena pregunta. Para darte una respuesta precisa, lo mejor es que lo converses con Ingrid, nuestra Asesora Comercial. En Xsell ayudamos a empresas a vender más con un equipo comercial que trabaja por resultados. ¿Agendamos tu Fotografía Comercial Xsell?";
 const OFFTOPIC = ["clima","fútbol","futbol","receta","chiste","película","pelicula","música","musica","horóscopo","horoscopo","tarea","poema"];
@@ -979,7 +1064,7 @@ function waLink(text){
   const anchors = [...document.querySelectorAll('#links a[href^="#"]')];
   const order = ["inicio"].concat(anchors.map(a => a.dataset.sec)), names = ["Inicio"].concat(anchors.map(a => a.querySelector("span").textContent));
   const setActive = id => {
-    const sec = id === "empezar" ? "servicios" : id;
+    const sec = id === "empezar" ? "multiplicadores" : id;
     anchors.forEach(a => a.classList.toggle("active", a.dataset.sec === sec));
     const i = order.indexOf(sec), sc = $("#sideCount"), sn = $("#sideName");
     if (i >= 0 && sc){ sc.textContent = String(i+1).padStart(2,"0") + " / " + String(order.length).padStart(2,"0"); sn.textContent = names[i]; }
@@ -1063,6 +1148,29 @@ function waLink(text){
   });
 })();
 
+/* Multiplicadores: pestañas del ecosistema 360° */
+(function(){
+  const tabs = [...document.querySelectorAll(".eco-tab")];
+  const show = t => { tabs.forEach(x => { const on = x === t; x.setAttribute("aria-selected", on); document.getElementById(x.getAttribute("aria-controls")).hidden = !on; }); };
+  tabs.forEach((t,i) => { t.addEventListener("click", () => show(t)); t.addEventListener("mouseenter", () => { if (matchMedia("(pointer: fine)").matches) show(t); });
+    t.addEventListener("keydown", e => { if (e.key === "ArrowRight" || e.key === "ArrowDown"){ e.preventDefault(); const n = tabs[(i+1)%tabs.length]; n.focus(); show(n); } if (e.key === "ArrowLeft" || e.key === "ArrowUp"){ e.preventDefault(); const n = tabs[(i+tabs.length-1)%tabs.length]; n.focus(); show(n); } }); });
+})();
+
+/* Caso de éxito: cifras que suben y barras que crecen */
+(function(){
+  const box = document.querySelector(".case"); if (!box) return;
+  const run = () => {
+    box.classList.add("on");
+    if (reduce) return;
+    document.querySelectorAll(".js-count").forEach(el => { const to = +el.dataset.to, t0 = performance.now(); (function step(t){ const k = Math.min(1, (t - t0) / 1200); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); })(t0); });
+  };
+  const io = new IntersectionObserver(es => { if (es[0].isIntersecting){ run(); io.disconnect(); } }, { threshold: .35 });
+  io.observe(box);
+})();
+
+/* Enlaces del pie que abren el chat */
+document.querySelectorAll(".js-ai").forEach(a => a.addEventListener("click", e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); setTimeout(() => $("#q").focus({ preventScroll: true }), reduce ? 0 : 450); }));
+
 /* Título que se escribe solo */
 (function(){
   const full = "Tu empresa tiene oportunidades. Nosotros las convertimos en resultados.", el = $("#typed");
@@ -1073,7 +1181,7 @@ function waLink(text){
 /* Texto de ejemplo que escribe y borra preguntas */
 (function(){
   const input = $("#q");
-  const samples = ["¿Qué es la Fotografía Comercial Xsell?","¿Cómo es el pago por resultados?","¿Pueden operar mis puntos de atención?"];
+  const samples = ["¿Qué es la Fotografía Comercial Xsell?","¿Cómo es el pago por resultados?","¿Cómo hacen buenas ventas?"];
   if (reduce) return;
   let si = 0, ci = 0, del = false;
   (function tick(){
@@ -1088,7 +1196,7 @@ function waLink(text){
 /* Preguntas para seguir el viaje */
 const NEXT = {
   cultura: ["¿Cómo cuidan a sus integrantes? ¿Qué convenios y beneficios tienen?","¿Cómo escuchan a sus integrantes?","¿Cómo se desarrollan los integrantes de Xsell?","¿Cómo se mantienen conectados en Xsell?","¿Por qué trabajar en Xsell es un viaje diferente?"],
-  empresa: ["¿Qué es la Fotografía Comercial Xsell?","¿Cómo puede Xsell ayudarme a vender más?","¿Cómo es el pago por resultados?","¿Qué paquete me conviene?"]
+  empresa: ["¿Qué es la Fotografía Comercial Xsell?","¿Cómo puede Xsell ayudarme a vender más?","¿Cómo es el pago por resultados?","¿Qué modelos de cierre manejan?"]
 };
 function isCulture(q){ return /cultura|cuidan|escuchan|desarrollan|conectados|integrante|trabajar en xsell|ser parte|valores|propósito|proposito|clima|viaje diferente/i.test(q); }
 function followups(q){
