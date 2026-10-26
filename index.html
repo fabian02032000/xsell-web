@@ -116,6 +116,9 @@ main{padding-top:72px}
 .ph-head{display:flex;align-items:center;gap:10px;padding:8px 16px 12px;border-bottom:1px solid var(--line)}
 .ph-head b{display:block;font-family:var(--display);font-size:.95rem}
 .ph-head span{font-size:.74rem;color:var(--ok)}
+.ph-head .st::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:6px;vertical-align:1px;box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 25%,transparent)}
+.ph-head .st.typing{color:var(--muted)}
+.ph-head .st.typing::before{background:var(--muted);box-shadow:none}
 .phone .chat{flex:1;overflow-y:auto;padding:14px 12px;margin:0;gap:10px;scroll-behavior:smooth}
 .phone .chat .bubble{max-width:92%;font-size:.88rem;padding:10px 12px}
 .phone .avatar{display:none}
@@ -567,6 +570,15 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
 .bb.o{background:linear-gradient(180deg,var(--orange-2),var(--orange))}
 .js .case:not(.on) .bb{transform:scaleY(.05)}
 .by{font-family:var(--display);font-weight:700;color:var(--muted)}
+.case-chart.c3{grid-template-columns:repeat(3,1fr)}
+.bb.p{background:repeating-linear-gradient(135deg,var(--orange-2) 0 10px,var(--orange) 10px 20px);opacity:.85}
+.case-steps{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:860px){.case-steps{grid-template-columns:1fr}}
+.case-steps.c3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:860px){.case-steps.c3{grid-template-columns:1fr}}
+.case-steps b{color:var(--text)}
+.case-steps li{padding:22px 24px;border-radius:20px;background:var(--surface);border:1.5px solid var(--line);color:var(--muted);line-height:1.55}
+.case-steps span{display:block;font-family:var(--display);font-weight:700;color:var(--orange);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
 .case-foot{margin-top:18px;font-size:1.05rem;color:var(--muted)}
 .case-foot b{color:var(--text)}
 
@@ -691,7 +703,7 @@ footer{padding-bottom:110px}
         <div class="stage">
           <div class="phone">
             <div class="ph-top"><span class="ph-notch"></span></div>
-            <div class="ph-head"><img src="isotipo.webp" alt="" width="28" height="24"><div><b>Xsell</b><span>Responde al instante</span></div></div>
+            <div class="ph-head"><img src="isotipo.webp" alt="" width="28" height="24"><div><b>Xsell</b><span id="chatStatus" class="st">En línea</span></div></div>
             <div class="chat" id="chat" aria-live="polite">
               <div class="msg bot"><div class="bubble"><div class="name">Xsell</div><div class="txt"><p>Hola. Cuéntanos sobre tu negocio y te decimos dónde están tus oportunidades.</p></div></div></div>
             </div>
@@ -762,24 +774,14 @@ footer{padding-bottom:110px}
   <section class="block" id="caso">
     <div class="wrap">
       <div class="head">
-        <span class="eyebrow">Caso de éxito · Retail / Telco</span>
-        <h2>De una base sin orden a un <em>motor de ventas</em></h2>
-        <p>Mismo equipo de asesores. Un proceso profesional.</p>
+        <span class="eyebrow">Caso real · Automotriz B2B</span>
+        <h2>El problema no era de volumen, era de <em>seguimiento</em></h2>
       </div>
-      <div class="case">
-        <div class="case-kpis">
-          <div class="kpi"><span class="kn"><b class="js-count" data-to="55">55</b>%</span><span class="kl">Tasa de contacto</span></div>
-          <div class="kpi"><span class="kn"><b class="js-count" data-to="70">70</b>%</span><span class="kl">Conversión de prospectos</span></div>
-          <p class="case-note">Base promedio: 600 prospectos al mes.</p>
-        </div>
-        <div class="case-chart" aria-label="Ventas mensuales: 2021 S/ 167K, 2022 S/ 270K, 2023 S/ 361K, 2024 S/ 385K">
-          <div class="bar-c"><span class="bv">S/ 167K</span><span class="bb" style="--h:43%"></span><span class="by">2021</span></div>
-          <div class="bar-c"><span class="bv">S/ 270K</span><span class="bb" style="--h:70%"></span><span class="by">2022</span></div>
-          <div class="bar-c"><span class="bv">S/ 361K</span><span class="bb" style="--h:94%"></span><span class="by">2023</span></div>
-          <div class="bar-c"><span class="bv">S/ 385K</span><span class="bb o" style="--h:100%"></span><span class="by">2024</span></div>
-        </div>
-      </div>
-      <p class="case-foot">Ventas mensuales que <b>más que se duplicaron</b>.</p>
+      <ol class="case-steps c3">
+        <li><span>El reto</span>Miles de consultas al año, pero nadie sabía qué pasaba con cada una después de asignarla al vendedor.</li>
+        <li><span>Qué hicimos</span>Sumamos seguimiento después de cada asignación: datos completos, insistencia y visibilidad de cada etapa.</li>
+        <li><span>Resultado</span><b>El cliente vio resultados y decidió invertir más.</b> Pasó de 3–4 a 15 campañas propias en un año y evalúa llevar el modelo a otro país.</li>
+      </ol>
     </div>
   </section>
 
@@ -845,7 +847,7 @@ footer{padding-bottom:110px}
       </ol>
       <div class="comms">
         <span class="big">Siempre sabes<br>cómo vamos</span>
-        <ul><li>Un asesor comercial como contacto directo</li><li>Métricas claras de cada etapa</li><li>Informe mensual de resultados</li></ul>
+        <ul><li>Un KAM como contacto directo</li><li>Métricas claras de cada etapa</li><li>Informe mensual de resultados</li></ul>
       </div>
     </div>
   </section>
@@ -942,11 +944,12 @@ const KB = `EMPRESA: Xsell. Agencia de ventas en Perú con 14 años en el mercad
 QUÉ HACEMOS (sección "Multiplicadores", un ecosistema 360° desde la captación hasta la fidelización): 1) Perfilar: depuramos la base de datos del cliente, calificamos a los prospectos por intención real de compra y nos adaptamos a su volumen; resultado: prospectos calificados y listos para comprar. 2) Convertir: cierres directos en venta entrante y saliente, manejo de objeciones, detección de la necesidad real y generación de urgencia; resultado: más ventas efectivas y facturación. 3) Incrementar valor: ventas cruzadas y adicionales después de la compra, campañas a clientes fidelizados, promociones de reactivación y atención multicanal hasta la resolución; resultado: recompra y ticket más alto. Canales: WhatsApp, redes sociales, llamada, web y presencial, con el historial del cliente unificado. Entregamos informes mensuales, trimestrales y semestrales con indicadores, causas y acciones sugeridas.
 HACEMOS BUENAS VENTAS: entender la necesidad real, recomendar lo correcto, cerrar con transparencia y validar la satisfacción. Ventas que no se caen ni generan reclamos.
 MODELOS DE CIERRE: Cierre ágil (campaña de producto B2C, ticket medio, cierre en la primera llamada, palancas: urgencia y beneficios inmediatos). Asesoría experta (venta consultiva B2C, ticket alto, ciclo corto, palancas: seguimiento consultivo, agendamiento de pruebas, asesoría técnica). Flujo cíclico (gestión B2B / empresas, volumen alto, ciclo gestionado, palancas: propuesta de valor B2B, negociación de volumen, aprobación multinivel).
-CASO DE ÉXITO (retail / telco, sin nombre de cliente): partía de un centro de contacto interno sin coordinación; logramos 55% de tasa de contacto y 70% de conversión de prospectos (base promedio de 600 al mes); las ventas mensuales pasaron de S/ 167K en 2021 a S/ 385K en 2024, con la misma cantidad de asesores.
+CASO REAL (automotriz B2B, sin nombre de cliente ni país): el cliente generaba unas 7,000 consultas al año con sus propias campañas, pero no sabía cuántas terminaban en venta porque nadie daba seguimiento después de asignarlas al vendedor. El problema no era de volumen, era de seguimiento. Xsell suma seguimiento después de cada asignación: cuida la calidad del dato, insiste las veces necesarias y da visibilidad de la etapa de cada interesado. Resultado: el cliente vio resultados y decidió invertir más; sus propias campañas pasaron de 3-4 en 2025 a 15 en 2026, duplicó la inversión por campaña, proyecta hasta 20 a fin de año y evalúa llevar el modelo a otro país. No des cifras de ventas de este caso.
 MODELO DE TRABAJO Y PAGO: 1) Fotografía Comercial Xsell: no tiene costo; en 72 horas levantamos la información, vemos cómo se encuentra hoy el negocio del cliente y entendemos su flujo comercial. 2) Evaluamos la viabilidad del modelo para ambos negocios. 3) Arrancamos con un fijo (fee) más un variable por resultados. 4) Finalmente, pago por resultado (PxQ: precio por cantidad de resultados logrados). Usa siempre el nombre exacto "Fotografía Comercial Xsell".
 SECTORES: telecomunicaciones, retail, banca y seguros, automotriz, salud, consumo masivo, y muchos más.
 CLIENTES: no se mencionan nombres de clientes. Si preguntan, di que por confidencialidad no compartimos nombres y menciona los sectores y el caso de éxito.
 NO OFRECEMOS: encuestas a clientes, paquetes cerrados ni desarrollo de canales para que los opere el cliente. No los menciones.
+PAUTA Y MARKETING: Xsell NO hace pauta, publicidad, anuncios, manejo de redes ni marketing digital. Somos una agencia de ventas: trabajamos lo que pasa después del anuncio. Si el cliente ya genera interesados con sus campañas o tiene una base de datos, nosotros los perfilamos, les damos seguimiento y los convertimos en ventas. Vendemos por WhatsApp, redes sociales, llamada, web o presencial, pero la publicidad la maneja el cliente o su agencia.
 CULTURA DE XSELL: la experiencia de trabajar en Xsell se cuenta como un viaje. Siempre di "integrantes", nunca "empleados" ni "trabajadores". No uses la palabra "popular". Nunca uses los nombres "3bu", "tribu" ni "3eriza": son de la marca anterior. Propósito "mejores personas, mejores negocios"; valores: mejor y distinto, nos hacemos cargo, profesionalismo, respeto por la gente. Programas: encuesta de clima "Potenciando mi viaje", "Academia Xsell", "Aprende+", "Emprende Xsell", "La estrategia somos todos" y "Estrellas de valor". Si la persona quiere trabajar en Xsell, invítala a la página Cultura o a escribir por WhatsApp.
 CONTACTO: Ingrid, Asesora Comercial (por WhatsApp o agendando una reunión en la sección Contacto).`;
 
@@ -965,6 +968,8 @@ ${KB}`;
 
 /* Respuestas predefinidas por palabras clave (si el asistente no está disponible) */
 const FALLBACK = [
+  {k:["pauta","publicidad","anuncio","marketing","google ads","meta ads","facebook ads","tiktok","community","manejo de redes","generan leads","generar leads","generación de leads","generacion de leads","campañas digitales","hacen campañas","agencia de publicidad","seo"],
+   a:"No hacemos pauta ni marketing digital. Somos una agencia de ventas: trabajamos lo que pasa después del anuncio.\n\nSi ya generas interesados con tus campañas o tienes una base de datos, nosotros los perfilamos, les damos seguimiento y los convertimos en ventas. Así tu inversión en publicidad rinde más. ¿Te contamos cómo en una Fotografía Comercial Xsell?"},
   {k:["fotografía","fotografia","foto comercial","diagnóstico","diagnostico"],
    a:"La Fotografía Comercial Xsell es nuestro primer paso y no tiene costo: en 72 horas levantamos la información, miramos cómo se encuentra hoy tu negocio y entendemos tu flujo comercial de punta a punta. Con esa foto evaluamos si el modelo es viable para ambos y te proponemos cómo trabajar. Pide tu diagnóstico gratuito y empezamos."},
   {k:["cuidan","cuidamos","convenio","beneficios para","bienestar"],
@@ -990,7 +995,7 @@ const FALLBACK = [
   {k:["modelo","cierre ágil","cierre agil","asesoría experta","asesoria experta","flujo cíclico","flujo ciclico","b2c","b2b"],
    a:"Trabajamos con tres modelos de cierre: Cierre ágil, para campañas de producto con cierre en la primera llamada; Asesoría experta, para ventas consultivas de ticket alto; y Flujo cíclico, para ventas a empresas con aprobación en varios niveles. En la Fotografía Comercial Xsell definimos cuál encaja con tu negocio."},
   {k:["caso","éxito","exito","resultados reales","ejemplo","han logrado"],
-   a:"Un caso en retail y telecomunicaciones: partimos de un centro de contacto sin orden y logramos 55% de tasa de contacto y 70% de conversión de prospectos. Las ventas mensuales pasaron de S/ 167K en 2021 a S/ 385K en 2024, con el mismo número de asesores. ¿Vemos qué podemos lograr con tu empresa?"},
+   a:"Un caso real en el sector automotriz B2B: el cliente generaba miles de consultas al año, pero no sabía cuántas terminaban en venta. El problema no era de volumen, era de seguimiento. Sumamos ese seguimiento, el cliente vio resultados y decidió invertir más: pasó de 3-4 a 15 campañas propias en un año y evalúa llevar el modelo a otro país. ¿Vemos qué podemos lograr con tu empresa?"},
   {k:["canal","whatsapp","redes","llamada","omnicanal","presencial","tienda"],
    a:"Vendemos donde está tu cliente: WhatsApp, redes sociales, llamadas, web y atención presencial, con su historial unificado para que pueda empezar en un canal y cerrar en otro. Pide tu diagnóstico gratuito y vemos qué canales te conviene activar."},
   {k:["precio","cuesta","costo","cuánto","cuanto","tarifa","monto","presupuesto","cobran"],
@@ -1001,12 +1006,12 @@ const FALLBACK = [
    a:"Por confidencialidad no compartimos los nombres de nuestros clientes. Trabajamos con empresas de telecomunicaciones, retail, banca y seguros, automotriz, salud y consumo masivo, entre otras. Si quieres, te contamos un caso de éxito en tu Fotografía Comercial Xsell."},
   {k:["sector","rubro","industria","automotriz","retail","banca","seguros","telecom","salud","consumo"],
    a:"Somos especialistas en telecomunicaciones, retail, banca y seguros, automotriz, salud y consumo masivo, y trabajamos con muchos sectores más. Si tu empresa está en otro rubro, igual conversamos. Pide tu diagnóstico gratuito."},
-  {k:["país","pais","perú","peru","argentina","chile","latam","dónde están","donde estan"],
+  {k:["país","pais","perú","peru","argentina","chile","latam","dónde están","donde estan","operan","dónde trabajan"],
    a:"Operamos en Perú y Argentina, y muy pronto en Chile. Así acompañamos a empresas que venden en mercados competitivos de la región. ¿Agendamos tu Fotografía Comercial Xsell?"},
   {k:["planilla","sin contratar","sin aumentar","costos fijos","no tengo equipo","sin equipo","tercerizar","tercerizad","fuerza de ventas"],
    a:"Con Xsell vendes más sin sumar personal a tu planilla: nos hacemos cargo de tu venta con un equipo que trabaja con tu marca. Arrancamos con un fijo más un variable y, con la operación madura, pasamos a pago por resultado (PxQ). Pide tu diagnóstico gratuito."},
-  {k:["medi","métrica","metrica","reporte","informe","indicadores","cómo vamos"],
-   a:"Siempre sabes cómo vamos: te enviamos informes mensuales con indicadores, causas de las variaciones y acciones sugeridas, además de reportes trimestrales y semestrales. Pide tu Fotografía Comercial Xsell y te mostramos cómo sería para tu empresa."},
+  {k:["medi","métrica","metrica","reporte","informe","informado","al tanto","kam","indicadores","cómo vamos"],
+   a:"Siempre sabes cómo vamos: tienes un KAM (gerente de cuenta) como contacto directo y te enviamos informes mensuales con indicadores, causas de las variaciones y acciones sugeridas, además de reportes trimestrales y semestrales. Pide tu Fotografía Comercial Xsell y te mostramos cómo sería para tu empresa."},
   {k:["empez","empiez","comenzar","inicio","proceso","cómo trabajan","como trabajan","pasos"],
    a:"Empezamos con la Fotografía Comercial Xsell: sin costo, en 72 horas vemos cómo está tu negocio y entendemos tu flujo comercial. Luego evaluamos que el modelo sea viable para ambos, arrancamos con un fijo más un variable y llegamos a pago por resultado (PxQ). El primer paso es pedir tu diagnóstico gratuito."},
   {k:["qué hace","que hace","quiénes","quienes","xsell","agencia","nosotros","servicio","multiplicador"],
@@ -1162,7 +1167,7 @@ function waLink(text){
   const run = () => {
     box.classList.add("on");
     if (reduce) return;
-    document.querySelectorAll(".js-count").forEach(el => { const to = +el.dataset.to, t0 = performance.now(); (function step(t){ const k = Math.min(1, (t - t0) / 1200); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); })(t0); });
+    document.querySelectorAll(".js-count").forEach(el => { const to = +el.dataset.to, t0 = performance.now(); (function step(t){ const k = Math.min(1, (t - t0) / 1200); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))).toLocaleString('en-US'); if (k < 1) requestAnimationFrame(step); })(t0); });
   };
   const io = new IntersectionObserver(es => { if (es[0].isIntersecting){ run(); io.disconnect(); } }, { threshold: .35 });
   io.observe(box);
@@ -1196,13 +1201,13 @@ document.querySelectorAll(".js-ai").forEach(a => a.addEventListener("click", e =
 /* Preguntas para seguir el viaje */
 const NEXT = {
   cultura: ["¿Cómo cuidan a sus integrantes? ¿Qué convenios y beneficios tienen?","¿Cómo escuchan a sus integrantes?","¿Cómo se desarrollan los integrantes de Xsell?","¿Cómo se mantienen conectados en Xsell?","¿Por qué trabajar en Xsell es un viaje diferente?"],
-  empresa: ["¿Qué es la Fotografía Comercial Xsell?","¿Cómo puede Xsell ayudarme a vender más?","¿Cómo es el pago por resultados?","¿Qué modelos de cierre manejan?"]
+  empresa: ["¿Tienen un caso real?","¿Hacen pauta o marketing digital?","¿Cómo me mantienen informado?","¿En qué sectores trabajan?","¿Qué modelos de cierre manejan?","¿Dónde operan?","¿Qué es la Fotografía Comercial Xsell?","¿Cómo es el pago por resultados?","¿Cómo puede Xsell ayudarme a vender más?"]
 };
 function isCulture(q){ return /cultura|cuidan|escuchan|desarrollan|conectados|integrante|trabajar en xsell|ser parte|valores|propósito|proposito|clima|viaje diferente/i.test(q); }
 function followups(q){
   const list = NEXT[isCulture(q) ? "cultura" : "empresa"];
   const asked = new Set(history.filter(h => h.role === "user").map(h => h.content));
-  return list.filter(x => x !== q && !asked.has(x)).slice(0, 2);
+  return list.filter(x => x !== q && !asked.has(x)).slice(0, 3);
 }
 
 /* ====== Chat ====== */
@@ -1240,7 +1245,11 @@ function finishBot(m, text, q){
 async function ask(q){
   q = (q || "").trim(); if (!q || busy) return;
   busy = true; sendBtn.disabled = true; input.value = "";
-  addUser(q); const m = addBot();
+  addUser(q);
+  const st = document.getElementById("chatStatus");
+  await new Promise(r => setTimeout(r, reduce ? 0 : 450));
+  if (st){ st.textContent = "Escribiendo…"; st.classList.add("typing"); }
+  const m = addBot();
   if (window.innerWidth <= 980 || window.scrollY > 200) document.getElementById("inicio").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   chat.scrollTop = chat.scrollHeight;
   let answer = null;
@@ -1253,8 +1262,9 @@ async function ask(q){
       if (r && r.text && r.text.trim()) answer = r.text.trim();
     }
   } catch (e) { answer = null; }
-  if (!answer){ await new Promise(r => setTimeout(r, reduce ? 0 : 650)); answer = fallbackAnswer(q); }
+  if (!answer){ answer = fallbackAnswer(q); await new Promise(r => setTimeout(r, reduce ? 0 : Math.min(2600, 1100 + answer.length * 4))); }
   history.push({ role:"user", content:q }, { role:"assistant", content:answer });
+  if (st){ st.textContent = "En línea"; st.classList.remove("typing"); }
   finishBot(m, answer, q);
   chat.scrollTop = Math.max(0, m.offsetTop - 12);
   busy = false; sendBtn.disabled = false;
