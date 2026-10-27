@@ -413,16 +413,7 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
 .menu-btn[aria-expanded="true"]{background:var(--text);color:var(--bg)}
 .menu-btn[aria-expanded="true"] .bars i:first-child{transform:translateY(4.25px) rotate(45deg)}
 .menu-btn[aria-expanded="true"] .bars i:last-child{transform:translateY(-4.25px) rotate(-45deg)}
-.badge-cta{position:fixed;right:28px;top:calc(10px + env(safe-area-inset-top,0px));z-index:61;width:112px;height:112px;display:grid;place-items:center;text-decoration:none;color:var(--text)}
-.badge-cta .ring-txt{position:absolute;inset:0;width:100%;height:100%;animation:spin 16s linear infinite}
-.badge-cta text{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;fill:currentColor}
-@media (min-width:1280px){.badge-cta{right:76px}}
-.badge-cta .bc-core{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--magenta));color:#fff;transition:transform .3s,background .3s}
-.badge-cta .bc-core svg{width:26px;height:26px;transition:transform .3s}
-.badge-cta:hover .bc-core{transform:scale(1.12);background:var(--orange);color:var(--on-orange)}
-.badge-cta:hover .bc-core svg{transform:rotate(45deg)}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media (max-width:640px){.badge-cta{width:84px;height:84px;right:10px;top:8px}.badge-cta .bc-core{width:46px;height:46px}}
 
 /* ===== Cursor propio ===== */
 .cur{display:none}
@@ -616,6 +607,133 @@ footer{border-top:1px solid var(--line);margin-top:96px;padding-block:56px 120px
 .soon{font-style:normal;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--orange) 20%,transparent);color:var(--orange-2);margin-left:4px}
 .fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
 
+/* ===== Botón flotante: diagnóstico gratis ===== */
+.badge-cta{position:fixed;right:28px;top:calc(14px + env(safe-area-inset-top,0px));z-index:61;display:flex;align-items:center;gap:12px;padding:7px 20px 7px 7px;border:0;border-radius:999px;cursor:pointer;font:inherit;text-align:left;color:#fff;background:linear-gradient(120deg,var(--purple),var(--magenta));box-shadow:0 14px 36px -14px var(--magenta);transition:transform .2s,box-shadow .2s}
+.badge-cta:hover{transform:translateY(-2px);box-shadow:0 18px 40px -12px var(--orange)}
+.badge-cta .bc-ic{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:var(--on-orange)}
+.badge-cta .bc-ic svg{width:21px;height:21px}
+.badge-cta .bc-tx{display:flex;flex-direction:column;line-height:1.15}
+.badge-cta .bc-tx small{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.badge-cta .bc-tx b{font-family:var(--display);font-size:1rem}
+@media (min-width:1280px){.badge-cta{right:76px}}
+@media (max-width:640px){.badge-cta{right:10px;top:12px;padding:5px 14px 5px 5px;gap:8px}.badge-cta .bc-ic{width:34px;height:34px}.badge-cta .bc-ic svg{width:17px;height:17px}.badge-cta .bc-tx small{display:none}.badge-cta .bc-tx b{font-size:.88rem}}
+
+/* ===== Chat: estado, accesos ===== */
+.bubble .actions .btn-link{background:transparent;border:1px solid var(--line);color:var(--text)}
+.bubble .actions .btn-link:hover{border-color:var(--orange)}
+
+/* ===== Multiplicadores: recorrido guiado ===== */
+.eco-tab{position:relative;overflow:hidden}
+.et-bar{position:absolute;left:0;bottom:0;height:4px;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-2))}
+.eco-tab.run .et-bar{animation:ecoBar 6s linear forwards}
+.eco.paused .eco-tab.run .et-bar{animation-play-state:paused}
+@keyframes ecoBar{to{width:100%}}
+.eco-tab.done .et-n::after{content:" ✓";color:var(--orange)}
+.eco-hint{display:flex;align-items:center;gap:8px;margin:0 0 14px;font-family:var(--display);font-weight:600;font-size:.9rem;color:var(--muted)}
+.eco-hint i{font-style:normal;color:var(--orange)}
+.eco-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:22px}
+.eco-step{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.eco-dots{display:inline-flex;gap:6px;margin-left:10px;vertical-align:middle}
+.eco-dots i{width:22px;height:5px;border-radius:5px;background:var(--line)}
+.eco-dots i.on{background:var(--orange)}
+
+/* ===== Casos: carrusel ===== */
+.cs-wrap{position:relative}
+.cs-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;position:relative;border-radius:26px}
+.cs-track::-webkit-scrollbar{display:none}
+.cs{flex:0 0 100%;scroll-snap-align:start;min-width:0;padding:34px;border-radius:26px;background:var(--surface);border:1.5px solid var(--line);display:flex;flex-direction:column;gap:22px}
+@media (max-width:640px){.cs{padding:22px}}
+.cs-tag{align-self:flex-start;font-family:var(--display);font-weight:700;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:color-mix(in srgb,var(--orange) 16%,transparent);color:var(--orange-2)}
+.cs-tag.ill{background:var(--surface-2);color:var(--muted);border:1px dashed var(--muted)}
+.cs h3{font-size:clamp(1.4rem,2.8vw,2.1rem);line-height:1.15;max-width:760px}
+.cs h3 em{font-style:normal;color:var(--orange)}
+.cs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:760px){.cs-stats{grid-template-columns:1fr}}
+.cs-stats div{padding:18px 20px;border-radius:18px;background:var(--surface-2);display:flex;flex-direction:column;gap:6px}
+.cs-stats b{font-family:var(--impact);font-size:clamp(1.9rem,4vw,2.8rem);line-height:1;color:var(--orange);white-space:nowrap}
+.cs-stats div:nth-child(2) b{color:var(--purple-2)}
+.cs-stats span{font-size:.92rem;color:var(--muted);font-weight:600}
+.cs-story{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0}
+@media (max-width:760px){.cs-story{grid-template-columns:1fr}}
+.cs-story dt{font-family:var(--display);font-weight:700;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-2);margin-bottom:4px}
+.cs-story dd{margin:0;color:var(--muted);line-height:1.5}
+.cs-note{font-size:.8rem;color:var(--muted);font-style:italic;margin:0}
+.cs-ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px}
+.cs-dots{display:flex;gap:8px}
+.cs-dots button{width:34px;height:8px;border-radius:8px;border:0;padding:0;cursor:pointer;background:var(--line)}
+.cs-dots button[aria-current="true"]{background:var(--orange)}
+.cs-arrows{display:flex;gap:10px;align-items:center}
+.cs-count{font-family:var(--display);font-weight:700;color:var(--muted);margin-right:6px}
+.cs-arrows button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--text);font-size:1.1rem;cursor:pointer}
+.cs-arrows button:hover:not(:disabled){border-color:var(--orange);color:var(--orange)}
+.cs-arrows button:disabled{opacity:.35;cursor:default}
+
+/* ===== Cómo trabajamos: detalle ===== */
+.tile details{margin-top:4px;border-top:1px solid var(--line);padding-top:8px}
+.tile summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:.88rem;color:var(--orange);list-style:none}
+.tile summary::-webkit-details-marker{display:none}
+.tile summary::after{content:" +"}
+.tile details[open] summary::after{content:" −"}
+.tile dl{margin:8px 0 0;display:flex;flex-direction:column;gap:8px}
+.tile dt{font-family:var(--display);font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tile dd{margin:0;font-size:.92rem}
+.tile .btn{align-self:flex-start;margin-top:6px;font-size:.85rem;padding:9px 14px}
+
+/* ===== Menú y pie: próximamente ===== */
+.sheet-list li.sub .soon-l{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;font-family:var(--display);font-weight:700;font-size:1rem;color:var(--muted);opacity:.75}
+
+/* ===== Fotografía Comercial: calculadora ===== */
+.diag.fc{width:min(760px,calc(100vw - 24px))}
+.dg-lead{grid-column:1/-1;color:var(--muted);font-size:1.02rem;line-height:1.55;margin:0}
+.dg-how{grid-column:1/-1;list-style:none;margin:6px 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:560px){.dg-how{grid-template-columns:1fr}}
+.dg-how li{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:16px;background:var(--surface-2)}
+.dg-how b{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--orange);color:var(--on-orange);font-family:var(--impact)}
+.dg-how strong{display:block;font-family:var(--display)}
+.dg-how span{font-size:.88rem;color:var(--muted)}
+.dg-hint{grid-column:1/-1;font-size:.86rem;color:var(--muted);margin:-4px 0 0}
+.opts{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;border:0;margin:0;padding:0}
+.opts.o4{grid-template-columns:repeat(2,1fr)}
+@media (max-width:560px){.opts,.opts.o4{grid-template-columns:1fr}}
+.opts legend{font-family:var(--display);font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:8px;padding:0}
+.opt{position:relative;display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;font-weight:600;font-size:.94rem}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt:has(input:checked){border-color:var(--orange);background:color-mix(in srgb,var(--orange) 12%,var(--bg))}
+.opt:has(input:focus-visible){box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 35%,transparent)}
+.opt small{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
+.chk{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;border:0;margin:0;padding:0}
+.chk legend{font-family:var(--display);font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:8px;padding:0}
+.chk label{position:relative;padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;font-weight:600;font-size:.88rem}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.chk label:has(input:checked){border-color:var(--orange);background:color-mix(in srgb,var(--orange) 14%,var(--bg))}
+.rng{display:flex;align-items:center;gap:12px}
+.rng input[type=range]{flex:1;accent-color:var(--orange);padding:0;border:0;background:none;box-shadow:none}
+.rng output{flex:none;min-width:56px;text-align:center;font-family:var(--impact);font-size:1.4rem;color:var(--orange)}
+.mini-fun{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:14px;border-radius:16px;background:var(--surface-2)}
+@media (max-width:560px){.mini-fun{grid-template-columns:1fr 1fr}}
+.mini-fun div{display:flex;flex-direction:column;gap:2px}
+.mini-fun b{font-family:var(--impact);font-size:1.35rem;line-height:1}
+.mini-fun span{font-size:.76rem;color:var(--muted);font-weight:600}
+.mini-fun .mf-k{grid-column:1/-1;font-family:var(--display);font-weight:700;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.rp{grid-column:1/-1;display:flex;flex-direction:column;gap:16px}
+.rp-big{font-family:var(--display);font-size:clamp(1.15rem,2.6vw,1.5rem);font-weight:700;line-height:1.3;margin:0}
+.rp-big em{font-style:normal;color:var(--orange)}
+.rp-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:560px){.rp-cols{grid-template-columns:1fr}}
+.rp-cols div{padding:14px 16px;border-radius:16px;background:var(--surface-2);display:flex;flex-direction:column;gap:4px}
+.rp-cols div.best{background:linear-gradient(135deg,var(--purple),var(--magenta));color:#fff}
+.rp-cols small{font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.rp-cols b{font-family:var(--impact);font-size:1.7rem;line-height:1}
+.rp-cols span{font-size:.82rem;opacity:.85}
+.rp-tags{display:flex;flex-wrap:wrap;gap:8px}
+.rp-tags span{padding:7px 12px;border-radius:999px;background:color-mix(in srgb,var(--orange) 14%,transparent);font-weight:700;font-size:.84rem}
+.rp-tags span i{font-style:normal;font-weight:500;color:var(--muted)}
+.rp h4{font-family:var(--display);font-size:1rem;margin:4px 0 0}
+.rp ul,.rp ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:.94rem}
+.rp ol b{color:var(--text)}
+.rp-note{font-size:.8rem;color:var(--muted);font-style:italic;margin:0}
+.dg-actions .btn{flex:0 1 auto}
+
 /* ===== Barra flotante tipo app ===== */
 .tabbar{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:62;display:flex;align-items:center;gap:6px;padding:8px;border-radius:999px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);box-shadow:0 24px 60px -20px rgba(0,0,0,.55)}
 .tb{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:var(--text);background:transparent;border:0;text-decoration:none;transition:background .2s,transform .2s,color .2s}
@@ -658,12 +776,12 @@ footer{padding-bottom:110px}
   </div>
 </header>
 
-<a class="badge-cta mag js-diag" href="#contacto" data-cur="Agendar" aria-label="Agenda tu Fotografía Comercial Xsell, sin costo">
-  <svg viewBox="0 0 200 200" class="ring-txt" aria-hidden="true"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#circ" startOffset="0" textLength="486" lengthAdjust="spacingAndGlyphs">DIAGNÓSTICO GRATUITO · FOTOGRAFÍA COMERCIAL · 72 H · </textPath></text></svg>
-  <span class="bc-core" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-</a>
+<button class="badge-cta js-diag" type="button" aria-label="Haz tu diagnóstico comercial gratis">
+  <span class="bc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
+  <span class="bc-tx"><small>Fotografía Comercial Xsell</small><b>Diagnóstico gratis</b></span>
+</button>
 
-<div class="sheet" id="sheet" hidden><nav aria-label="Secciones"><ol class="sheet-list" id="links"><li><a href="#multiplicadores" data-sec="multiplicadores"><span>Multiplicadores</span><i aria-hidden="true">→</i></a></li><li><a href="#caso" data-sec="caso"><span>Caso de éxito</span><i aria-hidden="true">→</i></a></li><li><a href="#modelos" data-sec="modelos"><span>Modelos de cierre</span><i aria-hidden="true">→</i></a></li><li><a href="#proceso" data-sec="proceso"><span>Cómo trabajamos</span><i aria-hidden="true">→</i></a></li><li><a href="#sectores" data-sec="sectores"><span>Sectores</span><i aria-hidden="true">→</i></a></li><li><a href="#contacto" data-sec="contacto"><span>Contacto</span><i aria-hidden="true">→</i></a></li><li class="sub"><a href="nosotros.html"><span>Nosotros</span><i aria-hidden="true">↗</i></a></li><li class="sub"><a href="cultura.html"><span>Cultura · Trabaja con nosotros</span><i aria-hidden="true">↗</i></a></li></ol></nav></div>
+<div class="sheet" id="sheet" hidden><nav aria-label="Secciones"><ol class="sheet-list" id="links"><li><a href="#multiplicadores" data-sec="multiplicadores"><span>Multiplicadores</span><i aria-hidden="true">→</i></a></li><li><a href="#caso" data-sec="caso"><span>Casos</span><i aria-hidden="true">→</i></a></li><li><a href="#modelos" data-sec="modelos"><span>Modelos de cierre</span><i aria-hidden="true">→</i></a></li><li><a href="#proceso" data-sec="proceso"><span>Cómo trabajamos</span><i aria-hidden="true">→</i></a></li><li><a href="#sectores" data-sec="sectores"><span>Sectores</span><i aria-hidden="true">→</i></a></li><li><a href="#contacto" data-sec="contacto"><span>Contacto</span><i aria-hidden="true">→</i></a></li><li class="sub"><a href="nosotros.html"><span>Nosotros</span><i aria-hidden="true">↗</i></a></li><li class="sub"><span class="soon-l"><span>Cultura · Trabaja con nosotros</span><em class="soon">Próximamente</em></span></li></ol></nav></div>
 <nav class="tabbar" aria-label="Navegación principal">
   <a class="tb" href="#inicio" data-cur="Inicio" aria-label="Inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></a>
   <a class="tb tb-ai" href="#chat" id="aiBtn" data-cur="Chatear" aria-label="Chatea con nuestra IA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></a>
@@ -705,7 +823,7 @@ footer{padding-bottom:110px}
             <div class="ph-top"><span class="ph-notch"></span></div>
             <div class="ph-head"><img src="isotipo.webp" alt="" width="28" height="24"><div><b>Xsell</b><span id="chatStatus" class="st">En línea</span></div></div>
             <div class="chat" id="chat" aria-live="polite">
-              <div class="msg bot"><div class="bubble"><div class="name">Xsell</div><div class="txt"><p>Hola. Cuéntanos sobre tu negocio y te decimos dónde están tus oportunidades.</p></div></div></div>
+              <div class="msg bot"><div class="bubble"><div class="name">Xsell</div><div class="txt"><p>¡Hola! Qué gusto tenerte por aquí.</p><p>Antes de empezar, ¿a qué se dedica tu empresa?</p></div><div class="followups" id="sectorPick"><button type="button" class="chip" data-s="Automotriz">Automotriz</button><button type="button" class="chip" data-s="Retail">Retail</button><button type="button" class="chip" data-s="Banca y seguros">Banca y seguros</button><button type="button" class="chip" data-s="Telecomunicaciones">Telecomunicaciones</button><button type="button" class="chip" data-s="Salud">Salud</button><button type="button" class="chip" data-s="Consumo masivo">Consumo masivo</button><button type="button" class="chip" data-s="Otro">Otro</button></div></div></div>
             </div>
           </div>
         </div>
@@ -734,28 +852,29 @@ footer{padding-bottom:110px}
         <h2>Un ecosistema 360° <em>para vender más</em></h2>
         <p>Te acompañamos desde la captación hasta la fidelización.</p>
       </div>
+      <p class="eco-hint"><i>●</i> Recorre los 3 pasos del ecosistema</p>
       <div class="eco" id="eco">
         <div class="eco-tabs" role="tablist" aria-label="Ecosistema 360°">
-          <button class="eco-tab" role="tab" aria-selected="true" aria-controls="eco1" id="t-eco1"><span class="et-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></span><span class="et-n">01</span><span class="et-t">Perfilar</span></button>
-          <button class="eco-tab" role="tab" aria-selected="false" aria-controls="eco2" id="t-eco2"><span class="et-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="et-n">02</span><span class="et-t">Convertir</span></button>
-          <button class="eco-tab" role="tab" aria-selected="false" aria-controls="eco3" id="t-eco3"><span class="et-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="7" rx="1.5"/><rect x="17.5" y="13" width="4" height="7" rx="1.5"/><path d="M20 20c0 1.5-2 2-5 2"/></svg></span><span class="et-n">03</span><span class="et-t">Incrementar valor</span></button>
+          <button class="eco-tab" role="tab" aria-selected="true" aria-controls="eco1" id="t-eco1"><span class="et-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></span><span class="et-n">01</span><span class="et-bar" aria-hidden="true"></span><span class="et-t">Perfilar</span></button>
+          <button class="eco-tab" role="tab" aria-selected="false" aria-controls="eco2" id="t-eco2"><span class="et-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><span class="et-n">02</span><span class="et-bar" aria-hidden="true"></span><span class="et-t">Convertir</span></button>
+          <button class="eco-tab" role="tab" aria-selected="false" aria-controls="eco3" id="t-eco3"><span class="et-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="13" width="4" height="7" rx="1.5"/><rect x="17.5" y="13" width="4" height="7" rx="1.5"/><path d="M20 20c0 1.5-2 2-5 2"/></svg></span><span class="et-n">03</span><span class="et-bar" aria-hidden="true"></span><span class="et-t">Incrementar valor</span></button>
         </div>
         <div class="eco-panel" role="tabpanel" id="eco1" aria-labelledby="t-eco1">
           <div><h3>Solo prospectos con intención real</h3>
           <ul class="eco-list"><li>Depuramos tu base de datos</li><li>Calificamos por intención de compra</li><li>Nos adaptamos a tu volumen</li></ul>
-          <div class="hit"><b>Para tu negocio</b>Prospectos calificados y listos para comprar.</div></div>
+          <div class="hit"><b>Para tu negocio</b>Prospectos calificados y listos para comprar.</div><div class="eco-nav"><span class="eco-step">Paso 1 de 3<span class="eco-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span></span><button class="btn btn-orange eco-next" type="button" data-n="1">Siguiente: Convertir →</button></div></div>
           <div class="eco-viz" aria-hidden="true"><span style="width:100%">Base de prospectos</span><span style="width:80%">Filtro</span><span style="width:60%">Calificación</span><span class="o" style="width:42%">Listos</span></div>
         </div>
         <div class="eco-panel" role="tabpanel" id="eco2" aria-labelledby="t-eco2" hidden>
           <div><h3>Cierres directos que suben tu facturación</h3>
           <ul class="eco-list"><li>Venta entrante y saliente</li><li>Manejo de objeciones</li><li>Detectamos la necesidad real</li></ul>
-          <div class="hit"><b>Para tu negocio</b>Prospectos que se convierten en ventas efectivas.</div></div>
+          <div class="hit"><b>Para tu negocio</b>Prospectos que se convierten en ventas efectivas.</div><div class="eco-nav"><span class="eco-step">Paso 2 de 3<span class="eco-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span></span><button class="btn btn-orange eco-next" type="button" data-n="2">Siguiente: Incrementar valor →</button></div></div>
           <div class="eco-viz big" aria-hidden="true"><b>Estrategia</b><small>alineada a resultados</small></div>
         </div>
         <div class="eco-panel" role="tabpanel" id="eco3" aria-labelledby="t-eco3" hidden>
           <div><h3>Satisfacción que se vuelve recompra</h3>
           <ul class="eco-list"><li>Ventas cruzadas y adicionales</li><li>Campañas a clientes fidelizados</li><li>Atención multicanal</li></ul>
-          <div class="hit"><b>Para tu negocio</b>Clientes que vuelven y un ticket más alto.</div></div>
+          <div class="hit"><b>Para tu negocio</b>Clientes que vuelven y un ticket más alto.</div><div class="eco-nav"><span class="eco-step">Paso 3 de 3<span class="eco-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span></span><button class="btn btn-orange js-diag" type="button">Empieza con tu diagnóstico gratis →</button></div></div>
           <div class="eco-viz ring" aria-hidden="true"><b>360°</b><small>clientes fidelizados</small></div>
         </div>
       </div>
@@ -770,40 +889,68 @@ footer{padding-bottom:110px}
     </div>
   </section>
 
-  <!-- CASO DE ÉXITO -->
+  <!-- CASOS -->
   <section class="block" id="caso">
     <div class="wrap">
       <div class="head">
-        <span class="eyebrow">Caso real · Automotriz B2B</span>
-        <h2>El problema no era de volumen, era de <em>seguimiento</em></h2>
+        <span class="eyebrow">Casos</span>
+        <h2>Resultados que se pueden <em>medir</em></h2>
       </div>
-      <ol class="case-steps c3">
-        <li><span>El reto</span>Miles de consultas al año, pero nadie sabía qué pasaba con cada una después de asignarla al vendedor.</li>
-        <li><span>Qué hicimos</span>Sumamos seguimiento después de cada asignación: datos completos, insistencia y visibilidad de cada etapa.</li>
-        <li><span>Resultado</span><b>El cliente vio resultados y decidió invertir más.</b> Pasó de 3–4 a 15 campañas propias en un año y evalúa llevar el modelo a otro país.</li>
-      </ol>
+      <div class="cs-wrap">
+        <div class="cs-track" id="csTrack" aria-roledescription="carrusel" aria-label="Casos">
+          <article class="cs" aria-roledescription="diapositiva" aria-label="1 de 3">
+            <span class="cs-tag">Caso real · Automotriz B2B</span>
+            <h3>El problema no era de volumen, era de <em>seguimiento</em></h3>
+            <div class="cs-stats">
+              <div><b>7,000</b><span>consultas al año, ahora con seguimiento</span></div>
+              <div><b>3–4 → 15</b><span>campañas propias del cliente en un año</span></div>
+              <div><b>x2</b><span>inversión del cliente por campaña</span></div>
+            </div>
+            <dl class="cs-story">
+              <div><dt>Reto</dt><dd>Miles de consultas, pero nadie sabía qué pasaba con cada una después de asignarla al vendedor.</dd></div>
+              <div><dt>Qué hicimos</dt><dd>Seguimiento después de cada asignación: datos completos, insistencia y visibilidad de cada etapa.</dd></div>
+              <div><dt>Resultado</dt><dd>El cliente vio resultados y decidió invertir más. Hoy evalúa llevar el modelo a otro país.</dd></div>
+            </dl>
+          </article>
+          <article class="cs" aria-roledescription="diapositiva" aria-label="2 de 3">
+            <span class="cs-tag">Caso real · Retail y telecomunicaciones</span>
+            <h3>De una base sin orden a un <em>motor de ventas</em></h3>
+            <div class="cs-stats">
+              <div><b>55%</b><span>tasa de contacto</span></div>
+              <div><b>70%</b><span>conversión de prospectos</span></div>
+              <div><b>S/167K → S/385K</b><span>ventas mensuales, de 2021 a 2024</span></div>
+            </div>
+            <dl class="cs-story">
+              <div><dt>Reto</dt><dd>Un centro de contacto sin coordinación, con unos 600 prospectos al mes.</dd></div>
+              <div><dt>Qué hicimos</dt><dd>Ordenamos y perfilamos la base, y profesionalizamos el proceso de venta.</dd></div>
+              <div><dt>Resultado</dt><dd>Las ventas mensuales más que se duplicaron, con el mismo equipo de asesores.</dd></div>
+            </dl>
+          </article>
+          <article class="cs" aria-roledescription="diapositiva" aria-label="3 de 3">
+            <span class="cs-tag ill">Ejemplo ilustrativo · Banca y seguros</span>
+            <h3>Más contacto, <em>más ventas</em></h3>
+            <div class="cs-stats">
+              <div><b>25% → 45%</b><span>tasa de contacto</span></div>
+              <div><b>6% → 9%</b><span>conversión de contactados</span></div>
+              <div><b>15 → 40</b><span>ventas al mes con 1,000 prospectos</span></div>
+            </div>
+            <dl class="cs-story">
+              <div><dt>Reto</dt><dd>Solo 1 de cada 4 prospectos contestaba, y casi todos se perdían en el primer intento.</dd></div>
+              <div><dt>Qué haríamos</dt><dd>Contacto el mismo día, varios intentos por llamada y WhatsApp, y remarketing a quienes no contestan.</dd></div>
+              <div><dt>Resultado esperado</dt><dd>Con más contacto y mejor cierre, las ventas pueden más que duplicarse.</dd></div>
+            </dl>
+            <p class="cs-note">Ejemplo con fines ilustrativos: no corresponde a un cliente. Haz tu propio cálculo en el diagnóstico gratis.</p>
+          </article>
+        </div>
+        <div class="cs-ctrl">
+          <div class="cs-dots" id="csDots"><button type="button" aria-label="Caso 1" aria-current="true"></button><button type="button" aria-label="Caso 2"></button><button type="button" aria-label="Caso 3"></button></div>
+          <div class="cs-arrows"><span class="cs-count" id="csCount">1 / 3</span><button type="button" id="csPrev" aria-label="Caso anterior">←</button><button type="button" id="csNext" aria-label="Caso siguiente">→</button></div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- POR DÓNDE EMPEZAR -->
-  <section class="block" id="empezar">
-    <div class="wrap">
-      <div class="giant js-slide" aria-hidden="true">Empezar</div>
-      <div class="head">
-        <span class="eyebrow">¿Por dónde empezar?</span>
-        <h2>Cuéntanos tu situación. <em>Te decimos el camino.</em></h2>
-        <p>Elige la frase que más se parece a lo que vives hoy.</p>
-      </div>
-      <div class="grid grid-4">
-        <button class="card start js-ask" data-q="Tengo un canal de ventas pero no sé cómo mejorarlo. ¿Por dónde empiezo?"><q>Tengo un canal de ventas, pero no sé cómo mejorarlo.</q><span class="go">Ver mi camino →</span></button>
-        <button class="card start js-ask" data-q="Me llegan interesados pero se enfrían y los pierdo. ¿Qué me recomiendan?"><q>Me llegan interesados, pero se enfrían y los pierdo.</q><span class="go">Ver mi camino →</span></button>
-        <button class="card start js-ask" data-q="Mis tiendas o puntos de atención atienden, pero no venden. ¿Qué me recomiendan?"><q>Mis puntos de atención atienden, pero no venden.</q><span class="go">Ver mi camino →</span></button>
-        <button class="card start js-ask" data-q="Quiero vender más sin aumentar mi planilla fija. ¿Qué opción tengo?"><q>Quiero vender más sin aumentar mi planilla fija.</q><span class="go">Ver mi camino →</span></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODELOS DE CIERRE -->
+    <!-- MODELOS DE CIERRE -->
   <section class="block" id="modelos">
     <div class="wrap">
       <div class="giant js-slide" aria-hidden="true">Cierres</div>
@@ -812,7 +959,7 @@ footer{padding-bottom:110px}
         <h2>Una forma de vender <em>para cada negocio</em></h2>
       </div>
       <div class="grid grid-3 models">
-        <article class="card model"><span class="mk">Campaña producto B2C</span><h3 class="mt o">Cierre ágil</h3><dl><div><dt>Ticket</dt><dd>Medio</dd></div><div><dt>Cierre</dt><dd>En la primera llamada</dd></div></dl><p class="mp">Urgencia y beneficios inmediatos.</p><button class="btn btn-ghost js-ask" data-q="¿Cómo funciona el modelo de cierre ágil?">Preguntar</button></article>
+        <article class="card model"><span class="mk">Campaña producto B2C</span><h3 class="mt o">Cierre ágil</h3><dl><div><dt>Ticket</dt><dd>Medio</dd></div><div><dt>Cierre</dt><dd>Primer contacto</dd></div></dl><p class="mp">Urgencia y beneficios inmediatos.</p><button class="btn btn-ghost js-ask" data-q="¿Cómo funciona el modelo de cierre ágil?">Preguntar</button></article>
         <article class="card model featured-m"><span class="mk">Venta consultiva B2C</span><h3 class="mt">Asesoría experta</h3><dl><div><dt>Ticket</dt><dd>Alto</dd></div><div><dt>Cierre</dt><dd>Ciclo corto</dd></div></dl><p class="mp">Seguimiento consultivo y agendamiento de pruebas.</p><button class="btn btn-orange js-ask" data-q="¿Cómo funciona el modelo de asesoría experta?">Preguntar</button></article>
         <article class="card model"><span class="mk">Gestión B2B / Empresas</span><h3 class="mt p">Flujo cíclico</h3><dl><div><dt>Volumen</dt><dd>Alto</dd></div><div><dt>Cierre</dt><dd>Ciclo gestionado</dd></div></dl><p class="mp">Propuesta de valor B2B y aprobación multinivel.</p><button class="btn btn-ghost js-ask" data-q="¿Cómo funciona el modelo de flujo cíclico B2B?">Preguntar</button></article>
       </div>
@@ -830,19 +977,19 @@ footer{padding-bottom:110px}
       <ol class="tiles">
         <li class="tile">
           <div class="art"><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="var(--purple)"/><rect x="38" y="44" width="124" height="80" rx="10" fill="var(--bg)"/><rect x="62" y="32" width="40" height="18" rx="4" fill="var(--bg)"/><circle cx="100" cy="84" r="30" fill="var(--orange)"/><circle cx="100" cy="84" r="16" fill="var(--bg)"/><circle cx="106" cy="78" r="5" fill="var(--text)"/><circle cx="144" cy="58" r="5" fill="var(--orange-2)"/></svg></div>
-          <span class="n">01</span><h3>Fotografía Comercial Xsell</h3><p>Sin costo. En 72 horas levantamos la información: cómo está hoy tu negocio y cómo fluye tu proceso comercial.</p>
+          <span class="n">01</span><h3>Fotografía Comercial Xsell</h3><p>Sin costo. En 72 horas levantamos la información: cómo está hoy tu negocio y cómo fluye tu proceso comercial.</p><details><summary>Ver detalle</summary><dl><div><dt>Qué hacemos</dt><dd>Revisamos tu embudo, tus canales, tu equipo y tu base de prospectos.</dd></div><div><dt>Qué recibes</dt><dd>Tus oportunidades de mejora y el modelo de cierre que mejor encaja.</dd></div></dl></details><button class="btn btn-orange js-diag" type="button">Haz una primera versión ahora</button>
         </li>
         <li class="tile">
           <div class="art"><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="var(--bg)"/><circle cx="78" cy="75" r="46" fill="var(--purple-2)"/><circle cx="122" cy="75" r="46" fill="var(--magenta)"/><path d="M100 36 A46 46 0 0 1 100 114 A46 46 0 0 1 100 36 Z" fill="var(--orange)"/><circle cx="100" cy="75" r="7" fill="var(--bg)"/></svg></div>
-          <span class="n">02</span><h3>Evaluamos la viabilidad</h3><p>Revisamos que el modelo sea viable y rentable para tu negocio y para el nuestro. Si no lo es, te lo decimos.</p>
+          <span class="n">02</span><h3>Evaluamos la viabilidad</h3><p>Revisamos que el modelo sea viable y rentable para tu negocio y para el nuestro. Si no lo es, te lo decimos.</p><details><summary>Ver detalle</summary><dl><div><dt>Qué hacemos</dt><dd>Proyectamos volumen, contacto y conversión para tu negocio y el nuestro.</dd></div><div><dt>Qué recibes</dt><dd>Una propuesta clara. Si no es viable, te lo decimos.</dd></div></dl></details>
         </li>
         <li class="tile">
           <div class="art"><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="var(--magenta)"/><rect x="30" y="56" width="56" height="70" rx="6" fill="var(--bg)"/><rect x="100" y="96" width="18" height="30" rx="4" fill="var(--orange)"/><rect x="124" y="80" width="18" height="46" rx="4" fill="var(--orange-2)"/><rect x="148" y="62" width="18" height="64" rx="4" fill="var(--orange)"/><rect x="40" y="70" width="36" height="6" rx="3" fill="var(--purple-2)"/><rect x="40" y="84" width="24" height="6" rx="3" fill="var(--purple-2)"/></svg></div>
-          <span class="n">03</span><h3>Fijo + variable</h3><p>Arrancamos con un monto fijo (fee) más un variable ligado a resultados.</p>
+          <span class="n">03</span><h3>Fijo + variable</h3><p>Arrancamos con un monto fijo (fee) más un variable ligado a resultados.</p><details><summary>Ver detalle</summary><dl><div><dt>Qué hacemos</dt><dd>Armamos el equipo y arrancamos la operación con tu marca.</dd></div><div><dt>Qué recibes</dt><dd>Un KAM, métricas de cada etapa e informe mensual.</dd></div></dl></details>
         </li>
         <li class="tile">
           <div class="art"><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="var(--orange)"/><g fill="var(--bg)"><rect x="30" y="100" width="22" height="26" rx="4"/><rect x="60" y="84" width="22" height="42" rx="4"/><rect x="90" y="66" width="22" height="60" rx="4"/></g><path d="M120 108 L170 38" stroke="var(--purple)" stroke-width="14" stroke-linecap="round"/><path d="M146 34 L176 30 L172 60 Z" fill="var(--purple)"/></svg></div>
-          <span class="n">04</span><h3>Pago por resultado (PxQ)</h3><p>Con la operación madura, pagas un precio por cada resultado logrado: precio por cantidad.</p>
+          <span class="n">04</span><h3>Pago por resultado (PxQ)</h3><p>Con la operación madura, pagas un precio por cada resultado logrado: precio por cantidad.</p><details><summary>Ver detalle</summary><dl><div><dt>Qué hacemos</dt><dd>Con la operación madura, pasamos a precio por resultado.</dd></div><div><dt>Qué recibes</dt><dd>Pagas por cada venta o resultado logrado.</dd></div></dl></details>
         </li>
       </ol>
       <div class="comms">
@@ -893,31 +1040,56 @@ footer{padding-bottom:110px}
 </main>
 
 
-<dialog class="diag" id="diag" aria-labelledby="dgTitle">
+<dialog class="diag fc" id="diag" aria-labelledby="dgTitle">
   <form id="diagForm" novalidate>
     <button class="dg-x" type="button" id="dgClose" aria-label="Cerrar">✕</button>
-    <span class="eyebrow">Fotografía Comercial Xsell · sin costo · 72 h</span>
-    <h2 id="dgTitle">Realiza tu diagnóstico gratuito</h2>
-    <div class="dg-steps" aria-hidden="true"><i class="on"></i><i></i></div>
-    <fieldset class="dg-step" data-step="1">
-      <legend>Tu empresa</legend>
-      <div class="field full"><label for="d_emp">Nombre de la empresa</label><input id="d_emp" name="empresa" required autocomplete="organization"></div>
-      <div class="field"><label for="d_sector">Sector</label><select id="d_sector" name="sector" required><option value="">Elige una opción</option><option>Automotriz</option><option>Retail</option><option>Comercio electrónico</option><option>Intermediación financiera</option><option>Energía</option><option>Hidrocarburos y metalmecánica</option><option>Otro</option></select></div>
-      <div class="field"><label for="d_size">Tamaño de la empresa</label><select id="d_size" name="tamano" required><option value="">Elige una opción</option><option>1 a 10 colaboradores</option><option>11 a 50 colaboradores</option><option>51 a 200 colaboradores</option><option>201 a 500 colaboradores</option><option>Más de 500 colaboradores</option></select></div>
-      <div class="field"><label for="d_team">¿Tienes equipo de ventas?</label><select id="d_team" name="equipo_ventas" required><option value="">Elige una opción</option><option>No</option><option>Sí, propio</option><option>Sí, tercerizado</option><option>Mixto</option></select></div>
-      <div class="field"><label for="d_canal">Canal principal de ventas</label><select id="d_canal" name="canal" required><option value="">Elige una opción</option><option>Tienda o punto presencial</option><option>Teléfono</option><option>WhatsApp y redes sociales</option><option>Web o tienda en línea</option><option>Visitas de campo</option><option>Varios canales</option></select></div>
-      <div class="field full"><label for="d_reto">¿Cuál es tu principal reto comercial?</label><select id="d_reto" name="reto" required><option value="">Elige una opción</option><option>Conseguir más prospectos</option><option>Convertir prospectos en ventas</option><option>Dar seguimiento a los clientes</option><option>Atención y reclamos</option><option>Vender más a mis clientes actuales</option><option>Otro</option></select></div>
-      <button class="btn btn-orange dg-next" type="button" id="dgNext">Continuar →</button>
+    <span class="eyebrow">Fotografía Comercial Xsell · gratis</span>
+    <h2 id="dgTitle">Tu diagnóstico comercial en 3 minutos</h2>
+    <div class="dg-steps" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <fieldset class="dg-step" data-step="0">
+      <p class="dg-lead">Con unos pocos datos te mostramos dónde se pierde tu venta, cuánto podrías crecer y qué hacer primero. Al final te llevas tu plan en PDF.</p>
+      <ol class="dg-how"><li><b>1</b><span><strong>Tu negocio</strong>Tipo de cliente, sector y ciclo de venta</span></li><li><b>2</b><span><strong>Tus números</strong>Prospectos, contacto y conversión</span></li><li><b>3</b><span><strong>Tu plan</strong>Diagnóstico, consejos y ruta con Xsell</span></li></ol>
+      <div class="dg-actions"><span></span><button class="btn btn-orange" type="button" data-go="1">Empezar →</button></div>
+    </fieldset>
+    <fieldset class="dg-step" data-step="1" hidden>
+      <legend>1 · Tu negocio</legend>
+      <fieldset class="opts"><legend>¿A quién le vendes?</legend><label class="opt"><input type="radio" name="tipo" value="B2C" required><span>A personas<small>Consumidor final (B2C)</small></span></label><label class="opt"><input type="radio" name="tipo" value="B2B" required><span>A empresas<small>Otras empresas (B2B)</small></span></label></fieldset>
+      <div class="field"><label for="d_sector">Sector</label><select id="d_sector" name="sector" required><option value="">Elige una opción</option><option>Automotriz</option><option>Retail</option><option>Banca y seguros</option><option>Telecomunicaciones</option><option>Salud</option><option>Consumo masivo</option><option>Educación</option><option>Inmobiliario</option><option>Otro</option></select></div>
+      <div class="field"><label for="d_ciclo">¿Cuánto tarda en cerrarse una venta?</label><select id="d_ciclo" name="ciclo" required><option value="">Elige una opción</option><option>En el primer contacto</option><option>Algunos días</option><option>Semanas o meses</option></select></div>
+      <div class="field full"><label for="d_team">¿Tienes equipo de ventas?</label><select id="d_team" name="equipo_ventas" required><option value="">Elige una opción</option><option>No</option><option>Sí, propio</option><option>Sí, tercerizado</option><option>Mixto</option></select></div>
+      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="0">← Atrás</button><button class="btn btn-orange" type="button" data-go="2">Continuar →</button></div>
     </fieldset>
     <fieldset class="dg-step" data-step="2" hidden>
-      <legend>Tus datos de contacto</legend>
+      <legend>2 · Tus números del mes</legend>
+      <p class="dg-hint">Si no tienes el dato exacto, usa un aproximado.</p>
+      <div class="field"><label for="d_leads">Prospectos o interesados al mes</label><input id="d_leads" name="prospectos" type="number" min="1" step="1" value="1000" required inputmode="numeric"></div>
+      <div class="field"><label for="d_ticket">Ticket promedio por venta (S/)</label><input id="d_ticket" name="ticket" type="number" min="1" step="any" value="500" required inputmode="numeric"></div>
+      <div class="field"><label for="d_cont">¿A qué % logras contactar?</label><div class="rng"><input id="d_cont" name="contacto" type="range" min="5" max="95" step="1" value="30"><output id="o_cont">30%</output></div></div>
+      <div class="field"><label for="d_conv">De los contactados, ¿qué % compra?</label><div class="rng"><input id="d_conv" name="conversion" type="range" min="1" max="60" step="1" value="5"><output id="o_conv">5%</output></div></div>
+      <div class="mini-fun" id="miniFun" aria-live="polite"></div>
+      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="1">← Atrás</button><button class="btn btn-orange" type="button" data-go="3">Continuar →</button></div>
+    </fieldset>
+    <fieldset class="dg-step" data-step="3" hidden>
+      <legend>3 · Tu reto</legend>
+      <fieldset class="opts o4"><legend>¿Qué te pasa más seguido?</legend><label class="opt"><input type="radio" name="reto" value="contacto" required><span>No logro contactar a mis prospectos</span></label><label class="opt"><input type="radio" name="reto" value="cierre" required><span>Los contacto, pero no compran</span></label><label class="opt"><input type="radio" name="reto" value="seguimiento" required><span>Se enfrían por falta de seguimiento</span></label><label class="opt"><input type="radio" name="reto" value="recompra" required><span>Mis clientes no vuelven a comprar</span></label></fieldset>
+      <fieldset class="chk"><legend>¿Qué canales usas hoy?</legend><label><input type="checkbox" name="canales" value="Llamada">Llamada</label><label><input type="checkbox" name="canales" value="WhatsApp">WhatsApp</label><label><input type="checkbox" name="canales" value="Redes sociales">Redes sociales</label><label><input type="checkbox" name="canales" value="Web">Web</label><label><input type="checkbox" name="canales" value="Presencial">Presencial</label><label><input type="checkbox" name="canales" value="Correo">Correo</label></fieldset>
+      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Atrás</button><button class="btn btn-orange" type="button" data-go="4">Ver mi diagnóstico →</button></div>
+    </fieldset>
+    <fieldset class="dg-step" data-step="4" hidden>
+      <legend>Tu diagnóstico</legend>
+      <div class="rp" id="dgReport"></div>
+      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Ajustar datos</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost" type="button" id="dgPdf">Descargar PDF</button><button class="btn btn-orange" type="button" data-go="5">Quiero mi Fotografía Comercial completa</button></span></div>
+    </fieldset>
+    <fieldset class="dg-step" data-step="5" hidden>
+      <legend>Tus datos para coordinar</legend>
+      <p class="dg-hint">Un KAM revisará tu diagnóstico y te contactará para hacer la Fotografía Comercial completa, sin costo.</p>
       <div class="field"><label for="d_nom">Nombre y apellido</label><input id="d_nom" name="nombre" required autocomplete="name"></div>
+      <div class="field"><label for="d_emp">Empresa</label><input id="d_emp" name="empresa" required autocomplete="organization"></div>
       <div class="field"><label for="d_cargo">Cargo</label><input id="d_cargo" name="cargo" required autocomplete="organization-title"></div>
       <div class="field"><label for="d_mail">Correo corporativo</label><input id="d_mail" name="correo" type="email" required autocomplete="email"></div>
-      <div class="field"><label for="d_cel">Celular</label><input id="d_cel" name="celular" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX"></div>
-      <div class="field full"><label for="d_msg">¿Algo más que debamos saber? (opcional)</label><textarea id="d_msg" name="comentario"></textarea></div>
+      <div class="field full"><label for="d_cel">Celular</label><input id="d_cel" name="celular" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX"></div>
       <label class="check"><input type="checkbox" id="d_ok" required> Acepto que Xsell use mis datos para contactarme, según la Ley N.° 29733 de Protección de Datos Personales.</label>
-      <div class="dg-actions"><button class="btn btn-ghost" type="button" id="dgBack">← Atrás</button><button class="btn btn-orange" type="submit" id="dgSend">Enviar y agendar</button></div>
+      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="4">← Atrás</button><button class="btn btn-orange" type="submit" id="dgSend">Enviar</button></div>
     </fieldset>
     <p class="form-msg" id="dgStatus" role="status"></p>
   </form>
@@ -925,8 +1097,8 @@ footer{padding-bottom:110px}
 <footer>
   <div class="wrap fgrid">
     <div class="fcol fbrand"><img src="logo.webp" alt="Xsell" width="96" height="35"><p class="slogan">Multiplicamos <em>tus resultados</em></p><p class="fsm">Agencia de ventas. 14 años convirtiendo oportunidades en ventas.</p><button class="btn btn-orange js-diag" type="button">Diagnóstico gratuito</button></div>
-    <div class="fcol"><h4>Explora</h4><a href="#multiplicadores">Multiplicadores</a><a href="#caso">Caso de éxito</a><a href="#modelos">Modelos de cierre</a><a href="#proceso">Cómo trabajamos</a><a href="#sectores">Sectores</a></div>
-    <div class="fcol"><h4>Xsell</h4><a href="nosotros.html">Nosotros</a><a href="cultura.html">Trabaja con nosotros</a><a href="#contacto">Contacto</a><a href="#chat" class="js-ai">Pregúntanos en el chat</a></div>
+    <div class="fcol"><h4>Explora</h4><a href="#multiplicadores">Multiplicadores</a><a href="#caso">Casos</a><a href="#modelos">Modelos de cierre</a><a href="#proceso">Cómo trabajamos</a><a href="#sectores">Sectores</a></div>
+    <div class="fcol"><h4>Xsell</h4><a href="nosotros.html">Nosotros</a><span>Trabaja con nosotros <em class="soon">Próximamente</em></span><a href="#contacto">Contacto</a><a href="#chat" class="js-ai">Pregúntanos en el chat</a></div>
     <div class="fcol"><h4>Presencia</h4><span>Perú</span><span>Argentina</span><span>Chile <em class="soon">Próximamente</em></span></div>
   </div>
   <div class="wrap fbot"><span>© <span id="yr">2026</span> Xsell. Todos los derechos reservados.</span><span>Lima, Perú</span></div>
@@ -943,45 +1115,46 @@ const CONFIG = {
 const KB = `EMPRESA: Xsell. Agencia de ventas en Perú con 14 años en el mercado. Somos socios estratégicos, no proveedores: nos hacemos cargo de la venta para empresas que venden buenos productos y servicios. Lema: "Multiplicamos tus resultados". Presencia: Perú y Argentina; Chile próximamente. Xsell es una agencia de ventas: habla de ventas y resultados, no de tecnología.
 QUÉ HACEMOS (sección "Multiplicadores", un ecosistema 360° desde la captación hasta la fidelización): 1) Perfilar: depuramos la base de datos del cliente, calificamos a los prospectos por intención real de compra y nos adaptamos a su volumen; resultado: prospectos calificados y listos para comprar. 2) Convertir: cierres directos en venta entrante y saliente, manejo de objeciones, detección de la necesidad real y generación de urgencia; resultado: más ventas efectivas y facturación. 3) Incrementar valor: ventas cruzadas y adicionales después de la compra, campañas a clientes fidelizados, promociones de reactivación y atención multicanal hasta la resolución; resultado: recompra y ticket más alto. Canales: WhatsApp, redes sociales, llamada, web y presencial, con el historial del cliente unificado. Entregamos informes mensuales, trimestrales y semestrales con indicadores, causas y acciones sugeridas.
 HACEMOS BUENAS VENTAS: entender la necesidad real, recomendar lo correcto, cerrar con transparencia y validar la satisfacción. Ventas que no se caen ni generan reclamos.
-MODELOS DE CIERRE: Cierre ágil (campaña de producto B2C, ticket medio, cierre en la primera llamada, palancas: urgencia y beneficios inmediatos). Asesoría experta (venta consultiva B2C, ticket alto, ciclo corto, palancas: seguimiento consultivo, agendamiento de pruebas, asesoría técnica). Flujo cíclico (gestión B2B / empresas, volumen alto, ciclo gestionado, palancas: propuesta de valor B2B, negociación de volumen, aprobación multinivel).
+MODELOS DE CIERRE: Cierre ágil (campaña de producto B2C, ticket medio, cierre en el primer contacto, palancas: urgencia y beneficios inmediatos). Asesoría experta (venta consultiva B2C, ticket alto, ciclo corto, palancas: seguimiento consultivo, agendamiento de pruebas, asesoría técnica). Flujo cíclico (gestión B2B / empresas, volumen alto, ciclo gestionado, palancas: propuesta de valor B2B, negociación de volumen, aprobación multinivel).
 CASO REAL (automotriz B2B, sin nombre de cliente ni país): el cliente generaba unas 7,000 consultas al año con sus propias campañas, pero no sabía cuántas terminaban en venta porque nadie daba seguimiento después de asignarlas al vendedor. El problema no era de volumen, era de seguimiento. Xsell suma seguimiento después de cada asignación: cuida la calidad del dato, insiste las veces necesarias y da visibilidad de la etapa de cada interesado. Resultado: el cliente vio resultados y decidió invertir más; sus propias campañas pasaron de 3-4 en 2025 a 15 en 2026, duplicó la inversión por campaña, proyecta hasta 20 a fin de año y evalúa llevar el modelo a otro país. No des cifras de ventas de este caso.
 MODELO DE TRABAJO Y PAGO: 1) Fotografía Comercial Xsell: no tiene costo; en 72 horas levantamos la información, vemos cómo se encuentra hoy el negocio del cliente y entendemos su flujo comercial. 2) Evaluamos la viabilidad del modelo para ambos negocios. 3) Arrancamos con un fijo (fee) más un variable por resultados. 4) Finalmente, pago por resultado (PxQ: precio por cantidad de resultados logrados). Usa siempre el nombre exacto "Fotografía Comercial Xsell".
 SECTORES: telecomunicaciones, retail, banca y seguros, automotriz, salud, consumo masivo, y muchos más.
 CLIENTES: no se mencionan nombres de clientes. Si preguntan, di que por confidencialidad no compartimos nombres y menciona los sectores y el caso de éxito.
 NO OFRECEMOS: encuestas a clientes, paquetes cerrados ni desarrollo de canales para que los opere el cliente. No los menciones.
 PAUTA Y MARKETING: Xsell NO hace pauta, publicidad, anuncios, manejo de redes ni marketing digital. Somos una agencia de ventas: trabajamos lo que pasa después del anuncio. Si el cliente ya genera interesados con sus campañas o tiene una base de datos, nosotros los perfilamos, les damos seguimiento y los convertimos en ventas. Vendemos por WhatsApp, redes sociales, llamada, web o presencial, pero la publicidad la maneja el cliente o su agencia.
-CULTURA DE XSELL: la experiencia de trabajar en Xsell se cuenta como un viaje. Siempre di "integrantes", nunca "empleados" ni "trabajadores". No uses la palabra "popular". Nunca uses los nombres "3bu", "tribu" ni "3eriza": son de la marca anterior. Propósito "mejores personas, mejores negocios"; valores: mejor y distinto, nos hacemos cargo, profesionalismo, respeto por la gente. Programas: encuesta de clima "Potenciando mi viaje", "Academia Xsell", "Aprende+", "Emprende Xsell", "La estrategia somos todos" y "Estrellas de valor". Si la persona quiere trabajar en Xsell, invítala a la página Cultura o a escribir por WhatsApp.
-CONTACTO: Ingrid, Asesora Comercial (por WhatsApp o agendando una reunión en la sección Contacto).`;
+CULTURA: la sección Cultura y Trabaja con nosotros estará disponible próximamente. Si preguntan por trabajar en Xsell, agradece el interés y di que muy pronto se publicará. Siempre di "integrantes", nunca "empleados". Nunca uses los nombres "3bu", "tribu" ni "3eriza".
+CONTACTO: el mejor siguiente paso es el diagnóstico gratis de la web (botón "Diagnóstico gratis"): en 3 minutos el visitante ve dónde se pierde su venta, recibe consejos y un PDF, y puede dejar sus datos para que un KAM lo contacte y haga la Fotografía Comercial completa.
+CASO 2 (retail y telecomunicaciones, real): tasa de contacto 55%, conversión de prospectos 70%, base de unos 600 prospectos al mes; ventas mensuales de S/ 167K (2021) a S/ 385K (2024) con el mismo equipo.`;
 
 const SYSTEM = `Eres el asistente de la web de Xsell. Respondes en español, con tono cercano y experto, en 3 a 5 frases cortas y en palabras simples (sin anglicismos ni jerga).
 Reglas:
 - Usa SOLO la información de abajo. No inventes datos, cifras, clientes, plazos ni casos.
 - Nunca des precios ni montos de los servicios: invita a agendar la Fotografía Comercial Xsell, que no tiene costo y toma 72 horas, para recibir una propuesta personalizada.
-- Si no sabes algo, sugiere hablar con Ingrid, nuestra Asesora Comercial.
+- Si no sabes algo, invita a hacer el diagnóstico gratis de la web para que un KAM lo contacte.
 - Si la pregunta no tiene relación con Xsell o con ventas, redirígela con amabilidad hacia cómo Xsell puede ayudar.
 - Xsell es un aliado y agente de ventas: enfoca cada respuesta en cómo ayudamos a vender más, aprovechar oportunidades de negocio, fortalecer el proceso comercial y convertir prospectos en clientes. Habla primero del beneficio en ventas y luego de cómo lo hacemos.
-- Si preguntan por trabajar en Xsell, cuéntalo como un viaje y usa "integrantes".
-- Termina siempre invitando al siguiente paso (agendar reunión o escribir por WhatsApp).
+- Si preguntan por trabajar en Xsell, di que la sección Cultura llega muy pronto.
+- Resuelve la duda dentro de la web. Termina invitando a hacer el diagnóstico gratis o a ver la sección relacionada. No envíes a WhatsApp.
 - Responde en texto plano, sin listas, sin markdown, sin títulos.
 INFORMACIÓN:
 ${KB}`;
 
 /* Respuestas predefinidas por palabras clave (si el asistente no está disponible) */
 const FALLBACK = [
+  {k:["se enfrían","se enfrian","enfrí","enfri","los pierdo","pierdo","no contestan","seguimiento"],
+   a:"Eso pasa cuando el seguimiento no es rápido ni constante. Nosotros contactamos a tus interesados a tiempo, insistimos por varios canales (llamada, WhatsApp, redes) y los llevamos hasta el cierre.\n\nEs justo lo que hicimos en nuestro caso real del sector automotriz. Haz tu diagnóstico gratis y mira cuántas ventas podrías recuperar."},
+  {k:["no sé cómo mejorarlo","no se como mejorarlo","mejorarlo","mejorar mi canal","por dónde empiezo","por donde empiezo"],
+   a:"Lo primero es ver dónde se pierde la venta: cuántos prospectos llegan, a cuántos contactas y cuántos compran. Con eso sabemos si conviene perfilar mejor, convertir más o hacer que tus clientes vuelvan.\n\nPuedes hacer una primera versión ahora mismo con nuestro diagnóstico gratis, en 3 minutos."},
+  {k:["puntos de atención","puntos de atencion","mis tiendas","atienden","no venden"],
+   a:"Atender no es lo mismo que vender. Vendemos donde está tu cliente, también de forma presencial: nuestros asesores detectan la necesidad real, recomiendan lo correcto y cierran con transparencia.\n\nAdemás medimos cada etapa para saber dónde mejorar. Haz tu diagnóstico gratis y vemos tu caso."},
+  {k:["sin aumentar mi planilla","planilla fija","planilla","sin contratar","costos fijos"],
+   a:"Con Xsell vendes más sin sumar personal a tu planilla: nos hacemos cargo de tu venta con un equipo que trabaja con tu marca. Arrancamos con un fijo más un variable y, con la operación madura, pasamos a pago por resultado (PxQ)."},
   {k:["pauta","publicidad","anuncio","marketing","google ads","meta ads","facebook ads","tiktok","community","manejo de redes","generan leads","generar leads","generación de leads","generacion de leads","campañas digitales","hacen campañas","agencia de publicidad","seo"],
    a:"No hacemos pauta ni marketing digital. Somos una agencia de ventas: trabajamos lo que pasa después del anuncio.\n\nSi ya generas interesados con tus campañas o tienes una base de datos, nosotros los perfilamos, les damos seguimiento y los convertimos en ventas. Así tu inversión en publicidad rinde más. ¿Te contamos cómo en una Fotografía Comercial Xsell?"},
   {k:["fotografía","fotografia","foto comercial","diagnóstico","diagnostico"],
    a:"La Fotografía Comercial Xsell es nuestro primer paso y no tiene costo: en 72 horas levantamos la información, miramos cómo se encuentra hoy tu negocio y entendemos tu flujo comercial de punta a punta. Con esa foto evaluamos si el modelo es viable para ambos y te proponemos cómo trabajar. Pide tu diagnóstico gratuito y empezamos."},
-  {k:["cuidan","cuidamos","convenio","beneficios para","bienestar"],
-   a:"En Xsell cuidamos a nuestros integrantes con convenios y beneficios pensados para ellos y sus familias. Para conocer el detalle actualizado, lo mejor es conversarlo directamente con nuestro equipo. Escríbenos por WhatsApp y te contamos."},
-  {k:["escuchan","escuchamos","clima","voz","opinión","opinion"],
-   a:"Te escuchamos de verdad: con nuestra encuesta de clima Potenciando mi viaje cada integrante puede decir lo que piensa, y eso nos ayuda a mejorar el viaje. ¿Quieres saber más? Escríbenos por WhatsApp."},
-  {k:["desarrollan","desarrollamos","academia","aprende","crecer profesional","capacitación","capacitacion","emprende"],
-   a:"Nos desarrollamos con Academia Xsell y Aprende+, que impulsan el aprendizaje continuo, y con Emprende Xsell apoyamos a quienes tienen espíritu emprendedor. Si quieres crecer con nosotros, escríbenos por WhatsApp."},
-  {k:["conectados","conectamos","estrategia somos todos","estrellas de valor","reconoc"],
-   a:"Nos mantenemos conectados con espacios como La estrategia somos todos, donde construimos juntos, y reconocemos a quienes viven nuestros valores con Estrellas de valor. ¿Te animas a sumarte al viaje? Escríbenos por WhatsApp."},
-  {k:["diferente","cultura","valores","propósito","proposito","trabajar en xsell","trabajar con ustedes","postular","ser parte","integrante"],
-   a:"Trabajar en Xsell es un viaje, y es diferente porque nuestro propósito es mejores personas, mejores negocios. Creemos en hacer las cosas mejor y distinto, en hacernos cargo, en el profesionalismo y en el respeto por la gente. Nuestra meta es que 95% de integrantes sientan que subieron un escalón en su vida profesional cada año. Si quieres ser parte del viaje, escríbenos por WhatsApp."},
+  {k:["cultura","trabajar en xsell","trabajar con ustedes","trabajo","empleo","postular","vacante","ser parte","integrante","cuidan","escuchan","academia","convenio"],
+   a:"¡Gracias por tu interés en ser parte de Xsell! Muy pronto lanzaremos nuestra sección de Cultura, donde podrás conocer cómo vivimos el viaje Xsell y postular. Mientras tanto, ¿te cuento cómo ayudamos a las empresas a vender más?"},
   {k:["qué gana","que gana","beneficio","ganar","ventaja","ayudarme a vender","vender más","vender mas"],
    a:"Con Xsell, tu empresa gana un aliado comercial enfocado en impulsar tus ventas. Perfilamos tus prospectos, los convertimos en ventas y después hacemos que tus clientes vuelvan a comprar, con un equipo especializado y resultados medibles. Tú te enfocas en hacer crecer tu negocio; nosotros te ayudamos a vender más. ¿Pides tu diagnóstico gratuito?"},
   {k:["perfil","base de datos","base","calific","intención","intencion","prospectos fríos","prospectos frios"],
@@ -993,9 +1166,9 @@ const FALLBACK = [
   {k:["buenas ventas","calidad","transparen","satisfac","reclamo","se caen","arrepient"],
    a:"Hacemos buenas ventas: entendemos la necesidad real, recomendamos lo correcto, cerramos con transparencia y validamos la satisfacción. Son ventas que se sostienen y no generan reclamos, y cuidan tu marca. ¿Conversamos en tu diagnóstico gratuito?"},
   {k:["modelo","cierre ágil","cierre agil","asesoría experta","asesoria experta","flujo cíclico","flujo ciclico","b2c","b2b"],
-   a:"Trabajamos con tres modelos de cierre: Cierre ágil, para campañas de producto con cierre en la primera llamada; Asesoría experta, para ventas consultivas de ticket alto; y Flujo cíclico, para ventas a empresas con aprobación en varios niveles. En la Fotografía Comercial Xsell definimos cuál encaja con tu negocio."},
+   a:"Trabajamos con tres modelos de cierre: Cierre ágil, para campañas de producto con cierre en el primer contacto; Asesoría experta, para ventas consultivas de ticket alto; y Flujo cíclico, para ventas a empresas con aprobación en varios niveles. En la Fotografía Comercial Xsell definimos cuál encaja con tu negocio."},
   {k:["caso","éxito","exito","resultados reales","ejemplo","han logrado"],
-   a:"Un caso real en el sector automotriz B2B: el cliente generaba miles de consultas al año, pero no sabía cuántas terminaban en venta. El problema no era de volumen, era de seguimiento. Sumamos ese seguimiento, el cliente vio resultados y decidió invertir más: pasó de 3-4 a 15 campañas propias en un año y evalúa llevar el modelo a otro país. ¿Vemos qué podemos lograr con tu empresa?"},
+   a:"Tenemos dos casos reales. En automotriz B2B, el cliente generaba unas 7,000 consultas al año sin seguimiento: lo sumamos, vio resultados y pasó de 3-4 a 15 campañas propias en un año, duplicando su inversión por campaña.\n\nEn retail y telecomunicaciones llevamos la tasa de contacto a 55% y la conversión de prospectos a 70%; las ventas mensuales pasaron de S/ 167K a S/ 385K con el mismo equipo. Puedes verlos en la sección Casos."},
   {k:["canal","whatsapp","redes","llamada","omnicanal","presencial","tienda"],
    a:"Vendemos donde está tu cliente: WhatsApp, redes sociales, llamadas, web y atención presencial, con su historial unificado para que pueda empezar en un canal y cerrar en otro. Pide tu diagnóstico gratuito y vemos qué canales te conviene activar."},
   {k:["precio","cuesta","costo","cuánto","cuanto","tarifa","monto","presupuesto","cobran"],
@@ -1126,51 +1299,201 @@ function waLink(text){
   btn.addEventListener("click", () => { const n = cur() === "dark" ? "light" : "dark"; document.documentElement.setAttribute("data-theme", n); try { localStorage.setItem("xsell-theme", n); } catch(e){} });
 })();
 
-/* Diagnóstico gratuito: ventana con formulario en 2 pasos */
+/* Fotografía Comercial: diagnóstico tipo calculadora */
 (function(){
   const dlg = $("#diag"), f = $("#diagForm"), st = $("#dgStatus"), steps = [...f.querySelectorAll(".dg-step")], bars = [...f.querySelectorAll(".dg-steps i")];
-  const go = n => { steps.forEach((s,i) => s.hidden = i !== n); bars.forEach((b,i) => b.classList.toggle("on", i <= n)); st.textContent = ""; const first = steps[n].querySelector("input,select"); if (first) first.focus(); };
-  const open = e => { if (e) e.preventDefault(); go(0); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); };
+  const fmt = n => Math.round(n).toLocaleString("en-US");
+  const money = n => "S/\u00a0" + fmt(n);
+  let cur = 0, R = null;
+  const go = n => {
+    cur = n; steps.forEach((s,i) => s.hidden = i !== n);
+    bars.forEach((b,i) => b.classList.toggle("on", n >= 1 && i < Math.min(n, 4)));
+    st.textContent = "";
+    if (n === 2) mini();
+    if (n === 4) report();
+    const first = steps[n].querySelector("input:not([type=hidden]),select,button.btn-orange"); if (first) first.focus({ preventScroll: true });
+    f.scrollTop = 0; dlg.scrollTop = 0;
+  };
+  const open = e => { if (e) e.preventDefault(); if (window.XSELL_CTX && XSELL_CTX.sector){ const s = $("#d_sector"); [...s.options].forEach(o => { if (o.text === XSELL_CTX.sector) s.value = o.text; }); } go(0); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); };
+  window.openDiag = open;
   document.querySelectorAll(".js-diag").forEach(b => b.addEventListener("click", open));
   $("#dgClose").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
-  const valid = n => { const els = [...steps[n].querySelectorAll("[required]")]; const bad = els.find(el => !el.checkValidity()); if (bad){ st.className = "form-msg err"; st.textContent = "Completa los campos marcados para continuar."; bad.reportValidity(); return false; } return true; };
-  $("#dgNext").addEventListener("click", () => { if (valid(0)) go(1); });
-  $("#dgBack").addEventListener("click", () => go(0));
+  const valid = n => {
+    const els = [...steps[n].querySelectorAll("[required]")];
+    const bad = els.find(el => !el.checkValidity());
+    if (bad){ st.className = "form-msg err"; st.textContent = "Completa los campos marcados para continuar."; if (bad.type !== "radio") bad.reportValidity(); else bad.closest(".opts").scrollIntoView({ block: "center" }); return false; }
+    return true;
+  };
+  f.addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (!b) return; const n = +b.dataset.go; if (n > cur && !valid(cur)) return; go(n); });
+
+  /* Números en vivo */
+  const val = () => {
+    const d = new FormData(f);
+    return { tipo: d.get("tipo") || "B2C", sector: d.get("sector") || "", ciclo: d.get("ciclo") || "", equipo: d.get("equipo_ventas") || "",
+      L: Math.max(0, +d.get("prospectos") || 0), t: Math.max(0, +d.get("ticket") || 0), c: (+d.get("contacto") || 0) / 100, v: (+d.get("conversion") || 0) / 100,
+      reto: d.get("reto") || "contacto", canales: d.getAll("canales") };
+  };
+  const mini = () => {
+    const x = val(), C = x.L * x.c, S = C * x.v;
+    $("#o_cont").textContent = Math.round(x.c * 100) + "%"; $("#o_conv").textContent = Math.round(x.v * 100) + "%";
+    $("#miniFun").innerHTML = '<span class="mf-k">Tu embudo hoy</span><div><b>' + fmt(x.L) + '</b><span>prospectos</span></div><div><b>' + fmt(C) + '</b><span>contactados</span></div><div><b>' + fmt(S) + '</b><span>ventas</span></div><div><b>' + money(S * x.t) + '</b><span>al mes</span></div>';
+  };
+  ["d_leads","d_ticket","d_cont","d_conv"].forEach(id => $("#" + id).addEventListener("input", mini));
+
+  const TIPS = {
+    contacto: ["Contacta a cada interesado lo antes posible, idealmente el mismo día: mientras más esperas, más se enfría.", "Haz al menos 3 intentos en distintos horarios y canales antes de descartar a alguien.", "Haz remarketing a quienes no contestaron: un mensaje por WhatsApp o correo los reactiva.", "Depura tu base y prioriza a quienes muestran intención real de compra."],
+    cierre: ["Arma tu guion según la necesidad del cliente, no según el producto.", "Prepara respuestas para las objeciones más comunes de tu negocio.", "Genera sentido de oportunidad con beneficios claros y con fecha límite.", "Mide la conversión por asesor y replica lo que mejor funciona."],
+    seguimiento: ["Define cuántos seguimientos hace cada asesor y en qué plazos.", "Registra la etapa de cada interesado para que nadie se quede sin atención.", "Combina canales: llamada para avanzar y WhatsApp para recordar.", "Revisa cada semana qué interesados no tienen un próximo paso."],
+    recompra: ["Ofrece un producto complementario en el momento de la compra.", "Arma campañas para clientes que ya te compraron.", "Llama después de la venta para validar la satisfacción.", "Resuelve los reclamos rápido y por el canal que el cliente prefiera."]
+  };
+  const FOCUS = { contacto: "Perfilar y contactar", cierre: "Convertir", seguimiento: "Convertir con seguimiento", recompra: "Incrementar valor" };
+  const MODELS = {
+    agil: ["Cierre ágil", "cierre en el primer contacto, con urgencia y beneficios inmediatos"],
+    experta: ["Asesoría experta", "seguimiento consultivo y agendamiento de pruebas"],
+    ciclico: ["Flujo cíclico", "propuesta de valor B2B y aprobación en varios niveles"]
+  };
+  const calc = () => {
+    const x = val();
+    const c2 = x.c >= 0.6 ? x.c : Math.min(0.6, Math.max(x.c + 0.15, x.c * 1.3));
+    const v2 = Math.min(0.7, x.v * 1.3);
+    const S0 = x.L * x.c * x.v, S1 = x.L * c2 * x.v, S2 = x.L * c2 * v2;
+    const model = x.tipo === "B2B" ? MODELS.ciclico : (x.ciclo === "Semanas o meses" || x.t >= 2000) ? MODELS.experta : MODELS.agil;
+    const tips = TIPS[x.reto].slice(0, 3);
+    if (!x.canales.includes("WhatsApp")) tips.push("Suma WhatsApp: muchos clientes prefieren escribir antes que contestar una llamada.");
+    else if (x.canales.length <= 1) tips.push("Usa más de un canal: lo que no responde una llamada, a veces lo responde un mensaje.");
+    else tips.push(TIPS[x.reto][3]);
+    const notes = [];
+    if (x.c < 0.4) notes.push("Hoy contactas al " + Math.round(x.c * 100) + "% de tus prospectos: de cada 10, " + (10 - Math.round(x.c * 10)) + " nunca escuchan tu oferta.");
+    if (x.c >= 0.4 && x.v < 0.1) notes.push("Tu contacto está bien; donde más se pierde la venta es en el cierre.");
+    return { x, c2, v2, S0, S1, S2, model, tips, notes, focus: FOCUS[x.reto] };
+  };
+  const report = () => {
+    R = calc(); const { x, c2, v2, S0, S1, S2, model, tips, notes, focus } = R;
+    const up = S2 - S0;
+    $("#dgReport").innerHTML =
+      '<p class="rp-big">' + (up >= 1 ? 'Podrías pasar de <em>' + fmt(S0) + '</em> a <em>' + fmt(S2) + ' ventas al mes</em>: unos ' + money(up * x.t) + ' más cada mes.' : 'Tus números ya son buenos: el reto es sostenerlos y hacer que tus clientes vuelvan.') + '</p>' +
+      (notes.length ? '<p class="dg-hint" style="margin:0">' + notes.join(" ") + '</p>' : '') +
+      '<div class="rp-cols"><div><small>Hoy</small><b>' + fmt(S0) + '</b><span>ventas · ' + Math.round(x.c*100) + '% contacto · ' + Math.round(x.v*100) + '% cierre</span></div>' +
+      '<div><small>Con más contacto</small><b>' + fmt(S1) + '</b><span>ventas · ' + Math.round(c2*100) + '% contacto</span></div>' +
+      '<div class="best"><small>Contacto + mejor cierre</small><b>' + fmt(S2) + '</b><span>ventas · ' + Math.round(v2*100) + '% cierre · ' + money(S2 * x.t) + '</span></div></div>' +
+      '<div class="rp-tags"><span><i>Etapa prioritaria:</i> ' + focus + '</span><span><i>Modelo sugerido:</i> ' + model[0] + '</span></div>' +
+      '<h4>Consejos para empezar hoy</h4><ul>' + tips.map(t => '<li>' + t + '</li>').join("") + '</ul>' +
+      '<h4>Tu ruta con Xsell</h4><ol>' +
+        '<li><b>Fotografía Comercial completa (72 h, sin costo):</b> validamos estos números con tu información real, con foco en ' + focus.toLowerCase() + '.</li>' +
+        '<li><b>Viabilidad:</b> proyectamos el modelo ' + model[0] + ' para tu negocio y el nuestro.</li>' +
+        '<li><b>Arranque con fijo + variable:</b> ' + model[1] + '.</li>' +
+        '<li><b>Pago por resultado (PxQ):</b> con la operación madura, pagas por cada resultado logrado.</li></ol>' +
+      '<p class="rp-note">Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la Fotografía Comercial completa la valida con tu información real.</p>';
+  };
+
+  /* PDF sin librerías */
+  function pdf(){
+    if (!R) report();
+    const { x, c2, v2, S0, S1, S2, model, tips, notes, focus } = R;
+    const W = 595, H = 842, M = 50, pages = []; let ops = [], y = 0;
+    const clean = s => String(s).replace(/→/g, "a").replace(/[–—]/g, "-").replace(/[“”]/g, '"').replace(/…/g, "...").replace(/[^\x20-\xFF]/g, "");
+    const esc = s => clean(s).replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+    const rgb = h => [1,3,5].map(i => (parseInt(h.slice(i, i+2), 16) / 255).toFixed(3)).join(" ");
+    const newPage = () => { if (ops.length) pages.push(ops.join("\n")); ops = []; y = H - M; };
+    const need = h => { if (y - h < M) newPage(); };
+    const text = (s, x0, y0, size, bold, col) => ops.push("BT /" + (bold ? "F2" : "F1") + " " + size + " Tf " + rgb(col || "#1B1028") + " rg " + x0 + " " + y0.toFixed(1) + " Td (" + esc(s) + ") Tj ET");
+    const rect = (x0, y0, w, h, col) => ops.push(rgb(col) + " rg " + x0 + " " + y0.toFixed(1) + " " + w + " " + h + " re f");
+    const wrap = (s, size, maxW, bold) => { const words = clean(s).split(/ +/), out = []; let line = ""; const k = size * (bold ? 0.56 : 0.5);
+      words.forEach(w => { const t = line ? line + " " + w : w; if (t.length * k > maxW && line){ out.push(line); line = w; } else line = t; }); if (line) out.push(line); return out; };
+    const para = (s, size, opt) => { opt = opt || {}; const lines = wrap(s, size, opt.w || (W - 2*M - (opt.indent || 0)), opt.bold); lines.forEach(l => { need(size + 4); text(l, M + (opt.indent || 0), y, size, opt.bold, opt.col); y -= size + 4; }); };
+    newPage();
+    rect(0, H - 110, W, 110, "#5D17A0"); rect(0, H - 116, W, 6, "#FF6B13");
+    text("Xsell", M, H - 62, 30, true, "#FFFFFF");
+    text("Fotografía Comercial · Diagnóstico referencial", M, H - 88, 12, false, "#EDE3F7");
+    text(new Date().toLocaleDateString("es-PE"), W - M - 70, H - 62, 10, false, "#EDE3F7");
+    y = H - 150;
+    para("Tu negocio: vende a " + (x.tipo === "B2B" ? "empresas (B2B)" : "personas (B2C)") + (x.sector ? " · sector " + x.sector : "") + (x.ciclo ? " · cierre: " + x.ciclo.toLowerCase() : ""), 10, { col: "#6B5A7E" });
+    y -= 8;
+    para(S2 - S0 >= 1 ? "Podrías pasar de " + fmt(S0) + " a " + fmt(S2) + " ventas al mes: unos " + money((S2 - S0) * x.t) + " más cada mes." : "Tus números ya son buenos: el reto es sostenerlos y hacer que tus clientes vuelvan.", 17, { bold: true });
+    notes.forEach(n => para(n, 10, { col: "#6B5A7E" }));
+    y -= 10; need(80);
+    const cols = [["HOY", S0, Math.round(x.c*100) + "% contacto · " + Math.round(x.v*100) + "% cierre", "#F3EEF8", "#1B1028"], ["CON MÁS CONTACTO", S1, Math.round(c2*100) + "% contacto", "#F3EEF8", "#1B1028"], ["CONTACTO + MEJOR CIERRE", S2, Math.round(v2*100) + "% cierre · " + money(S2 * x.t), "#7B2BC9", "#FFFFFF"]];
+    const cw = (W - 2*M - 20) / 3;
+    cols.forEach((c, i) => { const x0 = M + i * (cw + 10); rect(x0, y - 70, cw, 76, c[3]); text(c[0], x0 + 12, y - 12, 8, true, c[4]); text(fmt(c[1]) + " ventas", x0 + 12, y - 38, 18, true, c[4]); text(c[2], x0 + 12, y - 58, 8, false, c[4]); });
+    y -= 96;
+    para("Etapa prioritaria: " + focus, 11, { bold: true, col: "#E85A00" }); para("Modelo sugerido: " + model[0], 11, { bold: true, col: "#E85A00" });
+    y -= 10;
+    para("Consejos para empezar hoy", 13, { bold: true });
+    tips.forEach(t => { need(14); rect(M, y + 2, 5, 5, "#FF6B13"); para(t, 10.5, { indent: 14 }); y -= 3; });
+    y -= 8;
+    para("Tu ruta con Xsell", 13, { bold: true });
+    [["1. Fotografía Comercial completa (72 h, sin costo)", "Validamos estos números con tu información real, con foco en " + focus.toLowerCase() + "."],
+     ["2. Viabilidad", "Proyectamos el modelo " + model[0] + " para tu negocio y el nuestro."],
+     ["3. Arranque con fijo + variable", model[1].charAt(0).toUpperCase() + model[1].slice(1) + "."],
+     ["4. Pago por resultado (PxQ)", "Con la operación madura, pagas por cada resultado logrado."]].forEach(r => { para(r[0], 10.5, { bold: true }); para(r[1], 10.5, { indent: 14, col: "#4A3B5C" }); y -= 4; });
+    y -= 10;
+    para("Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la Fotografía Comercial completa la valida con tu información real.", 8.5, { col: "#8A7B9C" });
+    para("Xsell · Agencia de ventas · Multiplicamos tus resultados", 8.5, { bold: true, col: "#8A7B9C" });
+    pages.push(ops.join("\n"));
+    /* Ensamblar PDF */
+    const objs = [], n = pages.length;
+    objs[1] = "<< /Type /Catalog /Pages 2 0 R >>";
+    const kids = pages.map((_, i) => (5 + i*2) + " 0 R").join(" ");
+    objs[2] = "<< /Type /Pages /Kids [" + kids + "] /Count " + n + " >>";
+    objs[3] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>";
+    objs[4] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>";
+    pages.forEach((p, i) => { const pi = 5 + i*2; objs[pi] = "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 " + W + " " + H + "] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents " + (pi+1) + " 0 R >>"; objs[pi+1] = "<< /Length " + p.length + " >>\nstream\n" + p + "\nendstream"; });
+    let out = "%PDF-1.4\n", offs = [];
+    for (let i = 1; i < objs.length; i++){ offs[i] = out.length; out += i + " 0 obj\n" + objs[i] + "\nendobj\n"; }
+    const xref = out.length;
+    out += "xref\n0 " + objs.length + "\n0000000000 65535 f \n" + offs.slice(1).map(o => String(o).padStart(10, "0") + " 00000 n \n").join("");
+    out += "trailer\n<< /Size " + objs.length + " /Root 1 0 R >>\nstartxref\n" + xref + "\n%%EOF";
+    const bytes = new Uint8Array(out.length); for (let i = 0; i < out.length; i++) bytes[i] = out.charCodeAt(i) & 255;
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" })); a.download = "Diagnostico-Comercial-Xsell.pdf";
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+  }
+  $("#dgPdf").addEventListener("click", pdf);
+
   f.addEventListener("submit", async e => {
-    e.preventDefault(); if (!valid(1)) return;
-    const d = Object.fromEntries(new FormData(f).entries()), btn = $("#dgSend");
-    const dest = CONFIG.diagnostico.correo;
-    if (dest){
-      btn.disabled = true; btn.textContent = "Enviando…";
-      try { const r = await fetch("https://formsubmit.co/ajax/" + dest, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Nuevo diagnóstico gratuito: " + d.empresa }, d)) }); if (!r.ok) throw 0;
-        f.reset(); st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tu solicitud. Te contactaremos para coordinar tu Fotografía Comercial Xsell.";
-      } catch { st.className = "form-msg err"; st.textContent = "No pudimos enviar tu solicitud. Inténtalo de nuevo en unos minutos."; }
-      btn.disabled = false; btn.textContent = "Enviar y agendar"; return;
-    }
-    if (CONFIG.whatsapp){ const txt = "Hola, quiero mi diagnóstico gratuito (Fotografía Comercial Xsell).%0A" + Object.entries(d).filter(([k,v]) => v).map(([k,v]) => k + ": " + encodeURIComponent(v)).join("%0A"); window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + txt, "_blank", "noopener"); return; }
-    st.className = "form-msg err"; st.textContent = "Este formulario aún no está activo. Muy pronto podrás enviarlo.";
+    e.preventDefault(); if (!valid(5)) return;
+    const d = Object.fromEntries(new FormData(f).entries()); d.canales = new FormData(f).getAll("canales").join(", ");
+    if (R) d.resumen = "Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus + " | Modelo: " + R.model[0];
+    const btn = $("#dgSend"), dest = CONFIG.diagnostico.correo;
+    if (!dest){ st.className = "form-msg err"; st.textContent = "Este formulario aún no está activo. Muy pronto podrás enviarlo."; return; }
+    btn.disabled = true; btn.textContent = "Enviando…";
+    try { const r = await fetch("https://formsubmit.co/ajax/" + dest, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Nuevo diagnóstico comercial: " + (d.empresa || "") }, d)) }); if (!r.ok) throw 0;
+      st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tu diagnóstico. Un KAM te contactará para coordinar tu Fotografía Comercial completa.";
+    } catch { st.className = "form-msg err"; st.textContent = "No pudimos enviar tus datos. Inténtalo de nuevo en unos minutos."; }
+    btn.disabled = false; btn.textContent = "Enviar";
   });
 })();
 
-/* Multiplicadores: pestañas del ecosistema 360° */
+/* Multiplicadores: recorrido guiado */
 (function(){
-  const tabs = [...document.querySelectorAll(".eco-tab")];
-  const show = t => { tabs.forEach(x => { const on = x === t; x.setAttribute("aria-selected", on); document.getElementById(x.getAttribute("aria-controls")).hidden = !on; }); };
-  tabs.forEach((t,i) => { t.addEventListener("click", () => show(t)); t.addEventListener("mouseenter", () => { if (matchMedia("(pointer: fine)").matches) show(t); });
-    t.addEventListener("keydown", e => { if (e.key === "ArrowRight" || e.key === "ArrowDown"){ e.preventDefault(); const n = tabs[(i+1)%tabs.length]; n.focus(); show(n); } if (e.key === "ArrowLeft" || e.key === "ArrowUp"){ e.preventDefault(); const n = tabs[(i+tabs.length-1)%tabs.length]; n.focus(); show(n); } }); });
+  const eco = $("#eco"), tabs = [...document.querySelectorAll(".eco-tab")];
+  let auto = !reduce, i = 0;
+  const show = n => { i = n; tabs.forEach((x,k) => { const on = k === n; x.setAttribute("aria-selected", on); document.getElementById(x.getAttribute("aria-controls")).hidden = !on; x.classList.toggle("done", k < n); x.classList.remove("run"); });
+    if (auto){ void tabs[n].offsetWidth; tabs[n].classList.add("run"); } };
+  const stop = () => { auto = false; tabs.forEach(t => t.classList.remove("run")); };
+  tabs.forEach((t,k) => {
+    t.addEventListener("click", () => { stop(); show(k); });
+    t.querySelector(".et-bar").addEventListener("animationend", () => { if (auto) show((k + 1) % tabs.length); });
+    t.addEventListener("keydown", e => { const d = (e.key === "ArrowRight" || e.key === "ArrowDown") ? 1 : (e.key === "ArrowLeft" || e.key === "ArrowUp") ? -1 : 0; if (!d) return; e.preventDefault(); stop(); const n = (k + d + tabs.length) % tabs.length; tabs[n].focus(); show(n); });
+  });
+  document.querySelectorAll(".eco-next").forEach(b => b.addEventListener("click", () => { stop(); show(+b.dataset.n); if (window.innerWidth < 900) eco.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }));
+  eco.addEventListener("mouseenter", () => eco.classList.add("paused"));
+  eco.addEventListener("mouseleave", () => eco.classList.remove("paused"));
+  const io = new IntersectionObserver(es => { eco.classList.toggle("paused", !es[0].isIntersecting); if (es[0].isIntersecting && auto && !tabs.some(t => t.classList.contains("run"))) show(i); }, { threshold: .4 });
+  io.observe(eco);
 })();
 
-/* Caso de éxito: cifras que suben y barras que crecen */
+/* Casos: carrusel */
 (function(){
-  const box = document.querySelector(".case"); if (!box) return;
-  const run = () => {
-    box.classList.add("on");
-    if (reduce) return;
-    document.querySelectorAll(".js-count").forEach(el => { const to = +el.dataset.to, t0 = performance.now(); (function step(t){ const k = Math.min(1, (t - t0) / 1200); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))).toLocaleString('en-US'); if (k < 1) requestAnimationFrame(step); })(t0); });
-  };
-  const io = new IntersectionObserver(es => { if (es[0].isIntersecting){ run(); io.disconnect(); } }, { threshold: .35 });
-  io.observe(box);
+  const tr = $("#csTrack"); if (!tr) return;
+  const slides = [...tr.children], dots = [...document.querySelectorAll("#csDots button")], prev = $("#csPrev"), next = $("#csNext"), cnt = $("#csCount");
+  let idx = 0;
+  const upd = () => { dots.forEach((d,k) => d.setAttribute("aria-current", k === idx)); cnt.textContent = (idx + 1) + " / " + slides.length; prev.disabled = idx === 0; next.disabled = idx === slides.length - 1; };
+  const go = n => { idx = Math.max(0, Math.min(slides.length - 1, n)); tr.scrollTo({ left: slides[idx].offsetLeft - slides[0].offsetLeft, behavior: reduce ? "auto" : "smooth" }); upd(); };
+  prev.addEventListener("click", () => go(idx - 1)); next.addEventListener("click", () => go(idx + 1));
+  dots.forEach((d,k) => d.addEventListener("click", () => go(k)));
+  let t; tr.addEventListener("scroll", () => { clearTimeout(t); t = setTimeout(() => { idx = Math.round(tr.scrollLeft / tr.clientWidth); upd(); }, 80); });
+  upd();
 })();
 
 /* Enlaces del pie que abren el chat */
@@ -1198,23 +1521,34 @@ document.querySelectorAll(".js-ai").forEach(a => a.addEventListener("click", e =
   })();
 })();
 
-/* Preguntas para seguir el viaje */
-const NEXT = {
-  cultura: ["¿Cómo cuidan a sus integrantes? ¿Qué convenios y beneficios tienen?","¿Cómo escuchan a sus integrantes?","¿Cómo se desarrollan los integrantes de Xsell?","¿Cómo se mantienen conectados en Xsell?","¿Por qué trabajar en Xsell es un viaje diferente?"],
-  empresa: ["¿Tienen un caso real?","¿Hacen pauta o marketing digital?","¿Cómo me mantienen informado?","¿En qué sectores trabajan?","¿Qué modelos de cierre manejan?","¿Dónde operan?","¿Qué es la Fotografía Comercial Xsell?","¿Cómo es el pago por resultados?","¿Cómo puede Xsell ayudarme a vender más?"]
-};
-function isCulture(q){ return /cultura|cuidan|escuchan|desarrollan|conectados|integrante|trabajar en xsell|ser parte|valores|propósito|proposito|clima|viaje diferente/i.test(q); }
+/* Preguntas sugeridas (frecuentes) */
+const NEXT = ["¿Tienen un caso real?","Me llegan interesados pero se enfrían y los pierdo. ¿Qué me recomiendan?","¿Hacen pauta o marketing digital?","Quiero vender más sin aumentar mi planilla fija. ¿Qué opción tengo?","¿Cómo es el pago por resultados?","Tengo un canal de ventas pero no sé cómo mejorarlo. ¿Por dónde empiezo?","¿Cuánto cuesta trabajar con Xsell?","¿Cómo me mantienen informado?","Mis tiendas o puntos de atención atienden, pero no venden. ¿Qué me recomiendan?","¿Qué modelos de cierre manejan?","¿En qué sectores trabajan?","¿Qué es la Fotografía Comercial Xsell?","¿Dónde operan?","¿Cómo puede Xsell ayudarme a vender más?"];
+const shown = new Set();
 function followups(q){
-  const list = NEXT[isCulture(q) ? "cultura" : "empresa"];
   const asked = new Set(history.filter(h => h.role === "user").map(h => h.content));
-  return list.filter(x => x !== q && !asked.has(x)).slice(0, 3);
+  const pool = NEXT.filter(x => x !== q && !asked.has(x));
+  let fresh = pool.filter(x => !shown.has(x)); if (fresh.length < 3){ shown.clear(); fresh = pool; }
+  const pick = fresh.slice(0, 3); pick.forEach(x => shown.add(x)); return pick;
 }
+/* A qué parte de la web llevar según la pregunta */
+const GO = [
+  [/caso|éxito|exito|ejemplo|resultados reales|han logrado/i, "#caso", "Ver casos"],
+  [/modelo|ágil|agil|asesoría experta|asesoria experta|cíclico|ciclico|b2b|b2c/i, "#modelos", "Ver modelos de cierre"],
+  [/perfil|base|calific|convert|cierre|cerrar|objeci|recompra|fideliz|venta cruzada|canal|whatsapp|redes|llamada|buenas ventas|multiplicador|enfr|pierd|tienda|punto|mejorar/i, "#multiplicadores", "Ver Multiplicadores"],
+  [/pago|pxq|fijo|variable|empez|empiez|proceso|pasos|informe|informado|kam|cómo vamos|medi|precio|cuesta|costo|planilla/i, "#proceso", "Ver cómo trabajamos"],
+  [/sector|rubro|industria/i, "#sectores", "Ver sectores"],
+  [/quiénes|quienes|qué hace|que hace|nosotros|agencia|país|pais|operan|argentina|chile|xsell/i, "nosotros.html", "Conocer Nosotros"]
+];
+function goFor(q){ const g = GO.find(r => r[0].test(q)); return g ? [g[1], g[2]] : null; }
 
 /* ====== Chat ====== */
 const chat = $("#chat"), form = $("#askForm"), input = $("#q"), sendBtn = $("#sendBtn");
 const history = [];
+window.XSELL_CTX = { sector: "" };
 let busy = false, samplerP = null;
+const wait = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
 function getSampler(){ if (!samplerP) samplerP = (window.claude && window.claude.use) ? window.claude.use("sample").catch(() => null) : Promise.resolve(null); return samplerP; }
+function status(typing){ const st = document.getElementById("chatStatus"); if (!st) return; st.textContent = typing ? "Escribiendo…" : "En línea"; st.classList.toggle("typing", typing); }
 
 function addUser(text){
   const m = document.createElement("div"); m.className = "msg user";
@@ -1223,49 +1557,58 @@ function addUser(text){
 function addBot(){
   const m = document.createElement("div"); m.className = "msg bot";
   m.innerHTML = '<div class="avatar"><img alt="" src="' + LOGO_ISO + '"></div><div class="bubble"><div class="name">Xsell</div><div class="txt"><span class="dots"><i></i><i></i><i></i></span></div></div>';
-  chat.appendChild(m); return m;
+  chat.appendChild(m); chat.scrollTop = chat.scrollHeight; return m;
 }
-function finishBot(m, text, q){
-  const t = m.querySelector(".txt"); t.textContent = "";
+function renderBot(m, text, opts){
+  opts = opts || {};
+  const t = m.querySelector(".txt"), bub = m.querySelector(".bubble"); t.textContent = "";
   text.split(/\n\s*\n/).filter(Boolean).forEach(p => { const el = document.createElement("p"); el.textContent = p.trim(); t.appendChild(el); });
   const act = document.createElement("div"); act.className = "actions";
-  const wa = document.createElement("a"); wa.className = "btn btn-wa"; wa.textContent = "Escribir por WhatsApp"; wa.href = waLink("Hola, vengo de la web de Xsell. Mi consulta: " + q); if (CONFIG.whatsapp){ wa.target = "_blank"; wa.rel = "noopener"; }
-  const mt = document.createElement("a"); mt.className = "btn btn-orange"; mt.textContent = "Agendar reunión"; mt.href = "#contacto";
-  if (isCulture(q)){ mt.textContent = "Quiero ser parte"; mt.href = waLink("Hola, quiero trabajar en Xsell."); if (CONFIG.whatsapp){ mt.target = "_blank"; mt.rel = "noopener"; } else { mt.href = "#contacto"; } }
-  act.append(wa, mt); m.querySelector(".bubble").appendChild(act);
-  const nx = followups(q);
+  if (opts.go){ const a = document.createElement("a"); a.className = "btn btn-link"; a.textContent = opts.go[1]; a.href = opts.go[0]; act.appendChild(a); }
+  const d = document.createElement("button"); d.type = "button"; d.className = "btn btn-orange"; d.textContent = "Diagnóstico gratis"; d.addEventListener("click", () => window.openDiag && window.openDiag()); act.appendChild(d);
+  bub.appendChild(act);
+  const nx = opts.chips || [];
   if (nx.length){
     const f = document.createElement("div"); f.className = "followups";
-    const l = document.createElement("span"); l.className = "lbl"; l.textContent = isCulture(q) ? "Sigue el viaje" : "También te puede interesar"; f.appendChild(l);
-    nx.forEach(t => { const c = document.createElement("button"); c.type = "button"; c.className = "chip"; c.textContent = t; c.addEventListener("click", () => ask(t)); f.appendChild(c); });
-    m.querySelector(".bubble").appendChild(f);
+    const l = document.createElement("span"); l.className = "lbl"; l.textContent = opts.label || "También te puede interesar"; f.appendChild(l);
+    nx.forEach(x => { const c = document.createElement("button"); c.type = "button"; c.className = "chip"; c.textContent = x; c.addEventListener("click", () => ask(x)); f.appendChild(c); });
+    bub.appendChild(f);
   }
 }
+function dropPicker(){ const p = document.getElementById("sectorPick"); if (p) p.remove(); }
+
+/* Saludo: primero conocemos su rubro */
+document.querySelectorAll("#sectorPick .chip").forEach(b => b.addEventListener("click", async () => {
+  if (busy) return; busy = true; const s = b.dataset.s; dropPicker();
+  XSELL_CTX.sector = s === "Otro" ? "" : s;
+  addUser(s); await wait(400); status(true); const m = addBot(); await wait(1100); status(false);
+  const msg = s === "Otro" ? "¡Perfecto! Trabajamos con muchos sectores y nos adaptamos a cada negocio." : "¡Genial! Ya acompañamos a empresas de " + s.toLowerCase() + ", así que conocemos bien sus retos.";
+  renderBot(m, msg + "\n\n¿Qué te gustaría saber? Escríbeme tu pregunta o elige una de estas:", { chips: followups(""), label: "Preguntas frecuentes" });
+  chat.scrollTop = Math.max(0, m.offsetTop - 12); busy = false;
+}));
 
 async function ask(q){
   q = (q || "").trim(); if (!q || busy) return;
-  busy = true; sendBtn.disabled = true; input.value = "";
+  busy = true; sendBtn.disabled = true; input.value = ""; dropPicker();
   addUser(q);
-  const st = document.getElementById("chatStatus");
-  await new Promise(r => setTimeout(r, reduce ? 0 : 450));
-  if (st){ st.textContent = "Escribiendo…"; st.classList.add("typing"); }
-  const m = addBot();
   if (window.innerWidth <= 980 || window.scrollY > 200) document.getElementById("inicio").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-  chat.scrollTop = chat.scrollHeight;
+  await wait(450); status(true);
+  const m = addBot();
   let answer = null;
   try {
     const sample = await Promise.race([getSampler(), new Promise(r => setTimeout(() => r(null), 2500))]);
     if (sample){
-      const turns = [{ role:"user", content: SYSTEM + "\n\nResponde a las preguntas del visitante siguiendo estas reglas." }, { role:"assistant", content:"Entendido. Responderé como el asistente de Xsell." }, ...history.slice(-6), { role:"user", content: q }];
+      const ctx = XSELL_CTX.sector ? "\n\nEl visitante dijo que su empresa es del sector " + XSELL_CTX.sector + "." : "";
+      const turns = [{ role:"user", content: SYSTEM + ctx + "\n\nResponde a las preguntas del visitante siguiendo estas reglas." }, { role:"assistant", content:"Entendido. Responderé como el asistente de Xsell." }, ...history.slice(-6), { role:"user", content: q }];
       const t = m.querySelector(".txt");
       const r = await sample(turns, { modelTier:"quick", cache:false, onText: ({ text }) => { t.textContent = text; } });
       if (r && r.text && r.text.trim()) answer = r.text.trim();
     }
   } catch (e) { answer = null; }
-  if (!answer){ answer = fallbackAnswer(q); await new Promise(r => setTimeout(r, reduce ? 0 : Math.min(2600, 1100 + answer.length * 4))); }
+  if (!answer){ answer = fallbackAnswer(q); await wait(Math.min(2600, 1100 + answer.length * 4)); }
   history.push({ role:"user", content:q }, { role:"assistant", content:answer });
-  if (st){ st.textContent = "En línea"; st.classList.remove("typing"); }
-  finishBot(m, answer, q);
+  status(false);
+  renderBot(m, answer, { go: goFor(q), chips: followups(q) });
   chat.scrollTop = Math.max(0, m.offsetTop - 12);
   busy = false; sendBtn.disabled = false;
 }
