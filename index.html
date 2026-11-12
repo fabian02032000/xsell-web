@@ -734,6 +734,42 @@ footer{border-top:1px solid var(--line);margin-top:96px;padding-block:56px 120px
 .rp-note{font-size:.8rem;color:var(--muted);font-style:italic;margin:0}
 .dg-actions .btn{flex:0 1 auto}
 
+/* Modelos de cierre: matriz 2x2 */
+.cmap{display:grid;grid-template-columns:1.25fr .9fr;gap:28px;align-items:stretch}
+@media (max-width:900px){.cmap{grid-template-columns:1fr}}
+.cm-chart{position:relative;padding:8px 8px 6px 40px}
+.cm-yl{position:absolute;left:12px;top:45%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.cm-plot{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;min-height:360px;border-left:1.5px solid var(--text);border-bottom:1.5px solid var(--text)}
+.cm-plot::before{content:"";position:absolute;left:-5px;top:-8px;border:4.5px solid transparent;border-bottom:8px solid var(--text);border-top:0}
+.cm-plot::after{content:"";position:absolute;right:-8px;bottom:-5px;border:4.5px solid transparent;border-left:8px solid var(--text);border-right:0}
+.cm-q{position:relative;display:flex;flex-direction:column;justify-content:center;gap:6px;text-align:left;padding:22px 24px;border:0;background:transparent;color:var(--text);font:inherit;cursor:pointer;transition:background .25s}
+.cm-q.top{grid-column:1/-1;border-bottom:1px dashed var(--line)}
+.cm-q:not(.top)+.cm-q{border-left:1px dashed var(--line)}
+.cm-q small{font-family:var(--display);font-weight:600;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cm-q b{font-family:var(--display);font-weight:800;font-size:clamp(1.25rem,2.4vw,1.75rem);line-height:1.1;letter-spacing:-.01em;color:var(--text);transition:color .25s}
+.cm-q span{font-size:.9rem;color:var(--muted)}
+.cm-q::before{content:"";position:absolute;left:24px;top:14px;width:0;height:3px;border-radius:3px;background:var(--orange);transition:width .3s}
+.cm-q[aria-pressed="true"]{background:color-mix(in srgb,var(--orange) 7%,transparent)}
+.cm-q[aria-pressed="true"]::before{width:36px}
+.cm-q[aria-pressed="true"] b.o{color:var(--orange)}.cm-q[aria-pressed="true"] b.m{color:var(--magenta)}.cm-q[aria-pressed="true"] b.p{color:var(--purple-2)}
+.cm-q:hover b{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
+.cm-xt{display:flex;justify-content:space-between;padding:10px 2px 0;font-size:.78rem;font-weight:600;color:var(--muted)}
+.cm-xl{display:block;text-align:center;margin-top:4px;font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.cm-panel{display:flex;flex-direction:column;justify-content:center;gap:12px;padding:30px;border-radius:24px;background:var(--surface);border:1.5px solid var(--line)}
+.cm-info{display:flex;flex-direction:column;gap:12px;animation:panelIn .35s cubic-bezier(.2,.8,.2,1)}
+.cm-info[hidden]{display:none}
+.cm-info .mk{font-family:var(--display);font-weight:700;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cm-info .mt{font-family:var(--impact);font-weight:400;text-transform:uppercase;font-size:2.4rem;line-height:1;margin:0}
+.cm-info .mt.o{color:var(--orange)}.cm-info .mt.m{color:var(--magenta)}.cm-info .mt.p{color:var(--purple-2)}
+.cm-info dl{margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cm-info dl div{padding:10px 12px;border-radius:12px;background:var(--surface-2)}
+.cm-info dt{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--display);font-weight:600}
+.cm-info dd{margin:2px 0 0;font-family:var(--display);font-weight:700;font-size:.92rem}
+.cm-info .mp{color:var(--muted);margin:0}
+.cm-info .btn{align-self:flex-start}
+.cm-hint{font-size:.8rem;color:var(--muted);margin:0}
+@media (max-width:520px){.cm-plot{min-height:300px}.cm-q{padding:16px 14px}.cm-q::before{left:14px;top:8px}.cm-q small{font-size:.62rem}.cm-q span{font-size:.8rem}.cm-info dl{grid-template-columns:1fr 1fr}}
+.dg-fine{grid-column:1/-1;margin:-4px 0 0;font-size:.74rem;line-height:1.45;color:var(--muted)}
 /* ===== Barra flotante tipo app ===== */
 .tabbar{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:62;display:flex;align-items:center;gap:6px;padding:8px;border-radius:999px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);box-shadow:0 24px 60px -20px rgba(0,0,0,.55)}
 .tb{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:var(--text);background:transparent;border:0;text-decoration:none;transition:background .2s,transform .2s,color .2s}
@@ -958,10 +994,23 @@ footer{padding-bottom:110px}
         <span class="eyebrow">Modelos de cierre</span>
         <h2>Una forma de vender <em>para cada negocio</em></h2>
       </div>
-      <div class="grid grid-3 models">
-        <article class="card model"><span class="mk">Campaña producto B2C</span><h3 class="mt o">Cierre ágil</h3><dl><div><dt>Ticket</dt><dd>Medio</dd></div><div><dt>Cierre</dt><dd>Primer contacto</dd></div></dl><p class="mp">Urgencia y beneficios inmediatos.</p><button class="btn btn-ghost js-ask" data-q="¿Cómo funciona el modelo de cierre ágil?">Preguntar</button></article>
-        <article class="card model featured-m"><span class="mk">Venta consultiva B2C</span><h3 class="mt">Asesoría experta</h3><dl><div><dt>Ticket</dt><dd>Alto</dd></div><div><dt>Cierre</dt><dd>Ciclo corto</dd></div></dl><p class="mp">Seguimiento consultivo y agendamiento de pruebas.</p><button class="btn btn-orange js-ask" data-q="¿Cómo funciona el modelo de asesoría experta?">Preguntar</button></article>
-        <article class="card model"><span class="mk">Gestión B2B / Empresas</span><h3 class="mt p">Flujo cíclico</h3><dl><div><dt>Volumen</dt><dd>Alto</dd></div><div><dt>Cierre</dt><dd>Ciclo gestionado</dd></div></dl><p class="mp">Propuesta de valor B2B y aprobación multinivel.</p><button class="btn btn-ghost js-ask" data-q="¿Cómo funciona el modelo de flujo cíclico B2B?">Preguntar</button></article>
+      <div class="cmap" id="cmap">
+        <div class="cm-chart">
+          <span class="cm-yl">Quién decide ↑</span>
+          <div class="cm-plot" role="group" aria-label="Modelos de cierre según ticket y quién decide la compra">
+            <button type="button" class="cm-q top" data-m="2" aria-pressed="false"><small>Deciden varios niveles · B2B</small><b class="p">Flujo cíclico</b><span>Propuesta de valor y aprobación multinivel</span></button>
+            <button type="button" class="cm-q" data-m="0" aria-pressed="false"><small>Ticket medio · decide una persona</small><b class="o">Cierre ágil</b><span>Cierre en el primer contacto</span></button>
+            <button type="button" class="cm-q" data-m="1" aria-pressed="true"><small>Ticket alto · decide una persona</small><b class="m">Asesoría experta</b><span>Venta consultiva, ciclo corto</span></button>
+          </div>
+          <div class="cm-xt"><span>Ticket medio</span><span>Ticket alto</span></div>
+          <span class="cm-xl">Ticket promedio →</span>
+        </div>
+        <div class="cm-panel" aria-live="polite">
+          <article class="cm-info" data-m="0" hidden><span class="mk">Campaña producto B2C</span><h3 class="mt o">Cierre ágil</h3><dl><div><dt>Ticket</dt><dd>Medio</dd></div><div><dt>Decide</dt><dd>Una persona</dd></div><div><dt>Cierre</dt><dd>Primer contacto</dd></div></dl><p class="mp">Urgencia y beneficios inmediatos.</p><button class="btn btn-ghost js-ask" data-q="¿Cómo funciona el modelo de cierre ágil?">Preguntar</button></article>
+          <article class="cm-info" data-m="1"><span class="mk">Venta consultiva B2C</span><h3 class="mt m">Asesoría experta</h3><dl><div><dt>Ticket</dt><dd>Alto</dd></div><div><dt>Decide</dt><dd>Una persona</dd></div><div><dt>Cierre</dt><dd>Ciclo corto</dd></div></dl><p class="mp">Seguimiento consultivo y agendamiento de pruebas.</p><button class="btn btn-orange js-ask" data-q="¿Cómo funciona el modelo de asesoría experta?">Preguntar</button></article>
+          <article class="cm-info" data-m="2" hidden><span class="mk">Gestión B2B / Empresas</span><h3 class="mt p">Flujo cíclico</h3><dl><div><dt>Volumen</dt><dd>Alto</dd></div><div><dt>Decide</dt><dd>Varios niveles</dd></div><div><dt>Cierre</dt><dd>Ciclo gestionado</dd></div></dl><p class="mp">Propuesta de valor B2B y aprobación multinivel.</p><button class="btn btn-ghost js-ask" data-q="¿Cómo funciona el modelo de flujo cíclico B2B?">Preguntar</button></article>
+          <p class="cm-hint">Toca cada cuadrante para ver el detalle.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1043,7 +1092,7 @@ footer{padding-bottom:110px}
 <dialog class="diag fc" id="diag" aria-labelledby="dgTitle">
   <form id="diagForm" novalidate>
     <button class="dg-x" type="button" id="dgClose" aria-label="Cerrar">✕</button>
-    <span class="eyebrow">Fotografía Comercial Xsell · gratis</span>
+    <span class="eyebrow" id="dgEye">Fotografía Comercial Xsell · gratis</span>
     <h2 id="dgTitle">Tu diagnóstico comercial en 3 minutos</h2>
     <div class="dg-steps" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     <fieldset class="dg-step" data-step="0">
@@ -1078,17 +1127,18 @@ footer{padding-bottom:110px}
     <fieldset class="dg-step" data-step="4" hidden>
       <legend>Tu diagnóstico</legend>
       <div class="rp" id="dgReport"></div>
-      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Ajustar datos</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost" type="button" id="dgPdf">Descargar PDF</button><button class="btn btn-orange" type="button" data-go="5">Quiero mi Fotografía Comercial completa</button></span></div>
+      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Ajustar datos</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost" type="button" id="dgPdf">Descargar PDF</button><button class="btn btn-orange" type="button" data-go="5">Quiero mi asesoría comercial</button></span></div>
     </fieldset>
     <fieldset class="dg-step" data-step="5" hidden>
-      <legend>Tus datos para coordinar</legend>
-      <p class="dg-hint">Un KAM revisará tu diagnóstico y te contactará para hacer la Fotografía Comercial completa, sin costo.</p>
+      <legend>Tus datos de contacto</legend>
+      <p class="dg-hint">Con tu diagnóstico, nuestro equipo comercial prepara una asesoría a la medida de tu negocio, sin costo.</p>
       <div class="field"><label for="d_nom">Nombre y apellido</label><input id="d_nom" name="nombre" required autocomplete="name"></div>
       <div class="field"><label for="d_emp">Empresa</label><input id="d_emp" name="empresa" required autocomplete="organization"></div>
       <div class="field"><label for="d_cargo">Cargo</label><input id="d_cargo" name="cargo" required autocomplete="organization-title"></div>
       <div class="field"><label for="d_mail">Correo corporativo</label><input id="d_mail" name="correo" type="email" required autocomplete="email"></div>
       <div class="field full"><label for="d_cel">Celular</label><input id="d_cel" name="celular" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX"></div>
       <label class="check"><input type="checkbox" id="d_ok" required> Acepto que Xsell use mis datos para contactarme, según la Ley N.° 29733 de Protección de Datos Personales.</label>
+      <p class="dg-fine">Al enviar tus datos, nuestro equipo comercial revisará tu información. La asesoría está sujeta a evaluación y calificación comercial.</p>
       <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="4">← Atrás</button><button class="btn btn-orange" type="submit" id="dgSend">Enviar</button></div>
     </fieldset>
     <p class="form-msg" id="dgStatus" role="status"></p>
@@ -1123,7 +1173,7 @@ CLIENTES: no se mencionan nombres de clientes. Si preguntan, di que por confiden
 NO OFRECEMOS: encuestas a clientes, paquetes cerrados ni desarrollo de canales para que los opere el cliente. No los menciones.
 PAUTA Y MARKETING: Xsell NO hace pauta, publicidad, anuncios, manejo de redes ni marketing digital. Somos una agencia de ventas: trabajamos lo que pasa después del anuncio. Si el cliente ya genera interesados con sus campañas o tiene una base de datos, nosotros los perfilamos, les damos seguimiento y los convertimos en ventas. Vendemos por WhatsApp, redes sociales, llamada, web o presencial, pero la publicidad la maneja el cliente o su agencia.
 CULTURA: la sección Cultura y Trabaja con nosotros estará disponible próximamente. Si preguntan por trabajar en Xsell, agradece el interés y di que muy pronto se publicará. Siempre di "integrantes", nunca "empleados". Nunca uses los nombres "3bu", "tribu" ni "3eriza".
-CONTACTO: el mejor siguiente paso es el diagnóstico gratis de la web (botón "Diagnóstico gratis"): en 3 minutos el visitante ve dónde se pierde su venta, recibe consejos y un PDF, y puede dejar sus datos para que un KAM lo contacte y haga la Fotografía Comercial completa.
+CONTACTO: el mejor siguiente paso es el diagnóstico gratis de la web (botón "Diagnóstico gratis", la Fotografía Comercial Xsell): en 3 minutos el visitante ve dónde se pierde su venta, recibe consejos y un PDF. El segundo paso es la asesoría comercial: deja sus datos y el equipo comercial revisa su información; la asesoría está sujeta a evaluación comercial.
 CASO 2 (retail y telecomunicaciones, real): tasa de contacto 55%, conversión de prospectos 70%, base de unos 600 prospectos al mes; ventas mensuales de S/ 167K (2021) a S/ 385K (2024) con el mismo equipo.`;
 
 const SYSTEM = `Eres el asistente de la web de Xsell. Respondes en español, con tono cercano y experto, en 3 a 5 frases cortas y en palabras simples (sin anglicismos ni jerga).
@@ -1307,6 +1357,8 @@ function waLink(text){
   let cur = 0, R = null;
   const go = n => {
     cur = n; steps.forEach((s,i) => s.hidden = i !== n);
+    const adv = n === 5; $("#dgTitle").textContent = adv ? "Solicita tu asesoría comercial" : "Tu diagnóstico comercial en 3 minutos";
+    $("#dgEye").textContent = adv ? "Paso 2 · Asesoría comercial Xsell" : "Fotografía Comercial Xsell · gratis"; f.querySelector(".dg-steps").style.display = adv ? "none" : "";
     bars.forEach((b,i) => b.classList.toggle("on", n >= 1 && i < Math.min(n, 4)));
     st.textContent = "";
     if (n === 2) mini();
@@ -1316,6 +1368,7 @@ function waLink(text){
   };
   const open = e => { if (e) e.preventDefault(); if (window.XSELL_CTX && XSELL_CTX.sector){ const s = $("#d_sector"); [...s.options].forEach(o => { if (o.text === XSELL_CTX.sector) s.value = o.text; }); } go(0); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); };
   window.openDiag = open;
+  if (/^#diagn/i.test(location.hash) || /[?&]diagnostico=1/.test(location.search)) setTimeout(open, 600);
   document.querySelectorAll(".js-diag").forEach(b => b.addEventListener("click", open));
   $("#dgClose").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
@@ -1380,11 +1433,11 @@ function waLink(text){
       '<div class="rp-tags"><span><i>Etapa prioritaria:</i> ' + focus + '</span><span><i>Modelo sugerido:</i> ' + model[0] + '</span></div>' +
       '<h4>Consejos para empezar hoy</h4><ul>' + tips.map(t => '<li>' + t + '</li>').join("") + '</ul>' +
       '<h4>Tu ruta con Xsell</h4><ol>' +
-        '<li><b>Fotografía Comercial completa (72 h, sin costo):</b> validamos estos números con tu información real, con foco en ' + focus.toLowerCase() + '.</li>' +
+        '<li><b>Asesoría comercial (sin costo):</b> validamos estos números con tu información real, con foco en ' + focus.toLowerCase() + '.</li>' +
         '<li><b>Viabilidad:</b> proyectamos el modelo ' + model[0] + ' para tu negocio y el nuestro.</li>' +
         '<li><b>Arranque con fijo + variable:</b> ' + model[1] + '.</li>' +
         '<li><b>Pago por resultado (PxQ):</b> con la operación madura, pagas por cada resultado logrado.</li></ol>' +
-      '<p class="rp-note">Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la Fotografía Comercial completa la valida con tu información real.</p>';
+      '<p class="rp-note">Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la asesoría comercial la valida con tu información real.</p>';
   };
 
   /* PDF sin librerías */
@@ -1423,12 +1476,12 @@ function waLink(text){
     tips.forEach(t => { need(14); rect(M, y + 2, 5, 5, "#FF6B13"); para(t, 10.5, { indent: 14 }); y -= 3; });
     y -= 8;
     para("Tu ruta con Xsell", 13, { bold: true });
-    [["1. Fotografía Comercial completa (72 h, sin costo)", "Validamos estos números con tu información real, con foco en " + focus.toLowerCase() + "."],
+    [["1. Asesoría comercial (sin costo)", "Validamos estos números con tu información real, con foco en " + focus.toLowerCase() + "."],
      ["2. Viabilidad", "Proyectamos el modelo " + model[0] + " para tu negocio y el nuestro."],
      ["3. Arranque con fijo + variable", model[1].charAt(0).toUpperCase() + model[1].slice(1) + "."],
      ["4. Pago por resultado (PxQ)", "Con la operación madura, pagas por cada resultado logrado."]].forEach(r => { para(r[0], 10.5, { bold: true }); para(r[1], 10.5, { indent: 14, col: "#4A3B5C" }); y -= 4; });
     y -= 10;
-    para("Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la Fotografía Comercial completa la valida con tu información real.", 8.5, { col: "#8A7B9C" });
+    para("Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la asesoría comercial la valida con tu información real.", 8.5, { col: "#8A7B9C" });
     para("Xsell · Agencia de ventas · Multiplicamos tus resultados", 8.5, { bold: true, col: "#8A7B9C" });
     pages.push(ops.join("\n"));
     /* Ensamblar PDF */
@@ -1458,7 +1511,7 @@ function waLink(text){
     if (!dest){ st.className = "form-msg err"; st.textContent = "Este formulario aún no está activo. Muy pronto podrás enviarlo."; return; }
     btn.disabled = true; btn.textContent = "Enviando…";
     try { const r = await fetch("https://formsubmit.co/ajax/" + dest, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Nuevo diagnóstico comercial: " + (d.empresa || "") }, d)) }); if (!r.ok) throw 0;
-      st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tu diagnóstico. Un KAM te contactará para coordinar tu Fotografía Comercial completa.";
+      st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tus datos. Nuestro equipo comercial revisará tu diagnóstico y se pondrá en contacto contigo.";
     } catch { st.className = "form-msg err"; st.textContent = "No pudimos enviar tus datos. Inténtalo de nuevo en unos minutos."; }
     btn.disabled = false; btn.textContent = "Enviar";
   });
@@ -1481,6 +1534,13 @@ function waLink(text){
   eco.addEventListener("mouseleave", () => eco.classList.remove("paused"));
   const io = new IntersectionObserver(es => { eco.classList.toggle("paused", !es[0].isIntersecting); if (es[0].isIntersecting && auto && !tabs.some(t => t.classList.contains("run"))) show(i); }, { threshold: .4 });
   io.observe(eco);
+})();
+
+/* Modelos de cierre: plano */
+(function(){
+  const pts = [...document.querySelectorAll(".cm-q")], info = [...document.querySelectorAll(".cm-info")]; if (!pts.length) return;
+  const show = m => { pts.forEach(p => p.setAttribute("aria-pressed", p.dataset.m === m)); info.forEach(x => x.hidden = x.dataset.m !== m); };
+  pts.forEach(p => { p.addEventListener("click", () => show(p.dataset.m)); p.addEventListener("mouseenter", () => { if (matchMedia("(pointer: fine)").matches) show(p.dataset.m); }); });
 })();
 
 /* Casos: carrusel */
