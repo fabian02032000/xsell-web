@@ -770,6 +770,7 @@ footer{border-top:1px solid var(--line);margin-top:96px;padding-block:56px 120px
 .cm-hint{font-size:.8rem;color:var(--muted);margin:0}
 @media (max-width:520px){.cm-plot{min-height:300px}.cm-q{padding:16px 14px}.cm-q::before{left:14px;top:8px}.cm-q small{font-size:.62rem}.cm-q span{font-size:.8rem}.cm-info dl{grid-template-columns:1fr 1fr}}
 .dg-fine{grid-column:1/-1;margin:-4px 0 0;font-size:.74rem;line-height:1.45;color:var(--muted)}
+.hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 /* ===== Barra flotante tipo app ===== */
 .tabbar{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:62;display:flex;align-items:center;gap:6px;padding:8px;border-radius:999px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);box-shadow:0 24px 60px -20px rgba(0,0,0,.55)}
 .tb{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:var(--text);background:transparent;border:0;text-decoration:none;transition:background .2s,transform .2s,color .2s}
@@ -1132,11 +1133,12 @@ footer{padding-bottom:110px}
     <fieldset class="dg-step" data-step="5" hidden>
       <legend>Tus datos de contacto</legend>
       <p class="dg-hint">Con tu diagnóstico, nuestro equipo comercial prepara una asesoría a la medida de tu negocio, sin costo.</p>
-      <div class="field"><label for="d_nom">Nombre y apellido</label><input id="d_nom" name="nombre" required autocomplete="name"></div>
-      <div class="field"><label for="d_emp">Empresa</label><input id="d_emp" name="empresa" required autocomplete="organization"></div>
-      <div class="field"><label for="d_cargo">Cargo</label><input id="d_cargo" name="cargo" required autocomplete="organization-title"></div>
-      <div class="field"><label for="d_mail">Correo corporativo</label><input id="d_mail" name="correo" type="email" required autocomplete="email"></div>
-      <div class="field full"><label for="d_cel">Celular</label><input id="d_cel" name="celular" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX"></div>
+      <div class="field"><label for="d_nom">Nombre y apellido</label><input id="d_nom" name="nombre" required autocomplete="name" maxlength="120"></div>
+      <div class="field"><label for="d_emp">Empresa</label><input id="d_emp" name="empresa" required autocomplete="organization" maxlength="120"></div>
+      <div class="field"><label for="d_cargo">Cargo</label><input id="d_cargo" name="cargo" required autocomplete="organization-title" maxlength="120"></div>
+      <div class="field"><label for="d_mail">Correo corporativo</label><input id="d_mail" name="correo" type="email" required autocomplete="email" maxlength="180"></div>
+      <div class="field full"><label for="d_cel">Celular</label><input id="d_cel" name="celular" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX" maxlength="20"></div>
+      <div class="hp-field" aria-hidden="true"><label for="d_web">No completar este campo</label><input id="d_web" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
       <label class="check"><input type="checkbox" id="d_ok" required> Acepto que Xsell use mis datos para contactarme, según la Ley N.° 29733 de Protección de Datos Personales.</label>
       <p class="dg-fine">Al enviar tus datos, nuestro equipo comercial revisará tu información. La asesoría está sujeta a evaluación y calificación comercial.</p>
       <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="4">← Atrás</button><button class="btn btn-orange" type="submit" id="dgSend">Enviar</button></div>
@@ -1366,7 +1368,7 @@ function waLink(text){
     const first = steps[n].querySelector("input:not([type=hidden]),select,button.btn-orange"); if (first) first.focus({ preventScroll: true });
     f.scrollTop = 0; dlg.scrollTop = 0;
   };
-  const open = e => { if (e) e.preventDefault(); if (window.XSELL_CTX && XSELL_CTX.sector){ const s = $("#d_sector"); [...s.options].forEach(o => { if (o.text === XSELL_CTX.sector) s.value = o.text; }); } go(0); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); };
+  const open = e => { if (e) e.preventDefault(); if (window.XSELL_CTX && XSELL_CTX.sector){ const s = $("#d_sector"); [...s.options].forEach(o => { if (o.text === XSELL_CTX.sector) s.value = o.text; }); } go(0); f.dataset.openedAt = Date.now(); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); };
   window.openDiag = open;
   if (/^#diagn/i.test(location.hash) || /[?&]diagnostico=1/.test(location.search)) setTimeout(open, 600);
   document.querySelectorAll(".js-diag").forEach(b => b.addEventListener("click", open));
@@ -1505,12 +1507,16 @@ function waLink(text){
 
   f.addEventListener("submit", async e => {
     e.preventDefault(); if (!valid(5)) return;
-    const d = Object.fromEntries(new FormData(f).entries()); d.canales = new FormData(f).getAll("canales").join(", ");
+    /* Anti-spam: campo trampa (honeypot) + tiempo mínimo de llenado */
+    if (f.querySelector("#d_web").value){ st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tus datos. Nuestro equipo comercial revisará tu diagnóstico y se pondrá en contacto contigo."; f.reset(); return; }
+    const openedAt = +f.dataset.openedAt || 0;
+    if (openedAt && Date.now() - openedAt < 4000){ st.className = "form-msg err"; st.textContent = "Revisa tus datos e inténtalo nuevamente."; return; }
+    const d = Object.fromEntries(new FormData(f).entries()); d.canales = new FormData(f).getAll("canales").join(", "); delete d._honey;
     if (R) d.resumen = "Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus + " | Modelo: " + R.model[0];
     const btn = $("#dgSend"), dest = CONFIG.diagnostico.correo;
     if (!dest){ st.className = "form-msg err"; st.textContent = "Este formulario aún no está activo. Muy pronto podrás enviarlo."; return; }
     btn.disabled = true; btn.textContent = "Enviando…";
-    try { const r = await fetch("https://formsubmit.co/ajax/" + dest, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Nuevo diagnóstico comercial: " + (d.empresa || "") }, d)) }); if (!r.ok) throw 0;
+    try { const r = await fetch("https://formsubmit.co/ajax/" + dest, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Nuevo diagnóstico comercial: " + (d.empresa || ""), _captcha: "false" }, d)) }); if (!r.ok) throw 0;
       st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tus datos. Nuestro equipo comercial revisará tu diagnóstico y se pondrá en contacto contigo.";
     } catch { st.className = "form-msg err"; st.textContent = "No pudimos enviar tus datos. Inténtalo de nuevo en unos minutos."; }
     btn.disabled = false; btn.textContent = "Enviar";

@@ -1,0 +1,41 @@
+# ===== Xsell — wexsell.co =====
+# Cabeceras y reglas de seguridad para sitio estático (sin backend propio).
+
+# Forzar HTTPS siempre
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Cabeceras de seguridad
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+  Header unset X-Powered-By
+  Header unset Server
+</IfModule>
+
+# No listar el contenido de carpetas
+Options -Indexes -MultiViews
+ServerSignature Off
+
+# Bloquear archivos que no deben verse desde el navegador
+<FilesMatch "(^\.|\.(md|markdown|log|bak|backup|sql|sh|env|yml|yaml|gitignore|gitattributes)$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Tipo de contenido correcto para la fuente web (por si el servidor no lo trae por defecto)
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
