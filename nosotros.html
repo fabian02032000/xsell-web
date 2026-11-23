@@ -286,6 +286,27 @@ section.block{padding-block:96px;border-top:1px solid var(--line)}
 .meta .v{font-size:.9rem;font-weight:600}
 .card .btn{align-self:flex-start;margin-top:auto}
 
+/* Equipo: fotos con reserva de espacio y respaldo si aún no hay imagen subida */
+.team{display:flex;flex-direction:column;gap:28px}
+.team-lead{display:flex;flex-direction:row;gap:28px;align-items:center;flex-wrap:wrap}
+.team-lead .tl-info{display:flex;flex-direction:column;gap:8px;min-width:240px}
+.team-lead h3{font-family:var(--display);font-size:1.3rem;font-weight:700}
+.team-lead .role{color:var(--orange-2);font-weight:600;font-size:.9rem}
+.team-lead p{color:var(--muted);font-size:.95rem;max-width:460px;margin:0}
+.ph-wrap{position:relative;flex:none;border-radius:50%;overflow:hidden}
+.team-lead .ph-wrap{width:148px;height:148px}
+.team-card .ph-wrap{width:92px;height:92px}
+.ph-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;background:var(--surface-2)}
+.ph-wrap .ph-fallback{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(135deg,var(--orange),var(--purple-2))}
+.ph-wrap .ph-fallback::before{content:attr(data-initials);font-family:var(--impact);color:#fff}
+.team-lead .ph-fallback::before{font-size:2.3rem}
+.team-card .ph-fallback::before{font-size:1.5rem}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:760px){.team-grid{grid-template-columns:1fr}.team-lead{gap:18px}}
+.team-card{align-items:center;text-align:center}
+.team-card b{font-family:var(--display);font-size:.96rem}
+.team-card span{color:var(--muted);font-size:.84rem}
+
 /* Por dónde empezar */
 .start{cursor:pointer;text-align:left;font:inherit;color:inherit;position:relative;transition:border-color .2s,transform .2s,background .2s}
 .start:hover{border-color:var(--orange);transform:translateY(-3px);background:var(--surface-2)}
@@ -821,6 +842,26 @@ footer{padding-bottom:110px}
         <div><b>PxQ</b><span>pagas por cada resultado logrado</span></div>
         <div><b>6</b><span>sectores en los que nos especializamos</span></div>
         <div><b>360°</b><span>de la captación a la fidelización</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="block" id="equipo">
+    <div class="wrap">
+      <div class="head"><h2>Las personas detrás de Xsell</h2><p>Un equipo comercial real, con nombre y cargo, no un call center anónimo.</p></div>
+      <div class="team">
+        <div class="card team-lead">
+          <div class="ph-wrap"><img src="equipo-ingrid.jpg" alt="Ingrid, Asesora Comercial de Xsell" width="148" height="148" loading="lazy" onerror="this.style.display='none'"><div class="ph-fallback" data-initials="IN" aria-hidden="true"></div></div>
+          <div class="tl-info">
+            <h3>Ingrid</h3>
+            <span class="role">Asesora Comercial</span>
+            <p>Tu primer contacto en Xsell: te acompaña desde la Fotografía Comercial hasta la asesoría comercial.</p>
+          </div>
+        </div>
+        <div class="team-grid">
+          <div class="card team-card"><div class="ph-wrap"><img src="equipo-comercial.jpg" alt="Equipo comercial de Xsell" width="92" height="92" loading="lazy" onerror="this.style.display='none'"><div class="ph-fallback" data-initials="EC" aria-hidden="true"></div></div><b>Equipo comercial</b><span>Perfila, contacta y cierra por todos los canales</span></div>
+          <div class="card team-card"><div class="ph-wrap"><img src="equipo-analitica.jpg" alt="Equipo de analítica de Xsell" width="92" height="92" loading="lazy" onerror="this.style.display='none'"><div class="ph-fallback" data-initials="EA" aria-hidden="true"></div></div><b>Analítica</b><span>Mide cada etapa e informa qué mejorar</span></div>
+          <div class="card team-card"><div class="ph-wrap"><img src="equipo-operaciones.jpg" alt="Equipo de operaciones de Xsell" width="92" height="92" loading="lazy" onerror="this.style.display='none'"><div class="ph-fallback" data-initials="EO" aria-hidden="true"></div></div><b>Operaciones</b><span>Pone en marcha el modelo fijo + variable</span></div>
+        </div>
       </div>
     </div>
   </section>

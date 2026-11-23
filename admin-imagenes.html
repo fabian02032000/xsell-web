@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Panel de imágenes · Xsell (uso interno)</title>
+<link rel="icon" href="isotipo.webp">
+<style>
+  :root{
+    --bg:#120A1C; --surface:#1A1128; --surface-2:#231838; --line:#33264A;
+    --text:#F5F3FA; --muted:#A69DBE; --orange:#FF6B13; --orange-2:#FFA366;
+    --purple-2:#7B2BC9; --on-orange:#1A0A00;
+    --display:"Sora",ui-sans-serif,system-ui,sans-serif; --body:"Manrope",ui-sans-serif,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.5}
+  .wrap{max-width:980px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-family:var(--display);font-size:1.7rem;margin:0 0 6px}
+  .sub{color:var(--muted);margin:0 0 28px;max-width:640px}
+  .warn{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:28px;font-size:.92rem;color:var(--muted)}
+  .warn b{color:var(--text)}
+  .slot{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px;display:grid;grid-template-columns:120px 1fr;gap:20px}
+  @media (max-width:640px){.slot{grid-template-columns:1fr}}
+  .slot .prev{width:120px;height:120px;border-radius:50%;overflow:hidden;position:relative;background:var(--surface-2);border:1px solid var(--line)}
+  .slot.sq .prev{border-radius:14px}
+  .slot .prev canvas{width:100%;height:100%;object-fit:cover;display:block}
+  .slot .prev .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:.72rem;text-align:center;padding:6px}
+  .slot h3{margin:0 0 2px;font-family:var(--display);font-size:1rem}
+  .slot .meta{color:var(--muted);font-size:.84rem;margin:0 0 12px}
+  .slot .meta code{background:var(--surface-2);padding:1px 6px;border-radius:6px;color:var(--orange-2)}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  input[type=file]{color:var(--muted);font-size:.86rem;max-width:100%}
+  .btn{font:inherit;font-weight:600;font-size:.86rem;border-radius:999px;border:0;padding:9px 16px;cursor:pointer;background:var(--surface-2);color:var(--text);border:1px solid var(--line)}
+  .btn.go{background:linear-gradient(135deg,var(--orange),var(--orange-2));color:var(--on-orange);border:0}
+  .btn:disabled{opacity:.45;cursor:default}
+  .status{font-size:.8rem;color:var(--muted);margin-top:8px;min-height:1.2em}
+  .status.ok{color:#7BE0A6}
+  footer{color:var(--muted);font-size:.84rem;margin-top:36px;padding-top:20px;border-top:1px solid var(--line)}
+  a{color:var(--orange-2)}
+  .steps{padding-left:20px;margin:10px 0}
+  .steps li{margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Panel de imágenes</h1>
+  <p class="sub">Página de uso interno (no está enlazada en el menú del sitio). Sirve para preparar cada foto exactamente al tamaño que necesita su espacio en la web, antes de subirla tú mismo a GitHub.</p>
+  <div class="warn">
+    <b>Esta página no sube nada a la web por sí sola</b> — el sitio es estático (sin servidor propio), así que no hay forma de que una foto se vea reflejada para todos los visitantes sin pasar por el repositorio. Lo que sí hace: recorta y redimensiona tu foto al tamaño exacto de cada espacio, te muestra cómo se vería, y te entrega el archivo ya listo con el nombre correcto para que lo arrastres a GitHub. Ese último paso toma menos de un minuto y no necesita ningún conocimiento técnico.
+  </div>
+
+  <div class="slot" data-w="148" data-h="148">
+    <div class="prev" id="prev-ingrid"><div class="ph">148 × 148<br>círculo</div></div>
+    <div>
+      <h3>Foto de Ingrid (Nosotros → Equipo)</h3>
+      <p class="meta">Archivo final: <code>equipo-ingrid.jpg</code> · se ve en un círculo de 148×148px, así que lo mejor es una foto de rostro/medio cuerpo centrada.</p>
+      <div class="row">
+        <input type="file" accept="image/*" data-slot="ingrid">
+        <button class="btn go" data-dl="ingrid" disabled>Descargar listo para subir</button>
+      </div>
+      <p class="status" id="st-ingrid"></p>
+    </div>
+  </div>
+
+  <div class="slot" data-w="92" data-h="92">
+    <div class="prev" id="prev-comercial"><div class="ph">92 × 92<br>círculo</div></div>
+    <div>
+      <h3>Equipo comercial</h3>
+      <p class="meta">Archivo final: <code>equipo-comercial.jpg</code> · círculo de 92×92px.</p>
+      <div class="row">
+        <input type="file" accept="image/*" data-slot="comercial">
+        <button class="btn go" data-dl="comercial" disabled>Descargar listo para subir</button>
+      </div>
+      <p class="status" id="st-comercial"></p>
+    </div>
+  </div>
+
+  <div class="slot" data-w="92" data-h="92">
+    <div class="prev" id="prev-analitica"><div class="ph">92 × 92<br>círculo</div></div>
+    <div>
+      <h3>Analítica</h3>
+      <p class="meta">Archivo final: <code>equipo-analitica.jpg</code> · círculo de 92×92px.</p>
+      <div class="row">
+        <input type="file" accept="image/*" data-slot="analitica">
+        <button class="btn go" data-dl="analitica" disabled>Descargar listo para subir</button>
+      </div>
+      <p class="status" id="st-analitica"></p>
+    </div>
+  </div>
+
+  <div class="slot" data-w="92" data-h="92">
+    <div class="prev" id="prev-operaciones"><div class="ph">92 × 92<br>círculo</div></div>
+    <div>
+      <h3>Operaciones</h3>
+      <p class="meta">Archivo final: <code>equipo-operaciones.jpg</code> · círculo de 92×92px.</p>
+      <div class="row">
+        <input type="file" accept="image/*" data-slot="operaciones">
+        <button class="btn go" data-dl="operaciones" disabled>Descargar listo para subir</button>
+      </div>
+      <p class="status" id="st-operaciones"></p>
+    </div>
+  </div>
+
+  <footer>
+    <b style="color:var(--text)">Cómo queda en vivo:</b>
+    <ol class="steps">
+      <li>Descarga el archivo ya recortado con el botón de cada foto (el nombre ya sale correcto, no lo cambies).</li>
+      <li>Entra a <a href="https://github.com/fabian02032000/xsell-web/upload/main" target="_blank" rel="noopener">github.com/fabian02032000/xsell-web (subir archivos)</a>.</li>
+      <li>Arrastra el archivo descargado a esa página (si ya existe uno con el mismo nombre, lo reemplaza).</li>
+      <li>Escribe cualquier mensaje de commit y presiona "Commit changes".</li>
+      <li>En unos minutos Hostinger actualiza el sitio solo, y la foto aparece en <a href="nosotros.html#equipo" target="_blank" rel="noopener">wexsell.co/nosotros.html</a> en vez del círculo con iniciales.</li>
+    </ol>
+    <p>¿Necesitas un espacio de foto nuevo que no esté aquí (por ejemplo en la portada o en casos de éxito)? Pídemelo y lo agrego a este panel con su tamaño correcto.</p>
+  </footer>
+</div>
+<script>
+(function(){
+  document.querySelectorAll('input[type=file]').forEach(function(input){
+    input.addEventListener('change', function(){
+      var file = input.files && input.files[0];
+      var slot = input.dataset.slot;
+      var st = document.getElementById('st-' + slot);
+      var dlBtn = document.querySelector('[data-dl="' + slot + '"]');
+      if (!file){ return; }
+      var slotEl = input.closest('.slot');
+      var W = +slotEl.dataset.w, H = +slotEl.dataset.h;
+      var img = new Image();
+      var url = URL.createObjectURL(file);
+      img.onload = function(){
+        URL.revokeObjectURL(url);
+        var canvas = document.createElement('canvas');
+        canvas.width = W; canvas.height = H;
+        var ctx = canvas.getContext('2d');
+        // Recorte tipo "cover": centra y recorta el sobrante para llenar el cuadro exacto
+        var ir = img.width / img.height, tr = W / H, sx, sy, sw, sh;
+        if (ir > tr){ sh = img.height; sw = sh * tr; sx = (img.width - sw) / 2; sy = 0; }
+        else { sw = img.width; sh = sw / tr; sx = 0; sy = (img.height - sh) / 2; }
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
+        var prev = document.getElementById('prev-' + slot);
+        prev.innerHTML = '';
+        prev.appendChild(canvas);
+        dlBtn.disabled = false;
+        dlBtn.onclick = function(){
+          canvas.toBlob(function(blob){
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'equipo-' + slot + '.jpg';
+            document.body.appendChild(a); a.click();
+            setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+          }, 'image/jpeg', 0.92);
+        };
+        st.textContent = 'Listo, así se verá. Presiona "Descargar listo para subir".';
+        st.className = 'status ok';
+      };
+      img.onerror = function(){ st.textContent = 'No pude leer esa imagen, prueba con otro archivo (JPG o PNG).'; st.className = 'status'; };
+      img.src = url;
+    });
+  });
+})();
+</script>
+</body>
+</html>
