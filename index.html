@@ -501,6 +501,15 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
 .check input{margin-top:3px;accent-color:var(--orange)}
 .form-msg{font-size:.92rem;font-weight:600;margin:0}
 .form-msg.ok{color:var(--ok)}.form-msg.err{color:#E5484D}
+/* ===== Chat: captar datos dentro de la conversación ===== */
+.chat-lead{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--surface) 60%,transparent);display:flex;flex-direction:column;gap:8px}
+.chat-lead p{margin:0;font-size:.84rem;font-weight:600;color:var(--muted)}
+.chat-lead .cl-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chat-lead .cl-row input{font:inherit;font-size:.9rem;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 11px;width:100%;min-width:0}
+.chat-lead .cl-row input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 25%,transparent)}
+.chat-lead .cl-full{grid-column:1/-1}
+.chat-lead button{align-self:flex-start;margin-top:2px}
+@media (max-width:520px){.chat-lead .cl-row{grid-template-columns:1fr}}
 /* ===== Multiplicadores: ecosistema 360° ===== */
 .eco{display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:stretch}
 @media (max-width:900px){.eco{grid-template-columns:1fr}}
@@ -1170,6 +1179,7 @@ HACEMOS BUENAS VENTAS: entender la necesidad real, recomendar lo correcto, cerra
 MODELOS DE CIERRE: Cierre ágil (campaña de producto B2C, ticket medio, cierre en el primer contacto, palancas: urgencia y beneficios inmediatos). Asesoría experta (venta consultiva B2C, ticket alto, ciclo corto, palancas: seguimiento consultivo, agendamiento de pruebas, asesoría técnica). Flujo cíclico (gestión B2B / empresas, volumen alto, ciclo gestionado, palancas: propuesta de valor B2B, negociación de volumen, aprobación multinivel).
 CASO REAL (automotriz B2B, sin nombre de cliente ni país): el cliente generaba unas 7,000 consultas al año con sus propias campañas, pero no sabía cuántas terminaban en venta porque nadie daba seguimiento después de asignarlas al vendedor. El problema no era de volumen, era de seguimiento. Xsell suma seguimiento después de cada asignación: cuida la calidad del dato, insiste las veces necesarias y da visibilidad de la etapa de cada interesado. Resultado: el cliente vio resultados y decidió invertir más; sus propias campañas pasaron de 3-4 en 2025 a 15 en 2026, duplicó la inversión por campaña, proyecta hasta 20 a fin de año y evalúa llevar el modelo a otro país. No des cifras de ventas de este caso.
 MODELO DE TRABAJO Y PAGO: 1) Fotografía Comercial Xsell: no tiene costo; en 72 horas levantamos la información, vemos cómo se encuentra hoy el negocio del cliente y entendemos su flujo comercial. 2) Evaluamos la viabilidad del modelo para ambos negocios. 3) Arrancamos con un fijo (fee) más un variable por resultados. 4) Finalmente, pago por resultado (PxQ: precio por cantidad de resultados logrados). Usa siempre el nombre exacto "Fotografía Comercial Xsell".
+DETALLE DE LA FOTOGRAFÍA COMERCIAL XSELL: es el primer paso, sin costo y sin compromiso de contratar nada después. Un KAM (gerente de cuenta) de Xsell se reúne contigo (virtual o presencial) y revisa, en 72 horas, tu embudo completo: cuántos prospectos te llegan, por qué canal, cómo los contactas hoy, quién hace el seguimiento, en qué momento se caen y cómo cierras la venta. También mira tu equipo actual (si tienes o no fuerza de ventas) y tu base de datos. Con eso arma una "fotografía" clara de dónde se está perdiendo la venta y qué modelo de cierre (ágil, asesoría experta o flujo cíclico) encaja mejor contigo. Al final recibes, sin costo: un diagnóstico de tu embudo con números (cuánto vendes hoy y cuánto podrías vender), las oportunidades de mejora priorizadas y una propuesta inicial de cómo trabajaríamos juntos. No es una llamada de ventas genérica: es información útil para tu negocio aunque decidas no seguir con Xsell. El siguiente paso, si quieres avanzar, es la asesoría comercial, donde se valida esa información con tu equipo y se evalúa la viabilidad para ambos.
 SECTORES: telecomunicaciones, retail, banca y seguros, automotriz, salud, consumo masivo, y muchos más.
 CLIENTES: no se mencionan nombres de clientes. Si preguntan, di que por confidencialidad no compartimos nombres y menciona los sectores y el caso de éxito.
 NO OFRECEMOS: encuestas a clientes, paquetes cerrados ni desarrollo de canales para que los opere el cliente. No los menciones.
@@ -1204,7 +1214,17 @@ const FALLBACK = [
   {k:["pauta","publicidad","anuncio","marketing","google ads","meta ads","facebook ads","tiktok","community","manejo de redes","generan leads","generar leads","generación de leads","generacion de leads","campañas digitales","hacen campañas","agencia de publicidad","seo"],
    a:"No hacemos pauta ni marketing digital. Somos una agencia de ventas: trabajamos lo que pasa después del anuncio.\n\nSi ya generas interesados con tus campañas o tienes una base de datos, nosotros los perfilamos, les damos seguimiento y los convertimos en ventas. Así tu inversión en publicidad rinde más. ¿Te contamos cómo en una Fotografía Comercial Xsell?"},
   {k:["fotografía","fotografia","foto comercial","diagnóstico","diagnostico"],
-   a:"La Fotografía Comercial Xsell es nuestro primer paso y no tiene costo: en 72 horas levantamos la información, miramos cómo se encuentra hoy tu negocio y entendemos tu flujo comercial de punta a punta. Con esa foto evaluamos si el modelo es viable para ambos y te proponemos cómo trabajar. Pide tu diagnóstico gratuito y empezamos."},
+   a:"La Fotografía Comercial Xsell es nuestro primer paso, no tiene costo y no te compromete a contratar nada. En 72 horas, tu futuro KAM (gerente de cuenta) revisa tu embudo completo: cuántos prospectos te llegan, cómo los contactas hoy, dónde se enfrían y cómo cierras la venta.\n\nAl final te llevas, sin costo: un diagnóstico claro de dónde se pierde la venta, cuánto podrías vender si lo corriges, y una primera propuesta de cómo trabajaríamos. Puedes hacer una primera versión ahora mismo aquí en la web, o cuéntame tu nombre y tu empresa y hacemos que un KAM te contacte directamente.",
+   lead:true, related:["¿Qué es la Fotografía Comercial Xsell?","¿Cómo es el pago por resultados?","¿Cuánto cuesta trabajar con Xsell?"]},
+  {k:["sin compromiso","es gratis de verdad","es gratis en serio","qué me piden a cambio","que me piden a cambio","letra chica","trampa"],
+   a:"Sí, es gratis de verdad y sin letra chica: la Fotografía Comercial Xsell no tiene costo ni te obliga a contratarnos después. La hacemos porque es la única forma de darte una propuesta real y no una genérica. Si al final el modelo no encaja para ambos, no pasa nada; si encaja, ahí recién conversamos cómo trabajar.",
+   related:["¿Qué es la Fotografía Comercial Xsell?","¿Cómo es el pago por resultados?"]},
+  {k:["qué pasa después","que pasa despues","y luego qué","y luego que","siguiente paso","después de la fotografía","despues de la fotografia"],
+   a:"Después de la Fotografía Comercial, si los números calzan para ambos, pasamos a la asesoría comercial: ahí validamos la información con tu equipo y definimos el modelo de cierre que mejor encaja (ágil, asesoría experta o flujo cíclico). Luego arrancamos con un fijo más variable y, con la operación madura, pasamos a pago por resultado (PxQ).",
+   related:["¿Cómo es el pago por resultados?","¿Qué modelos de cierre manejan?"]},
+  {k:["quiero que me contacten","quiero que me llamen","llámenme","llamenme","me escriban","contáctenme","contactenme","quiero hablar con alguien","hablar con un asesor","quiero una propuesta","cotización","cotizacion","quiero contratar","cómo contrato","como contrato","cómo empiezo con ustedes","como empiezo con ustedes"],
+   a:"¡Con gusto! Cuéntame tu nombre y el de tu empresa aquí mismo y hacemos que Ingrid o un KAM te contacte directamente para preparar tu propuesta. Así no tienes que esperar ni escribir a otro lado.",
+   lead:true},
   {k:["cultura","trabajar en xsell","trabajar con ustedes","trabajo","empleo","postular","vacante","ser parte","integrante","cuidan","escuchan","academia","convenio"],
    a:"¡Gracias por tu interés en ser parte de Xsell! Muy pronto lanzaremos nuestra sección de Cultura, donde podrás conocer cómo vivimos el viaje Xsell y postular. Mientras tanto, ¿te cuento cómo ayudamos a las empresas a vender más?"},
   {k:["qué gana","que gana","beneficio","ganar","ventaja","ayudarme a vender","vender más","vender mas"],
@@ -1224,9 +1244,11 @@ const FALLBACK = [
   {k:["canal","whatsapp","redes","llamada","omnicanal","presencial","tienda"],
    a:"Vendemos donde está tu cliente: WhatsApp, redes sociales, llamadas, web y atención presencial, con su historial unificado para que pueda empezar en un canal y cerrar en otro. Pide tu diagnóstico gratuito y vemos qué canales te conviene activar."},
   {k:["precio","cuesta","costo","cuánto","cuanto","tarifa","monto","presupuesto","cobran"],
-   a:"Cada propuesta se arma según tu negocio, por eso no publicamos montos. Lo que sí te adelantamos: arrancamos con un fijo (fee) más un variable, y con la operación madura pasamos a pago por resultado (PxQ). Pide tu Fotografía Comercial Xsell, que no tiene costo, y te preparamos una propuesta a tu medida."},
+   a:"Cada propuesta se arma según tu negocio, por eso no publicamos montos. Lo que sí te adelantamos: arrancamos con un fijo (fee) más un variable, y con la operación madura pasamos a pago por resultado (PxQ). La forma más rápida de saber tu número real es la Fotografía Comercial Xsell (sin costo); si prefieres, cuéntame tu nombre y tu empresa aquí mismo y te preparamos una propuesta a tu medida.",
+   lead:true, related:["¿Cómo es el pago por resultados?","¿Qué es la Fotografía Comercial Xsell?"]},
   {k:["pago","hito","variable","resultado","fijo","pxq"],
-   a:"Primero hacemos la Fotografía Comercial Xsell para entender tu negocio y evaluamos que el modelo sea viable para ambos. Luego arrancamos con un fijo (fee) más un variable por resultados. Con la operación madura, pasamos a pago por resultado (PxQ): pagas un precio por cada resultado logrado. ¿Pides tu diagnóstico gratuito?"},
+   a:"Primero hacemos la Fotografía Comercial Xsell para entender tu negocio y evaluamos que el modelo sea viable para ambos. Luego arrancamos con un fijo (fee) más un variable por resultados. Con la operación madura, pasamos a pago por resultado (PxQ): pagas un precio por cada resultado logrado.",
+   lead:true, related:["¿Cuánto cuesta trabajar con Xsell?","¿Qué es la Fotografía Comercial Xsell?"]},
   {k:["cliente","marcas","empresas con las","referencia","han trabajado","trabajado con"],
    a:"Por confidencialidad no compartimos los nombres de nuestros clientes. Trabajamos con empresas de telecomunicaciones, retail, banca y seguros, automotriz, salud y consumo masivo, entre otras. Si quieres, te contamos un caso de éxito en tu Fotografía Comercial Xsell."},
   {k:["sector","rubro","industria","automotriz","retail","banca","seguros","telecom","salud","consumo"],
@@ -1238,21 +1260,23 @@ const FALLBACK = [
   {k:["medi","métrica","metrica","reporte","informe","informado","al tanto","kam","indicadores","cómo vamos"],
    a:"Siempre sabes cómo vamos: tienes un KAM (gerente de cuenta) como contacto directo y te enviamos informes mensuales con indicadores, causas de las variaciones y acciones sugeridas, además de reportes trimestrales y semestrales. Pide tu Fotografía Comercial Xsell y te mostramos cómo sería para tu empresa."},
   {k:["empez","empiez","comenzar","inicio","proceso","cómo trabajan","como trabajan","pasos"],
-   a:"Empezamos con la Fotografía Comercial Xsell: sin costo, en 72 horas vemos cómo está tu negocio y entendemos tu flujo comercial. Luego evaluamos que el modelo sea viable para ambos, arrancamos con un fijo más un variable y llegamos a pago por resultado (PxQ). El primer paso es pedir tu diagnóstico gratuito."},
+   a:"Empezamos con la Fotografía Comercial Xsell: sin costo, en 72 horas vemos cómo está tu negocio y entendemos tu flujo comercial. Luego evaluamos que el modelo sea viable para ambos, arrancamos con un fijo más un variable y llegamos a pago por resultado (PxQ). ¿Quieres que te contactemos para agendarla? Déjame tu nombre y tu empresa aquí mismo.",
+   lead:true},
   {k:["qué hace","que hace","quiénes","quienes","xsell","agencia","nosotros","servicio","multiplicador"],
    a:"Xsell es una agencia de ventas con 14 años en el mercado. Somos socios estratégicos: perfilamos a tus prospectos, los convertimos en ventas y hacemos que tus clientes vuelvan a comprar, por todos los canales. Nuestra meta es una sola: multiplicar tus resultados. ¿Pides tu diagnóstico gratuito?"},
   {k:["contacto","hablar","llamar","teléfono","telefono","correo","ingrid","asesor"],
-   a:"Puedes hablar directamente con Ingrid, nuestra Asesora Comercial. Escríbele por WhatsApp o pide tu diagnóstico gratuito desde la web. Ella te orienta y prepara una propuesta a tu medida."}
+   a:"Con gusto te contacta Ingrid, nuestra Asesora Comercial. Lo más rápido es que me dejes tu nombre y tu empresa aquí mismo y ella te escribe directamente; si prefieres, también puedes hacer tu diagnóstico gratuito desde la web.",
+   lead:true}
 ];
 const FALLBACK_DEFAULT = "Buena pregunta. Para darte una respuesta precisa, lo mejor es que lo converses con Ingrid, nuestra Asesora Comercial. En Xsell ayudamos a empresas a vender más con un equipo comercial que trabaja por resultados. ¿Agendamos tu Fotografía Comercial Xsell?";
 const OFFTOPIC = ["clima","fútbol","futbol","receta","chiste","película","pelicula","música","musica","horóscopo","horoscopo","tarea","poema"];
 
 function fallbackAnswer(q){
   const t = q.toLowerCase();
-  if (OFFTOPIC.some(w => t.includes(w))) return "Eso se escapa un poco de lo nuestro. Nosotros somos expertos en ayudar a empresas a vender más con un equipo comercial que trabaja por resultados. Si quieres, te contamos cómo podríamos ayudar a la tuya: agenda tu Fotografía Comercial Xsell.";
+  if (OFFTOPIC.some(w => t.includes(w))) return { text:"Eso se escapa un poco de lo nuestro. Nosotros somos expertos en ayudar a empresas a vender más con un equipo comercial que trabaja por resultados. Si quieres, te contamos cómo podríamos ayudar a la tuya: agenda tu Fotografía Comercial Xsell.", lead:false, related:null };
   let best = null, score = 0;
   for (const e of FALLBACK){ const s = e.k.reduce((n,w)=> n + (t.includes(w)?1:0), 0); if (s > score){ score = s; best = e; } }
-  return best ? best.a : FALLBACK_DEFAULT;
+  return best ? { text: best.a, lead: !!best.lead, related: best.related || null } : { text: FALLBACK_DEFAULT, lead:false, related:null };
 }
 
 /* ====== Utilidades ====== */
@@ -1590,8 +1614,12 @@ document.querySelectorAll(".js-ai").forEach(a => a.addEventListener("click", e =
 /* Preguntas sugeridas (frecuentes) */
 const NEXT = ["¿Tienen un caso real?","Me llegan interesados pero se enfrían y los pierdo. ¿Qué me recomiendan?","¿Hacen pauta o marketing digital?","Quiero vender más sin aumentar mi planilla fija. ¿Qué opción tengo?","¿Cómo es el pago por resultados?","Tengo un canal de ventas pero no sé cómo mejorarlo. ¿Por dónde empiezo?","¿Cuánto cuesta trabajar con Xsell?","¿Cómo me mantienen informado?","Mis tiendas o puntos de atención atienden, pero no venden. ¿Qué me recomiendan?","¿Qué modelos de cierre manejan?","¿En qué sectores trabajan?","¿Qué es la Fotografía Comercial Xsell?","¿Dónde operan?","¿Cómo puede Xsell ayudarme a vender más?"];
 const shown = new Set();
-function followups(q){
+function followups(q, related){
   const asked = new Set(history.filter(h => h.role === "user").map(h => h.content));
+  if (related && related.length){
+    const rel = related.filter(x => x !== q && !asked.has(x));
+    if (rel.length) return rel.slice(0, 3);
+  }
   const pool = NEXT.filter(x => x !== q && !asked.has(x));
   let fresh = pool.filter(x => !shown.has(x)); if (fresh.length < 3){ shown.clear(); fresh = pool; }
   const pick = fresh.slice(0, 3); pick.forEach(x => shown.add(x)); return pick;
@@ -1625,6 +1653,53 @@ function addBot(){
   m.innerHTML = '<div class="avatar"><img alt="" src="' + LOGO_ISO + '"></div><div class="bubble"><div class="name">Xsell</div><div class="txt"><span class="dots"><i></i><i></i><i></i></span></div></div>';
   chat.appendChild(m); chat.scrollTop = chat.scrollHeight; return m;
 }
+/* Formulario corto para dejar datos sin salir del chat (anti-spam: campo trampa + tiempo mínimo) */
+let leadSeq = 0;
+function renderLeadForm(bub, q){
+  const id = "cl" + (++leadSeq), openedAt = Date.now();
+  const wrap = document.createElement("div"); wrap.className = "chat-lead";
+  wrap.innerHTML =
+    "<p>Déjanos tus datos y te contactamos</p>" +
+    '<div class="cl-row">' +
+      '<input id="' + id + 'n" type="text" placeholder="Nombre y apellido" maxlength="120" autocomplete="name" required>' +
+      '<input id="' + id + 'e" type="text" placeholder="Empresa" maxlength="120" autocomplete="organization" required>' +
+    "</div>" +
+    '<div class="cl-row">' +
+      '<input id="' + id + 'c" type="tel" placeholder="Celular" maxlength="20" autocomplete="tel" required>' +
+      '<input id="' + id + 'm" type="email" placeholder="Correo (opcional)" maxlength="180" autocomplete="email">' +
+    "</div>" +
+    '<div class="hp-field" aria-hidden="true"><label for="' + id + 'w">No completar este campo</label><input id="' + id + 'w" type="text" tabindex="-1" autocomplete="off"></div>' +
+    '<button type="button" class="btn btn-orange" id="' + id + 'send">Enviar mis datos</button>' +
+    '<p class="form-msg" id="' + id + 'st"></p>';
+  bub.appendChild(wrap);
+  const btn = wrap.querySelector("#" + id + "send"), st = wrap.querySelector("#" + id + "st");
+  btn.addEventListener("click", async () => {
+    const nombre = wrap.querySelector("#" + id + "n").value.trim();
+    const empresa = wrap.querySelector("#" + id + "e").value.trim();
+    const celular = wrap.querySelector("#" + id + "c").value.trim();
+    const correo = wrap.querySelector("#" + id + "m").value.trim();
+    const honey = wrap.querySelector("#" + id + "w").value;
+    if (!nombre || !empresa || !celular){ st.className = "form-msg err"; st.textContent = "Completa nombre, empresa y celular para continuar."; return; }
+    if (honey){ st.className = "form-msg ok"; st.textContent = "¡Listo! En breve te contactamos."; wrap.querySelectorAll("input,button").forEach(el => el.disabled = true); return; }
+    if (Date.now() - openedAt < 2500){ st.className = "form-msg err"; st.textContent = "Revisa tus datos e inténtalo de nuevo."; return; }
+    const dest = CONFIG.diagnostico.correo;
+    if (!dest){ st.className = "form-msg err"; st.textContent = "Esta opción aún no está activa. Muy pronto podrás usarla."; return; }
+    btn.disabled = true; btn.textContent = "Enviando…";
+    try {
+      const r = await fetch("https://formsubmit.co/ajax/" + dest, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({
+        _subject: "Interesado desde el chat: " + empresa, _captcha: "false",
+        canal: "Chat web", nombre, empresa, celular, correo, sector: XSELL_CTX.sector || "", pregunta: q || ""
+      }) });
+      if (!r.ok) throw 0;
+      st.className = "form-msg ok"; st.textContent = "¡Listo, " + (nombre.split(" ")[0] || nombre) + "! Recibimos tus datos. Ingrid o un KAM te contactará pronto.";
+      wrap.querySelectorAll("input,button").forEach(el => el.disabled = true);
+      window.XSELL_LEAD_DONE = true;
+    } catch {
+      st.className = "form-msg err"; st.textContent = "No pudimos enviar tus datos. Inténtalo de nuevo en unos minutos.";
+      btn.disabled = false; btn.textContent = "Enviar mis datos";
+    }
+  });
+}
 function renderBot(m, text, opts){
   opts = opts || {};
   const t = m.querySelector(".txt"), bub = m.querySelector(".bubble"); t.textContent = "";
@@ -1633,6 +1708,7 @@ function renderBot(m, text, opts){
   if (opts.go){ const a = document.createElement("a"); a.className = "btn btn-link"; a.textContent = opts.go[1]; a.href = opts.go[0]; act.appendChild(a); }
   const d = document.createElement("button"); d.type = "button"; d.className = "btn btn-orange"; d.textContent = "Diagnóstico gratis"; d.addEventListener("click", () => window.openDiag && window.openDiag()); act.appendChild(d);
   bub.appendChild(act);
+  if (opts.lead && !window.XSELL_LEAD_DONE) renderLeadForm(bub, opts.q || "");
   const nx = opts.chips || [];
   if (nx.length){
     const f = document.createElement("div"); f.className = "followups";
@@ -1660,7 +1736,7 @@ async function ask(q){
   if (window.innerWidth <= 980 || window.scrollY > 200) document.getElementById("inicio").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   await wait(450); status(true);
   const m = addBot();
-  let answer = null;
+  let answer = null, lead = false, related = null;
   try {
     const sample = await Promise.race([getSampler(), new Promise(r => setTimeout(() => r(null), 2500))]);
     if (sample){
@@ -1671,10 +1747,13 @@ async function ask(q){
       if (r && r.text && r.text.trim()) answer = r.text.trim();
     }
   } catch (e) { answer = null; }
-  if (!answer){ answer = fallbackAnswer(q); await wait(Math.min(2600, 1100 + answer.length * 4)); }
+  if (!answer){
+    const fb = fallbackAnswer(q); answer = fb.text; lead = fb.lead; related = fb.related;
+    await wait(Math.min(2600, 1100 + answer.length * 4));
+  }
   history.push({ role:"user", content:q }, { role:"assistant", content:answer });
   status(false);
-  renderBot(m, answer, { go: goFor(q), chips: followups(q) });
+  renderBot(m, answer, { go: goFor(q), chips: followups(q, related), lead, q });
   chat.scrollTop = Math.max(0, m.offsetTop - 12);
   busy = false; sendBtn.disabled = false;
 }
