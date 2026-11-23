@@ -173,16 +173,20 @@ main{padding-top:72px}
 section.block{overflow:hidden}
 
 /* Marcos con esquinas recortadas */
-.card.svc,.pkg,.leg,.client,.tile .art{-webkit-mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top left,radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top right,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom left,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom right;-webkit-mask-size:51% 51%;-webkit-mask-repeat:no-repeat;mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top left,radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top right,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom left,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom right;mask-size:51% 51%;mask-repeat:no-repeat;border-radius:6px}
+.card.svc,.pkg,.leg,.client{-webkit-mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top left,radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top right,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom left,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom right;-webkit-mask-size:51% 51%;-webkit-mask-repeat:no-repeat;mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top left,radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top right,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom left,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom right;mask-size:51% 51%;mask-repeat:no-repeat;border-radius:6px}
 .pkg.featured{box-shadow:none}
 
 /* Proceso en láminas */
 .tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 @media (max-width:980px){.tiles{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.tiles{grid-template-columns:1fr}}
-.tile{display:flex;flex-direction:column;gap:8px;min-width:0}
-.tile .art{padding:8px;background:var(--surface);border:1px solid var(--line)}
-.tile .art svg{display:block;width:100%;height:auto;border-radius:2px}
+.tile{display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.tile .art{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;flex:none}
+.tile .art svg{width:26px;height:26px;color:#fff}
+.tile:nth-child(1) .art{background:linear-gradient(135deg,var(--purple),var(--purple-2))}
+.tile:nth-child(2) .art{background:linear-gradient(135deg,var(--purple-2),var(--magenta))}
+.tile:nth-child(3) .art{background:linear-gradient(135deg,var(--magenta),var(--orange))}
+.tile:nth-child(4) .art{background:linear-gradient(135deg,var(--orange),var(--orange-2))}
 .tile .n{font-family:var(--impact);font-size:1.6rem;color:var(--orange);line-height:1;margin-top:10px}
 .tile h3{font-size:1.12rem;font-weight:600}
 .tile p{color:var(--muted);font-size:.94rem}
@@ -620,9 +624,18 @@ footer{border-top:1px solid var(--line);padding-block:36px;margin-top:96px}
 .more-sec{margin-top:22px;font-family:var(--display);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
 .pre-h{display:block;margin-top:14px;font-family:var(--display);font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);font-size:.85rem}
 
-/* ===== Pie de página ===== */
-footer{border-top:1px solid var(--line);margin-top:96px;padding-block:56px 120px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--purple) 12%,transparent));position:relative;overflow:hidden}
-footer::before{content:"XSELL";position:absolute;left:50%;bottom:-.16em;transform:translateX(-50%);font-family:var(--impact);font-size:clamp(5rem,20vw,14rem);line-height:1;color:color-mix(in srgb,var(--orange) 55%,var(--purple-2) 45%);opacity:.16;filter:blur(7px);pointer-events:none;white-space:nowrap;z-index:0;letter-spacing:-.01em}
+/* ===== Pie de página: franja fija con CTA, el bloque de enlaces se desliza por encima ===== */
+footer{margin-top:96px;position:relative;overflow:hidden;overflow:clip}
+.pre-footer{position:sticky;top:0;min-height:56vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 24px;background:linear-gradient(135deg,var(--purple),var(--magenta) 55%,var(--orange));overflow:hidden;z-index:0}
+.pre-footer::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 25% 30%,color-mix(in srgb,#fff 18%,transparent),transparent 55%);pointer-events:none}
+.pf-inner{position:relative;max-width:640px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.pf-inner .eyebrow{color:#fff;opacity:.85}
+.pf-inner h2{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,4.6vw,3rem);line-height:1.1;color:#fff;margin:0}
+.pf-inner .btn{background:#fff;color:var(--purple);border:0;box-shadow:0 14px 36px -14px rgba(0,0,0,.4)}
+.pf-inner .btn:hover{transform:translateY(-2px)}
+@media (max-width:560px){.pre-footer{min-height:46vh;padding:44px 20px}}
+.f-wrapper{position:relative;z-index:1;padding-block:70px 120px;background-repeat:no-repeat,no-repeat;background-position:top,left 220px;background-size:100% 220px,100% calc(100% - 220px);background-image:linear-gradient(180deg,transparent,var(--bg)),linear-gradient(var(--bg),var(--bg))}
+.f-wrapper::before{content:"XSELL";position:absolute;left:50%;bottom:-.16em;transform:translateX(-50%);font-family:var(--impact);font-size:clamp(5rem,20vw,14rem);line-height:1;color:color-mix(in srgb,var(--orange) 55%,var(--purple-2) 45%);opacity:.16;filter:blur(7px);pointer-events:none;white-space:nowrap;z-index:0;letter-spacing:-.01em}
 footer .wrap{position:relative;z-index:1}
 .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
 @media (max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}
@@ -703,7 +716,7 @@ footer .wrap{position:relative;z-index:1}
 .cs-arrows button:disabled{opacity:.35;cursor:default}
 
 /* ===== Cómo trabajamos: detalle ===== */
-.tile details{margin-top:4px;border-top:1px solid var(--line);padding-top:8px}
+.tile details{margin-top:auto;border-top:1px solid var(--line);padding-top:8px}
 .tile summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:.88rem;color:var(--orange);list-style:none}
 .tile summary::-webkit-details-marker{display:none}
 .tile summary::after{content:" +"}
@@ -1064,19 +1077,19 @@ footer{padding-bottom:110px}
       </div>
       <ol class="tiles">
         <li class="tile">
-          <div class="art"><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="var(--purple)"/><rect x="38" y="44" width="124" height="80" rx="10" fill="var(--bg)"/><rect x="62" y="32" width="40" height="18" rx="4" fill="var(--bg)"/><circle cx="100" cy="84" r="30" fill="var(--orange)"/><circle cx="100" cy="84" r="16" fill="var(--bg)"/><circle cx="106" cy="78" r="5" fill="var(--text)"/><circle cx="144" cy="58" r="5" fill="var(--orange-2)"/></svg></div>
+          <div class="art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="4"/></svg></div>
           <span class="n">01</span><h3>Fotografía Comercial Xsell</h3><p>Sin costo. En 72 horas levantamos la información: cómo está hoy tu negocio y cómo fluye tu proceso comercial.</p><details><summary>Ver detalle</summary><dl><div><dt>Qué hacemos</dt><dd>Revisamos tu embudo, tus canales, tu equipo y tu base de prospectos.</dd></div><div><dt>Qué recibes</dt><dd>Tus oportunidades de mejora y el modelo de cierre que mejor encaja.</dd></div></dl></details><button class="btn btn-orange js-diag" type="button">Haz una primera versión ahora</button>
         </li>
         <li class="tile">
-          <div class="art"><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="var(--bg)"/><circle cx="78" cy="75" r="46" fill="var(--purple-2)"/><circle cx="122" cy="75" r="46" fill="var(--magenta)"/><path d="M100 36 A46 46 0 0 1 100 114 A46 46 0 0 1 100 36 Z" fill="var(--orange)"/><circle cx="100" cy="75" r="7" fill="var(--bg)"/></svg></div>
+          <div class="art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 7h14M9 3h6"/><path d="M7 7l-4 8a4 4 0 0 0 8 0z"/><path d="M17 7l4 8a4 4 0 0 1-8 0z"/></svg></div>
           <span class="n">02</span><h3>Evaluamos la viabilidad</h3><p>Revisamos que el modelo sea viable y rentable para tu negocio y para el nuestro. Si no lo es, te lo decimos.</p><details><summary>Ver detalle</summary><dl><div><dt>Qué hacemos</dt><dd>Proyectamos volumen, contacto y conversión para tu negocio y el nuestro.</dd></div><div><dt>Qué recibes</dt><dd>Una propuesta clara. Si no es viable, te lo decimos.</dd></div></dl></details>
         </li>
         <li class="tile">
-          <div class="art"><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="var(--magenta)"/><rect x="30" y="56" width="56" height="70" rx="6" fill="var(--bg)"/><rect x="100" y="96" width="18" height="30" rx="4" fill="var(--orange)"/><rect x="124" y="80" width="18" height="46" rx="4" fill="var(--orange-2)"/><rect x="148" y="62" width="18" height="64" rx="4" fill="var(--orange)"/><rect x="40" y="70" width="36" height="6" rx="3" fill="var(--purple-2)"/><rect x="40" y="84" width="24" height="6" rx="3" fill="var(--purple-2)"/></svg></div>
+          <div class="art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M3 10h2M19 10h2M3 14h2M19 14h2"/></svg></div>
           <span class="n">03</span><h3>Fijo + variable</h3><p>Arrancamos con un monto fijo (fee) más un variable ligado a resultados.</p><details><summary>Ver detalle</summary><dl><div><dt>Qué hacemos</dt><dd>Armamos el equipo y arrancamos la operación con tu marca.</dd></div><div><dt>Qué recibes</dt><dd>Un KAM, métricas de cada etapa e informe mensual.</dd></div></dl></details>
         </li>
         <li class="tile">
-          <div class="art"><svg viewBox="0 0 200 150" aria-hidden="true"><rect width="200" height="150" fill="var(--orange)"/><g fill="var(--bg)"><rect x="30" y="100" width="22" height="26" rx="4"/><rect x="60" y="84" width="22" height="42" rx="4"/><rect x="90" y="66" width="22" height="60" rx="4"/></g><path d="M120 108 L170 38" stroke="var(--purple)" stroke-width="14" stroke-linecap="round"/><path d="M146 34 L176 30 L172 60 Z" fill="var(--purple)"/></svg></div>
+          <div class="art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
           <span class="n">04</span><h3>Pago por resultado (PxQ)</h3><p>Con la operación madura, pagas un precio por cada resultado logrado: precio por cantidad.</p><details><summary>Ver detalle</summary><dl><div><dt>Qué hacemos</dt><dd>Con la operación madura, pasamos a precio por resultado.</dd></div><div><dt>Qué recibes</dt><dd>Pagas por cada venta o resultado logrado.</dd></div></dl></details>
         </li>
       </ol>
@@ -1191,13 +1204,22 @@ footer{padding-bottom:110px}
   </form>
 </dialog>
 <footer>
-  <div class="wrap fgrid">
-    <div class="fcol fbrand"><img src="logo.webp" alt="Xsell" width="96" height="35"><p class="slogan">Multiplicamos <em>tus resultados</em></p><p class="fsm">Agencia de ventas. 14 años convirtiendo oportunidades en ventas.</p><button class="btn btn-orange js-diag" type="button">Diagnóstico gratuito</button></div>
-    <div class="fcol"><h4>Explora</h4><a href="#multiplicadores">Multiplicadores</a><a href="#caso">Casos</a><a href="#modelos">Modelos de cierre</a><a href="#proceso">Cómo trabajamos</a><a href="#sectores">Sectores</a></div>
-    <div class="fcol"><h4>Xsell</h4><a href="nosotros.html">Nosotros</a><span>Trabaja con nosotros <em class="soon">Próximamente</em></span><a href="#contacto">Contacto</a><a href="#chat" class="js-ai">Pregúntanos en el chat</a></div>
-    <div class="fcol"><h4>Presencia</h4><span>Perú</span><span>Argentina</span><span>Chile <em class="soon">Próximamente</em></span></div>
+  <div class="pre-footer">
+    <div class="pf-inner">
+      <span class="eyebrow">Fotografía Comercial Xsell · gratis</span>
+      <h2>¿Vemos juntos dónde se pierde tu venta?</h2>
+      <button class="btn js-diag" type="button">Realiza tu diagnóstico gratuito</button>
+    </div>
   </div>
-  <div class="wrap fbot"><span>© <span id="yr">2026</span> Xsell. Todos los derechos reservados.</span><span>Lima, Perú</span></div>
+  <div class="f-wrapper">
+    <div class="wrap fgrid">
+      <div class="fcol fbrand"><img src="logo.webp" alt="Xsell" width="96" height="35"><p class="slogan">Multiplicamos <em>tus resultados</em></p><p class="fsm">Agencia de ventas. 14 años convirtiendo oportunidades en ventas.</p><button class="btn btn-orange js-diag" type="button">Diagnóstico gratuito</button></div>
+      <div class="fcol"><h4>Explora</h4><a href="#multiplicadores">Multiplicadores</a><a href="#caso">Casos</a><a href="#modelos">Modelos de cierre</a><a href="#proceso">Cómo trabajamos</a><a href="#sectores">Sectores</a></div>
+      <div class="fcol"><h4>Xsell</h4><a href="nosotros.html">Nosotros</a><span>Trabaja con nosotros <em class="soon">Próximamente</em></span><a href="#contacto">Contacto</a><a href="#chat" class="js-ai">Pregúntanos en el chat</a></div>
+      <div class="fcol"><h4>Presencia</h4><span>Perú</span><span>Argentina</span><span>Chile <em class="soon">Próximamente</em></span></div>
+    </div>
+    <div class="wrap fbot"><span>© <span id="yr">2026</span> Xsell. Todos los derechos reservados.</span><span>Lima, Perú</span></div>
+  </div>
 </footer>
 
 <script>
