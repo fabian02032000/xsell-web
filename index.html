@@ -234,20 +234,19 @@ section.block{overflow:hidden}
 .note{font-size:.8rem;color:var(--muted)}
 
 /* Pasos del proceso en portada */
-.flow{margin-top:56px;width:100%;max-width:var(--maxw);list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
-.flow li{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding-inline:6px}
-.flow li::before{content:"";position:absolute;top:13px;left:-50%;width:100%;height:2px;background:linear-gradient(90deg,var(--purple-2),var(--orange));z-index:-1}
-.flow li:first-child::before{display:none}
-.flow .node{width:28px;height:28px;border-radius:50%;background:var(--bg);border:2px solid var(--orange);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:.75rem;color:var(--orange-2)}
-.flow li:last-child .node{background:var(--orange);color:var(--on-orange)}
+.flow{margin-top:76px;width:100%;max-width:var(--maxw);list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;z-index:1;isolation:isolate}
+.flow li{position:relative;display:flex;flex-direction:column;gap:12px;text-align:left;padding:18px 18px 20px;border-radius:18px;background:var(--surface-2);border:1px solid var(--line);box-shadow:0 10px 24px -18px rgba(0,0,0,.5);transition:transform .3s var(--ease-spring),border-color .2s var(--ease-out)}
+.flow li:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--orange) 55%,var(--line))}
+.flow li::after{content:"";position:absolute;top:35px;right:-15px;width:14px;height:2px;background:linear-gradient(90deg,var(--orange),transparent);z-index:0}
+.flow li:last-child::after{display:none}
+.flow .node{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--orange),var(--orange-2));display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:.85rem;color:var(--on-orange)}
+.flow li:last-child .node{background:linear-gradient(135deg,var(--purple-2),var(--orange))}
 .flow li>div{display:flex;flex-direction:column;gap:2px}
-.flow b{font-family:var(--display);font-weight:600;font-size:.92rem}
+.flow b{font-family:var(--display);font-weight:600;font-size:.95rem}
 .flow span{font-size:.8rem;color:var(--muted);line-height:1.4}
 @media (max-width:760px){
-  .flow{grid-template-columns:1fr;gap:16px;max-width:360px;text-align:left}
-  .flow li{flex-direction:row;align-items:flex-start;text-align:left;gap:14px}
-  .flow li::before{top:-16px;left:13px;width:2px;height:calc(100% + 0px);background:linear-gradient(180deg,var(--purple-2),var(--orange))}
-  .flow li>div{display:flex;flex-direction:column}
+  .flow{grid-template-columns:1fr;gap:10px;max-width:360px}
+  .flow li::after{display:none}
 }
 
 /* Secciones */
@@ -1167,6 +1166,12 @@ footer{padding-bottom:110px}
     <fieldset class="dg-step" data-step="4" hidden>
       <legend>Tu diagnóstico</legend>
       <div class="rp" id="dgReport"></div>
+      <p class="dg-hint">Para dejarte tu plan a tu nombre y enviártelo a tu correo, cuéntanos quién eres:</p>
+      <div class="field"><label for="d_nomr">Nombre y apellido</label><input id="d_nomr" name="nombre_rapido" required autocomplete="name" maxlength="120"></div>
+      <div class="field"><label for="d_empr">Empresa</label><input id="d_empr" name="empresa_rapido" required autocomplete="organization" maxlength="120"></div>
+      <div class="field"><label for="d_celr">Celular</label><input id="d_celr" name="celular_rapido" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX" maxlength="20"></div>
+      <div class="field"><label for="d_mailr">Correo</label><input id="d_mailr" name="correo_rapido" type="email" required autocomplete="email" maxlength="180"></div>
+      <p class="dg-fine">Te enviaremos tu diagnóstico a tu correo y lo dejamos preparado con tu nombre y tu empresa en el PDF.</p>
       <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Ajustar datos</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost" type="button" id="dgPdf">Descargar PDF</button><button class="btn btn-orange" type="button" data-go="5">Quiero mi asesoría comercial</button></span></div>
     </fieldset>
     <fieldset class="dg-step" data-step="5" hidden>
@@ -1441,6 +1446,12 @@ function waLink(text){
     st.textContent = "";
     if (n === 2) mini();
     if (n === 4) report();
+    if (n === 5){
+      [["d_nom","nombre_rapido"],["d_emp","empresa_rapido"],["d_cel","celular_rapido"],["d_mail","correo_rapido"]].forEach(([id, src]) => {
+        const dst = document.getElementById(id), s = f.elements[src];
+        if (dst && s && !dst.value && s.value) dst.value = s.value;
+      });
+    }
     const first = steps[n].querySelector("input:not([type=hidden]),select,button.btn-orange"); if (first) first.focus({ preventScroll: true });
     f.scrollTop = 0; dlg.scrollTop = 0;
   };
@@ -1519,7 +1530,8 @@ function waLink(text){
   };
 
   /* PDF sin librerías */
-  function pdf(){
+  function pdf(quick){
+    quick = quick || {};
     if (!R) report();
     const { x, c2, v2, S0, S1, S2, model, tips, notes, focus } = R;
     const W = 595, H = 842, M = 50, pages = []; let ops = [], y = 0;
@@ -1538,6 +1550,7 @@ function waLink(text){
     text("Xsell", M, H - 62, 30, true, "#FFFFFF");
     text("Fotografía Comercial · Diagnóstico referencial", M, H - 88, 12, false, "#EDE3F7");
     text(new Date().toLocaleDateString("es-PE"), W - M - 70, H - 62, 10, false, "#EDE3F7");
+    if (quick.nombre) text("Preparado para: " + quick.nombre + (quick.empresa ? " · " + quick.empresa : ""), M, H - 104, 9, false, "#EDE3F7");
     y = H - 150;
     para("Tu negocio: vende a " + (x.tipo === "B2B" ? "empresas (B2B)" : "personas (B2C)") + (x.sector ? " · sector " + x.sector : "") + (x.ciclo ? " · cierre: " + x.ciclo.toLowerCase() : ""), 10, { col: "#6B5A7E" });
     y -= 8;
@@ -1576,10 +1589,23 @@ function waLink(text){
     out += "xref\n0 " + objs.length + "\n0000000000 65535 f \n" + offs.slice(1).map(o => String(o).padStart(10, "0") + " 00000 n \n").join("");
     out += "trailer\n<< /Size " + objs.length + " /Root 1 0 R >>\nstartxref\n" + xref + "\n%%EOF";
     const bytes = new Uint8Array(out.length); for (let i = 0; i < out.length; i++) bytes[i] = out.charCodeAt(i) & 255;
-    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" })); a.download = "Diagnostico-Comercial-Xsell.pdf";
+    const slug = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-zA-Z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 40);
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" })); a.download = "Diagnostico-Comercial-" + (slug(quick.empresa || quick.nombre) || "Xsell") + ".pdf";
     document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
   }
-  $("#dgPdf").addEventListener("click", pdf);
+  $("#dgPdf").addEventListener("click", async () => {
+    if (!valid(4)) return;
+    const d = Object.fromEntries(new FormData(f).entries());
+    const quick = { nombre: d.nombre_rapido, empresa: d.empresa_rapido, celular: d.celular_rapido, correo: d.correo_rapido };
+    pdf(quick);
+    st.className = "form-msg ok"; st.textContent = "¡Listo! Descargamos tu PDF y te escribiremos pronto a tu correo.";
+    try {
+      await sendToHubSpot({
+        email: quick.correo, firstname: quick.nombre, company: quick.empresa, mobilephone: quick.celular,
+        message: "Diagnóstico comercial · PDF descargado (web)" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
+      });
+    } catch {}
+  });
 
   f.addEventListener("submit", async e => {
     e.preventDefault(); if (!valid(5)) return;
