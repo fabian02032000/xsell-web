@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin-imagenes.html
+
+Sitemap: https://wexsell.co/sitemap.xml
