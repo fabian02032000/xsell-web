@@ -1,14 +1,6 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <!-- Google Ads: etiqueta de Google (cuenta Xsell) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18592382048"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18592382048');
-</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Xsell, agencia de ventas. Multiplicamos tus resultados.">
@@ -1315,11 +1307,6 @@ async function sendToHubSpot(fields){
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload)
   });
   if (!r.ok) throw new Error("No se pudo enviar a HubSpot (" + r.status + ")");
-  /* Google Ads: cuenta un lead (una sola vez por visita) cuando el formulario llega bien a HubSpot */
-  if (!window.__xsellConvSent && typeof gtag === "function"){
-    window.__xsellConvSent = true;
-    gtag("event", "conversion", { send_to: "AW-18592382048/asOXCMDQr74dEOD4xKFF", value: 1.0, currency: "PEN" });
-  }
   return r;
 }
 
@@ -1420,9 +1407,11 @@ const FALLBACK = [
 ];
 const FALLBACK_DEFAULT = "Buena pregunta. Para darte una respuesta precisa, lo mejor es que lo converses con Ingrid, nuestra Asesora Comercial. En Xsell ayudamos a empresas a vender más con un equipo comercial que trabaja por resultados. ¿Agendamos tu Fotografía Comercial Xsell?";
 const OFFTOPIC = ["clima","fútbol","futbol","receta","chiste","película","pelicula","música","musica","horóscopo","horoscopo","tarea","poema"];
+const GREET_RE = /^(hola+|holis|hello|hi|hey|buenas|buen[oa]s?\s*(d[ií]as?|tardes|noches)?|qu[eé]\s*tal|saludos)[\s!¡¿?.,]*$/;
 
 function fallbackAnswer(q){
-  const t = q.toLowerCase();
+  const t = q.toLowerCase().trim();
+  if (GREET_RE.test(t)) return { text:"¡Hola! Un gusto saludarte. Cuéntame, ¿cómo te llamas y en qué puedo ayudarte hoy?", lead:false, related:null };
   if (OFFTOPIC.some(w => t.includes(w))) return { text:"Eso se escapa un poco de lo nuestro. Nosotros somos expertos en ayudar a empresas a vender más con un equipo comercial que trabaja por resultados. Si quieres, te contamos cómo podríamos ayudar a la tuya: agenda tu Fotografía Comercial Xsell.", lead:false, related:null };
   let best = null, score = 0;
   for (const e of FALLBACK){ const s = e.k.reduce((n,w)=> n + (t.includes(w)?1:0), 0); if (s > score){ score = s; best = e; } }
