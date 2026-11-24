@@ -1289,12 +1289,12 @@ footer{padding-bottom:110px}
         <div class="rp" id="dgReport"></div>
         <div class="rp-lock"><span aria-hidden="true">🔒</span><b>Completa tus datos arriba para desbloquear tu diagnóstico</b></div>
       </div>
-      <p class="dg-fine" id="dgFine" hidden>Ya desbloqueaste tu diagnóstico: descarga tu PDF o solicita tu asesoría comercial, sin costo.</p>
-      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Ajustar datos</button><span style="display:flex;gap:10px;flex-wrap:wrap" id="dgUnlockedActions" hidden><button class="btn btn-ghost" type="button" id="dgPdf">Descargar PDF</button><button class="btn btn-orange" type="button" data-go="5">Quiero mi asesoría comercial</button></span></div>
+      <p class="dg-fine" id="dgFine" hidden>Ya desbloqueaste tu diagnóstico: descarga tu PDF o agenda tu Fotografía Comercial Xsell (72 h), sin costo.</p>
+      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Ajustar datos</button><span style="display:flex;gap:10px;flex-wrap:wrap" id="dgUnlockedActions" hidden><button class="btn btn-ghost" type="button" id="dgPdf">Descargar PDF</button><button class="btn btn-orange" type="button" data-go="5">Agendar mi Fotografía Comercial (72 h)</button></span></div>
     </fieldset>
     <fieldset class="dg-step" data-step="5" hidden>
       <legend>Tus datos de contacto</legend>
-      <p class="dg-hint">Con tu diagnóstico, nuestro equipo comercial prepara una asesoría a la medida de tu negocio, sin costo.</p>
+      <p class="dg-hint">Siguiente paso: tu Fotografía Comercial Xsell. Un KAM revisa tu proceso comercial completo y en 72 horas (3 días) te entrega tu diagnóstico real y una propuesta, sin costo.</p>
       <div class="field"><label for="d_nom">Nombre y apellido</label><input id="d_nom" name="nombre" required autocomplete="name" maxlength="120"></div>
       <div class="field"><label for="d_emp">Empresa</label><input id="d_emp" name="empresa" required autocomplete="organization" maxlength="120"></div>
       <div class="field"><label for="d_cargo">Cargo</label><input id="d_cargo" name="cargo" required autocomplete="organization-title" maxlength="120"></div>
@@ -1302,7 +1302,7 @@ footer{padding-bottom:110px}
       <div class="field full"><label for="d_cel">Celular</label><input id="d_cel" name="celular" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX" maxlength="20"></div>
       <div class="hp-field" aria-hidden="true"><label for="d_web">No completar este campo</label><input id="d_web" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
       <label class="check"><input type="checkbox" id="d_ok" required> Acepto que Xsell use mis datos para contactarme, según la Ley N.° 29733 de Protección de Datos Personales.</label>
-      <p class="dg-fine">Al enviar tus datos, nuestro equipo comercial revisará tu información. La asesoría está sujeta a evaluación y calificación comercial.</p>
+      <p class="dg-fine">Al enviar tus datos, nuestro equipo comercial revisará tu información. La Fotografía Comercial está sujeta a evaluación y calificación comercial.</p>
       <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="4">← Atrás</button><button class="btn btn-orange" type="submit" id="dgSend">Enviar</button></div>
     </fieldset>
     <p class="form-msg" id="dgStatus" role="status"></p>
@@ -1370,7 +1370,7 @@ CLIENTES: no se mencionan nombres de clientes. Si preguntan, di que por confiden
 NO OFRECEMOS: encuestas a clientes, paquetes cerrados ni desarrollo de canales para que los opere el cliente. No los menciones.
 PAUTA Y MARKETING: Xsell NO hace pauta, publicidad, anuncios, manejo de redes ni marketing digital. Somos una agencia de ventas: trabajamos lo que pasa después del anuncio. Si el cliente ya genera interesados con sus campañas o tiene una base de datos, nosotros los perfilamos, les damos seguimiento y los convertimos en ventas. Vendemos por WhatsApp, redes sociales, llamada, web o presencial, pero la publicidad la maneja el cliente o su agencia.
 CULTURA: la sección Cultura y Trabaja con nosotros estará disponible próximamente. Si preguntan por trabajar en Xsell, agradece el interés y di que muy pronto se publicará. Siempre di "integrantes", nunca "empleados". Nunca uses los nombres "3bu", "tribu" ni "3eriza".
-CONTACTO: el mejor siguiente paso es el diagnóstico gratis de la web (botón "Diagnóstico gratis", la Fotografía Comercial Xsell): en 3 minutos el visitante ve dónde se pierde su venta, recibe consejos y un PDF. El segundo paso es la asesoría comercial: deja sus datos y el equipo comercial revisa su información; la asesoría está sujeta a evaluación comercial.
+CONTACTO: el mejor siguiente paso es el diagnóstico gratis de la web (botón "Diagnóstico gratis", la Fotografía Comercial Xsell): en 3 minutos el visitante ve dónde se pierde su venta, recibe consejos y un PDF. El segundo paso es agendar la Fotografía Comercial Xsell completa (72 horas, 3 días, sin costo, con un KAM): deja sus datos y el equipo comercial lo contacta; está sujeta a evaluación comercial.
 CASO 2 (retail y telecomunicaciones, real): tasa de contacto 55%, conversión de prospectos 70%, base de unos 600 prospectos al mes; ventas mensuales de S/ 167K (2021) a S/ 385K (2024) con el mismo equipo.`;
 
 const SYSTEM = `Eres el asistente de la web de Xsell. Respondes en español, con tono cercano y experto, en 3 a 5 frases cortas y en palabras simples (sin anglicismos ni jerga).
@@ -1612,8 +1612,8 @@ function waLink(text){
   let cur = 0, R = null, unlocked = false;
   const go = n => {
     cur = n; steps.forEach((s,i) => s.hidden = i !== n);
-    const adv = n === 5; $("#dgTitle").textContent = adv ? "Solicita tu asesoría comercial" : "Tu diagnóstico comercial en 3 minutos";
-    $("#dgEye").textContent = adv ? "Paso 2 · Asesoría comercial Xsell" : "Fotografía Comercial Xsell · gratis"; f.querySelector(".dg-steps").style.display = adv ? "none" : "";
+    const adv = n === 5; $("#dgTitle").textContent = adv ? "Agenda tu Fotografía Comercial Xsell" : "Tu diagnóstico comercial en 3 minutos";
+    $("#dgEye").textContent = adv ? "Paso 2 · Fotografía Comercial Xsell · 72 h" : "Paso 1 · Diagnóstico rápido · gratis"; f.querySelector(".dg-steps").style.display = adv ? "none" : "";
     bars.forEach((b,i) => b.classList.toggle("on", n >= 1 && i < Math.min(n, 4)));
     st.textContent = "";
     if (n === 2) mini();
@@ -1700,11 +1700,11 @@ function waLink(text){
       '<div class="rp-tags"><span><i>Etapa prioritaria:</i> ' + focus + '</span><span><i>Modelo sugerido:</i> ' + model[0] + '</span></div>' +
       '<h4>Consejos para empezar hoy</h4><ul>' + tips.map(t => '<li>' + t + '</li>').join("") + '</ul>' +
       '<h4>Tu ruta con Xsell</h4><ol>' +
-        '<li><b>Asesoría comercial (sin costo):</b> validamos estos números con tu información real, con foco en ' + focus.toLowerCase() + '.</li>' +
+        '<li><b>Fotografía Comercial Xsell (72 h, sin costo):</b> un KAM valida estos números con tu información real, con foco en ' + focus.toLowerCase() + '.</li>' +
         '<li><b>Viabilidad:</b> proyectamos el modelo ' + model[0] + ' para tu negocio y el nuestro.</li>' +
         '<li><b>Arranque con fijo + variable:</b> ' + model[1] + '.</li>' +
         '<li><b>Pago por resultado (PxQ):</b> con la operación madura, pagas por cada resultado logrado.</li></ol>' +
-      '<p class="rp-note">Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la asesoría comercial la valida con tu información real.</p>';
+      '<p class="rp-note">Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la Fotografía Comercial Xsell la valida con tu información real.</p>';
   };
 
   /* PDF sin librerías */
@@ -1745,12 +1745,12 @@ function waLink(text){
     tips.forEach(t => { need(14); rect(M, y + 2, 5, 5, "#FF6B13"); para(t, 10.5, { indent: 14 }); y -= 3; });
     y -= 8;
     para("Tu ruta con Xsell", 13, { bold: true });
-    [["1. Asesoría comercial (sin costo)", "Validamos estos números con tu información real, con foco en " + focus.toLowerCase() + "."],
+    [["1. Fotografía Comercial Xsell (72 h, sin costo)", "Un KAM valida estos números con tu información real, con foco en " + focus.toLowerCase() + "."],
      ["2. Viabilidad", "Proyectamos el modelo " + model[0] + " para tu negocio y el nuestro."],
      ["3. Arranque con fijo + variable", model[1].charAt(0).toUpperCase() + model[1].slice(1) + "."],
      ["4. Pago por resultado (PxQ)", "Con la operación madura, pagas por cada resultado logrado."]].forEach(r => { para(r[0], 10.5, { bold: true }); para(r[1], 10.5, { indent: 14, col: "#4A3B5C" }); y -= 4; });
     y -= 10;
-    para("Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la asesoría comercial la valida con tu información real.", 8.5, { col: "#8A7B9C" });
+    para("Estimación referencial con los datos que ingresaste. No es una promesa de resultados: la Fotografía Comercial Xsell la valida con tu información real.", 8.5, { col: "#8A7B9C" });
     para("Xsell · Agencia de ventas · Multiplicamos tus resultados", 8.5, { bold: true, col: "#8A7B9C" });
     pages.push(ops.join("\n"));
     /* Ensamblar PDF */
@@ -1786,7 +1786,7 @@ function waLink(text){
     try {
       await sendToHubSpot({
         email: d.correo_rapido, firstname: d.nombre_rapido, company: d.empresa_rapido, mobilephone: d.celular_rapido,
-        message: "Diagnóstico comercial · desbloqueó su diagnóstico (web)" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
+        message: "Diagnóstico rápido (3 min) · desbloqueó su diagnóstico (web)" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
       });
     } catch {}
   });
@@ -1799,7 +1799,7 @@ function waLink(text){
     try {
       await sendToHubSpot({
         email: quick.correo, firstname: quick.nombre, company: quick.empresa, mobilephone: quick.celular,
-        message: "Diagnóstico comercial · PDF descargado (web)" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
+        message: "Diagnóstico rápido (3 min) · PDF descargado (web)" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
       });
     } catch {}
   });
@@ -1807,7 +1807,7 @@ function waLink(text){
   f.addEventListener("submit", async e => {
     e.preventDefault(); if (!valid(5)) return;
     /* Anti-spam: campo trampa (honeypot) + tiempo mínimo de llenado */
-    if (f.querySelector("#d_web").value){ st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tus datos. Nuestro equipo comercial revisará tu diagnóstico y se pondrá en contacto contigo."; f.reset(); return; }
+    if (f.querySelector("#d_web").value){ st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tu solicitud de Fotografía Comercial Xsell. Un KAM te contactará para coordinarla y en 72 horas tendrás tu diagnóstico completo."; f.reset(); return; }
     const openedAt = +f.dataset.openedAt || 0;
     if (openedAt && Date.now() - openedAt < 4000){ st.className = "form-msg err"; st.textContent = "Revisa tus datos e inténtalo nuevamente."; return; }
     const d = Object.fromEntries(new FormData(f).entries()); d.canales = new FormData(f).getAll("canales").join(", "); delete d._honey;
@@ -1817,9 +1817,9 @@ function waLink(text){
     try {
       await sendToHubSpot({
         email: d.correo, firstname: d.nombre, company: d.empresa, mobilephone: d.celular,
-        message: "Diagnóstico comercial (web) | Sector: " + (d.sector || "-") + " | Canales: " + (d.canales || "-") + (d.resumen ? " | " + d.resumen : "")
+        message: "FOTOGRAFÍA COMERCIAL XSELL (72 h) SOLICITADA (web) | Sector: " + (d.sector || "-") + " | Canales: " + (d.canales || "-") + (d.resumen ? " | " + d.resumen : "")
       });
-      st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tus datos. Nuestro equipo comercial revisará tu diagnóstico y se pondrá en contacto contigo.";
+      st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tu solicitud de Fotografía Comercial Xsell. Un KAM te contactará para coordinarla y en 72 horas tendrás tu diagnóstico completo.";
     } catch { st.className = "form-msg err"; st.textContent = "No pudimos enviar tus datos. Inténtalo de nuevo en unos minutos."; }
     btn.disabled = false; btn.textContent = "Enviar";
   });
