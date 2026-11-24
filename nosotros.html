@@ -627,6 +627,9 @@ footer{border-top:1px solid var(--line);margin-top:96px;padding-block:56px 120px
 .fbrand .btn{align-self:flex-start;margin-top:4px}
 .soon{font-style:normal;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--orange) 20%,transparent);color:var(--orange-2);margin-left:4px}
 .fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.fbot a{color:var(--muted);text-decoration:none}
+.fbot a:hover{color:var(--text)}
+.flegal{display:flex;gap:16px;flex-wrap:wrap}
 
 /* ===== Botón flotante: diagnóstico gratis ===== */
 .badge-cta{position:fixed;right:28px;top:calc(14px + env(safe-area-inset-top,0px));z-index:61;display:flex;align-items:center;gap:12px;padding:7px 20px 7px 7px;border:0;border-radius:999px;cursor:pointer;font:inherit;text-align:left;color:#fff;background:linear-gradient(120deg,var(--purple),var(--magenta));box-shadow:0 14px 36px -14px var(--magenta);transition:transform .2s,box-shadow .2s}
@@ -877,9 +880,9 @@ footer{padding-bottom:110px}
     <div class="fcol fbrand"><img src="logo.webp" alt="Xsell" width="96" height="35"><p class="slogan">Multiplicamos <em>tus resultados</em></p><p class="fsm">Agencia de ventas. 14 años convirtiendo oportunidades en ventas.</p><a class="btn btn-orange" href="index.html#contacto">Diagnóstico gratuito</a></div>
     <div class="fcol"><h4>Explora</h4><a href="index.html#multiplicadores">Multiplicadores</a><a href="index.html#caso">Casos</a><a href="index.html#modelos">Modelos de cierre</a><a href="index.html#proceso">Cómo trabajamos</a><a href="index.html#sectores">Sectores</a></div>
     <div class="fcol"><h4>Xsell</h4><a href="nosotros.html">Nosotros</a><span>Trabaja con nosotros <em class="soon">Próximamente</em></span><a href="index.html#contacto">Contacto</a><a href="index.html#chat">Pregúntanos en el chat</a></div>
-    <div class="fcol"><h4>Presencia</h4><span>Perú</span><span>Argentina</span><span>Chile <em class="soon">Próximamente</em></span></div>
+    <div class="fcol"><h4>Presencia</h4><span>Perú</span><span>Argentina</span><span>Chile</span></div>
   </div>
-  <div class="wrap fbot"><span>© <span id="yr">2026</span> Xsell. Todos los derechos reservados.</span><span>Lima, Perú</span></div>
+  <div class="wrap fbot"><span>© <span id="yr">2026</span> Xsell. Todos los derechos reservados.</span><span>Lima, Perú</span><span class="flegal"><a href="terminos.html">Términos y Condiciones</a><a href="privacidad.html">Política de Privacidad</a></span></div>
 </footer>
 <script>
 const $ = s => document.querySelector(s);

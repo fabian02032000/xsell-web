@@ -162,6 +162,14 @@ main{padding-top:72px}
   .float{display:none}
   .phone{height:520px}
 }
+/* En mobile, el celular se ve pesado y queda muy abajo: lo aplanamos a un chat simple, tipo ChatGPT */
+@media (max-width:760px){
+  .stage{padding-block:4px}
+  .phone{width:100%;height:auto;min-height:0;max-height:min(62vh,520px);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 48px -30px rgba(0,0,0,.35)}
+  .ph-top{display:none}
+  .ph-head{padding:12px 14px;border-radius:19px 19px 0 0}
+  .phone .chat{max-height:calc(min(62vh,520px) - 58px)}
+}
 
 /* Franja en movimiento */
 .marquee{overflow:hidden;border-block:1px solid var(--line);background:var(--orange);color:var(--on-orange);padding-block:14px}
@@ -669,6 +677,9 @@ footer .wrap{position:relative;z-index:1}
 .fbrand .btn{align-self:flex-start;margin-top:4px}
 .soon{font-style:normal;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--orange) 20%,transparent);color:var(--orange-2);margin-left:4px}
 .fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.fbot a{color:var(--muted);text-decoration:none}
+.fbot a:hover{color:var(--text)}
+.flegal{display:flex;gap:16px;flex-wrap:wrap}
 
 /* ===== Botón flotante: diagnóstico gratis ===== */
 .badge-cta{position:fixed;right:28px;top:calc(14px + env(safe-area-inset-top,0px));z-index:61;display:flex;align-items:center;gap:12px;padding:7px 20px 7px 7px;border:0;border-radius:999px;cursor:pointer;font:inherit;text-align:left;color:#fff;background:linear-gradient(120deg,var(--purple),var(--magenta));box-shadow:0 14px 36px -14px var(--magenta);transition:transform .2s,box-shadow .2s}
@@ -834,6 +845,13 @@ footer .wrap{position:relative;z-index:1}
 .cm-hint{font-size:.8rem;color:var(--muted);margin:0}
 @media (max-width:520px){.cm-plot{min-height:300px}.cm-q{padding:16px 14px}.cm-q::before{left:14px;top:8px}.cm-q small{font-size:.62rem}.cm-q span{font-size:.8rem}.cm-info dl{grid-template-columns:1fr 1fr}}
 .dg-fine{grid-column:1/-1;margin:-4px 0 0;font-size:.74rem;line-height:1.45;color:var(--muted)}
+.dg-lead-gate{grid-column:1/-1;display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,color-mix(in srgb,var(--purple) 16%,var(--surface)),var(--surface))}
+.dlg-head{display:flex;align-items:flex-start;gap:12px}
+.dlg-ic{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:1.15rem;background:linear-gradient(135deg,var(--orange),var(--magenta));box-shadow:0 10px 24px -12px var(--magenta)}
+.dlg-head b{display:block;font-family:var(--display);font-size:1rem}
+.dlg-head span{font-size:.86rem;color:var(--muted)}
+.dg-lead-gate .fields2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.dg-lead-gate .fields2{grid-template-columns:1fr}}
 .hp-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 /* ===== Barra flotante tipo app ===== */
 .tabbar{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:62;display:flex;align-items:center;gap:6px;padding:8px;border-radius:999px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);box-shadow:0 24px 60px -20px rgba(0,0,0,.55)}
@@ -1196,12 +1214,17 @@ footer{padding-bottom:110px}
     <fieldset class="dg-step" data-step="4" hidden>
       <legend>Tu diagnóstico</legend>
       <div class="rp" id="dgReport"></div>
-      <p class="dg-hint">Para dejarte tu plan a tu nombre y enviártelo a tu correo, cuéntanos quién eres:</p>
-      <div class="field"><label for="d_nomr">Nombre y apellido</label><input id="d_nomr" name="nombre_rapido" required autocomplete="name" maxlength="120"></div>
-      <div class="field"><label for="d_empr">Empresa</label><input id="d_empr" name="empresa_rapido" required autocomplete="organization" maxlength="120"></div>
-      <div class="field"><label for="d_celr">Celular</label><input id="d_celr" name="celular_rapido" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX" maxlength="20"></div>
-      <div class="field"><label for="d_mailr">Correo</label><input id="d_mailr" name="correo_rapido" type="email" required autocomplete="email" maxlength="180"></div>
-      <p class="dg-fine">Te enviaremos tu diagnóstico a tu correo y lo dejamos preparado con tu nombre y tu empresa en el PDF.</p>
+      <div class="dg-lead-gate">
+        <div class="dlg-head"><span class="dlg-ic" aria-hidden="true">✉️</span><div><b>Recibe tu diagnóstico completo</b><span>Déjanos tus datos y te lo enviamos a tu correo, ya preparado con tu nombre y tu empresa.</span></div></div>
+        <div class="fields2">
+          <div class="field"><label for="d_nomr">Nombre y apellido</label><input id="d_nomr" name="nombre_rapido" required autocomplete="name" maxlength="120"></div>
+          <div class="field"><label for="d_empr">Empresa</label><input id="d_empr" name="empresa_rapido" required autocomplete="organization" maxlength="120"></div>
+          <div class="field"><label for="d_celr">Celular</label><input id="d_celr" name="celular_rapido" type="tel" required autocomplete="tel" placeholder="9XX XXX XXX" maxlength="20"></div>
+          <div class="field"><label for="d_mailr">Correo</label><input id="d_mailr" name="correo_rapido" type="email" required autocomplete="email" maxlength="180"></div>
+        </div>
+        <label class="check"><input type="checkbox" id="d_okr" required> Acepto que Xsell use estos datos para enviarme mi diagnóstico y contactarme, según la Ley N.° 29733 de Protección de Datos Personales.</label>
+      </div>
+      <p class="dg-fine">Puedes ver el resumen de tu diagnóstico arriba; al completar tus datos desbloqueas el PDF y la asesoría comercial.</p>
       <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Ajustar datos</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost" type="button" id="dgPdf">Descargar PDF</button><button class="btn btn-orange" type="button" data-go="5">Quiero mi asesoría comercial</button></span></div>
     </fieldset>
     <fieldset class="dg-step" data-step="5" hidden>
@@ -1233,9 +1256,9 @@ footer{padding-bottom:110px}
       <div class="fcol fbrand"><img src="logo.webp" alt="Xsell" width="96" height="35"><p class="slogan">Multiplicamos <em>tus resultados</em></p><p class="fsm">Agencia de ventas. 14 años convirtiendo oportunidades en ventas.</p><button class="btn btn-orange js-diag" type="button">Diagnóstico gratuito</button></div>
       <div class="fcol"><h4>Explora</h4><a href="#multiplicadores">Multiplicadores</a><a href="#caso">Casos</a><a href="#modelos">Modelos de cierre</a><a href="#proceso">Cómo trabajamos</a><a href="#sectores">Sectores</a></div>
       <div class="fcol"><h4>Xsell</h4><a href="nosotros.html">Nosotros</a><span>Trabaja con nosotros <em class="soon">Próximamente</em></span><a href="#contacto">Contacto</a><a href="#chat" class="js-ai">Pregúntanos en el chat</a></div>
-      <div class="fcol"><h4>Presencia</h4><span>Perú</span><span>Argentina</span><span>Chile <em class="soon">Próximamente</em></span></div>
+      <div class="fcol"><h4>Presencia</h4><span>Perú</span><span>Argentina</span><span>Chile</span></div>
     </div>
-    <div class="wrap fbot"><span>© <span id="yr">2026</span> Xsell. Todos los derechos reservados.</span><span>Lima, Perú</span></div>
+    <div class="wrap fbot"><span>© <span id="yr">2026</span> Xsell. Todos los derechos reservados.</span><span>Lima, Perú</span><span class="flegal"><a href="terminos.html">Términos y Condiciones</a><a href="privacidad.html">Política de Privacidad</a></span></div>
   </div>
 </footer>
 
@@ -1265,7 +1288,7 @@ async function sendToHubSpot(fields){
   return r;
 }
 
-const KB = `EMPRESA: Xsell. Agencia de ventas en Perú con 14 años en el mercado. Somos socios estratégicos, no proveedores: nos hacemos cargo de la venta para empresas que venden buenos productos y servicios. Lema: "Multiplicamos tus resultados". Presencia: Perú y Argentina; Chile próximamente. Xsell es una agencia de ventas: habla de ventas y resultados, no de tecnología.
+const KB = `EMPRESA: Xsell. Agencia de ventas en Perú con 14 años en el mercado. Somos socios estratégicos, no proveedores: nos hacemos cargo de la venta para empresas que venden buenos productos y servicios. Lema: "Multiplicamos tus resultados". Presencia: Perú, Argentina y Chile. Xsell es una agencia de ventas: habla de ventas y resultados, no de tecnología.
 QUÉ HACEMOS (sección "Multiplicadores", un ecosistema 360° desde la captación hasta la fidelización): 1) Perfilar: depuramos la base de datos del cliente, calificamos a los prospectos por intención real de compra y nos adaptamos a su volumen; resultado: prospectos calificados y listos para comprar. 2) Convertir: cierres directos en venta entrante y saliente, manejo de objeciones, detección de la necesidad real y generación de urgencia; resultado: más ventas efectivas y facturación. 3) Incrementar valor: ventas cruzadas y adicionales después de la compra, campañas a clientes fidelizados, promociones de reactivación y atención multicanal hasta la resolución; resultado: recompra y ticket más alto. Canales: WhatsApp, redes sociales, llamada, web y presencial, con el historial del cliente unificado. Entregamos informes mensuales, trimestrales y semestrales con indicadores, causas y acciones sugeridas.
 HACEMOS BUENAS VENTAS: entender la necesidad real, recomendar lo correcto, cerrar con transparencia y validar la satisfacción. Ventas que no se caen ni generan reclamos.
 MODELOS DE CIERRE: Cierre ágil (campaña de producto B2C, ticket medio, cierre en el primer contacto, palancas: urgencia y beneficios inmediatos). Asesoría experta (venta consultiva B2C, ticket alto, ciclo corto, palancas: seguimiento consultivo, agendamiento de pruebas, asesoría técnica). Flujo cíclico (gestión B2B / empresas, volumen alto, ciclo gestionado, palancas: propuesta de valor B2B, negociación de volumen, aprobación multinivel).
@@ -1314,10 +1337,10 @@ const FALLBACK = [
   {k:["qué pasa después","que pasa despues","y luego qué","y luego que","siguiente paso","después de la fotografía","despues de la fotografia"],
    a:"Después de la Fotografía Comercial, si los números calzan para ambos, pasamos a la asesoría comercial: ahí validamos la información con tu equipo y definimos el modelo de cierre que mejor encaja (ágil, asesoría experta o flujo cíclico). Luego arrancamos con un fijo más variable y, con la operación madura, pasamos a pago por resultado (PxQ).",
    related:["¿Cómo es el pago por resultados?","¿Qué modelos de cierre manejan?"]},
-  {k:["quiero que me contacten","quiero que me llamen","llámenme","llamenme","me escriban","contáctenme","contactenme","quiero hablar con alguien","hablar con un asesor","quiero una propuesta","cotización","cotizacion","quiero contratar","cómo contrato","como contrato","cómo empiezo con ustedes","como empiezo con ustedes"],
+  {k:["quiero que me contacten","quiero que me llamen","llámenme","llamenme","me escriban","contáctenme","contactenme","quiero hablar con alguien","hablar con un asesor","quiero una propuesta","cotización","cotizacion","quiero contratar","cómo contrato","como contrato","cómo empiezo con ustedes","como empiezo con ustedes","trabajar con ustedes","trabajar con ellos","cómo trabajo con ustedes","como trabajo con ustedes","cómo hago para trabajar con ustedes","como hago para trabajar con ustedes","quiero trabajar con ustedes","soy jefe","soy dueño","soy dueña","soy gerente","tengo una empresa","tengo un negocio"],
    a:"¡Con gusto! Cuéntame tu nombre y el de tu empresa aquí mismo y hacemos que Ingrid o un KAM te contacte directamente para preparar tu propuesta. Así no tienes que esperar ni escribir a otro lado.",
    lead:true},
-  {k:["cultura","trabajar en xsell","trabajar con ustedes","trabajo","empleo","postular","vacante","ser parte","integrante","cuidan","escuchan","academia","convenio"],
+  {k:["cultura","trabajar en xsell","trabajo","empleo","postular","vacante","ser parte del equipo","integrante","cuidan","escuchan","academia","convenio"],
    a:"¡Gracias por tu interés en ser parte de Xsell! Muy pronto lanzaremos nuestra sección de Cultura, donde podrás conocer cómo vivimos el viaje Xsell y postular. Mientras tanto, ¿te cuento cómo ayudamos a las empresas a vender más?"},
   {k:["qué gana","que gana","beneficio","ganar","ventaja","ayudarme a vender","vender más","vender mas"],
    a:"Con Xsell, tu empresa gana un aliado comercial enfocado en impulsar tus ventas. Perfilamos tus prospectos, los convertimos en ventas y después hacemos que tus clientes vuelvan a comprar, con un equipo especializado y resultados medibles. Tú te enfocas en hacer crecer tu negocio; nosotros te ayudamos a vender más. ¿Pides tu diagnóstico gratuito?"},
@@ -1346,7 +1369,7 @@ const FALLBACK = [
   {k:["sector","rubro","industria","automotriz","retail","banca","seguros","telecom","salud","consumo"],
    a:"Somos especialistas en telecomunicaciones, retail, banca y seguros, automotriz, salud y consumo masivo, y trabajamos con muchos sectores más. Si tu empresa está en otro rubro, igual conversamos. Pide tu diagnóstico gratuito."},
   {k:["país","pais","perú","peru","argentina","chile","latam","dónde están","donde estan","operan","dónde trabajan"],
-   a:"Operamos en Perú y Argentina, y muy pronto en Chile. Así acompañamos a empresas que venden en mercados competitivos de la región. ¿Agendamos tu Fotografía Comercial Xsell?"},
+   a:"Operamos en Perú, Argentina y Chile. Así acompañamos a empresas que venden en mercados competitivos de la región. ¿Agendamos tu Fotografía Comercial Xsell?"},
   {k:["planilla","sin contratar","sin aumentar","costos fijos","no tengo equipo","sin equipo","tercerizar","tercerizad","fuerza de ventas"],
    a:"Con Xsell vendes más sin sumar personal a tu planilla: nos hacemos cargo de tu venta con un equipo que trabaja con tu marca. Arrancamos con un fijo más un variable y, con la operación madura, pasamos a pago por resultado (PxQ). Pide tu diagnóstico gratuito."},
   {k:["medi","métrica","metrica","reporte","informe","informado","al tanto","kam","indicadores","cómo vamos"],
@@ -1427,8 +1450,9 @@ function waLink(text){
   let ticking = false;
   function upd(){
     const y = window.scrollY, vh = window.innerHeight;
+    const amp = innerWidth < 640 ? 4 : 12; // en mobile, menos desplazamiento para que la palabra no se corte con los bordes
     par.forEach(el => { el.style.transform = "translateY(" + (y * parseFloat(el.dataset.speed)) + "px)"; });
-    gi.forEach(el => { const r = el.getBoundingClientRect(); const p = (r.top - vh) / (vh + r.height); el.style.transform = "translateX(" + (p * 12) + "%)"; });
+    gi.forEach(el => { const r = el.getBoundingClientRect(); const p = (r.top - vh) / (vh + r.height); el.style.transform = "translateX(" + (p * amp) + "%)"; });
     ticking = false;
   }
   window.addEventListener("scroll", () => { if (!ticking){ ticking = true; requestAnimationFrame(upd); } }, { passive: true });
@@ -1462,6 +1486,19 @@ function waLink(text){
   // Palabras gigantes siguen un poco al cursor
   const gi = [...document.querySelectorAll(".giant")];
   addEventListener("mousemove", e => { const k = (e.clientX / innerWidth - .5); gi.forEach(g => g.style.letterSpacing = (k * .04).toFixed(3) + "em"); }, { passive: true });
+  // Las palabras gigantes se achican para que nunca queden cortadas por los bordes
+  function fitGiant(){
+    const margin = innerWidth < 640 ? .88 : .98; // deja aire extra en mobile para el leve desplazamiento al hacer scroll
+    gi.forEach(g => {
+      g.style.fontSize = "";
+      const max = g.parentElement.clientWidth * margin;
+      let size = parseFloat(getComputedStyle(g).fontSize);
+      let guard = 0;
+      while (g.scrollWidth > max && size > 18 && guard < 60){ size -= 2; g.style.fontSize = size + "px"; guard++; }
+    });
+  }
+  fitGiant();
+  addEventListener("resize", fitGiant, { passive: true });
 })();
 
 /* Revelado al hacer scroll: aplica a cualquier elemento con [data-reveal] (fade-up, una sola vez) */
