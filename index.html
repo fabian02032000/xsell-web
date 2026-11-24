@@ -155,10 +155,16 @@ main{padding-top:72px}
 .f3 svg{width:120px}
 .f4{right:0;bottom:4%;background:linear-gradient(135deg,var(--purple),var(--magenta));border-color:transparent}
 @media (max-width:980px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero-copy{align-items:center;text-align:center}
-  .hero .hero-copy h1{text-align:center}
-  .hero-copy .chips{justify-content:center}
+  .hero-grid{grid-template-columns:1fr;gap:18px}
+  /* El chat (antes el "celular") pasa a mostrarse justo debajo de la caja de preguntas,
+     y el botón de diagnóstico baja al final, para no cortar el paso de pregunta -> respuesta */
+  .hero-copy{display:contents;text-align:center}
+  .hero .hero-copy h1{text-align:center;order:1}
+  .hero-copy .sub{order:2}
+  .hero-copy #askForm{order:3}
+  .hero-copy .chips{justify-content:center;order:4}
+  .stage{order:5}
+  .hero-copy .diag-cta{order:6;width:100%}
   .float{display:none}
   .phone{height:520px}
 }
@@ -846,6 +852,14 @@ footer .wrap{position:relative;z-index:1}
 @media (max-width:520px){.cm-plot{min-height:300px}.cm-q{padding:16px 14px}.cm-q::before{left:14px;top:8px}.cm-q small{font-size:.62rem}.cm-q span{font-size:.8rem}.cm-info dl{grid-template-columns:1fr 1fr}}
 .dg-fine{grid-column:1/-1;margin:-4px 0 0;font-size:.74rem;line-height:1.45;color:var(--muted)}
 .dg-lead-gate{grid-column:1/-1;display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,color-mix(in srgb,var(--purple) 16%,var(--surface)),var(--surface))}
+.dg-lead-gate[hidden]{display:none}
+.dg-lead-gate .btn{align-self:flex-start}
+.rp-shell{grid-column:1/-1;position:relative}
+.rp-shell.locked .rp{filter:blur(9px);user-select:none;pointer-events:none}
+.rp-lock{display:none}
+.rp-shell.locked .rp-lock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:20px;border-radius:16px;background:color-mix(in srgb,var(--bg) 55%,transparent)}
+.rp-lock span{font-size:1.6rem}
+.rp-lock b{font-family:var(--display);font-size:.95rem;max-width:26ch}
 .dlg-head{display:flex;align-items:flex-start;gap:12px}
 .dlg-ic{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:1.15rem;background:linear-gradient(135deg,var(--orange),var(--magenta));box-shadow:0 10px 24px -12px var(--magenta)}
 .dlg-head b{display:block;font-family:var(--display);font-size:1rem}
@@ -856,6 +870,10 @@ footer .wrap{position:relative;z-index:1}
 /* ===== Barra flotante tipo app ===== */
 .tabbar{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:62;display:flex;align-items:center;gap:6px;padding:8px;border-radius:999px;background:var(--glass);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);box-shadow:0 24px 60px -20px rgba(0,0,0,.55)}
 .tb{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:var(--text);background:transparent;border:0;text-decoration:none;transition:background .2s,transform .2s,color .2s}
+/* Flotante de WhatsApp: solo el ícono, sin mostrar el número */
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:62;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:#fff;box-shadow:0 20px 40px -16px rgba(0,0,0,.5);transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:28px;height:28px}
 .tb svg{width:24px;height:24px}
 .tb:hover{background:var(--surface-2)}
 .tb:active{transform:scale(.92)}
@@ -909,6 +927,7 @@ footer{padding-bottom:110px}
   <a class="tb tb-ai" href="#chat" id="aiBtn" data-cur="Chatear" aria-label="Chatea con nuestra IA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></a>
   <button class="tb" type="button" id="sheetBtn" aria-expanded="false" aria-controls="sheet" data-cur="Menú" aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
 </nav>
+<a class="wa-float js-wa" href="#contacto" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg></a>
 
 
 
@@ -1164,7 +1183,6 @@ footer{padding-bottom:110px}
         </div>
         <div class="person">
           <div class="who" style="display:flex;align-items:center;gap:14px"><div class="ph" id="cPhoto" aria-hidden="true">I</div><div><b id="cName">Ingrid</b><span id="cRole">Asesora Comercial</span></div></div>
-          <div class="row"><span class="k">Teléfono</span><div class="copyline"><span class="val" id="cPhone"></span><button class="copy" id="copyBtn" type="button">Copiar</button></div></div>
           <div class="row"><span class="k">Correo</span><div class="copyline"><span class="val" id="cMail" style="font-size:.98rem"></span></div></div>
           <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
             <a class="btn btn-wa js-wa" href="#contacto" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>Escribir por WhatsApp</a>
@@ -1213,9 +1231,8 @@ footer{padding-bottom:110px}
     </fieldset>
     <fieldset class="dg-step" data-step="4" hidden>
       <legend>Tu diagnóstico</legend>
-      <div class="rp" id="dgReport"></div>
       <div class="dg-lead-gate">
-        <div class="dlg-head"><span class="dlg-ic" aria-hidden="true">✉️</span><div><b>Recibe tu diagnóstico completo</b><span>Déjanos tus datos y te lo enviamos a tu correo, ya preparado con tu nombre y tu empresa.</span></div></div>
+        <div class="dlg-head"><span class="dlg-ic" aria-hidden="true">✉️</span><div><b>Recibe tu diagnóstico completo</b><span>Déjanos tus datos para desbloquear tu diagnóstico; también te lo enviamos a tu correo, ya preparado con tu nombre y tu empresa.</span></div></div>
         <div class="fields2">
           <div class="field"><label for="d_nomr">Nombre y apellido</label><input id="d_nomr" name="nombre_rapido" required autocomplete="name" maxlength="120"></div>
           <div class="field"><label for="d_empr">Empresa</label><input id="d_empr" name="empresa_rapido" required autocomplete="organization" maxlength="120"></div>
@@ -1223,9 +1240,14 @@ footer{padding-bottom:110px}
           <div class="field"><label for="d_mailr">Correo</label><input id="d_mailr" name="correo_rapido" type="email" required autocomplete="email" maxlength="180"></div>
         </div>
         <label class="check"><input type="checkbox" id="d_okr" required> Acepto que Xsell use estos datos para enviarme mi diagnóstico y contactarme, según la Ley N.° 29733 de Protección de Datos Personales.</label>
+        <button class="btn btn-orange" type="button" id="dgUnlock">Ver mi diagnóstico completo →</button>
       </div>
-      <p class="dg-fine">Puedes ver el resumen de tu diagnóstico arriba; al completar tus datos desbloqueas el PDF y la asesoría comercial.</p>
-      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Ajustar datos</button><span style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost" type="button" id="dgPdf">Descargar PDF</button><button class="btn btn-orange" type="button" data-go="5">Quiero mi asesoría comercial</button></span></div>
+      <div class="rp-shell locked" id="rpShell">
+        <div class="rp" id="dgReport"></div>
+        <div class="rp-lock"><span aria-hidden="true">🔒</span><b>Completa tus datos arriba para desbloquear tu diagnóstico</b></div>
+      </div>
+      <p class="dg-fine" id="dgFine" hidden>Ya desbloqueaste tu diagnóstico: descarga tu PDF o solicita tu asesoría comercial, sin costo.</p>
+      <div class="dg-actions"><button class="btn btn-ghost" type="button" data-go="2">← Ajustar datos</button><span style="display:flex;gap:10px;flex-wrap:wrap" id="dgUnlockedActions" hidden><button class="btn btn-ghost" type="button" id="dgPdf">Descargar PDF</button><button class="btn btn-orange" type="button" data-go="5">Quiero mi asesoría comercial</button></span></div>
     </fieldset>
     <fieldset class="dg-step" data-step="5" hidden>
       <legend>Tus datos de contacto</legend>
@@ -1265,7 +1287,7 @@ footer{padding-bottom:110px}
 <script>
 /* ====== DATOS QUE PUEDES EDITAR ====== */
 const CONFIG = {
-  contacto: { nombre: "Ingrid", cargo: "Asesora Comercial", telefono: "+51 980 692 128", correo: "", foto: "" }, // completar correo si se desea
+  contacto: { nombre: "Ingrid", cargo: "Asesora Comercial", correo: "", foto: "" }, // el teléfono ya no se muestra en la web (uso interno solo por WhatsApp abajo)
   whatsapp: "51980692128", // número con código de país, solo dígitos
   diagnostico: { correo: "" }, // ya no se usa para enviar (los leads van a HubSpot), se deja por compatibilidad
   hubspot: { portalId: "4934520", formId: "a5d4bc5a-b046-495c-8503-122ea67e69a8" } // Formulario "Xsell Web - Fotografía Comercial (Chat)"
@@ -1407,17 +1429,10 @@ function waLink(text){
   $("#cName").textContent = CONFIG.contacto.nombre;
   if (CONFIG.contacto.foto){ const im = new Image(); im.alt = CONFIG.contacto.nombre; im.src = CONFIG.contacto.foto; const ph = $("#cPhoto"); ph.textContent = ""; ph.appendChild(im); }
   $("#cRole").textContent = CONFIG.contacto.cargo;
-  const ph = $("#cPhone"), ml = $("#cMail");
-  if (CONFIG.contacto.telefono) ph.textContent = CONFIG.contacto.telefono; else { ph.textContent = "Teléfono por completar"; ph.classList.add("pending"); $("#copyBtn").hidden = true; }
+  const ml = $("#cMail");
   if (CONFIG.contacto.correo) ml.textContent = CONFIG.contacto.correo; else { ml.textContent = "Correo por completar"; ml.classList.add("pending"); }
   document.querySelectorAll(".js-wa").forEach(a => { a.href = waLink(); if (!CONFIG.whatsapp) a.removeAttribute("target"); });
   $("#yr").textContent = new Date().getFullYear();
-  $("#copyBtn").addEventListener("click", async e => {
-    const b = e.currentTarget, txt = ph.textContent;
-    try { await navigator.clipboard.writeText(txt); b.textContent = "Copiado"; }
-    catch { const r = document.createRange(); r.selectNodeContents(ph); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selecciónalo y copia"; }
-    setTimeout(() => b.textContent = "Copiar", 1800);
-  });
 })();
 
 /* Barra flotante: menú, chat y sección activa */
@@ -1544,7 +1559,7 @@ function waLink(text){
   const dlg = $("#diag"), f = $("#diagForm"), st = $("#dgStatus"), steps = [...f.querySelectorAll(".dg-step")], bars = [...f.querySelectorAll(".dg-steps i")];
   const fmt = n => Math.round(n).toLocaleString("en-US");
   const money = n => "S/\u00a0" + fmt(n);
-  let cur = 0, R = null;
+  let cur = 0, R = null, unlocked = false;
   const go = n => {
     cur = n; steps.forEach((s,i) => s.hidden = i !== n);
     const adv = n === 5; $("#dgTitle").textContent = adv ? "Solicita tu asesoría comercial" : "Tu diagnóstico comercial en 3 minutos";
@@ -1552,7 +1567,13 @@ function waLink(text){
     bars.forEach((b,i) => b.classList.toggle("on", n >= 1 && i < Math.min(n, 4)));
     st.textContent = "";
     if (n === 2) mini();
-    if (n === 4) report();
+    if (n === 4){
+      report();
+      $("#rpShell").classList.toggle("locked", !unlocked);
+      $("#dgUnlockedActions").hidden = !unlocked;
+      $("#dgFine").hidden = !unlocked;
+      f.querySelector(".dg-lead-gate").hidden = unlocked;
+    }
     if (n === 5){
       [["d_nom","nombre_rapido"],["d_emp","empresa_rapido"],["d_cel","celular_rapido"],["d_mail","correo_rapido"]].forEach(([id, src]) => {
         const dst = document.getElementById(id), s = f.elements[src];
@@ -1562,7 +1583,7 @@ function waLink(text){
     const first = steps[n].querySelector("input:not([type=hidden]),select,button.btn-orange"); if (first) first.focus({ preventScroll: true });
     f.scrollTop = 0; dlg.scrollTop = 0;
   };
-  const open = e => { if (e) e.preventDefault(); if (window.XSELL_CTX && XSELL_CTX.sector){ const s = $("#d_sector"); [...s.options].forEach(o => { if (o.text === XSELL_CTX.sector) s.value = o.text; }); } go(0); f.dataset.openedAt = Date.now(); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); };
+  const open = e => { if (e) e.preventDefault(); if (window.XSELL_CTX && XSELL_CTX.sector){ const s = $("#d_sector"); [...s.options].forEach(o => { if (o.text === XSELL_CTX.sector) s.value = o.text; }); } unlocked = false; go(0); f.dataset.openedAt = Date.now(); if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); };
   window.openDiag = open;
   if (/^#diagn/i.test(location.hash) || /[?&]diagnostico=1/.test(location.search)) setTimeout(open, 600);
   document.querySelectorAll(".js-diag").forEach(b => b.addEventListener("click", open));
@@ -1700,6 +1721,25 @@ function waLink(text){
     const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([bytes], { type: "application/pdf" })); a.download = "Diagnostico-Comercial-" + (slug(quick.empresa || quick.nombre) || "Xsell") + ".pdf";
     document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
   }
+  $("#dgUnlock").addEventListener("click", async () => {
+    const gate = f.querySelector(".dg-lead-gate");
+    const els = [...gate.querySelectorAll("[required]")];
+    const bad = els.find(el => !el.checkValidity());
+    if (bad){ st.className = "form-msg err"; st.textContent = "Completa tus datos para ver tu diagnóstico."; bad.reportValidity(); return; }
+    unlocked = true;
+    gate.hidden = true;
+    $("#rpShell").classList.remove("locked");
+    $("#dgUnlockedActions").hidden = false;
+    $("#dgFine").hidden = false;
+    st.className = "form-msg ok"; st.textContent = "¡Listo! Este es tu diagnóstico. Te lo enviamos también a tu correo.";
+    const d = Object.fromEntries(new FormData(f).entries());
+    try {
+      await sendToHubSpot({
+        email: d.correo_rapido, firstname: d.nombre_rapido, company: d.empresa_rapido, mobilephone: d.celular_rapido,
+        message: "Diagnóstico comercial · desbloqueó su diagnóstico (web)" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
+      });
+    } catch {}
+  });
   $("#dgPdf").addEventListener("click", async () => {
     if (!valid(4)) return;
     const d = Object.fromEntries(new FormData(f).entries());
