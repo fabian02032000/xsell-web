@@ -198,13 +198,23 @@ main{padding-top:72px}
   .float{display:none}
   .phone{height:520px}
 }
-/* En mobile, el celular se ve pesado y queda muy abajo: lo aplanamos a un chat simple, tipo ChatGPT */
+/* En mobile: sin "celular". Un solo chat que ocupa la pantalla, con la caja de escribir abajo,
+   para leer y responder sin subir ni bajar la página */
 @media (max-width:760px){
-  .stage{padding-block:4px}
-  .phone{width:100%;height:auto;min-height:0;max-height:min(62vh,520px);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 48px -30px rgba(0,0,0,.35)}
+  .hero-copy .sub{order:2}
+  .stage{order:3;padding-block:4px;width:100%}
+  .hero-copy .chips{order:4}
+  .hero-copy #askForm{order:5}
+  .phone{width:100%;height:calc(100vh - 190px);height:calc(100dvh - 190px);min-height:380px;max-height:640px;border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 48px -30px rgba(0,0,0,.35);transform:none!important}
   .ph-top{display:none}
   .ph-head{padding:12px 14px;border-radius:19px 19px 0 0}
-  .phone .chat{max-height:calc(min(62vh,520px) - 58px)}
+  .phone .chat{flex:1;min-height:0;max-height:none}
+  .phone .ask{flex:none;margin:0;border-radius:0 0 19px 19px;border:0;border-top:1px solid var(--line);box-shadow:none;padding:8px 8px 8px 16px;background:var(--surface)}
+  .phone .ask:focus-within{box-shadow:none;border-color:var(--line)}
+  .phone .ask input{font-size:16px;padding:10px 0}
+  .phone .send{width:44px;height:44px}
+  .phone .send svg{width:19px;height:19px}
+  body.escribiendo .tabbar,body.escribiendo .wa-float{opacity:0;pointer-events:none}
 }
 
 /* Franja en movimiento */
@@ -1481,7 +1491,7 @@ function waLink(text){
   sheet.addEventListener("click", e => { if (e.target.closest("a")) setOpen(false); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") setOpen(false); });
   document.addEventListener("click", e => { if (!sheet.hidden && !e.target.closest("#sheet, #sheetBtn")) setOpen(false); });
-  $("#aiBtn").addEventListener("click", e => { e.preventDefault(); setOpen(false); window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); setTimeout(() => $("#q").focus({ preventScroll: true }), reduce ? 0 : 450); });
+  $("#aiBtn").addEventListener("click", e => { e.preventDefault(); setOpen(false); if (window.matchMedia("(max-width:760px)").matches && typeof verChat === "function") verChat(); else window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); setTimeout(() => $("#q").focus({ preventScroll: true }), reduce ? 0 : 450); });
   if (location.hash === "#chat") setTimeout(() => $("#q").focus(), 300);
   const anchors = [...document.querySelectorAll('#links a[href^="#"]')];
   const order = ["inicio"].concat(anchors.map(a => a.dataset.sec)), names = ["Inicio"].concat(anchors.map(a => a.querySelector("span").textContent));
@@ -1853,7 +1863,7 @@ function waLink(text){
 })();
 
 /* Enlaces del pie que abren el chat */
-document.querySelectorAll(".js-ai").forEach(a => a.addEventListener("click", e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); setTimeout(() => $("#q").focus({ preventScroll: true }), reduce ? 0 : 450); }));
+document.querySelectorAll(".js-ai").forEach(a => a.addEventListener("click", e => { e.preventDefault(); if (window.matchMedia("(max-width:760px)").matches && typeof verChat === "function") verChat(); else window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }); setTimeout(() => $("#q").focus({ preventScroll: true }), reduce ? 0 : 450); }));
 
 /* Preloader: se dibuja el isotipo y luego se desvanece antes de mostrar la portada */
 (function(){
@@ -2061,7 +2071,7 @@ async function ask(q){
   q = (q || "").trim(); if (!q || busy) return;
   busy = true; sendBtn.disabled = true; input.value = ""; dropPicker();
   addUser(q);
-  if (window.innerWidth <= 980 || window.scrollY > 200) document.getElementById("inicio").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  verChat();
   await wait(450); status(true);
   const m = addBot();
   let answer = null, lead = false, related = null;
@@ -2085,6 +2095,25 @@ async function ask(q){
   chat.scrollTop = Math.max(0, m.offsetTop - 12);
   busy = false; sendBtn.disabled = false;
 }
+
+/* En mobile la caja de escribir va dentro del chat, abajo (como WhatsApp); en computadora vuelve a su sitio */
+const chatMovil = window.matchMedia("(max-width:760px)"), chatPhone = document.querySelector(".phone");
+const formHome = form.parentNode, formNext = form.nextElementSibling;
+function ubicarCaja(){
+  if (chatMovil.matches){ if (form.parentNode !== chatPhone) chatPhone.appendChild(form); }
+  else if (form.parentNode !== formHome) formHome.insertBefore(form, formNext);
+}
+ubicarCaja();
+(chatMovil.addEventListener ? chatMovil.addEventListener("change", ubicarCaja) : chatMovil.addListener(ubicarCaja));
+/* Deja el chat completo a la vista: mensajes arriba y caja de escribir abajo */
+function verChat(){
+  if (chatMovil.matches){
+    const r = chatPhone.getBoundingClientRect(), top = 84;
+    if (r.top < top - 4 || r.bottom > window.innerHeight - 96) window.scrollTo({ top: window.scrollY + r.top - top, behavior: reduce ? "auto" : "smooth" });
+  } else if (window.innerWidth <= 980 || window.scrollY > 200) document.getElementById("inicio").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+}
+input.addEventListener("focus", () => { if (chatMovil.matches) document.body.classList.add("escribiendo"); });
+input.addEventListener("blur", () => document.body.classList.remove("escribiendo"));
 
 form.addEventListener("submit", e => { e.preventDefault(); ask(input.value); });
 document.querySelectorAll(".js-ask").forEach(b => b.addEventListener("click", () => ask(b.dataset.q)));
