@@ -227,8 +227,8 @@ main{padding-top:72px}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* Palabra gigante por sección */
-.giant{font-family:var(--impact);text-transform:uppercase;font-size:clamp(4rem,15vw,12.5rem);line-height:.86;letter-spacing:-.01em;white-space:nowrap;margin:0 0 18px -.04em;background:linear-gradient(90deg,var(--orange),var(--orange-2) 35%,var(--magenta) 75%,var(--purple-2));-webkit-background-clip:text;background-clip:text;color:transparent;will-change:transform;user-select:none}
-@media (max-width:760px){.giant.js-slide{transform:none!important}}
+.giant{font-family:var(--impact);text-transform:uppercase;font-size:clamp(3.5rem,10.5vw,9.5rem);line-height:.86;letter-spacing:-.01em;white-space:nowrap;margin:0 0 18px -.04em;background:linear-gradient(90deg,var(--orange),var(--orange-2) 35%,var(--magenta) 75%,var(--purple-2));-webkit-background-clip:text;background-clip:text;color:transparent;will-change:transform;user-select:none}
+.giant.js-slide{transform:none!important}
 section.block{overflow:hidden}
 
 /* Marcos con esquinas recortadas */
@@ -2145,7 +2145,7 @@ document.querySelectorAll(".js-ask").forEach(b => b.addEventListener("click", ()
 
 <script>
 /* Las palabras gigantes se ajustan al ancho en todas las pantallas (también celular) */
-(function(){ var gi=[].slice.call(document.querySelectorAll(".giant")); function fit(){ gi.forEach(function(g){ g.style.fontSize=""; var max=g.clientWidth, size=parseFloat(getComputedStyle(g).fontSize), n=0; while(g.scrollWidth>max&&size>18&&n<80){ size-=2; g.style.fontSize=size+"px"; n++; } }); } fit(); addEventListener("resize",fit,{passive:true}); if(document.fonts) document.fonts.ready.then(fit); })();
+(function(){ var gi=[].slice.call(document.querySelectorAll(".giant")); function fit(){ gi.forEach(function(g){ g.style.fontSize=""; var max=g.clientWidth*.94, size=parseFloat(getComputedStyle(g).fontSize), n=0; g.style.display="inline-block"; while(g.offsetWidth>max&&size>18&&n<80){ size-=2; g.style.fontSize=size+"px"; n++; } g.style.display=""; }); } fit(); addEventListener("resize",fit,{passive:true}); if(document.fonts) document.fonts.ready.then(fit); })();
 </script>
 <script>
 /* Botón flotante: cada 15 s la cámara "toma una foto" y se convierte en el logo de Xsell */

@@ -173,8 +173,8 @@ main{padding-top:72px}
 @keyframes mq{to{transform:translateX(-50%)}}
 
 /* Palabra gigante por sección */
-.giant{font-family:var(--impact);text-transform:uppercase;font-size:clamp(4rem,15vw,12.5rem);line-height:.86;letter-spacing:-.01em;white-space:nowrap;margin:0 0 18px -.04em;background:linear-gradient(90deg,var(--orange),var(--orange-2) 35%,var(--magenta) 75%,var(--purple-2));-webkit-background-clip:text;background-clip:text;color:transparent;will-change:transform;user-select:none}
-@media (max-width:760px){.giant.js-slide{transform:none!important}}
+.giant{font-family:var(--impact);text-transform:uppercase;font-size:clamp(3.5rem,10.5vw,9.5rem);line-height:.86;letter-spacing:-.01em;white-space:nowrap;margin:0 0 18px -.04em;background:linear-gradient(90deg,var(--orange),var(--orange-2) 35%,var(--magenta) 75%,var(--purple-2));-webkit-background-clip:text;background-clip:text;color:transparent;will-change:transform;user-select:none}
+.giant.js-slide{transform:none!important}
 section.block{overflow:hidden}
 
 /* Marcos con esquinas recortadas */
@@ -1108,7 +1108,7 @@ $("#yr").textContent = new Date().getFullYear();
   const gi = [...document.querySelectorAll(".js-slide")]; let t = false;
   function upd(){ const vh = innerHeight; gi.forEach(el => { const r = el.getBoundingClientRect(); el.style.transform = "translateX(" + ((r.top - vh) / (vh + r.height) * 12) + "%)"; }); t = false; }
   addEventListener("scroll", () => { if (!t){ t = true; requestAnimationFrame(upd); } }, { passive: true }); upd();
-  function fitGiant(){ gi.forEach(g => { g.style.fontSize = ""; const max = g.clientWidth; let size = parseFloat(getComputedStyle(g).fontSize), guard = 0; while (g.scrollWidth > max && size > 18 && guard < 60){ size -= 2; g.style.fontSize = size + "px"; guard++; } }); }
+  function fitGiant(){ gi.forEach(g => { g.style.fontSize = ""; const max = g.clientWidth * .94; let size = parseFloat(getComputedStyle(g).fontSize), guard = 0; g.style.display = "inline-block"; while (g.offsetWidth > max && size > 18 && guard < 60){ size -= 2; g.style.fontSize = size + "px"; guard++; } g.style.display = ""; }); }
   fitGiant(); addEventListener("resize", fitGiant); if (document.fonts) document.fonts.ready.then(fitGiant);
 })();
 
