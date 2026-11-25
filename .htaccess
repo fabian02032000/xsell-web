@@ -6,6 +6,9 @@
   RewriteEngine On
   RewriteCond %{HTTPS} off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# La portada se muestra como wexsell.co/ y no como /index.html
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [L,R=301]
 </IfModule>
 
 # Cabeceras de seguridad
