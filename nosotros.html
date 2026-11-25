@@ -879,7 +879,7 @@ html.xi-lock,html.xi-lock body{overflow:hidden}
 <script>
 (function(){
   var root=document.getElementById("xIntro"); if(!root) return;
-  var seen=false; try{ seen=sessionStorage.getItem("xi-visto")==="1"; }catch(e){}
+  var seen=false;
   var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(seen||/[?&]sinintro/.test(location.search)){ root.remove(); return; }
   document.documentElement.classList.add("xi-lock");
@@ -1001,7 +1001,7 @@ html.xi-lock,html.xi-lock body{overflow:hidden}
     if(t>T.end){finish();return;}
     requestAnimationFrame(frame);
   }
-  function finish(){if(done)return;done=true;try{sessionStorage.setItem("xi-visto","1");}catch(e){}
+  function finish(){if(done)return;done=true;
     root.classList.add("fuera");document.documentElement.classList.remove("xi-lock");setTimeout(function(){root.remove();},1200);}
   document.getElementById("xiSkip").addEventListener("click",finish);
   addEventListener("keydown",function(e){if(e.key==="Escape")finish();});
