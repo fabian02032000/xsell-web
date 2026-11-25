@@ -228,6 +228,7 @@ main{padding-top:72px}
 
 /* Palabra gigante por sección */
 .giant{font-family:var(--impact);text-transform:uppercase;font-size:clamp(4rem,15vw,12.5rem);line-height:.86;letter-spacing:-.01em;white-space:nowrap;margin:0 0 18px -.04em;background:linear-gradient(90deg,var(--orange),var(--orange-2) 35%,var(--magenta) 75%,var(--purple-2));-webkit-background-clip:text;background-clip:text;color:transparent;will-change:transform;user-select:none}
+@media (max-width:760px){.giant.js-slide{transform:none!important}}
 section.block{overflow:hidden}
 
 /* Marcos con esquinas recortadas */
@@ -1002,7 +1003,7 @@ footer{padding-bottom:110px}
             <button class="chip js-ask mag" data-cur="Preguntar" data-q="¿Qué es la Fotografía Comercial Xsell?">¿Qué es la Fotografía Comercial?</button>
             <button class="chip js-ask mag" data-cur="Preguntar" data-q="¿Cómo es el pago por resultados?">¿Cómo es el pago por resultados?</button>
           </div>
-          <button class="diag-cta mag js-diag" type="button" data-reveal style="--i:3"><span class="dc-k">Fotografía Comercial Xsell · 72 h</span><span class="dc-t">Realiza tu diagnóstico gratuito</span><span class="dc-a" aria-hidden="true">→</span></button>
+          <button class="diag-cta mag js-diag" type="button" data-reveal style="--i:3"><span class="dc-k">Fotografía Comercial Xsell ·&nbsp;72&nbsp;h</span><span class="dc-t">Realiza tu diagnóstico gratuito</span><span class="dc-a" aria-hidden="true">→</span></button>
         </div>
 
         <div class="stage" data-reveal="scale" style="--i:1">
@@ -1566,6 +1567,7 @@ function waLink(text){
   }
   fitGiant();
   addEventListener("resize", fitGiant, { passive: true });
+  if (document.fonts) document.fonts.ready.then(fitGiant);
 })();
 
 /* Revelado al hacer scroll: aplica a cualquier elemento con [data-reveal] (fade-up, una sola vez) */
@@ -2125,6 +2127,10 @@ document.querySelectorAll(".js-ask").forEach(b => b.addEventListener("click", ()
 </script>
 
 
+<script>
+/* Las palabras gigantes se ajustan al ancho en todas las pantallas (también celular) */
+(function(){ var gi=[].slice.call(document.querySelectorAll(".giant")); function fit(){ gi.forEach(function(g){ g.style.fontSize=""; var max=g.clientWidth, size=parseFloat(getComputedStyle(g).fontSize), n=0; while(g.scrollWidth>max&&size>18&&n<80){ size-=2; g.style.fontSize=size+"px"; n++; } }); } fit(); addEventListener("resize",fit,{passive:true}); if(document.fonts) document.fonts.ready.then(fit); })();
+</script>
 <!-- HubSpot: código de seguimiento oficial (cuenta 4934520) -->
 <script type="text/javascript" id="hs-script-loader" async defer src="https://js.hs-scripts.com/4934520.js"></script>
 </body>
