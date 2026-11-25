@@ -736,12 +736,28 @@ footer .wrap{position:relative;z-index:1}
 .badge-cta{position:fixed;right:28px;top:calc(14px + env(safe-area-inset-top,0px));z-index:61;display:flex;align-items:center;gap:12px;padding:7px 20px 7px 7px;border:0;border-radius:999px;cursor:pointer;font:inherit;text-align:left;color:#fff;background:linear-gradient(120deg,var(--purple),var(--magenta));box-shadow:0 14px 36px -14px var(--magenta);transition:transform .2s,box-shadow .2s}
 .badge-cta:hover{transform:translateY(-2px);box-shadow:0 18px 40px -12px var(--orange)}
 .badge-cta .bc-ic{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--orange);color:var(--on-orange)}
-.badge-cta .bc-ic svg{width:21px;height:21px}
+.badge-cta .bc-ic{position:relative;overflow:hidden;background:linear-gradient(#140A1F,#140A1F) padding-box,linear-gradient(135deg,#FFA366,var(--orange) 45%,var(--magenta)) border-box;border:2px solid transparent;box-shadow:0 0 14px -2px rgba(255,107,19,.55)}
+.badge-cta .bc-ic svg{width:26px;height:26px}
+.bc-cam,.bc-iso{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:transform .45s cubic-bezier(.3,1.4,.5,1),opacity .3s ease,filter .3s ease}
+.bc-iso{width:26px;height:auto;opacity:0;transform:translate(-50%,-50%) scale(.3) rotate(-25deg);filter:drop-shadow(0 0 6px rgba(255,107,19,.7))}
+.bc-btn{transition:transform .12s ease;transform-box:fill-box;transform-origin:center bottom}
+.bc-lens{transition:r .25s ease}
+.bc-flash{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,#fff 0,#fff 30%,rgba(255,200,150,.6) 55%,transparent 72%);opacity:0;pointer-events:none}
+.badge-cta::after{content:"";position:absolute;left:7px;top:50%;width:42px;height:42px;margin-top:-21px;border-radius:50%;border:2px solid #fff;opacity:0;pointer-events:none}
+.badge-cta.shoot .bc-btn{transform:scaleY(.4)}
+.badge-cta.shoot .bc-cam{transform:translate(-50%,-50%) scale(.9)}
+.badge-cta.shoot .bc-flash{animation:bcFlash .55s ease-out}
+.badge-cta.shoot::after{animation:bcRing .8s ease-out}
+.badge-cta.logo .bc-cam{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(25deg);filter:blur(2px)}
+.badge-cta.logo .bc-iso{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}
+@keyframes bcFlash{0%{opacity:0}12%{opacity:1}100%{opacity:0}}
+@keyframes bcRing{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2.1)}}
+@media (prefers-reduced-motion:reduce){.badge-cta.shoot .bc-flash,.badge-cta.shoot::after{animation:none}}
 .badge-cta .bc-tx{display:flex;flex-direction:column;line-height:1.15}
 .badge-cta .bc-tx small{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
 .badge-cta .bc-tx b{font-family:var(--display);font-size:1rem}
 @media (min-width:1280px){.badge-cta{right:76px}}
-@media (max-width:640px){.badge-cta{right:10px;top:12px;padding:5px 14px 5px 5px;gap:8px}.badge-cta .bc-ic{width:34px;height:34px}.badge-cta .bc-ic svg{width:17px;height:17px}.badge-cta .bc-tx small{display:none}.badge-cta .bc-tx b{font-size:.88rem}}
+@media (max-width:640px){.badge-cta{right:10px;top:12px;padding:5px 14px 5px 5px;gap:8px}.badge-cta .bc-ic{width:34px;height:34px}.badge-cta .bc-ic svg{width:19px;height:19px}.bc-iso{width:19px}.badge-cta::after{left:5px;width:34px;height:34px;margin-top:-17px}.badge-cta .bc-tx small{display:none}.badge-cta .bc-tx b{font-size:.88rem}}
 
 /* ===== Chat: estado, accesos ===== */
 .bubble .actions .btn-link{background:transparent;border:1px solid var(--line);color:var(--text)}
@@ -963,7 +979,7 @@ footer{padding-bottom:110px}
 </header>
 
 <button class="badge-cta js-diag" type="button" aria-label="Haz tu diagnóstico comercial gratis" data-reveal="scale" style="--i:6">
-  <span class="bc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
+  <span class="bc-ic" aria-hidden="true"><svg class="bc-cam" viewBox="0 0 24 24"><defs><linearGradient id="bcLens" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFA366"/><stop offset=".55" stop-color="#FF6B13"/><stop offset="1" stop-color="#C2187A"/></linearGradient></defs><rect class="bc-btn" x="15.6" y="3.4" width="3.6" height="2.2" rx=".8" fill="#fff"/><path d="M3 8.6a2 2 0 0 1 2-2h2.3l1.5-2.2h6.4l1.5 2.2H19a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="#fff"/><circle cx="12" cy="13.1" r="4.6" fill="#140A1F"/><circle class="bc-lens" cx="12" cy="13.1" r="3.5" fill="url(#bcLens)"/><circle cx="10.7" cy="11.8" r="1" fill="#fff" opacity=".85"/><circle cx="17.9" cy="9.2" r=".8" fill="#FF6B13"/></svg><img class="bc-iso" src="isotipo.webp" alt="" width="111" height="96"><span class="bc-flash"></span></span>
   <span class="bc-tx"><small>Fotografía Comercial Xsell</small><b>Diagnóstico gratis</b></span>
 </button>
 
@@ -1333,7 +1349,7 @@ footer{padding-bottom:110px}
 <script>
 /* ====== DATOS QUE PUEDES EDITAR ====== */
 const CONFIG = {
-  contacto: { nombre: "Ingrid", cargo: "Asesora Comercial", correo: "", foto: "" }, // el teléfono ya no se muestra en la web (uso interno solo por WhatsApp abajo)
+  contacto: { nombre: "Ingrid", cargo: "Asesora Comercial", correo: "ingrid.mio@3eriza.com.pe", foto: "" }, // el teléfono ya no se muestra en la web (uso interno solo por WhatsApp abajo)
   whatsapp: "51980692128", // número con código de país, solo dígitos
   diagnostico: { correo: "" }, // ya no se usa para enviar (los leads van a HubSpot), se deja por compatibilidad
   hubspot: { portalId: "4934520", formId: "a5d4bc5a-b046-495c-8503-122ea67e69a8" } // Formulario "Xsell Web - Fotografía Comercial (Chat)"
@@ -2130,6 +2146,12 @@ document.querySelectorAll(".js-ask").forEach(b => b.addEventListener("click", ()
 <script>
 /* Las palabras gigantes se ajustan al ancho en todas las pantallas (también celular) */
 (function(){ var gi=[].slice.call(document.querySelectorAll(".giant")); function fit(){ gi.forEach(function(g){ g.style.fontSize=""; var max=g.clientWidth, size=parseFloat(getComputedStyle(g).fontSize), n=0; while(g.scrollWidth>max&&size>18&&n<80){ size-=2; g.style.fontSize=size+"px"; n++; } }); } fit(); addEventListener("resize",fit,{passive:true}); if(document.fonts) document.fonts.ready.then(fit); })();
+</script>
+<script>
+/* Botón flotante: cada 15 s la cámara "toma una foto" y se convierte en el logo de Xsell */
+(function(){ var b=document.querySelector(".badge-cta"); if(!b) return; var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function shot(){ if(document.hidden) return; b.classList.add("shoot"); setTimeout(function(){ b.classList.add("logo"); },380); setTimeout(function(){ b.classList.remove("shoot"); },900); setTimeout(function(){ b.classList.remove("logo"); }, reduce?2200:2900); }
+  setTimeout(function(){ shot(); setInterval(shot,15000); },4000); })();
 </script>
 <!-- HubSpot: código de seguimiento oficial (cuenta 4934520) -->
 <script type="text/javascript" id="hs-script-loader" async defer src="https://js.hs-scripts.com/4934520.js"></script>
