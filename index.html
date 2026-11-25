@@ -1786,7 +1786,7 @@ function waLink(text){
     try {
       await sendToHubSpot({
         email: d.correo_rapido, firstname: d.nombre_rapido, company: d.empresa_rapido, mobilephone: d.celular_rapido,
-        message: "Diagnóstico rápido (3 min) · desbloqueó su diagnóstico (web)" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
+        message: "DIAGNÓSTICO RÁPIDO WEB XSELL · desbloqueó su diagnóstico" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
       });
     } catch {}
   });
@@ -1799,7 +1799,7 @@ function waLink(text){
     try {
       await sendToHubSpot({
         email: quick.correo, firstname: quick.nombre, company: quick.empresa, mobilephone: quick.celular,
-        message: "Diagnóstico rápido (3 min) · PDF descargado (web)" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
+        message: "DIAGNÓSTICO RÁPIDO WEB XSELL · descargó su PDF" + (d.sector ? " | Sector: " + d.sector : "") + (R ? " | Ventas hoy: " + fmt(R.S0) + " | Potencial: " + fmt(R.S2) + " | Etapa: " + R.focus : "")
       });
     } catch {}
   });
@@ -1817,7 +1817,7 @@ function waLink(text){
     try {
       await sendToHubSpot({
         email: d.correo, firstname: d.nombre, company: d.empresa, mobilephone: d.celular,
-        message: "FOTOGRAFÍA COMERCIAL XSELL (72 h) SOLICITADA (web) | Sector: " + (d.sector || "-") + " | Canales: " + (d.canales || "-") + (d.resumen ? " | " + d.resumen : "")
+        message: "FOTO COMERCIAL WEB XSELL (72 h) · solicitada | Sector: " + (d.sector || "-") + " | Canales: " + (d.canales || "-") + (d.resumen ? " | " + d.resumen : "")
       });
       st.className = "form-msg ok"; st.textContent = "¡Listo! Recibimos tu solicitud de Fotografía Comercial Xsell. Un KAM te contactará para coordinarla y en 72 horas tendrás tu diagnóstico completo.";
     } catch { st.className = "form-msg err"; st.textContent = "No pudimos enviar tus datos. Inténtalo de nuevo en unos minutos."; }
@@ -2009,7 +2009,7 @@ function renderLeadForm(bub, q){
     "</div>" +
     '<div class="cl-row">' +
       '<input id="' + id + 'c" type="tel" placeholder="Celular" maxlength="20" autocomplete="tel" required>' +
-      '<input id="' + id + 'm" type="email" placeholder="Correo (opcional)" maxlength="180" autocomplete="email">' +
+      '<input id="' + id + 'm" type="email" placeholder="Correo" maxlength="180" autocomplete="email" required>' +
     "</div>" +
     '<div class="hp-field" aria-hidden="true"><label for="' + id + 'w">No completar este campo</label><input id="' + id + 'w" type="text" tabindex="-1" autocomplete="off"></div>' +
     '<button type="button" class="btn btn-orange" id="' + id + 'send">Enviar mis datos</button>' +
@@ -2022,14 +2022,15 @@ function renderLeadForm(bub, q){
     const celular = wrap.querySelector("#" + id + "c").value.trim();
     const correo = wrap.querySelector("#" + id + "m").value.trim();
     const honey = wrap.querySelector("#" + id + "w").value;
-    if (!nombre || !empresa || !celular){ st.className = "form-msg err"; st.textContent = "Completa nombre, empresa y celular para continuar."; return; }
+    if (!nombre || !empresa || !celular || !correo){ st.className = "form-msg err"; st.textContent = "Completa nombre, empresa, celular y correo para continuar."; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo)){ st.className = "form-msg err"; st.textContent = "Revisa tu correo: parece que le falta algo."; return; }
     if (honey){ st.className = "form-msg ok"; st.textContent = "¡Listo! En breve te contactamos."; wrap.querySelectorAll("input,button").forEach(el => el.disabled = true); return; }
     if (Date.now() - openedAt < 2500){ st.className = "form-msg err"; st.textContent = "Revisa tus datos e inténtalo de nuevo."; return; }
     btn.disabled = true; btn.textContent = "Enviando…";
     try {
       await sendToHubSpot({
         email: correo, firstname: nombre, company: empresa, mobilephone: celular,
-        message: "Interesado desde el chat web | Sector: " + (XSELL_CTX.sector || "-") + " | Pregunta: " + (q || "-")
+        message: "CHAT WEB XSELL | Sector: " + (XSELL_CTX.sector || "-") + " | Pregunta: " + (q || "-")
       });
       st.className = "form-msg ok"; st.textContent = "¡Listo, " + (nombre.split(" ")[0] || nombre) + "! Recibimos tus datos. Ingrid o un KAM te contactará pronto.";
       wrap.querySelectorAll("input,button").forEach(el => el.disabled = true);
