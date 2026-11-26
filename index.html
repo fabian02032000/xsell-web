@@ -10,6 +10,12 @@
   gtag('config', 'AW-18592382048');
   gtag('config', 'G-9308K1YS8Q');
 </script>
+<!-- Píxel de Meta (conjunto de datos "Dashboard Xsell") -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1047447871395714');
+fbq('track', 'PageView');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Tercerizamos tu fuerza de ventas en Perú: perfilamos, convertimos y fidelizamos clientes. 14 años de experiencia. Haz gratis tu diagnóstico comercial.">
@@ -2185,6 +2191,11 @@ document.querySelectorAll(".js-ask").forEach(b => b.addEventListener("click", ()
     try {
       if (typeof gtag === "function") gtag("event", nombre, Object.assign({ send_to: GA }, datos || {}));
       if (typeof window.clarity === "function") window.clarity("event", nombre);
+      if (typeof window.fbq === "function"){
+        var fb = { diagnostico_abierto: "ViewContent", generate_lead: "Lead", clic_whatsapp: "Contact" }[nombre];
+        if (fb) window.fbq("track", fb, { content_name: nombre });
+        else if (/^diag_paso_/.test(nombre)) window.fbq("trackCustom", "PasoDiagnostico", { paso: nombre });
+      }
     } catch(e){}
   }
   window.xsellEvento = evento;
