@@ -8,6 +8,7 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'AW-18592382048');
+  gtag('config', 'G-9308K1YS8Q');
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -1384,6 +1385,8 @@ async function sendToHubSpot(fields){
     window.__xsellConvSent = true;
     gtag("event", "conversion", { send_to: "AW-18592382048/asOXCMDQr74dEOD4xKFF", value: 1.0, currency: "PEN" });
   }
+  /* Analytics y Clarity: formulario enviado */
+  if (typeof window.xsellEvento === "function") window.xsellEvento("generate_lead", { formulario: "diagnostico" });
   return r;
 }
 
@@ -2173,5 +2176,48 @@ document.querySelectorAll(".js-ask").forEach(b => b.addEventListener("click", ()
 </script>
 <!-- HubSpot: código de seguimiento oficial (cuenta 4934520) -->
 <script type="text/javascript" id="hs-script-loader" async defer src="https://js.hs-scripts.com/4934520.js"></script>
+<!-- Medición de la web: Microsoft Clarity (mapas de calor) y eventos de Google Analytics -->
+<script>
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","zji53zcoox");
+(function(){
+  var GA = "G-9308K1YS8Q";
+  function evento(nombre, datos){
+    try {
+      if (typeof gtag === "function") gtag("event", nombre, Object.assign({ send_to: GA }, datos || {}));
+      if (typeof window.clarity === "function") window.clarity("event", nombre);
+    } catch(e){}
+  }
+  window.xsellEvento = evento;
+  /* Origen de la visita (Meta, Google, etc.) también en Clarity */
+  try {
+    var q = new URLSearchParams(location.search), src = q.get("utm_source") || (q.get("fbclid") ? "facebook" : (q.get("gclid") ? "google" : ""));
+    if (src && typeof window.clarity === "function"){ window.clarity("set", "origen", src); if (q.get("utm_campaign")) window.clarity("set", "campana", q.get("utm_campaign")); }
+  } catch(e){}
+  /* Clics en WhatsApp */
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest('a[href*="wa.me"], a[href*="whatsapp"], .wa-float, [data-wa]');
+    if (!a) return;
+    var sec = a.closest("section[id], footer, header");
+    evento("clic_whatsapp", { ubicacion: sec ? (sec.id || sec.tagName.toLowerCase()) : "flotante" });
+  }, true);
+  /* Formulario de diagnóstico: apertura y cada paso */
+  function iniciar(){
+    var dlg = document.getElementById("diag"), form = document.getElementById("diagForm");
+    if (!dlg || !form) return;
+    var vistos = {};
+    new MutationObserver(function(){ if (dlg.open && !vistos.abierto){ vistos.abierto = 1; evento("diagnostico_abierto"); } }).observe(dlg, { attributes: true, attributeFilter: ["open"] });
+    var nombres = ["inicio", "tu_negocio", "tus_numeros", "tu_reto", "resultado", "datos_contacto"];
+    [].forEach.call(form.querySelectorAll(".dg-step"), function(fs){
+      new MutationObserver(function(){
+        if (fs.hidden) return;
+        var n = fs.getAttribute("data-step");
+        if (vistos["p" + n]) return; vistos["p" + n] = 1;
+        evento("diagnostico_paso", { paso: Number(n), paso_nombre: nombres[n] || ("paso_" + n) });
+      }).observe(fs, { attributes: true, attributeFilter: ["hidden"] });
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iniciar); else iniciar();
+})();
+</script>
 </body>
 </html>
