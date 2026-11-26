@@ -1354,6 +1354,8 @@ footer{padding-bottom:110px}
   </div>
 </footer>
 
+<script src="chat-cerebro.js"></script>
+<script src="chat-intenciones.js"></script>
 <script>
 /* ====== DATOS QUE PUEDES EDITAR ====== */
 const CONFIG = {
@@ -2079,8 +2081,8 @@ function renderBot(m, text, opts){
   text.split(/\n\s*\n/).filter(Boolean).forEach(p => { const el = document.createElement("p"); el.textContent = p.trim(); t.appendChild(el); });
   const act = document.createElement("div"); act.className = "actions";
   if (opts.go){ const a = document.createElement("a"); a.className = "btn btn-link"; a.textContent = opts.go[1]; a.href = opts.go[0]; act.appendChild(a); }
-  const d = document.createElement("button"); d.type = "button"; d.className = "btn btn-orange"; d.textContent = "Diagnóstico gratis"; d.addEventListener("click", () => window.openDiag && window.openDiag()); act.appendChild(d);
-  bub.appendChild(act);
+  if (opts.acciones !== false){ const d = document.createElement("button"); d.type = "button"; d.className = "btn btn-orange"; d.textContent = "Diagnóstico gratis"; d.addEventListener("click", () => window.openDiag && window.openDiag()); act.appendChild(d); }
+  if (act.childNodes.length) bub.appendChild(act);
   if (opts.lead && !window.XSELL_LEAD_DONE) renderLeadForm(bub, opts.q || "");
   const nx = opts.chips || [];
   if (nx.length){
@@ -2096,6 +2098,7 @@ function dropPicker(){ const p = document.getElementById("sectorPick"); if (p) p
 document.querySelectorAll("#sectorPick .chip").forEach(b => b.addEventListener("click", async () => {
   if (busy) return; busy = true; const s = b.dataset.s; dropPicker();
   XSELL_CTX.sector = s === "Otro" ? "" : s;
+  try { if (window.XsellCerebro && XSELL_CTX.sector) XsellCerebro.estado().sector = XSELL_CTX.sector; } catch (e) {}
   addUser(s); await wait(400); status(true); const m = addBot(); await wait(1100); status(false);
   const msg = s === "Otro" ? "¡Perfecto! Trabajamos con muchos sectores y nos adaptamos a cada negocio." : "¡Genial! Ya acompañamos a empresas de " + s.toLowerCase() + ", así que conocemos bien sus retos.";
   renderBot(m, msg + "\n\n¿Qué te gustaría saber? Escríbeme tu pregunta o elige una de estas:", { chips: followups(""), label: "Preguntas frecuentes" });
@@ -2109,27 +2112,30 @@ async function ask(q){
   verChat();
   await wait(450); status(true);
   const m = addBot();
-  let answer = null, lead = false, related = null;
+  let answer = null, lead = false, related = null, go = null, acciones = true, cerrar = false, intent = "";
   try {
-    const sample = await Promise.race([getSampler(), new Promise(r => setTimeout(() => r(null), 2500))]);
-    if (sample){
-      const ctx = XSELL_CTX.sector ? "\n\nEl visitante dijo que su empresa es del sector " + XSELL_CTX.sector + "." : "";
-      const turns = [{ role:"user", content: SYSTEM + ctx + "\n\nResponde a las preguntas del visitante siguiendo estas reglas." }, { role:"assistant", content:"Entendido. Responderé como el asistente de Xsell." }, ...history.slice(-6), { role:"user", content: q }];
-      const t = m.querySelector(".txt");
-      const r = await sample(turns, { modelTier:"quick", cache:false, onText: ({ text }) => { t.textContent = text; } });
-      if (r && r.text && r.text.trim()) answer = r.text.trim();
+    if (window.XsellCerebro){
+      const r = XsellCerebro.responder(q, { sector: XSELL_CTX.sector });
+      answer = r.texto; lead = r.lead; related = r.rel; acciones = r.acciones !== false; cerrar = r.cerrar; intent = r.intent || "";
+      go = r.ir || (acciones && !cerrar ? goFor(q) : null);
     }
   } catch (e) { answer = null; }
-  if (!answer){
-    const fb = fallbackAnswer(q); answer = fb.text; lead = fb.lead; related = fb.related;
-    await wait(Math.min(2600, 1100 + answer.length * 4));
-  }
+  if (!answer){ const fb = fallbackAnswer(q); answer = fb.text; lead = fb.lead; related = fb.related; go = goFor(q); }
+  await wait(Math.min(2200, 700 + answer.length * 3));
   history.push({ role:"user", content:q }, { role:"assistant", content:answer });
   status(false);
-  renderBot(m, answer, { go: goFor(q), chips: followups(q, related), lead, q });
+  renderBot(m, answer, { go, chips: (cerrar || /^mod_(insulto|grave|cierre)/.test(intent)) ? [] : followups(q, related), lead: lead && !cerrar, q, acciones: acciones && !cerrar });
   chat.scrollTop = Math.max(0, m.offsetTop - 12);
   busy = false; sendBtn.disabled = false;
+  if (cerrar) cerrarChat(true);
 }
+/* Si alguien falta el respeto, el chat se cierra con amabilidad por 15 minutos */
+function cerrarChat(guardar){
+  input.disabled = true; sendBtn.disabled = true; input.placeholder = "Conversación finalizada";
+  document.querySelectorAll("#chat .followups .chip").forEach(c => c.disabled = true);
+  if (guardar){ try { localStorage.setItem("xsell-chat-cerrado", String(Date.now())); } catch (e) {} }
+}
+try { const c = +localStorage.getItem("xsell-chat-cerrado"); if (c && Date.now() - c < 15 * 60 * 1000) setTimeout(() => cerrarChat(false), 0); } catch (e) {}
 
 /* En mobile la caja de escribir va dentro del chat, abajo (como WhatsApp); en computadora vuelve a su sitio */
 const chatMovil = window.matchMedia("(max-width:760px)"), chatPhone = document.querySelector(".phone");
