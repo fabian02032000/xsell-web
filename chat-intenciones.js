@@ -132,8 +132,8 @@
     rel: [CASO, FC] },
   { id: "confidencialidad", pr: 5,
     k: ["confidencialidad", "datos", "informacion", "privacidad", "acuerdo", "proteger", "cuidan", "nda"],
-    p: ["=cuidan la informacion", "=cuidan mi informacion", "=mi informacion", "=hacen con mis datos|1.3", "=hacen con mis datos", "datos|1", "=con mis datos", "confidencial|1.5", "confidencialidad", "mis datos", "datos de mis clientes", "proteccion de datos", "privacidad", "acuerdo de confidencialidad", "nda", "seguridad de la informacion", "comparten mi informacion", "usan mi base", "mi base de datos esta segura", "ley de datos", "datos personales"],
-    no: ["colegios", "privados", "depurar", "ordenar", "desordenada"],
+    p: ["=mis datos", "=datos estan seguros", "=cuidan la informacion", "=cuidan mi informacion", "=mi informacion", "=hacen con mis datos|1.3", "=hacen con mis datos", "datos|1", "=con mis datos", "confidencial|1.5", "confidencialidad", "mis datos", "datos de mis clientes", "proteccion de datos", "privacidad", "acuerdo de confidencialidad", "nda", "seguridad de la informacion", "comparten mi informacion", "usan mi base", "mi base de datos esta segura", "ley de datos", "datos personales"],
+    no: ["=deje mis datos", "=ya deje", "colegios", "privados", "depurar", "ordenar", "desordenada"],
     r: "Tu información y la de tus clientes se cuidan: por confidencialidad ni siquiera publicamos los nombres de nuestros clientes. Los detalles de manejo de datos y acuerdos se definen contigo en la asesoría comercial. Puedes revisar también nuestra Política de Privacidad en la web." },
 
   /* ===================== QUÉ HACEMOS ===================== */
@@ -153,7 +153,7 @@
     r: "En la etapa Perfilar depuramos tu base de datos y calificamos a cada prospecto por su intención real de compra. Nos adaptamos a tu volumen, y el resultado son prospectos listos para comprar. Así nadie pierde tiempo con quien no va a comprar." },
   { id: "base_datos", pr: 5, ir: ["#multiplicadores", "Ver Multiplicadores"],
     p: ["excel|1.5", "contactos|1.2", "bases de datos|1.3", "limpian|1.2", "depurar|1.3", "base de datos", "mi base", "base desordenada", "depurar base", "limpiar base", "tengo una base", "base de clientes", "contactos antiguos", "lista de contactos", "data", "bbdd", "excel de clientes", "base vieja", "datos desordenados", "tengo muchos contactos"],
-    no: ["proteccion", "confidencial", "segura", "privacidad"],
+    no: ["=no tengo base", "=tampoco tengo base", "=sin base", "=no tenemos base", "=no tengo base de datos", "proteccion", "confidencial", "segura", "privacidad"],
     r: "Una base de datos sin trabajar es dinero dormido. La depuramos, calificamos a cada contacto por su intención real de compra y empezamos por los que están más cerca de comprar. Así conviertes contactos olvidados en ventas.", pregunta: true, rel: [FC, "¿Cómo convierten interesados en ventas?"] },
   { id: "convertir", pr: 4, ir: ["#multiplicadores", "Ver Multiplicadores"],
     k: ["convertir", "convirtiendo", "conversion", "cierre", "cerrar", "cierran", "concretar", "cerrada"],
@@ -166,7 +166,7 @@
     r: "Si te llegan consultas, nosotros las atendemos rápido y las llevamos hasta la venta: respondemos, entendemos qué necesita la persona, resolvemos sus dudas y cerramos. La rapidez y el seguimiento son lo que más ventas recuperan.", pregunta: true },
   { id: "venta_saliente", pr: 4,
     p: ["venta saliente", "outbound", "llamadas en frio", "llamar a clientes", "salir a buscar clientes", "prospeccion", "prospectar", "buscar clientes nuevos", "conseguir clientes", "captar clientes", "clientes nuevos", "contactar en frio"],
-    no: ["=se olvidan", "anuncios", "publicidad", "pauta"],
+    no: ["=no me llegan", "=no tengo", "=se olvidan", "anuncios", "publicidad", "pauta"],
     r: "También hacemos venta saliente: contactamos a tus prospectos, por ejemplo de tu base de datos, y los llevamos a la venta. Primero los calificamos por intención de compra para enfocarnos en quienes tienen más posibilidades, y medimos cada contacto." },
   { id: "objeciones", pr: 4,
     p: ["=dicen lo voy a pensar", "=siempre dicen", "objeciones", "manejo de objeciones", "me dicen que esta caro", "lo voy a pensar", "clientes dicen que no", "rechazo", "dicen que no les interesa", "excusas de clientes", "manejar el no"],
@@ -205,6 +205,7 @@
     r: "Siempre sabes cómo vamos: tienes un KAM como contacto directo y te enviamos informes mensuales con indicadores, causas de las variaciones y acciones sugeridas, además de reportes trimestrales y semestrales. Nada de cajas negras." },
   { id: "pauta", pr: 6,
     k: ["anuncios", "publicidad", "pauta", "marketing", "campanas", "google", "facebook", "tiktok", "redes", "pagina", "web", "seo", "branding", "pagados"],
+    no: ["=pocos leads", "=no me llegan leads", "=necesito leads", "=necesito mas leads"],
     p: ["=manejar el facebook", "=manejar mis redes", "=manejen mis redes", "=el facebook de", "pauta", "publicidad", "anuncios", "marketing digital", "google ads", "meta ads", "facebook ads", "tiktok ads", "community manager", "manejo de redes", "redes sociales de mi empresa", "generar leads", "generan prospectos", "hacen campanas", "campanas digitales", "agencia de publicidad", "agencia de marketing", "seo", "branding", "diseno de logo", "pagina web para mi", "hacen paginas web", "posicionamiento", "contenido para redes", "influencers", "email marketing", "son agencia de marketing"],
     r: ["No hacemos pauta ni marketing digital: somos una agencia de ventas. Trabajamos lo que pasa después del anuncio. Si ya generas interesados con tus campañas o tienes una base de datos, nosotros los perfilamos, les damos seguimiento y los convertimos en ventas.",
       "Ahí te soy honesto: la publicidad la maneja tu empresa o tu agencia. Nosotros entramos justo después, cuando la persona ya se interesó, y nos encargamos de que esa oportunidad termine en venta. Muchas empresas pierden ahí la mayor parte de lo que invierten en anuncios."],
@@ -367,7 +368,7 @@
     lead: true, acciones: true },
   { id: "cuando_contactan", pr: 6,
     k: ["formulario", "esperando", "respondieron", "contactaron", "llamaron"],
-    p: ["formulario|1.4", "=nadie me ha escrito", "=nadie me ha llamado", "=llene el formulario", "cuando me contactan", "cuando me llaman", "cuanto demoran en contactar", "ya deje mis datos", "ya envie mis datos", "nadie me llamo", "no me han contactado", "no me llamaron", "estoy esperando", "cuando me responden", "envie el formulario"],
+    p: ["=deje mis datos", "=ya deje", "formulario|1.4", "=nadie me ha escrito", "=nadie me ha llamado", "=llene el formulario", "cuando me contactan", "cuando me llaman", "cuanto demoran en contactar", "ya deje mis datos", "ya envie mis datos", "nadie me llamo", "no me han contactado", "no me llamaron", "estoy esperando", "cuando me responden", "envie el formulario"],
     r: "¡Gracias por dejar tus datos! El equipo comercial revisa cada solicitud y te contacta para coordinar. Si sientes que ya pasó mucho tiempo, puedes dejar tus datos de nuevo aquí y lo marcamos como prioritario.", lead: true },
 
   /* ===================== CASOS ===================== */
@@ -398,7 +399,7 @@
     r: function (E) { return (E.sector ? "Sí, " + E.sector.toLowerCase() + " está entre los rubros que conocemos. " : "") + "Somos especialistas en telecomunicaciones, retail, banca y seguros, automotriz, salud y consumo masivo, y trabajamos con muchos sectores más. Lo que importa es que vendas un buen producto y tengas interesados por convertir. ¿A qué se dedica tu empresa?"; } },
   { id: "sector_especifico", pr: 4, ir: ["#sectores", "Ver sectores"],
     p: ["colegios|1.3", "privados|0.9", "mineras|1.3", "mineria|1.3", "construccion|1.3", "agro|1.3", "agricola|1.3", "textil|1.3", "manufactura|1.3", "industrial|1.3", "farmaceutica|1.3", "restaurantes|1.3", "gimnasio|1.3", "veterinaria|1.3", "clinicas|1.3", "seguros|1.2", "hoteles|1.3", "universidades|1.3", "energia solar|1.5", "paneles solares|1.5", "=empresas de software", "telecomunicaciones", "telecom", "retail", "banca", "banco", "seguros", "aseguradora", "automotriz", "concesionario", "salud", "clinica", "consumo masivo", "inmobiliaria", "inmobiliario", "educacion", "universidad", "instituto", "colegio", "turismo", "hotel", "energia", "logistica", "software", "tecnologia", "farmacia", "laboratorio", "financiera", "fintech", "seguros de salud", "ecommerce", "tienda online", "moda", "electrodomesticos"],
-    no: ["caso", "que sectores", "crm", "que herramientas"],
+    no: ["=estan seguros", "=datos estan", "=pocos leads", "=no me llegan", "=no tengo leads", "caso", "que sectores", "crm", "que herramientas"],
     r: function (E, n) {
       var esp = /telecom|retail|banc|seguro|asegur|automo|concesion|salud|clinica|consumo masivo|farmac|laborat|financ|fintech|moda|electrodom|ecommerce|tienda online/.test(n);
       return esp ? "¡Ese es uno de nuestros sectores especialistas! Conocemos bien cómo se compra y se vende ahí. En la Fotografía Comercial Xsell, sin costo, vemos tu caso puntual en 72 horas. ¿Cuál es hoy tu mayor reto en ventas?"
@@ -412,8 +413,22 @@
     r: ["Eso pasa cuando el seguimiento no es rápido ni constante, y es más común de lo que crees. Nosotros contactamos a tus interesados a tiempo, insistimos por varios canales y los llevamos hasta el cierre. Es justo lo que hicimos en nuestro caso automotriz: el problema no era de volumen, era de seguimiento.",
       "Te doy un consejo de regalo: la mayoría de ventas se pierden por responder tarde o por no volver a escribir. Un interesado que no recibe seguimiento compra en otro lado. Nosotros nos encargamos de ese seguimiento, con constancia y por todos los canales, hasta cerrar."],
     rel: [CASO, FC], pregunta: true },
+  { id: "sin_prospectos", pr: 9,
+    k: ["pocos", "leads", "prospectos", "interesados", "llegan", "base", "contactos", "generar", "demanda"],
+    no: ["publicidad", "anuncios", "pauta"],
+    p: ["=pocos leads", "=pocos interesados", "=pocos prospectos", "=pocas consultas", "=no me llegan leads", "=no me llegan interesados", "=no me llegan clientes", "=no me llegan consultas", "=no llegan leads", "=no tengo leads", "=no tengo interesados", "=no tengo prospectos", "=no tenemos leads", "=no tenemos interesados", "=no tengo clientes potenciales", "=no tengo a quien venderle", "=no tengo base", "=tampoco tengo base", "=no tenemos base", "=sin base de datos", "=no tengo base de datos", "=no tengo contactos", "=me llegan pocos", "=llegan muy pocos", "=necesito mas leads", "=necesito leads", "=necesito interesados", "=necesito prospectos", "=me consiguen interesados", "=me consiguen prospectos", "=no me escribe nadie", "=nadie me escribe", "=no tengo demanda", "=poca demanda", "=no tengo leads para gestionar", "=me faltan leads", "=me faltan clientes", "=no me llegan"],
+    r: function (E) {
+      if (E.sinLeads && E.sinBase) return "Gracias por la honestidad{,nombre}, así te puedo responder igual de claro: nosotros no generamos interesados ni hacemos publicidad; somos expertos en convertir en ventas a los que ya llegan o a una base de datos que ya tengas. Si hoy no tienes ni lo uno ni lo otro, el primer paso es generar demanda con campañas (tu equipo o una agencia de publicidad). Cuando empiecen a llegar interesados, ahí sí multiplicamos tus resultados para que ninguno se pierda.";
+      E.sinVeces = (E.sinVeces || 0) + 1;
+      if (E.sinVeces >= 3 && !E.sinBase) { E.forzarLead = true; return "Lo tengo claro{,nombre}, y gracias por insistir: así sé qué es lo que de verdad te importa. Para conseguir más interesados, lo mejor es que lo converses con Ingrid, nuestra Asesora Comercial: ella te puede orientar sobre cómo complementarlo y si en tu caso podemos aportar. ¿Te parece si me dejas tus datos?"; }
+      if (E.ultimo === "sin_prospectos" && !E.sinBase) return "Te escucho{,nombre}: tu dolor principal hoy es que no llegan interesados, y no quiero darte vueltas. Eso se resuelve generando demanda (campañas, redes, alianzas), y no es lo que hacemos nosotros. Lo que sí te puedo ofrecer es esto: cuando actives esa demanda, nosotros nos encargamos de que cada interesado se convierta en venta. ¿Tienes al menos clientes antiguos o una lista de contactos? Con eso ya podríamos empezar.";
+      if (E.sinBase) return "Entendido{,nombre}. Sin base de datos, lo que necesitamos para trabajar son interesados que ya lleguen por tus campañas, redes o web: nosotros les damos seguimiento y los convertimos en ventas. Si hoy no te llega casi nadie, conviene primero activar la generación de demanda con tu equipo o una agencia de publicidad, y nosotros entramos a convertirla.";
+      return "Te entiendo{,nombre}, y te respondo con transparencia: nosotros no generamos interesados ni hacemos publicidad. Somos especialistas en lo que pasa después: convertir en ventas a los interesados que llegan y a tu base de datos. Si hoy te llegan pocos, primero conviene sumar campañas con tu equipo o una agencia; pero ojo, muchas veces el problema no es cuántos llegan, sino cuántos se pierden. ¿Tienes alguna base de clientes o contactos antiguos que no estés trabajando?";
+    },
+    rel: ["¿Hacen pauta o marketing digital?", "Me llegan interesados pero se enfrían y los pierdo. ¿Qué me recomiendan?", "¿Qué es la Fotografía Comercial Xsell?"] },
   { id: "no_se_donde", pr: 7,
     k: ["mejorar", "aumentar", "vender", "crecer", "escalar", "subir", "duplicar", "comprar", "falla"],
+    no: ["=no tengo leads", "=no me llegan"],
     p: ["=aumentar mi facturacion", "=aumentar la facturacion", "facturar mas|1.6", "=para que me compren", "=como hago para vender", "=que me compren", "no se donde", "no se en que falla", "no se por que no vendo", "no se que pasa", "no se que estoy haciendo mal", "donde se pierde la venta", "donde pierdo", "no se como mejorar", "como mejorar mis ventas", "mejorar mis ventas", "mejorar mi canal", "no se por donde empezar", "estoy perdido", "no tengo claro", "como vendo mas", "como vender mas", "quiero vender mas", "vender mas", "aumentar ventas", "aumentar mis ventas", "subir ventas", "incrementar ventas", "mas ventas", "duplicar ventas", "crecer", "escalar"],
     r: ["Lo primero es ver dónde se pierde la venta: cuántos interesados llegan, a cuántos contactas y cuántos compran. Con eso sabemos si conviene perfilar mejor, convertir más o hacer que tus clientes vuelvan. Puedes hacer una primera versión ahora mismo con el diagnóstico rápido de la web, o pedir la Fotografía Comercial Xsell, sin costo.",
       "Para vender más no siempre necesitas más interesados: casi siempre basta con no perder los que ya tienes. Medimos tu embudo, encontramos el punto donde se escapa la venta y nos hacemos cargo de corregirlo. ¿Te gustaría ver tus números en la Fotografía Comercial Xsell?"],
@@ -433,7 +448,7 @@
     r: "Con Xsell vendes más sin sumar personal a tu planilla: nos hacemos cargo de tu venta con un equipo que trabaja con tu marca. Arrancamos con un fijo más un variable y, con la operación madura, pasamos a pago por resultado (PxQ). Así tu costo comercial se mueve con tus ventas.", rel: [PAGO, PRECIO] },
   { id: "ventas_bajaron", pr: 7,
     k: ["bajaron", "cayeron", "estancadas", "estancados", "crisis", "menos", "bajas"],
-    p: ["cayeron|1.5", "=cayeron mis ventas", "=mis ventas cayeron", "estancados|1.3", "bajaron mis ventas", "bajaron las ventas", "caida de ventas", "estoy vendiendo menos", "vendo poco", "no vendo", "no estoy vendiendo", "ventas bajas", "pocas ventas", "mal mes", "temporada baja", "crisis", "estancado", "estancada", "no crecemos", "ventas estancadas"],
+    p: ["=se estan yendo", "=yendo al carajo", "=se estan cayendo", "=se me estan cayendo", "cayeron|1.5", "=cayeron mis ventas", "=mis ventas cayeron", "estancados|1.3", "bajaron mis ventas", "bajaron las ventas", "caida de ventas", "estoy vendiendo menos", "vendo poco", "no vendo", "no estoy vendiendo", "ventas bajas", "pocas ventas", "mal mes", "temporada baja", "crisis", "estancado", "estancada", "no crecemos", "ventas estancadas"],
     r: ["Lo siento, sé lo difícil que es. La buena noticia es que una caída casi siempre tiene un punto concreto: menos contacto, menos seguimiento o menos recompra. Lo encontramos midiendo cada etapa, y lo corregimos. ¿Te gustaría ver tus números sin costo en la Fotografía Comercial Xsell?",
       "Momentos así son justo cuando más conviene mirar el embudo con calma. A veces no faltan interesados, sino aprovechar mejor los que llegan y hacer que tus clientes vuelvan. Te ayudamos a encontrar dónde se está escapando la venta."],
     lead: true, rel: [FC, CASO] },

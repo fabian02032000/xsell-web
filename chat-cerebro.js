@@ -116,6 +116,7 @@
     var m = n.match(/\b(?:me llamo|mi nombre es|mi nombre|soy el|soy la|aqui|habla|te saluda|le saluda|les saluda)\s+([a-z]+)(?:\s+([a-z]+))?/);
     if (!m) { var m2 = n.match(/^(?:hola\s+)?soy\s+([a-z]+)(?:\s+([a-z]+))?/); if (m2 && !NO_NOMBRE.has(m2[1]) && toks.length <= 10) m = m2; }
     if (!m && E.pendiente === "nombre" && toks.length <= 3 && /^[a-z]+(\s[a-z]+)?$/.test(n) && !NO_NOMBRE.has(toks[0]) && !/^(si|no|ok|hola|gracias|nada|bien|mal|nose|no se)$/.test(n)) m = [n, toks[0], toks[1]];
+    if (m && m[1] && m[1].length >= 5) { var cerca = false; VOCW.forEach(function (v) { if (!cerca && Math.abs(v.length - m[1].length) <= 2 && dist(m[1], v, 2) <= 2) cerca = true; }); if (cerca && !/^(carlos|carla|maria|mario|jorge|rosa|pedro|lucia|julio|julia|diana|sofia|laura|paula|pablo|david|daniel|andrea|andres|karen|kevin|ricardo|roberto|patricia|claudia|carmen|miguel|angel|angela|fabian|ingrid|monica|sandra|silvia|sergio|javier|manuel|victor|oscar|cesar|ruben|ramon|raul|teresa|elena|ana|luis|juan|jose)$/.test(m[1])) m = null; }
     if (m && m[1] && !NO_NOMBRE.has(m[1]) && m[1].length > 1) {
       var ap = m[2] && !NO_NOMBRE.has(m[2]) && !/^(y|de|del|la|el|gerente|jefe|dueno|trabajo|tengo|quiero|necesito|busco|mi|me|te|les|de)$/.test(m[2]) ? " " + m[2] : "";
       var nuevo = capital(m[1] + (ap && m[2].length > 2 ? ap : ""));
@@ -279,9 +280,10 @@
     var nLimpio = n, guard = 0;
     while (RELLENO.test(nLimpio) && guard++ < 4) { var sig = nLimpio.replace(RELLENO, ""); if (!sig || sig.split(" ").length < 1) break; nLimpio = sig; }
     if (!nLimpio.trim()) nLimpio = n;
+    if (dijo.indexOf("nombre") >= 0) { var sinNom = nLimpio.replace(/\b(me llamo|mi nombre es|mi nombre|soy|te saluda|le saluda|habla|aqui)\s+[a-z]+(\s+[a-z]+)?\s*/, " ").trim(); nLimpio = sinNom; }
     var nc = corregirPalabras(nLimpio);
     var rs = corregir(raices(nc));
-    var res = puntuar(rs, nc);
+    var res = nc.trim() ? puntuar(rs, nc) : [];
     var top = res[0];
 
     /* galimatías: casi sin vocales o sin palabras conocidas */
@@ -296,7 +298,12 @@
     var afirma = /^(si|ok|vale|claro|por supuesto|obvio|de acuerdo|me parece|me interesa|si me interesa|si quiero|quiero|si por favor|por favor|ok gracias|si claro|claro que si|hagamoslo|vamos|adelante|agendemos|agenda|ok agendemos)\b/.test(n) && toks.length <= 5;
     var niega = /^(no|no gracias|ahora no|todavia no|aun no|despues|luego|mas adelante|no por ahora|tal vez despues|lo pienso)\b/.test(n) && toks.length <= 5;
 
-    if (dijo.indexOf("nombre") >= 0 && (!top || top.s < 2.2)) {
+    if (dijo.indexOf("nombre") >= 0 && (!top || top.s < 1.2) && mod === "desahogo") {
+      E.pendiente = "dolor";
+      out.texto = rellenar("¡Mucho gusto, {nombre}! Gracias por la confianza de contármelo así. " + elegir(R.desahogo, "des") + "\n\n¿Me cuentas a qué se dedica tu empresa y en qué parte sientes que se está cayendo la venta?");
+      out.intent = "presentacion_desahogo"; return out;
+    }
+    if (dijo.indexOf("nombre") >= 0 && (!top || top.s < 1.2)) {
       E.pendiente = "empresa";
       out.texto = dijo.indexOf("sector") >= 0
         ? "¡Mucho gusto, {nombre}! Qué bueno, ya acompañamos a empresas de " + E.sector.toLowerCase() + " y conocemos bien sus retos. ¿Qué te gustaría mejorar hoy en tus ventas?"
@@ -324,14 +331,17 @@
     }
 
     var it = top.it;
+    if (it.id === "sin_prospectos") { if (/\b(base|bbdd|contactos|data|lista)\b/.test(nc)) E.sinBase = true; if (/\b(lead|leads|prospecto|prospectos|interesados|consultas|clientes potenciales|mensajes|llegan)\b/.test(nc)) E.sinLeads = true; }
     var resp = typeof it.r === "function" ? it.r(E, n) : elegir(it.r, it.id);
     resp = rellenar(resp);
-    if (mod === "desahogo") resp = elegir(R.desahogo, "des") + "\n\n" + resp;
+    if (mod === "desahogo" && !/^(ventas_bajaron|vendedores_no_venden|se_enfrian|sin_prospectos|no_se_donde|competencia)$/.test(it.id)) resp = elegir(R.desahogo, "des") + "\n\n" + resp;
+    if (dijo.indexOf("nombre") >= 0 && !it.social) resp = "¡Mucho gusto, " + E.nombre + "! " + resp;
+    else if (dijo.indexOf("sector") >= 0 && !it.social && it.id !== "sector_especifico" && it.id !== "sectores") resp = "Gracias por contarme que tu empresa es del rubro " + E.sector.toLowerCase() + ". " + resp;
     if (mod === "frustracion" && !it.social) resp = "Perdón si antes no fui claro. " + resp;
-    var saludoAntes = /^(hola|buenas|buenos dias|buenas tardes|buenas noches|buen dia|hey|que tal|saludos)\b/.test(n) && !it.social && nLimpio !== n;
+    var saludoAntes = /^(hola|buenas|buenos dias|buenas tardes|buenas noches|buen dia|hey|que tal|saludos)\b/.test(n) && !it.social && nLimpio !== n && dijo.indexOf("nombre") < 0;
     if (saludoAntes) resp = (E.nombre ? "¡Hola, " + E.nombre + "! " : "¡Hola! ") + resp;
     resp = personalizar(resp, it);
-    out.texto = resp; out.lead = !!it.lead; out.rel = it.rel || null; out.ir = it.ir || null; out.intent = it.id; out.acciones = it.acciones !== false;
+    out.texto = resp; out.lead = !!it.lead || !!E.forzarLead; E.forzarLead = false; out.rel = it.rel || null; out.ir = it.ir || null; out.intent = it.id; out.acciones = it.acciones !== false;
     if (it.cerrar) { out.cerrar = true; }
     E.pendiente = it.pend || (it.lead ? "agendar" : null) || (/(agendamos|agendarla|te gustaria agendar|¿la agendamos|¿te la agendo)/i.test(resp) ? "agendar" : (/¿como te llamas|tu nombre\?/i.test(resp) ? "nombre" : ""));
     E.ultimo = it.id; E.temas.push(it.id);
