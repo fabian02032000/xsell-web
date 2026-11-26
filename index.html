@@ -2212,7 +2212,7 @@ document.querySelectorAll(".js-ask").forEach(b => b.addEventListener("click", ()
         if (fs.hidden) return;
         var n = fs.getAttribute("data-step");
         if (vistos["p" + n]) return; vistos["p" + n] = 1;
-        evento("diagnostico_paso", { paso: Number(n), paso_nombre: nombres[n] || ("paso_" + n) });
+        evento("diag_paso_" + n + "_" + (nombres[n] || "otro"), { paso: Number(n) });
       }).observe(fs, { attributes: true, attributeFilter: ["hidden"] });
     });
   }
