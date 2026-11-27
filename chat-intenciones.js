@@ -70,11 +70,11 @@
     r: "Llevamos 14 años en el mercado convirtiendo oportunidades en ventas. En ese tiempo aprendimos algo clave: casi nunca falta volumen, lo que falta es seguimiento. Por eso hoy somos especialistas en hacernos cargo de toda la venta.", ir: ["nosotros.html", "Conocer Nosotros"] },
   { id: "historia", pr: 4,
     p: ["=antes era", "=era otra empresa", "=por que se llaman", "=por que el nombre", "=por que xsell se llama", "historia", "como nacio", "como nacieron", "antes eran", "otro nombre", "cambiaron de nombre", "por que xsell", "nombre xsell", "significa xsell", "que significa el nombre", "rebranding", "nueva marca", "antes se llamaban", "evolucion"],
-    r: "Xsell es la evolución de una empresa con 14 años de experiencia en ventas. El nombre resume lo que hacemos: multiplicar ventas (la X) y hacerlo bien. Cambiamos para ser más claros con lo que somos hoy: una agencia de ventas que se hace cargo de tu canal comercial y cobra por resultados.", ir: ["nosotros.html", "Conocer Nosotros"] },
+    r: "Todo empezó en 2011, en un café: nuestro fundador pensaba el nombre de la empresa cuando le dieron de vuelto tres soles. Así nació 3eriza, dedicada a la tercerización. En 14 años pasamos de la consultoría a operar servicios y llegamos a más de 2,000 integrantes. Hoy evolucionamos a Xsell: una agencia de ventas que se hace cargo de tu canal comercial y cobra por resultados. La historia completa está en Nosotros.", ir: ["nosotros.html", "Ver nuestra historia"] },
   { id: "lema", pr: 2,
     no: ["=propuesta de valor"],
-    p: ["lema", "slogan", "multiplicamos tus resultados", "mision", "proposito", "vision", "valores"],
-    r: "Nuestro lema es “Multiplicamos tus resultados”. Nuestro propósito: multiplicar las oportunidades de nuestros clientes y convertirlas en crecimiento sostenible, con buenas ventas que cuidan tu marca." },
+    p: ["valores|1.3", "cultura|1.4", "=modelo cultural", "proposito|1.3", "lema", "slogan", "multiplicamos tus resultados", "mision", "proposito", "vision", "valores"],
+    r: "Nuestro lema es “Multiplicamos tus resultados” y nuestro propósito, “Mejores personas, mejores negocios”. Nos guían cuatro valores: Mejor y distinto, Nos hacemos cargo, Respeto por la gente y Profesionalismo. Puedes conocerlos en nuestra sección Cultura.", ir: ["cultura.html", "Ver Cultura"] },
   { id: "paises", pr: 4,
     k: ["paises", "latinoamerica", "region", "internacional"],
     p: ["presencia|1.3", "mexico|1.2", "=donde estan", "=donde operan", "=donde trabajan", "donde estan", "donde operan", "en que paises", "paises", "peru", "argentina", "chile", "latinoamerica", "latam", "otros paises", "fuera de peru", "internacional", "colombia", "mexico", "ecuador", "bolivia", "espana", "estados unidos", "donde trabajan"],
@@ -512,11 +512,11 @@
 
   /* ===================== TRABAJO EN XSELL Y OTROS PERFILES ===================== */
   { id: "trabajo", pr: 7,
-    no: ["=cuanto cuesta", "=cuanto cobran", "precio", "=el cierre de mis vendedores", "=trabajan con", "trabajo en una empresa", "trabajo para", "mi trabajo", "trabajo de ventas de mi"],
+    no: ["=cultura de", "=cuanto cuesta", "=cuanto cobran", "precio", "=el cierre de mis vendedores", "=trabajan con", "trabajo en una empresa", "trabajo para", "mi trabajo", "trabajo de ventas de mi"],
     k: ["trabajo", "empleo", "vacante", "postular", "cv", "practicas", "sueldo", "buscando"],
     p: ["=buscando trabajo", "=busco trabajo", "=estan contratando", "sueldo|1.6", "trabajar en xsell", "trabajar con ustedes", "busco trabajo", "trabajo", "empleo", "vacantes", "vacante", "postular", "postulo", "enviar cv", "curriculum", "cv", "practicas", "practicante", "estan contratando", "convocatoria", "sueldo", "salario", "unirme al equipo", "ser parte del equipo", "quiero ser asesor", "quiero ser vendedor", "oportunidad laboral", "bolsa de trabajo"],
     
-    r: "¡Gracias por tu interés en ser parte de Xsell! Muy pronto lanzaremos nuestra sección de Cultura, donde podrás conocer cómo trabajan nuestros integrantes y postular. Mantente atento a la web." },
+    r: "¡Gracias por tu interés en ser parte de Xsell! En nuestra sección Cultura puedes conocer nuestro propósito, “Mejores personas, mejores negocios”, y los valores con los que trabajamos. Muy pronto abriremos postulaciones para nuevos integrantes.", ir: ["cultura.html", "Ver Cultura"] },
   { id: "proveedor", pr: 6,
     k: ["alianza", "aliados", "partner", "colaboracion", "proveedor", "ofrezco", "referidos"],
     p: ["=les ofrezco", "ofrezco|1.4", "=mis servicios de", "referidos|1.6", "=por referidos", "quiero ofrecerles", "les quiero vender", "soy proveedor", "tengo un servicio para ustedes", "les ofrezco", "alianza", "alianzas", "partner", "socios estrategicos para", "colaboracion", "referidos", "comision por referir", "trabajar juntos como aliados", "propuesta de alianza", "convenio"],

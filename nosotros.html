@@ -1,26 +1,24 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<!-- Etiqueta de Google: Google Ads y Google Analytics (cuenta Xsell) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9308K1YS8Q"></script>
+<!-- Medición: Google (Ads + Analytics), Píxel de Meta y Microsoft Clarity (mapas de calor) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18592382048"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-9308K1YS8Q');
   gtag('config', 'AW-18592382048');
+  gtag('config', 'G-9308K1YS8Q');
 </script>
-<!-- Píxel de Meta (conjunto de datos "Calidad de Leads HubSpot" de Xsell) -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1081995541100208');
 fbq('track', 'PageView');
 </script>
-<!-- Microsoft Clarity (mapas de calor) -->
 <script>
 (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","zji53zcoox");
 </script>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Somos una agencia de ventas: nos hacemos cargo de tu canal comercial, trabajamos mejor y distinto y cobramos por resultados. Conoce al equipo Xsell.">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
@@ -856,6 +854,20 @@ footer{padding-bottom:110px}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* ===== Nuestra historia ===== */
+.hi-wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+@media (max-width:860px){.hi-wrap{grid-template-columns:1fr;gap:26px}}
+.hi-story p{color:var(--muted);font-size:1.06rem;line-height:1.7;margin:0 0 14px}
+.hi-story .hi-big{font-family:var(--display);font-weight:600;color:var(--text);font-size:clamp(1.4rem,2.6vw,2.1rem);line-height:1.28;letter-spacing:-.02em}
+.hi-story .hi-big em{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;color:var(--orange)}
+.hi-three{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 18px}
+.hi-three span{padding:8px 14px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-family:var(--display);font-weight:600;font-size:.9rem}
+.hi-line{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.hi-line li{position:relative;padding:0 0 26px 26px}
+.hi-line li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface-2);border:2px solid var(--orange)}
+.hi-line li.hoy::before{background:var(--orange);box-shadow:0 0 0 6px color-mix(in srgb,var(--orange) 25%,transparent)}
+.hi-line b{display:block;font-family:var(--impact);font-weight:400;font-size:1.7rem;line-height:1;color:var(--orange);margin-bottom:6px}
+.hi-line span{color:var(--text);line-height:1.5}
 </style>
 </head>
 <body>
@@ -1042,7 +1054,7 @@ html.xi-lock,html.xi-lock body{overflow:hidden}
     <div class="nav-l"><a class="brand" href="/" aria-label="Xsell, ir al inicio"><img src="logo.webp" alt="Xsell" width="70" height="26"></a><button class="theme-btn tb-theme" type="button" id="themeBtn" aria-label="Cambiar a modo claro u oscuro"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button></div>
   </div>
 </header>
-<div class="sheet" id="sheet" hidden><nav aria-label="Secciones"><ol class="sheet-list" id="links"><li><a href="/#multiplicadores" data-sec="multiplicadores"><span>Multiplicadores</span><i aria-hidden="true">→</i></a></li><li><a href="/#caso" data-sec="caso"><span>Casos</span><i aria-hidden="true">→</i></a></li><li><a href="/#modelos" data-sec="modelos"><span>Modelos de cierre</span><i aria-hidden="true">→</i></a></li><li><a href="/#proceso" data-sec="proceso"><span>Cómo trabajamos</span><i aria-hidden="true">→</i></a></li><li><a href="/#sectores" data-sec="sectores"><span>Sectores</span><i aria-hidden="true">→</i></a></li><li><a href="/#contacto" data-sec="contacto"><span>Contacto</span><i aria-hidden="true">→</i></a></li><li class="sub"><a href="nosotros.html" aria-current="page"><span>Nosotros</span><i aria-hidden="true">↗</i></a></li><li class="sub"><span class="soon-l"><span>Cultura · Trabaja con nosotros</span><em class="soon">Próximamente</em></span></li></ol></nav></div>
+<div class="sheet" id="sheet" hidden><nav aria-label="Secciones"><ol class="sheet-list" id="links"><li><a href="/#multiplicadores" data-sec="multiplicadores"><span>Multiplicadores</span><i aria-hidden="true">→</i></a></li><li><a href="/#caso" data-sec="caso"><span>Casos</span><i aria-hidden="true">→</i></a></li><li><a href="/#modelos" data-sec="modelos"><span>Modelos de cierre</span><i aria-hidden="true">→</i></a></li><li><a href="/#proceso" data-sec="proceso"><span>Cómo trabajamos</span><i aria-hidden="true">→</i></a></li><li><a href="/#sectores" data-sec="sectores"><span>Sectores</span><i aria-hidden="true">→</i></a></li><li><a href="/#contacto" data-sec="contacto"><span>Contacto</span><i aria-hidden="true">→</i></a></li><li class="sub"><a href="nosotros.html" aria-current="page"><span>Nosotros</span><i aria-hidden="true">↗</i></a></li><li class="sub"><a href="cultura.html"><span>Cultura</span><i aria-hidden="true">↗</i></a></li></ol></nav></div>
 <nav class="tabbar" aria-label="Navegación principal">
   <a class="tb" href="/#inicio" data-cur="Inicio" aria-label="Inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></a>
   <a class="tb tb-ai" href="/#chat" id="aiBtn" data-cur="Chatear" aria-label="Chatea con nuestra IA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></a>
@@ -1069,6 +1081,27 @@ html.xi-lock,html.xi-lock body{overflow:hidden}
         <div><b>PxQ</b><span>pagas por cada resultado logrado</span></div>
         <div><b>6</b><span>sectores en los que nos especializamos</span></div>
         <div><b>360°</b><span>de la captación a la fidelización</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="block" id="historia">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Nuestra historia</span><h2>Todo empezó con un vuelto de <em style="font-style:normal;color:var(--orange)">3 soles</em></h2></div>
+      <div class="hi-wrap">
+        <div class="hi-story">
+          <p class="hi-big">En 2011, en un café, nuestro fundador pensaba cómo llamar a su empresa cuando le dieron de vuelto <em>tres soles.</em></p>
+          <p>Tenía claro a qué se iba a dedicar: la tercerización, una relación de tres.</p>
+          <div class="hi-three"><span>El cliente que necesita un servicio</span><span>La empresa que debe atenderlo</span><span>El proveedor que lo hace posible</span></div>
+          <p>Sumó ese número, su gusto por las cifras y el vuelto sobre la mesa. Así nació <b style="color:var(--text)">3eriza</b>. Catorce años después, esa misma forma de trabajar, mejor y distinta, evolucionó en Xsell.</p>
+        </div>
+        <ol class="hi-line">
+          <li><b>2011</b><span>Nace 3eriza como consultora, para ayudar a empresas que querían empezar a tercerizar.</span></li>
+          <li><b>Primeros años</b><span>Pasamos de aconsejar a operar los servicios de nuestros clientes.</span></li>
+          <li><b>2016</b><span>Damos el gran paso y ampliamos nuestra cartera.</span></li>
+          <li><b>2019</b><span>Nueva sede en Surquillo y nuevas soluciones.</span></li>
+          <li><b>Después de la pandemia</b><span>Llegamos a más de 2,000 integrantes en contact center, backoffice, ventas y atención al cliente.</span></li>
+          <li class="hoy"><b>Hoy · Xsell</b><span>Evolucionamos a una agencia de ventas que se hace cargo de tu canal comercial y cobra por resultados.</span></li>
+        </ol>
       </div>
     </div>
   </section>
@@ -1103,7 +1136,7 @@ html.xi-lock,html.xi-lock body{overflow:hidden}
   <div class="wrap fgrid">
     <div class="fcol fbrand"><img src="logo.webp" alt="Xsell" width="96" height="35"><p class="slogan">Multiplicamos <em>tus resultados</em></p><p class="fsm">Agencia de ventas. 14 años convirtiendo oportunidades en ventas.</p><a class="btn btn-orange" href="/#contacto">Diagnóstico gratuito</a></div>
     <div class="fcol"><h4>Explora</h4><a href="/#multiplicadores">Multiplicadores</a><a href="/#caso">Casos</a><a href="/#modelos">Modelos de cierre</a><a href="/#proceso">Cómo trabajamos</a><a href="/#sectores">Sectores</a></div>
-    <div class="fcol"><h4>Xsell</h4><a href="nosotros.html">Nosotros</a><span>Trabaja con nosotros <em class="soon">Próximamente</em></span><a href="/#contacto">Contacto</a><a href="/#chat">Pregúntanos en el chat</a></div>
+    <div class="fcol"><h4>Xsell</h4><a href="nosotros.html">Nosotros</a><a href="cultura.html">Cultura</a><a href="/#contacto">Contacto</a><a href="/#chat">Pregúntanos en el chat</a></div>
     <div class="fcol"><h4>Presencia</h4><span>Perú</span><span>Argentina</span><span>Chile</span></div>
   </div>
   <div class="wrap fbot"><span>© <span id="yr">2026</span> Xsell. Todos los derechos reservados.</span><span>Lima, Perú</span><span class="flegal"><a href="terminos.html">Términos y Condiciones</a><a href="privacidad.html">Política de Privacidad</a></span></div>
