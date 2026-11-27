@@ -70,7 +70,7 @@
     r: "Llevamos 14 años en el mercado convirtiendo oportunidades en ventas. En ese tiempo aprendimos algo clave: casi nunca falta volumen, lo que falta es seguimiento. Por eso hoy somos especialistas en hacernos cargo de toda la venta.", ir: ["nosotros.html", "Conocer Nosotros"] },
   { id: "historia", pr: 4,
     p: ["=antes era", "=era otra empresa", "=por que se llaman", "=por que el nombre", "=por que xsell se llama", "historia", "como nacio", "como nacieron", "antes eran", "otro nombre", "cambiaron de nombre", "por que xsell", "nombre xsell", "significa xsell", "que significa el nombre", "rebranding", "nueva marca", "antes se llamaban", "evolucion"],
-    r: "Todo empezó en 2011, en un café: nuestro fundador pensaba el nombre de la empresa cuando le dieron de vuelto tres soles. Así nació 3eriza, dedicada a la tercerización. En 14 años pasamos de la consultoría a operar servicios y llegamos a más de 2,000 integrantes. Hoy evolucionamos a Xsell: una agencia de ventas que se hace cargo de tu canal comercial y cobra por resultados. La historia completa está en Nosotros.", ir: ["nosotros.html", "Ver nuestra historia"] },
+    r: "Empezamos en 2011 como consultora de tercerización. En 14 años pasamos a operar servicios para grandes empresas y llegamos a más de 2,000 integrantes. Hoy evolucionamos a Xsell: una agencia de ventas que se hace cargo de tu canal comercial y cobra por resultados. Puedes ver la historia en Nosotros.", ir: ["nosotros.html", "Ver nuestra historia"] },
   { id: "lema", pr: 2,
     no: ["=propuesta de valor"],
     p: ["valores|1.3", "cultura|1.4", "=modelo cultural", "proposito|1.3", "lema", "slogan", "multiplicamos tus resultados", "mision", "proposito", "vision", "valores"],
