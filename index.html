@@ -2211,6 +2211,27 @@ document.querySelectorAll(".js-ask").forEach(b => b.addEventListener("click", ()
     var sec = a.closest("section[id], footer, header");
     evento("clic_whatsapp", { ubicacion: sec ? (sec.id || sec.tagName.toLowerCase()) : "flotante" });
   }, true);
+  /* Mapa de calor por secciones (solo Google Analytics): qué secciones llegan a ver y dónde hacen clic */
+  try {
+    var vistas = {}, ultimoClic = {};
+    var idSec = function(el){ return el.tagName === "FOOTER" ? "pie" : el.id; };
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var id = idSec(en.target);
+        if (vistas[id]) return; vistas[id] = 1;
+        if (typeof gtag === "function") gtag("event", "sec_ver_" + id, { send_to: GA });
+      });
+    }, { rootMargin: "-40% 0px -40% 0px" });
+    document.querySelectorAll("main section[id], body > footer, footer").forEach(function(el){ io.observe(el); });
+    document.addEventListener("click", function(e){
+      var el = e.target.closest && e.target.closest("main section[id], footer");
+      if (!el) return;
+      var id = idSec(el), ahora = Date.now();
+      if (ultimoClic[id] && ahora - ultimoClic[id] < 1500) return; ultimoClic[id] = ahora;
+      if (typeof gtag === "function") gtag("event", "sec_clic_" + id, { send_to: GA });
+    }, true);
+  } catch(e){}
   /* Formulario de diagnóstico: apertura y cada paso */
   function iniciar(){
     var dlg = document.getElementById("diag"), form = document.getElementById("diagForm");
